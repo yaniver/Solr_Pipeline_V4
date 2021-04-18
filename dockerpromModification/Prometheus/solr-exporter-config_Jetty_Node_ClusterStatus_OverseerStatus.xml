@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to You under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<config>
+
+  <rules>
+
+    <ping>
+	<!--<lst name="request">
+        <lst name="query">
+          <str name="path">/admin/ping</str>
+        </lst>
+        <arr name="jsonQueries">
+          <str>
+            . as $object | $object |
+            (if $object.status == "OK" then 1.0 else 0.0 end) as $value |
+            {
+              name         : "solr_ping",
+              type         : "GAUGE",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/ping.html",
+              label_names  : [],
+              label_values : [],
+              value        : $value
+            }
+          </str>
+        </arr>
+      </lst>-->
+    </ping>
+
+    <metrics>
+      <lst name="request">
+        <lst name="query">
+          <str name="path">/admin/metrics</str>
+          <lst name="params">
+            <str name="group">node,jetty</str>
+            <str name="type">all</str>
+            <str name="prefix"></str>
+            <str name="property"></str>
+          </lst>
+        </lst>
+        <arr name="jsonQueries">
+          <!--
+            jetty metrics
+          -->
+          <str>
+            .metrics["solr.jetty"] | to_entries | .[] | select(.key | startswith("org.eclipse.jetty.server.handler.DefaultHandler")) | select(.key | endswith("xx-responses")) as $object |
+            $object.key | split(".") | last | split("-") | first as $status |
+            $object.value.count as $value |
+            {
+            name         : "solr_metrics_jetty_response_total",
+            type         : "COUNTER",
+            help         : "See following URL: https://lucene.apache.org/solr/guide/metrics-reporting.html",
+            label_names  : ["status"],
+            label_values : [$status],
+            value        : $value
+            }
+          </str>
+          <str>
+            .metrics["solr.jetty"] | to_entries | .[] | select(.key | startswith("org.eclipse.jetty.server.handler.DefaultHandler.")) | select(.key | endswith("-requests")) | select (.value | type == "object") as $object |
+            $object.key | split(".") | last | split("-") | first as $method |
+            $object.value.count as $value |
+            {
+              name         : "solr_metrics_jetty_requests_total",
+              type         : "COUNTER",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/metrics-reporting.html",
+              label_names  : ["method"],
+              label_values : [$method],
+              value        : $value
+            }
+          </str>
+          <str>
+            .metrics["solr.jetty"] | to_entries | .[] | select(.key == "org.eclipse.jetty.server.handler.DefaultHandler.dispatches") as $object |
+            $object.value.count as $value |
+            {
+              name         : "solr_metrics_jetty_dispatches_total",
+              type         : "COUNTER",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/metrics-reporting.html",
+              label_names  : [],
+              label_values : [],
+              value        : $value
+            }
+          </str>
+          <str>
+            .metrics["solr.node"] | to_entries | .[] | select(.key | endswith(".clientErrors")) as $object |
+            $object.key | split(".")[0] as $category |
+            $object.key | split(".")[1] as $handler |
+            $object.value.count as $value |
+            {
+              name         : "solr_metrics_node_client_errors_total",
+              type         : "COUNTER",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/metrics-reporting.html",
+              label_names  : ["category", "handler"],
+              label_values : [$category, $handler],
+              value        : $value
+            }
+          </str>
+          <str>
+            .metrics["solr.node"] | to_entries | .[] | select(.key | endswith(".errors")) as $object |
+            $object.key | split(".")[0] as $category |
+            $object.key | split(".")[1] as $handler |
+            $object.value.count as $value |
+            {
+              name         : "solr_metrics_node_errors_total",
+              type         : "COUNTER",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/metrics-reporting.html",
+              label_names  : ["category", "handler"],
+              label_values : [$category, $handler],
+              value        : $value
+            }
+          </str>
+          <str>
+            .metrics["solr.node"] | to_entries | .[] | select(.key | endswith(".requestTimes")) as $object |
+            $object.key | split(".")[0] as $category |
+            $object.key | split(".")[1] as $handler |
+            $object.value.count as $value |
+            {
+              name         : "solr_metrics_node_requests_total",
+              type         : "COUNTER",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/metrics-reporting.html",
+              label_names  : ["category", "handler"],
+              label_values : [$category, $handler],
+              value        : $value
+            }
+          </str>
+		  <str><!--Yaniv: adding requestTimes p75 for different handlers-->
+            .metrics["solr.node"] | to_entries | .[] | select(.key | endswith(".requestTimes")) as $object |
+            $object.key | split(".")[0] as $category |
+            $object.key | split(".")[1] as $handler |
+            $object.value.p75_ms as $value |
+            {
+              name         : "solr_metrics_node_requestTimes_p75_ms",
+              type         : "COUNTER",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/metrics-reporting.html",
+              label_names  : ["category", "handler"],
+              label_values : [$category, $handler],
+              value        : $value
+            }
+          </str>
+		  <str>
+            .metrics["solr.node"] | to_entries | .[] | select(.key | endswith(".requestTimes")) as $object |
+            $object.key | split(".")[0] as $category |
+            $object.key | split(".")[1] as $handler |
+            $object.value.p95_ms as $value |
+            {
+              name         : "solr_metrics_node_requestTimes_p95_ms",
+              type         : "COUNTER",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/metrics-reporting.html",
+              label_names  : ["category", "handler"],
+              label_values : [$category, $handler],
+              value        : $value
+            }
+          </str>
+          <str>
+            .metrics["solr.node"] | to_entries | .[] | select(.key | endswith(".serverErrors")) as $object |
+            $object.key | split(".")[0] as $category |
+            $object.key | split(".")[1] as $handler |
+            $object.value.count as $value |
+            {
+              name         : "solr_metrics_node_server_errors_total",
+              type         : "COUNTER",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/metrics-reporting.html",
+              label_names  : ["category", "handler"],
+              label_values : [$category, $handler],
+              value        : $value
+            }
+          </str>
+          <str>
+            .metrics["solr.node"] | to_entries | .[] | select(.key | endswith(".timeouts")) as $object |
+            $object.key | split(".")[0] as $category |
+            $object.key | split(".")[1] as $handler |
+            $object.value.count as $value |
+            {
+              name         : "solr_metrics_node_timeouts_total",
+              type         : "COUNTER",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/metrics-reporting.html",
+              label_names  : ["category", "handler"],
+              label_values : [$category, $handler],
+              value        : $value
+            }
+          </str>
+          <str>
+            .metrics["solr.node"] | to_entries | .[] | select(.key | endswith(".totalTime")) as $object |
+            $object.key | split(".")[0] as $category |
+            $object.key | split(".")[1] as $handler |
+            ($object.value / 1000) as $value |
+            {
+              name         : "solr_metrics_node_time_seconds_total",
+              type         : "COUNTER",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/metrics-reporting.html",
+              label_names  : ["category", "handler"],
+              label_values : [$category, $handler],
+              value        : $value
+            }
+          </str>
+          <str>
+            .metrics["solr.node"] | to_entries | .[] | select(.key | startswith("CONTAINER.cores.")) as $object |
+            $object.key | split(".")[0] as $category |
+            $object.key | split(".")[2] as $item |
+            $object.value as $value |
+            {
+              name         : "solr_metrics_node_cores",
+              type         : "GAUGE",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/metrics-reporting.html",
+              label_names  : ["category", "item"],
+              label_values : [$category, $item],
+              value        : $value
+            }
+          </str>
+          <str>
+            .metrics["solr.node"] | to_entries | .[] | select(.key | startswith("CONTAINER.fs.coreRoot.")) | select(.key | endswith(".totalSpace") or endswith(".usableSpace")) as $object |
+            $object.key | split(".") as $key_items |
+            $key_items | length as $label_len |
+            $key_items[0] as $category |
+            $key_items[3] as $item |
+            $object.value as $value |
+            {
+              name         : "solr_metrics_node_core_root_fs_bytes",
+              type         : "GAUGE",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/metrics-reporting.html",
+              label_names  : ["category", "item"],
+              label_values : [$category, $item],
+              value        : $value
+            }
+          </str>
+          <str>
+            .metrics["solr.node"] | to_entries | .[] | select(.key | contains(".threadPool.")) | select(.key | endswith(".completed")) as $object |
+            $object.key | split(".") as $key_items |
+            $key_items | length as $label_len |
+            $key_items[0] as $category |
+            (if $label_len >= 5 then $key_items[1] else "" end) as $handler |
+            (if $label_len >= 5 then $key_items[3] else $key_items[2] end) as $executor |
+            $object.value.count as $value |
+            {
+              name         : "solr_metrics_node_thread_pool_completed_total",
+              type         : "COUNTER",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/metrics-reporting.html",
+              label_names  : ["category", "handler", "executor"],
+              label_values : [$category, $handler, $executor],
+              value        : $value
+            }
+          </str>
+          <str>
+            .metrics["solr.node"] | to_entries | .[] | select(.key | contains(".threadPool.")) | select(.key | endswith(".running")) as $object |
+            $object.key | split(".") as $key_items |
+            $key_items | length as $label_len |
+            $key_items[0] as $category |
+            (if $label_len >= 5 then $key_items[1] else "" end) as $handler |
+            (if $label_len >= 5 then $key_items[3] else $key_items[2] end) as $executor |
+            $object.value as $value |
+            {
+              name         : "solr_metrics_node_thread_pool_running",
+              type         : "GAUGE",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/metrics-reporting.html",
+              label_names  : ["category", "handler", "executor"],
+              label_values : [$category, $handler, $executor],
+              value        : $value
+            }
+          </str>
+          <str>
+            .metrics["solr.node"] | to_entries | .[] | select(.key | contains(".threadPool.")) | select(.key | endswith(".submitted")) as $object |
+            $object.key | split(".") as $key_items |
+            $key_items | length as $label_len |
+            $key_items[0] as $category |
+            (if $label_len >= 5 then $key_items[1] else "" end) as $handler |
+            (if $label_len >= 5 then $key_items[3] else $key_items[2] end) as $executor |
+            $object.value.count as $value |
+            {
+              name         : "solr_metrics_node_thread_pool_submitted_total",
+              type         : "COUNTER",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/metrics-reporting.html",
+              label_names  : ["category", "handler", "executor"],
+              label_values : [$category, $handler, $executor],
+              value        : $value
+            }
+          </str>
+          <str>
+            .metrics["solr.node"] | to_entries | .[] | select(.key | endswith("Connections")) as $object |
+            $object.key | split(".") as $key_items |
+            $key_items | length as $label_len |
+            $key_items[0] as $category |
+            $key_items[1] as $handler |
+            $key_items[2] as $item |
+            $object.value as $value |
+            {
+              name         : "solr_metrics_node_connections",
+              type         : "GAUGE",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/metrics-reporting.html",
+              label_names  : ["category", "handler", "item"],
+              label_values : [$category, $handler, $item],
+              value        : $value
+            }
+          </str>
+        </arr>
+      </lst>
+    </metrics>
+
+    <collections>
+	<lst name="request">
+        <lst name="query">
+          <str name="path">/admin/collections</str>
+          <lst name="params">
+			<str name="action">OVERSEERSTATUS</str>
+          </lst>
+        </lst>
+        <arr name="jsonQueries">
+	  <str>
+            .overseer_collection_queue_size | . as $value |
+            {
+              name         : "solr_overseer_collection_queue_size",
+              type         : "GAUGE",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/collections-api.html#clusterstatus",
+              label_names  : [],
+              label_values : [],
+              value        : $value
+            }
+          </str>
+        </arr>
+      </lst>
+	  <lst name="request">
+        <lst name="query">
+          <str name="path">/admin/collections</str>
+          <lst name="params">
+            <str name="action">CLUSTERSTATUS</str>
+          </lst>
+        </lst>
+        <arr name="jsonQueries">
+          <str>
+            .cluster.live_nodes | length as $value|
+            {
+              name         : "solr_collections_live_nodes",
+              type         : "GAUGE",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/collections-api.html#clusterstatus",
+              label_names  : [],
+              label_values : [],
+              value        : $value
+            }
+          </str>
+          <str>
+            .cluster.collections | to_entries | .[] | . as $object |
+            $object.key as $collection |
+            $object.value.shards | to_entries | .[] | . as $shard_obj |
+            $shard_obj.key as $shard |
+            (if $shard_obj.value.state == "active" then 1.0 else 0.0 end) as $value |
+            {
+              name         : "solr_collections_shard_state",
+              type         : "GAUGE",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/collections-api.html#clusterstatus",
+              label_names  : ["collection","shard"],
+              label_values : [$collection,$shard],
+              value        : $value
+            }
+          </str>
+        </arr>
+      </lst>
+    </collections>
+
+  </rules>
+
+</config>

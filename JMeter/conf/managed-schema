@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to You under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<!--  
+ This is the Solr schema file. This file should be named "schema.xml" and
+ should be in the conf directory under the solr home
+ (i.e. ./solr/conf/schema.xml by default) 
+ or located where the classloader for the Solr webapp can find it.
+
+ This example schema is the recommended starting point for users.
+ It should be kept correct and concise, usable out-of-the-box.
+
+ For more information, on how to customize this file, please see
+ http://wiki.apache.org/solr/SchemaXml
+
+ PERFORMANCE NOTE: this schema includes many optional features and should not
+ be used for benchmarking.  To improve performance one could
+  - set stored="false" for all fields possible (esp large fields) when you
+    only need to search on the field but don't need to return the original
+    value.
+  - set indexed="false" if you don't need to search on the field, but only
+    return the field as a result of searching on other indexed fields.
+  - remove all unneeded copyField statements
+  - for best index size and searching performance, set "index" to false
+    for all general text fields, use copyField to copy them to the
+    catchall "text" field, and use that for searching.
+  - For maximum indexing performance, use the ConcurrentUpdateSolrServer
+    java client.
+  - Remember to run the JVM in server mode, and use a higher logging level
+    that avoids logging every request
+-->
+
+<schema name="default-events-config-schema" version="1.6">
+  <!-- attribute "name" is the name of this schema and is only used for display purposes.
+       version="x.y" is Solr's version number for the schema syntax and 
+       semantics.  It should not normally be changed by applications.
+
+       1.0: multiValued attribute did not exist, all fields are multiValued 
+            by nature
+       1.1: multiValued attribute introduced, false by default 
+       1.2: omitTermFreqAndPositions attribute introduced, true by default 
+            except for text fields.
+       1.3: removed optional field compress feature
+       1.4: autoGeneratePhraseQueries attribute introduced to drive QueryParser
+            behavior when a single string produces multiple tokens.  Defaults 
+            to off for version >= 1.4
+       1.5: omitNorms defaults to true for primitive field types 
+            (int, float, boolean, string...)
+       1.6: useDocValuesAsStored defaults to true.
+    -->
+
+  <!-- Valid attributes for fields:
+     name: mandatory - the name for the field
+     type: mandatory - the name of a field type from the 
+       fieldTypes section
+     indexed: true if this field should be indexed (searchable or sortable)
+     stored: true if this field should be retrievable
+     docValues: true if this field should have doc values. Doc values are
+       useful for faceting, grouping, sorting and function queries. Although not
+       required, doc values will make the index faster to load, more
+       NRT-friendly and more memory-efficient. They however come with some
+       limitations: they are currently only supported by StrField, UUIDField
+       and all Trie*Fields, and depending on the field type, they might
+       require the field to be single-valued, be required or have a default
+       value (check the documentation of the field type you're interested in
+       for more information)
+     multiValued: true if this field may contain multiple values per document
+     omitNorms: (expert) set to true to omit the norms associated with
+       this field (this disables length normalization and index-time
+       boosting for the field, and saves some memory).  Only full-text
+       fields or fields that need an index-time boost need norms.
+       Norms are omitted for primitive (non-analyzed) types by default.
+     termVectors: [false] set to true to store the term vector for a
+       given field.
+       When using MoreLikeThis, fields used for similarity should be
+       stored for best performance.
+     termPositions: Store position information with the term vector.  
+       This will increase storage costs.
+     termOffsets: Store offset information with the term vector. This 
+       will increase storage costs.
+     required: The field is required.  It will throw an error if the
+       value does not exist
+     default: a value that should be used if no value is specified
+       when adding a document.
+    -->
+
+  <!-- field names should consist of alphanumeric or underscore characters only and
+      not start with a digit.  This is not currently strictly enforced,
+      but other field names will not have first class support from all components
+      and back compatibility is not guaranteed.  Names with both leading and
+      trailing underscores (e.g. _version_) are reserved.
+    -->
+
+  <!-- In this data_driven_schema_configs configset, only three fields are pre-declared: 
+         id, _version_, and _text_.  All other fields will be type guessed and added via the
+         "add-unknown-fields-to-the-schema" update request processor chain declared 
+         in solrconfig.xml.
+         
+         Note that many dynamic fields are also defined - you can use them to specify a 
+         field's type via field naming conventions - see below.
+  
+         WARNING: The _text_ catch-all field will significantly increase your index size.
+         If you don't need it, consider removing it and the corresponding copyField directive.
+    -->
+
+  <!-- doc values are enabled by default for primitive types such as long so we don't index the version field  -->
+  <field name="_version_" type="plong" indexed="false" stored="false"/>
+  <field name="_root_" type="string" indexed="true" stored="false" docValues="false" />
+  <field name="_text_" type="text_general" indexed="true" stored="false" multiValued="true"/>
+
+  <!-- start varonis -->
+  <field name="unique_id" type="string" indexed="true" stored="true"/>
+  <!-- Varonis Events schema-->
+  <field name="Document_Version" type="plong" docValues="true" multiValued="false" indexed="false" required="true" stored="true"/>
+  <field name="Event_Alert_ID" type="lowercase" docValues="false" multiValued="true" indexed="true" required="false" stored="false"/>
+  <field name="Event_Alert_ID__CaseSensitive" type="string" docValues="true" multiValued="true" indexed="true" required="false" stored="false"/>
+  <field name="Event_Alert_Rule_Category_ID" type="pint" docValues="true" multiValued="true" indexed="true" required="false" stored="false"/>
+  <field name="Event_Alert_Rule_ID" type="pint" docValues="true" multiValued="true" indexed="true" required="false" stored="false"/>
+  <field name="Event_Alert_Rule_Severity_ID" type="pint" docValues="true" multiValued="true" indexed="true" required="false" stored="false"/>
+  <field name="Event_Alert_Rule_Severity_ID__Min" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_Alert_Rule_Type_ID" type="pint" docValues="true" multiValued="true" indexed="true" required="false" stored="false"/>
+  <field name="Event_Alert_Time" type="pdate" docValues="true" multiValued="true" indexed="true" required="false" stored="false"/>
+  <field name="Event_Description" type="lowercase" docValues="false" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_Description__CaseSensitive" type="string" docValues="true" multiValued="false" indexed="false" required="false" stored="false"/>
+  <field name="Event_DeviceName" type="lowercase" docValues="false" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_DeviceName__CaseSensitive" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventBy_AccountType_ID" type="pint" docValues="true" multiValued="true" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventBy_Department" type="lowercase" docValues="false" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventBy_Department__CaseSensitive" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventBy_DistinguishedName" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventBy_Domain_ID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventBy_Domain_Name" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventBy_Flag_ID" type="pint" docValues="true" multiValued="true" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventBy_IsDisabled" type="boolean" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventBy_IsStale" type="boolean" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventBy_LastLogonTime" type="pdate" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventBy_Manager_Name" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventBy_Manager_SidID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventBy_Name" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventBy_Notes" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventBy_SamAccountName" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventBy_SidID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventBy_Tag_ID" type="pint" docValues="true" multiValued="true" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventBy_Type_ID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnADDomainName" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnFlagIDsAggregate" type="pint" docValues="true" multiValued="true" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnGroup_Domain_ID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnGroup_Domain_Name" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnGroup_Flag_ID" type="pint" docValues="true" multiValued="true" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnGroup_Name" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnGroup_Notes" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnGroup_SidID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnGroup_Tag_ID" type="pint" docValues="true" multiValued="true" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnObjectName" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnResource_Folder_AccessDate" type="pdate" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnResource_Folder_ClassificationSummary" type="string" docValues="true" multiValued="false" indexed="false" required="false" stored="false"/>
+  <field name="Event_EventOnResource_Folder_Classification_Rule_ID" type="pint" docValues="true" multiValued="true" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnResource_Folder_DirID" type="plong" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnResource_Folder_DirID__Idx" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnResource_Folder_FSOwner_Name" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnResource_Folder_FSOwner_SidID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnResource_Folder_Filer_ID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnResource_Folder_Filer_Name" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnResource_Folder_Flag_ID" type="pint" docValues="true" multiValued="true" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnResource_Folder_IsSensitive" type="boolean" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnResource_Folder_ModifyDate" type="pdate" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnResource_Folder_Notes" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnResource_Folder_Parent_DirID__Idx" type="string" docValues="false" multiValued="true" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnResource_Folder_Path" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnResource_Folder_Tag_ID" type="pint" docValues="true" multiValued="true" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnResource_Folder_TotalHitCount" type="plong" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnResource_ObjectType_ID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnTagIDsAggregate" type="pint" docValues="true" multiValued="true" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnUser_AccountType_ID" type="pint" docValues="true" multiValued="true" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnUser_DistinguishedName" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnUser_Domain_ID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnUser_Domain_Name" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnUser_Flag_ID" type="pint" docValues="true" multiValued="true" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnUser_Name" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnUser_Notes" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnUser_SamAccountName" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnUser_SidID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnUser_Tag_ID" type="pint" docValues="true" multiValued="true" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnVaronisOwnerNamesAggregate" type="string" docValues="true" multiValued="false" indexed="false" required="false" stored="false"/>
+  <field name="Event_EventsCount" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_File_Name" type="lowercase" docValues="false" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_File_Name__CaseSensitive" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_File_Type" type="lowercase" docValues="false" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_File_Type__CaseSensitive" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_IP" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_IsAlerted" type="boolean" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_Mail_Attachments" type="string" docValues="true" multiValued="false" indexed="false" required="false" stored="false"/>
+  <field name="Event_Mail_Date" type="pdate" docValues="true" multiValued="false" indexed="false" required="false" stored="false"/>
+  <field name="Event_Mail_ItemType_ID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_Mail_Recipient" type="string" docValues="true" multiValued="true" indexed="true" required="false" stored="false"/>
+  <field name="Event_Mail_Source" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_Operation_ID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_Status_ID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_Time" type="pdate" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_TimeUTC" type="pdate" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_Type_ID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnNotes" type="string" docValues="true" multiValued="false" indexed="false" required="false" stored="false"/>
+  <field name="Event_EventBy_MemberOfGroup_SidID" type="pint" docValues="false" multiValued="true" indexed="true" required="false" stored="FALSE"/>
+  <field name="Event_EventOnUser_MemberOfGroup_SidID" type="pint" docValues="false" multiValued="true" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventBy_IsFlagged" type="boolean" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnResource_Folder_IsFlagged" type="boolean" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_Location_SubdivisionID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_Location_CountryID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_Location_BlacklistedLocation" type="boolean" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_AgentVersion" type="lowercase" docValues="false" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_AgentVersion__CaseSensitive" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_ClientTypeID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_ConnectionTypeID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_DownloadSize" type="plong" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_SessionDuration" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_UploadSize" type="plong" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_Device_ExternalIP" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_Device_OperatingSystemID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_Device_SourceDeviceMAC" type="lowercase" docValues="false" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_Device_SourceDeviceMAC__CaseSensitive" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventBy_VPNGroups" type="lowercase" docValues="false" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventBy_VPNGroups__CaseSensitive" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_Destination_DeviceName" type="lowercase" docValues="false" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_Destination_DeviceName__CaseSensitive" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_Destination_IP" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_DirectionID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_DNSFlags" type="lowercase" docValues="false" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_DNSFlags__CaseSensitive" type="string" docValues="true" multiValued="false" indexed="ture" required="false" stored="false"/>
+  <field name="Event_DNSRecordType" type="lowercase" docValues="false" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_DNSRecordType__CaseSensitive" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_Destination_Domain" type="lowercase" docValues="false" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_Destination_Domain__CaseSensitive" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_TransportLayerID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_HttpMethodID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_Destination_URL_Address" type="lowercase" docValues="false" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_Destination_URL_Address__CaseSensitive" type="string" docValues="true" multiValued="false" indexed="false" required="false" stored="false"/>
+  <field name="Event_EndTime" type="pdate" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_Device_UserAgent" type="lowercase" docValues="false" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_Device_UserAgent__CaseSensitive" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_CorrelationId" type="lowercase" docValues="false" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_CorrelationId__CaseSensitive" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnUser_Type_ID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventBy_UPN" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnUser_UPN" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnResource_Folder_CreateDate" type="pdate" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnResource_Folder_PathDepth" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnResource_Folder_NumberOfNestedFiles" type="plong" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnResource_Folder_SizeFolder" type="plong" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnResource_Folder_SizeFolderAndSubFolders" type="plong" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnResource_AttachmentName" type="string" docValues="true" multiValued="true" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnResource_MessageSubject" type="lowercase" docValues="false" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnResource_MessageSubject__CaseSensitive" type="string" docValues="true" multiValued="false" indexed="false" required="false" stored="false"/>
+  <field name="Event_EventOnResource_MailWithAttachments" type="boolean" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnResource_Role_SidID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventBy_HasExpirationDate" type="boolean" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventBy_PasswordStatus_ID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventBy_AccountExpirationDate" type="pdate" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventBy_IsMailboxOwner" type="boolean" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnUser_IsDisabled" type="boolean" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnUser_IsLockout" type="boolean" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnUser_HasExpirationDate" type="boolean" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnUser_PasswordStatus_ID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnUser_AccountExpirationDate" type="pdate" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventBy_IsLockout" type="boolean" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnResource_Folder_Filer_Platform_ID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_Time_DayOfWeek_ID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_Time_Hour" type="pdate" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_Permission_IsDirectChange" type="boolean" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventBy_MemberOfRole_SidID" type="pint" docValues="false" multiValued="true" indexed="true" required="false" stored="false"/>
+  <field name="Event_EventOnUser_MemberOfRole_SidID" type="pint" docValues="false" multiValued="true" indexed="true" required="false" stored="false"/>
+  <field name="Event_StatusReason_ID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_StatusReason_Name" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_CollectionDeviceHostname" type="lowercase" docValues="false" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_CollectionDeviceHostname__CaseSensitive" type="string" docValues="true" multiValued="false" indexed="ture" required="false" stored="false"/>
+  <field name="Event_Destination_URL_Reputation_ID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_Destination_URL_Categorization_ID" type="pint" docValues="true" multiValued="true" indexed="true" required="false" stored="false"/>
+  <field name="Event_Device_ExternalIPThreatTypesID" type="pint" docValues="true" multiValued="true" indexed="true" required="false" stored="false"/>
+  <field name="Event_Device_IsMaliciousExternalIP" type="boolean" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_Device_ExternalIPReputationID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_CollectionMethod_ID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_StatusReasonCode" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+
+  <field name="Event_TicketOptionsTypes" type="string" docValues="true" multiValued="true" indexed="true" required="false" stored="false"/>
+  <field name="Event_TicketEncryptionID" type="plong" docValues="true" multiValued="false" indexed="false" required="false" stored="false"/>
+  <field name="Event_PreAuthenticationType" type="pint" docValues="true" multiValued="false" indexed="false" required="false" stored="false"/>
+  <field name="Event_AuthenticationProtocolID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_OrgOpCode" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+
+  <field name="Event_SourcePort" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_DestinationPort" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_SourceZone" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_DestinationZone" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_PolicyName" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_App" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_ProtocolID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_NATSourceAddress" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_NATDestinationAddress" type="string" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_NATSourcePort" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_NATDestinationPort" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <field name="Event_ApplicationProtocolID" type="pint" docValues="true" multiValued="false" indexed="true" required="false" stored="false"/>
+  <!-- schema-->
+
+  <copyField source="Event_Description" dest="Event_Description__CaseSensitive"/>
+  <copyField source="Event_EventBy_Department" dest="Event_EventBy_Department__CaseSensitive"/>
+  <copyField source="Event_File_Name" dest="Event_File_Name__CaseSensitive"/>
+  <copyField source="Event_File_Type" dest="Event_File_Type__CaseSensitive"/>
+  <copyField source="Event_DeviceName" dest="Event_DeviceName__CaseSensitive"/>
+  <copyField source="Event_DNSFlags" dest="Event_DNSFlags__CaseSensitive"/>
+  <copyField source="Event_DNSRecordType" dest="Event_DNSRecordType__CaseSensitive"/>
+  <copyField source="Event_CorrelationId" dest="Event_CorrelationId__CaseSensitive"/>
+  <copyField source="Event_Destination_Domain" dest="Event_Destination_Domain__CaseSensitive"/>
+  <copyField source="Event_Destination_DeviceName" dest="Event_Destination_DeviceName__CaseSensitive"/>
+  <copyField source="Event_Device_UserAgent" dest="Event_Device_UserAgent__CaseSensitive"/>
+  <copyField source="Event_EventBy_VPNGroups" dest="Event_EventBy_VPNGroups__CaseSensitive"/>
+  <copyField source="Event_Device_SourceDeviceMAC" dest="Event_Device_SourceDeviceMAC__CaseSensitive"/>
+  <copyField source="Event_AgentVersion" dest="Event_AgentVersion__CaseSensitive"/>
+  <copyField source="Event_Destination_URL_Address" dest="Event_Destination_URL_Address__CaseSensitive"/>
+  <copyField source="Event_CollectionDeviceHostname" dest="Event_CollectionDeviceHostname__CaseSensitive"/>
+  <copyField source="Event_EventOnResource_MessageSubject" dest="Event_EventOnResource_MessageSubject__CaseSensitive"/>
+  <copyField source="Event_Alert_ID" dest="Event_Alert_ID__CaseSensitive"/>
+
+  <uniqueKey>unique_id</uniqueKey>
+  <!-- end varonis -->
+
+
+
+
+  <!-- The StrField type is not analyzed, but indexed/stored verbatim. -->
+  <fieldType name="string" class="solr.StrField" sortMissingLast="true" docValues="true" />
+  <fieldType name="strings" class="solr.StrField" sortMissingLast="true" multiValued="true" docValues="true" />
+
+  <!-- boolean type: "true" or "false" -->
+  <fieldType name="boolean" class="solr.BoolField" sortMissingLast="true"/>
+  <fieldType name="booleans" class="solr.BoolField" sortMissingLast="true" multiValued="true"/>
+
+  <!--
+      Numeric field types that index values using KD-trees.
+      Point fields don't support FieldCache, so they must have docValues="true" if needed for sorting, faceting, functions, etc.
+    -->
+  <fieldType name="pint" class="solr.IntPointField" docValues="true"/>
+  <fieldType name="pfloat" class="solr.FloatPointField" docValues="true"/>
+  <fieldType name="plong" class="solr.LongPointField" docValues="true"/>
+  <fieldType name="pdouble" class="solr.DoublePointField" docValues="true"/>
+
+  <fieldType name="pints" class="solr.IntPointField" docValues="true" multiValued="true"/>
+  <fieldType name="pfloats" class="solr.FloatPointField" docValues="true" multiValued="true"/>
+  <fieldType name="plongs" class="solr.LongPointField" docValues="true" multiValued="true"/>
+  <fieldType name="pdoubles" class="solr.DoublePointField" docValues="true" multiValued="true"/>
+
+  <!-- The format for this date field is of the form 1995-12-31T23:59:59Z, and
+         is a more restricted form of the canonical representation of dateTime
+         http://www.w3.org/TR/xmlschema-2/#dateTime    
+         The trailing "Z" designates UTC time and is mandatory.
+         Optional fractional seconds are allowed: 1995-12-31T23:59:59.999Z
+         All other components are mandatory.
+
+         Expressions can also be used to denote calculations that should be
+         performed relative to "NOW" to determine the value, ie...
+
+               NOW/HOUR
+                  ... Round to the start of the current hour
+               NOW-1DAY
+                  ... Exactly 1 day prior to now
+               NOW/DAY+6MONTHS+3DAYS
+                  ... 6 months and 3 days in the future from the start of
+                      the current day
+                      
+      -->
+  <!-- KD-tree versions of date fields -->
+  <fieldType name="pdate" class="solr.DatePointField" docValues="true"/>
+  <fieldType name="pdates" class="solr.DatePointField" docValues="true" multiValued="true"/>
+
+  <!--Binary data type. The data should be sent/retrieved in as Base64 encoded Strings -->
+  <fieldType name="binary" class="solr.BinaryField"/>
+
+
+
+  <!-- A text field that only splits on whitespace for exact matching of words -->
+  <dynamicField name="*_ws" type="text_ws"  indexed="true"  stored="true"/>
+  <fieldType name="text_ws" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+    </analyzer>
+  </fieldType>
+
+  <!-- A general text field that has reasonable, generic
+         cross-language defaults: it tokenizes with StandardTokenizer,
+	       removes stop words from case-insensitive "stopwords.txt"
+	       (empty by default), and down cases.  At query time only, it
+	       also applies synonyms.
+	  -->
+  <fieldType name="text_general" class="solr.TextField" positionIncrementGap="100" multiValued="true">
+    <analyzer type="index">
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt" />
+      <!-- in this example, we will only use synonyms at query time
+        <filter class="solr.SynonymGraphFilterFactory" synonyms="index_synonyms.txt" ignoreCase="true" expand="false"/>
+        <filter class="solr.FlattenGraphFilterFactory"/>
+        -->
+      <filter class="solr.LowerCaseFilterFactory"/>
+    </analyzer>
+    <analyzer type="query">
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt" />
+      <filter class="solr.SynonymGraphFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+    </analyzer>
+  </fieldType>
+
+  <!-- A text field with defaults appropriate for English: it tokenizes with StandardTokenizer,
+         removes English stop words (lang/stopwords_en.txt), down cases, protects words from protwords.txt, and
+         finally applies Porter's stemming.  The query time analyzer also applies synonyms from synonyms.txt. -->
+  <dynamicField name="*_txt_en" type="text_en"  indexed="true"  stored="true"/>
+  <fieldType name="text_en" class="solr.TextField" positionIncrementGap="100">
+    <analyzer type="index">
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <!-- in this example, we will only use synonyms at query time
+        <filter class="solr.SynonymGraphFilterFactory" synonyms="index_synonyms.txt" ignoreCase="true" expand="false"/>
+        <filter class="solr.FlattenGraphFilterFactory"/>
+        -->
+      <!-- Case insensitive stop word removal.
+        -->
+      <filter class="solr.StopFilterFactory"
+              ignoreCase="true"
+              words="lang/stopwords_en.txt"
+            />
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.EnglishPossessiveFilterFactory"/>
+      <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
+      <!-- Optionally you may want to use this less aggressive stemmer instead of PorterStemFilterFactory:
+        <filter class="solr.EnglishMinimalStemFilterFactory"/>
+	      -->
+      <filter class="solr.PorterStemFilterFactory"/>
+    </analyzer>
+    <analyzer type="query">
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.SynonymGraphFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+      <filter class="solr.StopFilterFactory"
+              ignoreCase="true"
+              words="lang/stopwords_en.txt"
+        />
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.EnglishPossessiveFilterFactory"/>
+      <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
+      <!-- Optionally you may want to use this less aggressive stemmer instead of PorterStemFilterFactory:
+        <filter class="solr.EnglishMinimalStemFilterFactory"/>
+	      -->
+      <filter class="solr.PorterStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+
+  <!-- A text field with defaults appropriate for English, plus
+         aggressive word-splitting and autophrase features enabled.
+         This field is just like text_en, except it adds
+         WordDelimiterGraphFilter to enable splitting and matching of
+         words on case-change, alpha numeric boundaries, and
+         non-alphanumeric chars.  This means certain compound word
+         cases will work, for example query "wi fi" will match
+         document "WiFi" or "wi-fi".
+    -->
+  <dynamicField name="*_txt_en_split" type="text_en_splitting"  indexed="true"  stored="true"/>
+  <fieldType name="text_en_splitting" class="solr.TextField" positionIncrementGap="100" autoGeneratePhraseQueries="true">
+    <analyzer type="index">
+      <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+      <!-- in this example, we will only use synonyms at query time
+        <filter class="solr.SynonymGraphFilterFactory" synonyms="index_synonyms.txt" ignoreCase="true" expand="false"/>
+        -->
+      <!-- Case insensitive stop word removal.
+        -->
+      <filter class="solr.StopFilterFactory"
+              ignoreCase="true"
+              words="lang/stopwords_en.txt"
+        />
+      <filter class="solr.WordDelimiterGraphFilterFactory" generateWordParts="1" generateNumberParts="1" catenateWords="1" catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
+      <filter class="solr.PorterStemFilterFactory"/>
+      <filter class="solr.FlattenGraphFilterFactory" />
+    </analyzer>
+    <analyzer type="query">
+      <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+      <filter class="solr.SynonymGraphFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+      <filter class="solr.StopFilterFactory"
+              ignoreCase="true"
+              words="lang/stopwords_en.txt"
+        />
+      <filter class="solr.WordDelimiterGraphFilterFactory" generateWordParts="1" generateNumberParts="1" catenateWords="0" catenateNumbers="0" catenateAll="0" splitOnCaseChange="1"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
+      <filter class="solr.PorterStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+
+  <!-- Less flexible matching, but less false matches.  Probably not ideal for product names,
+         but may be good for SKUs.  Can insert dashes in the wrong place and still match. -->
+  <dynamicField name="*_txt_en_split_tight" type="text_en_splitting_tight"  indexed="true"  stored="true"/>
+  <fieldType name="text_en_splitting_tight" class="solr.TextField" positionIncrementGap="100" autoGeneratePhraseQueries="true">
+    <analyzer type="index">
+      <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+      <filter class="solr.SynonymGraphFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="false"/>
+      <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_en.txt"/>
+      <filter class="solr.WordDelimiterGraphFilterFactory" generateWordParts="0" generateNumberParts="0" catenateWords="1" catenateNumbers="1" catenateAll="0"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
+      <filter class="solr.EnglishMinimalStemFilterFactory"/>
+      <!-- this filter can remove any duplicate tokens that appear at the same position - sometimes
+             possible with WordDelimiterGraphFilter in conjuncton with stemming. -->
+      <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+      <filter class="solr.FlattenGraphFilterFactory" />
+    </analyzer>
+    <analyzer type="query">
+      <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+      <filter class="solr.SynonymGraphFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="false"/>
+      <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_en.txt"/>
+      <filter class="solr.WordDelimiterGraphFilterFactory" generateWordParts="0" generateNumberParts="0" catenateWords="1" catenateNumbers="1" catenateAll="0"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
+      <filter class="solr.EnglishMinimalStemFilterFactory"/>
+      <!-- this filter can remove any duplicate tokens that appear at the same position - sometimes
+             possible with WordDelimiterGraphFilter in conjuncton with stemming. -->
+      <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+    </analyzer>
+  </fieldType>
+
+  <!-- Just like text_general except it reverses the characters of
+	       each token, to enable more efficient leading wildcard queries.
+    -->
+  <dynamicField name="*_txt_rev" type="text_general_rev"  indexed="true"  stored="true"/>
+  <fieldType name="text_general_rev" class="solr.TextField" positionIncrementGap="100">
+    <analyzer type="index">
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt" />
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.ReversedWildcardFilterFactory" withOriginal="true"
+              maxPosAsterisk="3" maxPosQuestion="2" maxFractionAsterisk="0.33"/>
+    </analyzer>
+    <analyzer type="query">
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.SynonymGraphFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+      <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt" />
+      <filter class="solr.LowerCaseFilterFactory"/>
+    </analyzer>
+  </fieldType>
+
+  <dynamicField name="*_phon_en" type="phonetic_en"  indexed="true"  stored="true"/>
+  <fieldType name="phonetic_en" stored="false" indexed="true" class="solr.TextField" >
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.DoubleMetaphoneFilterFactory" inject="false"/>
+    </analyzer>
+  </fieldType>
+
+  <!-- lowercases the entire field value, keeping it as a single token.  -->
+  <dynamicField name="*_s_lower" type="lowercase"  indexed="true"  stored="true"/>
+  <fieldType name="lowercase" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.KeywordTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory" />
+    </analyzer>
+  </fieldType>
+
+  <!-- 
+      Example of using PathHierarchyTokenizerFactory at index time, so
+      queries for paths match documents at that path, or in descendent paths
+    -->
+  <dynamicField name="*_descendent_path" type="descendent_path"  indexed="true"  stored="true"/>
+  <fieldType name="descendent_path" class="solr.TextField">
+    <analyzer type="index">
+      <tokenizer class="solr.PathHierarchyTokenizerFactory" delimiter="/" />
+    </analyzer>
+    <analyzer type="query">
+      <tokenizer class="solr.KeywordTokenizerFactory" />
+    </analyzer>
+  </fieldType>
+
+  <!--
+      Example of using PathHierarchyTokenizerFactory at query time, so
+      queries for paths match documents at that path, or in ancestor paths
+    -->
+  <dynamicField name="*_ancestor_path" type="ancestor_path"  indexed="true"  stored="true"/>
+  <fieldType name="ancestor_path" class="solr.TextField">
+    <analyzer type="index">
+      <tokenizer class="solr.KeywordTokenizerFactory" />
+    </analyzer>
+    <analyzer type="query">
+      <tokenizer class="solr.PathHierarchyTokenizerFactory" delimiter="/" />
+    </analyzer>
+  </fieldType>
+
+  <!-- This point type indexes the coordinates as separate fields (subFields)
+      If subFieldType is defined, it references a type, and a dynamic field
+      definition is created matching *___<typename>.  Alternately, if 
+      subFieldSuffix is defined, that is used to create the subFields.
+      Example: if subFieldType="double", then the coordinates would be
+        indexed in fields myloc_0___double,myloc_1___double.
+      Example: if subFieldSuffix="_d" then the coordinates would be indexed
+        in fields myloc_0_d,myloc_1_d
+      The subFields are an implementation detail of the fieldType, and end
+      users normally should not need to know about them.
+     -->
+  <dynamicField name="*_point" type="point"  indexed="true"  stored="true"/>
+  <fieldType name="point" class="solr.PointType" dimension="2" subFieldSuffix="_d"/>
+
+  <!-- A specialized field for geospatial search filters and distance sorting. -->
+  <fieldType name="location" class="solr.LatLonPointSpatialField" docValues="true"/>
+
+  <!-- A geospatial field type that supports multiValued and polygon shapes.
+      For more information about this and other spatial fields see:
+      http://lucene.apache.org/solr/guide/spatial-search.html
+    -->
+  <fieldType name="location_rpt" class="solr.SpatialRecursivePrefixTreeFieldType"
+             geo="true" distErrPct="0.025" maxDistErr="0.001" distanceUnits="kilometers" />
+
+  <!-- Payloaded field types -->
+  <fieldType name="delimited_payloads_float" stored="false" indexed="true" class="solr.TextField">
+    <analyzer>
+      <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+      <filter class="solr.DelimitedPayloadTokenFilterFactory" encoder="float"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="delimited_payloads_int" stored="false" indexed="true" class="solr.TextField">
+    <analyzer>
+      <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+      <filter class="solr.DelimitedPayloadTokenFilterFactory" encoder="integer"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="delimited_payloads_string" stored="false" indexed="true" class="solr.TextField">
+    <analyzer>
+      <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+      <filter class="solr.DelimitedPayloadTokenFilterFactory" encoder="identity"/>
+    </analyzer>
+  </fieldType>
+
+
+</schema>

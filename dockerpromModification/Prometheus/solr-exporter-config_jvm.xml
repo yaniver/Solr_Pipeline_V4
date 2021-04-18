@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to You under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<config>
+
+  <rules>
+
+    <ping>
+    </ping>
+
+    <metrics>
+      <lst name="request">
+        <lst name="query">
+          <str name="path">/admin/metrics</str>
+          <lst name="params">
+            <str name="group">jvm</str>
+            <str name="type">all</str>
+            <str name="prefix"></str>
+            <str name="property"></str>
+          </lst>
+        </lst>
+        <arr name="jsonQueries">
+          <!--
+            jvm metrics
+          -->
+          <str>
+            .metrics["solr.jvm"] | to_entries | .[] | select(.key | startswith("buffers.")) | select(.key | endswith(".Count")) as $object |
+            $object.key | split(".")[1] as $pool |
+            $object.value as $value |
+            {
+              name         : "solr_metrics_jvm_buffers",
+              type         : "GAUGE",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/metrics-reporting.html",
+              label_names  : ["pool"],
+              label_values : [$pool],
+              value        : $value
+            }
+          </str>
+          <str>
+            .metrics["solr.jvm"] | to_entries | .[] | select(.key | startswith("buffers.")) | select(.key | (endswith(".MemoryUsed") or endswith(".TotalCapacity"))) as $object |
+            $object.key | split(".")[1] as $pool |
+            $object.key | split(".") | last as $item |
+            $object.value as $value |
+            {
+              name         : "solr_metrics_jvm_buffers_bytes",
+              type         : "GAUGE",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/metrics-reporting.html",
+              label_names  : ["pool", "item"],
+              label_values : [$pool, $item],
+              value        : $value
+            }
+          </str>
+          <str>
+            .metrics["solr.jvm"] | to_entries | .[] | select(.key | startswith("gc.")) | select(.key | endswith(".count")) as $object |
+            $object.key | split(".")[1] as $item |
+            $object.value as $value |
+            {
+              name         : "solr_metrics_jvm_gc_total",
+              type         : "COUNTER",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/metrics-reporting.html",
+              label_names  : ["item"],
+              label_values : [$item],
+              value        : $value
+            }
+          </str>
+          <str>
+            .metrics["solr.jvm"] | to_entries | .[] | select(.key | startswith("gc.")) | select(.key | endswith(".time")) as $object |
+            $object.key | split(".")[1] as $item |
+            ($object.value / 1000) as $value |
+            {
+              name         : "solr_metrics_jvm_gc_seconds_total",
+              type         : "COUNTER",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/metrics-reporting.html",
+              label_names  : ["item"],
+              label_values : [$item],
+              value        : $value
+            }
+          </str>
+          <str>
+            .metrics["solr.jvm"] | to_entries | .[] | select(.key | startswith("memory.heap.")) | select(.key | endswith(".usage") | not) as $object |
+            $object.key | split(".") | last as $item |
+            $object.value as $value |
+            {
+              name         : "solr_metrics_jvm_memory_heap_bytes",
+              type         : "GAUGE",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/metrics-reporting.html",
+              label_names  : ["item"],
+              label_values : [$item],
+              value        : $value
+            }
+          </str>
+          <str>
+            .metrics["solr.jvm"] | to_entries | .[] | select(.key | startswith("memory.non-heap.")) | select(.key | endswith(".usage") | not) as $object |
+            $object.key | split(".") | last as $item |
+            $object.value as $value |
+            {
+              name         : "solr_metrics_jvm_memory_non_heap_bytes",
+              type         : "GAUGE",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/metrics-reporting.html",
+              label_names  : ["item"],
+              label_values : [$item],
+              value        : $value
+            }
+          </str>
+          <str>
+            .metrics["solr.jvm"] | to_entries | .[] | select(.key | startswith("memory.pools.")) | select(.key | endswith(".usage") | not) as $object |
+            $object.key | split(".")[2] as $space |
+            $object.key | split(".") | last as $item |
+            $object.value as $value |
+            {
+              name         : "solr_metrics_jvm_memory_pools_bytes",
+              type         : "GAUGE",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/metrics-reporting.html",
+              label_names  : ["space", "item"],
+              label_values : [$space, $item],
+              value        : $value
+            }
+          </str>
+          <str>
+            .metrics["solr.jvm"] | to_entries | .[] | select(.key | startswith("memory.total.")) as $object |
+            $object.key | split(".") | last as $item |
+            $object.value as $value |
+            {
+              name         : "solr_metrics_jvm_memory_bytes",
+              type         : "GAUGE",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/metrics-reporting.html",
+              label_names  : ["item"],
+              label_values : [$item],
+              value        : $value
+            }
+          </str>
+          <str>
+            .metrics["solr.jvm"] | to_entries | .[] | select(.key == "os.committedVirtualMemorySize" or .key == "os.freePhysicalMemorySize" or .key == "os.freeSwapSpaceSize" or .key =="os.totalPhysicalMemorySize" or .key == "os.totalSwapSpaceSize") as $object |
+            $object.key | split(".") | last as $item |
+            $object.value as $value |
+            {
+              name         : "solr_metrics_jvm_os_memory_bytes",
+              type         : "GAUGE",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/metrics-reporting.html",
+              label_names  : ["item"],
+              label_values : [$item],
+              value        : $value
+            }
+          </str>
+          <str>
+            .metrics["solr.jvm"] | to_entries | .[] | select(.key == "os.maxFileDescriptorCount" or .key == "os.openFileDescriptorCount") as $object |
+            $object.key | split(".") | last as $item |
+            $object.value as $value |
+            {
+              name         : "solr_metrics_jvm_os_file_descriptors",
+              type         : "GAUGE",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/metrics-reporting.html",
+              label_names  : ["item"],
+              label_values : [$item],
+              value        : $value
+            }
+          </str>
+          <str>
+            .metrics["solr.jvm"] | to_entries | .[] | select(.key == "os.processCpuLoad" or .key == "os.systemCpuLoad") as $object |
+            $object.key | split(".") | last as $item |
+            $object.value as $value |
+            {
+              name         : "solr_metrics_jvm_os_cpu_load",
+              type         : "GAUGE",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/metrics-reporting.html",
+              label_names  : ["item"],
+              label_values : [$item],
+              value        : $value
+            }
+          </str>
+          <str>
+            .metrics["solr.jvm"] | to_entries | .[] | select(.key == "os.processCpuTime") as $object |
+            ($object.value / 1000.0) as $value |
+            {
+              name         : "solr_metrics_jvm_os_cpu_time_seconds",
+              type         : "COUNTER",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/metrics-reporting.html",
+              label_names  : ["item"],
+              label_values : ["processCpuTime"],
+              value        : $value
+            }
+          </str>
+          <str>
+            .metrics["solr.jvm"] | to_entries | .[] | select(.key == "os.systemLoadAverage") as $object |
+            $object.value as $value |
+            {
+              name         : "solr_metrics_jvm_os_load_average",
+              type         : "GAUGE",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/metrics-reporting.html",
+              label_names  : ["item"],
+              label_values : ["systemLoadAverage"],
+              value        : $value
+            }
+          </str>
+          <str>
+            .metrics["solr.jvm"] | to_entries | .[] | select(.key | startswith("threads.")) | select(.key | endswith(".count")) as $object |
+            $object.key | split(".")[1] as $item |
+            $object.value as $value |
+            {
+              name         : "solr_metrics_jvm_threads",
+              type         : "GAUGE",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/metrics-reporting.html",
+              label_names  : ["item"],
+              label_values : [$item],
+              value        : $value
+            }
+          </str>
+        </arr>
+      </lst>
+    </metrics>
+
+    <collections>
+    </collections>
+
+  </rules>
+
+</config>

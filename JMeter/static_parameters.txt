@@ -1,0 +1,2 @@
+OFUSCATED_FILES_DIR
+/mnt/jmeter/ofuscatedFiles
