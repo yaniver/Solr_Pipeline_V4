@@ -36,7 +36,7 @@ pipeline {
     }
     environment {
         ZK_HOST = '10.10.173.32'
-        SOLR_PIPELINE_HOME = 'C://Solr_Pipeline'
+        SOLR_PIPELINE_HOME = 'C:\\Solr_Pipeline'
     }
     post {
         always {
