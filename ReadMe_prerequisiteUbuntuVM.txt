@@ -5,7 +5,7 @@ Prerequsite (Installing Docker + Docker-compose + Jenkins):
     -  Deploy Ubuntu on Hyper-V --> https://wiki.ubuntu.com/Hyper-V
     -  Enable internet connection link: https://superuser.com/questions/469806/windows-8-hyper-v-how-to-give-vm-internet-access)
   sudo apt install git
-  git clone --depth=1  https://github.com/yaniver/Solr_Pipeline.git
+  git clone --depth=1 https://github.com/yaniver/Solr_Pipeline.git
   cd CICD
   Run script --> "sudo ./prerequisiteCICD.sh"
   (Optional (for Git push later on)- 
