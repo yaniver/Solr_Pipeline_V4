@@ -8,7 +8,8 @@ pipeline {
             steps {
 				//bat "${env.SOLR_PIPELINE_HOME}\\jenkinsPipelineScripts\\promdeploy.ps1 ${env.SOLR_PIPELINE_HOME}"
 				echo 'before script execution'
-				bat "${env.SOLR_PIPELINE_HOME}\\jenkinsPipelineScripts\\promdeploy.ps1"
+				powershell returnStatus: true, script: '${env.SOLR_PIPELINE_HOME}\\jenkinsPipelineScripts\\promdeploy.ps1'
+				//bat "${env.SOLR_PIPELINE_HOME}\\jenkinsPipelineScripts\\promdeploy.ps1"
 				echo 'after script execution'
             }
         }
