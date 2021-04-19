@@ -7,7 +7,6 @@ pipeline {
         stage('Prometheus') {
             steps {
 				bat "${env.SOLR_PIPELINE_HOME}\\jenkinsPipelineScripts\\dockerpromdeploy.ps1"
-                //sh '~/CICD/jenkinsPipelineShellScripts/dockpromDeploy.sh'
             }
         }
         stage('Solr Exporter') {
