@@ -1,0 +1,2 @@
+git clone https://github.com/stefanprodan/dockprom
+Copy-Item -Path "${SOLR_PIPELINE_HOME}\dockerpromModification\GrafanaDashboardExtra\*.json" -Destination "${SOLR_PIPELINE_HOME}\dockprom\grafana\provisioning\dashboards" -Force -Verbose
