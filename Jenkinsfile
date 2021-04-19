@@ -35,7 +35,7 @@ pipeline {
     }
     environment {
         ZK_HOST = '10.10.173.32'
-        SOLR_PIPELINE_HOME = 'C:\\Users\\yeran\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\Solr_Pipeline_2_main'
+        SOLR_PIPELINE_HOME = 'C:\\Users\\yeran\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\Solr_Pipeline_main'
     }
     post {
         always {
