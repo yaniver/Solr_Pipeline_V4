@@ -7,7 +7,7 @@ pipeline {
         stage('Prometheus') {
             steps {
 				//bat "${env.SOLR_PIPELINE_HOME}\\jenkinsPipelineScripts\\promdeploy.ps1 ${env.SOLR_PIPELINE_HOME}"
-				echo 'before script execution'
+				echo 'beforee script execution'
 				bat "cd ${env.SOLR_PIPELINE_HOME}"
 				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\promdeploy.ps1 '${env.SOLR_PIPELINE_HOME}'"
 				//bat "${env.SOLR_PIPELINE_HOME}\\jenkinsPipelineScripts\\promdeploy.ps1"
@@ -44,7 +44,7 @@ pipeline {
     }
     post {
         always {
-			echo 'Cleann environment'
+			echo 'Clean environment'
 			cleanWs()
             //sh '~/CICD/jenkinsPipelineShellScripts/clean.sh'
         }
