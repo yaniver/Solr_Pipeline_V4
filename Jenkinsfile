@@ -43,6 +43,7 @@ pipeline {
     post {
         always {
 			echo 'Clean environment'
+			cleanWs()
             //sh '~/CICD/jenkinsPipelineShellScripts/clean.sh'
         }
     }
