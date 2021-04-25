@@ -6,10 +6,8 @@ pipeline {
     stages {
         stage('Prometheus') {
             steps {
-				echo 'before script execution'
-				bat "cd ${env.SOLR_PIPELINE_HOME}"
+				echo 'Deploy Prometheus'
 				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\promdeploy.ps1 '${env.SOLR_PIPELINE_HOME}'"
-				echo 'after script execution'
             }
         }
         stage('Solr Exporter') {
