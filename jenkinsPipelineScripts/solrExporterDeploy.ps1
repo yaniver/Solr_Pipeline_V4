@@ -5,7 +5,7 @@ cd $solr_exporter_full_path
 $solrexporter_path=/mnt/solrexporter
 $volume_path=$solr_exporter_full_path + ":" + $solrexporter_path
 
-sudo docker build -t solrexporter .
+docker build -t solrexporter .
 
 $solrExpoExist=$(docker ps -f name=solrexporter)
 if($solrExpoExist) {            
