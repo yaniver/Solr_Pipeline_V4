@@ -14,7 +14,6 @@ pipeline {
             steps {
 				echo 'Deploying Solr Exporter'
 				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\solrExporterDeploy.ps1 '${env.SOLR_PIPELINE_HOME}'"
-                //sh '~/CICD/jenkinsPipelineShellScripts/solrExporterDeploy.sh'
             }
         }
         stage('Parallel Stage') {

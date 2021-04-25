@@ -1,5 +1,5 @@
 $solr_pipeline_home=$args[0]
-$solr_exporter_full_path=$solr_pipeline_home\\CICD\\SolrExporter
+$solr_exporter_full_path=$solr_pipeline_home\\SolrExporter
 
 cd $solr_exporter_full_path
 $volume_path=$solr_exporter_full_path
