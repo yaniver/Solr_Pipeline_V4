@@ -27,7 +27,7 @@ $file_content -match $string_to_search
 ($file_content -replace $matches[1],$zk_ip_port) | Set-Content -Path $script_path
 
 
-$solrExpoExist=$(docker ps -f name=$container_name) --format '{{.Names}}'
+$solrExpoExist=$(docker ps -f name=$container_name --format '{{.Names}}')
 if($solrExpoExist -eq 'solrexporter') {            
 	Write-Host "Solr exporter container already exist so no need to create additional container"
 } else {            
