@@ -27,13 +27,14 @@ $file_content -match $string_to_search
 ($file_content -replace $matches[1],$zk_ip_port) | Set-Content -Path $script_path
 
 
-$solrExpoExist=$(docker ps -f name=$container_name)
-if($solrExpoExist) {            
+$solrExpoExist=$(docker ps -f name=$container_name) --format '{{.Names}}'
+if($solrExpoExist -eq 'solrexporter') {            
+	Write-Host "Solr exporter container already exist so no need to create additional container"
+} else {            
     Write-Host "Solr exporter container does not exist, start creating the container"
 	docker run --name $container_name --network=dockprom_monitor-net -d --restart always -p 8094:8094 -p 8095:8095 -p 8096:8096 solr:8.8.2-slim
 	docker cp $script_name $container_target_script
 	docker cp $solr_exporter_config_core $container_target_config_core
 	docker exec $container_name $container_solr_exporter_script_path
-} else {            
-	Write-Host "Solr exporter container already exist so no need to create additional container"
+	
 }
