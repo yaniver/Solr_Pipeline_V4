@@ -5,3 +5,4 @@
 #./bin/solr-exporter -p 8096 -z http://10.10.193.92:2181/solr -f /opt/solr-8.8.2/contrib/prometheus-exporter/conf/solr-exporter-config_Jetty_Node_ClusterStatus_OverseerStatus.xml -n 16 & disown
 
 
+
