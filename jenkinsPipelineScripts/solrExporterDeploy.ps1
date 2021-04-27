@@ -37,6 +37,8 @@ if($solrExpoExist -eq 'solrexporter') {
 	docker run --name $container_name --network=dockprom_monitor-net -d --restart always -p 8094:8094 -p 8095:8095 -p 8096:8096 solr:8.8.2-slim
 	docker cp $script_name $container_target_script
 	docker cp $solr_exporter_config_core $container_target_config_core
-	docker exec $container_name $container_solr_exporter_script_path
+	# $command_permission="chmod 777 " + $container_solr_exporter_script_path
+	docker exec -u root $container_name $command_permission
+	docker exec -u root $container_name $container_solr_exporter_script_path
 	
 }
