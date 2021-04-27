@@ -13,7 +13,7 @@ pipeline {
         stage('Solr Exporter') {
             steps {
 				echo 'Deploying Solr Exporter'
-				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\solrExporterDeploy.ps1 '${env.SOLR_PIPELINE_HOME}'"
+				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\solrExporterDeploy.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.ZK_IP_PORT}'"
             }
         }
         stage('Parallel Stage') {
@@ -35,7 +35,7 @@ pipeline {
         }
     }
     environment {
-        ZK_HOST = '10.10.173.32'
+        ZK_IP_PORT = '10.10.193.92:2181'
         SOLR_PIPELINE_HOME = 'C:\\Solr_Pipeline'
     }
     post {
