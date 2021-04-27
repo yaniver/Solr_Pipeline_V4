@@ -14,7 +14,7 @@ $container_name="solrexporter"
 $container_solr_exporter_path="/opt/solr-8.8.2/contrib/prometheus-exporter/"
 $container_solr_exporter_script_path=$container_solr_exporter_path + $script_name
 
-$container_target_script=$container_name + ":" + $container_solr_exporter_script_path + $script_name
+$container_target_script=$container_name + ":" + $container_solr_exporter_script_path
 
 $container_target_config_core=$container_name + ":" + $container_solr_exporter_path + "conf/" + $solr_exporter_config_core
 $container_target_config_other=$container_name + ":" + $container_solr_exporter_path + "conf/" + $solr_exporter_config_other
