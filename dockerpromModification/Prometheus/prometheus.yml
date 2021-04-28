@@ -13,10 +13,10 @@ rule_files:
 
 # A scrape configuration containing exactly one endpoint to scrape.
 scrape_configs:
-  - job_name: 'zk'
+  - job_name: 'solrexporter'
     scrape_interval: 10s
     static_configs:
-      - targets: ['solrexporter:8095']
+      - targets: ['solrexporter:8094']
 
   - job_name: 'nodeexporter'
     scrape_interval: 5s
