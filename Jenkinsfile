@@ -35,7 +35,7 @@ pipeline {
         }
     }
     environment {
-        ZK_IP_PORT = '10.10.193.92:2181'
+        ZK_IP_PORT = '10.10.193.107:2181'
         SOLR_PIPELINE_HOME = 'C:\\Solr_Pipeline'
     }
     post {
