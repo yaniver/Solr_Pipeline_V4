@@ -10,7 +10,7 @@ $solr_exporter_config_jvm="solr-exporter-config_jvm.xml"
 # Container info
 $container_name="solrexporter"
 $container_solr_exporter_path="/opt/solr-8.8.2/contrib/prometheus-exporter/"
-$container_solr_exporter_commands=$container_solr_exporter_path + "bin/solr-exporter"  + " -p 8094 -z 10.10.193.107:2181 -f /opt/solr-8.8.2/contrib/prometheus-exporter/conf/solr-exporter-config_core.xml -n 16"
+$container_solr_exporter_commands=$container_solr_exporter_path + "bin/solr-exporter"  + " -p 8094 -z 10.10.193.107:2181 -f /opt/solr-8.8.2/contrib/prometheus-exporter/conf/solr-exporter-config_core.xml -n 16 & disown"
 
 
 $container_target_config_core=$container_name + ":" + $container_solr_exporter_path + "conf/" + $solr_exporter_config_core
@@ -33,9 +33,8 @@ if($solrExpoExist -eq 'solrexporter') {
     Write-Host "Solr exporter container does not exist, start creating the container"
 	docker run --name $container_name --network=dockprom_monitor-net -d --restart always -p 8094:8094 -p 8095:8095 -p 8096:8096 solr:8.8.2-slim
 	docker cp $solr_exporter_config_core $container_target_config_core
-	#$command_permission="chmod +x " + $container_solr_exporter_script_path
-	#docker exec -u root -i $container_name bash -c $command_permission
-	#docker exec -u root -i $container_name bash -c "chmod +x /opt/solr-8.8.2/contrib/prometheus-exporter/bin/solr-exporter"
+	docker cp $solr_exporter_config_core $container_target_config_other
+	docker cp $solr_exporter_config_core $container_target_config_jvm
 	docker exec -u root -i $container_name bash -c $container_solr_exporter_commands 
 	
 }
