@@ -43,7 +43,7 @@ if($solrExpoExist -eq 'solrexporter') {
 	#docker exec -u root -i $container_name bash -c $command_permission
 	docker exec -u root -i $container_name bash -c "chmod +x /opt/solr-8.8.2/contrib/prometheus-exporter/bin/solr-exporter"
 	#docker exec -u root -i $container_name bash -c $container_solr_exporter_commands
-	docker exec -u root -i $container_name bash -c "sh /opt/solr-8.8.2/contrib/prometheus-exporter/bin/solr-exporter -p 8094 -z 10.10.193.107:2181"
-#	-f /opt/solr-8.8.2/contrib/prometheus-exporter/conf/solr-exporter-config_core.xml -n 16"
+	docker exec -u root -i $container_name bash -c "sh /opt/solr-8.8.2/contrib/prometheus-exporter/bin/solr-exporter"
+#	 -p 8094 -z 10.10.193.107:2181 -f /opt/solr-8.8.2/contrib/prometheus-exporter/conf/solr-exporter-config_core.xml -n 16"
 	
 }
