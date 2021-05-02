@@ -11,9 +11,9 @@ $script_path=$solr_exporter_full_path + "\\" + $script_name
 
 # Container info
 $container_name="solrexporter"
-$container_solr_exporter_path=". /opt/solr-8.8.2/contrib/prometheus-exporter/"
+$container_solr_exporter_path="/opt/solr-8.8.2/contrib/prometheus-exporter/"
 $container_solr_exporter_script_path=$container_solr_exporter_path + $script_name
-$container_solr_exporter_commands="sh " + $container_solr_exporter_script_path
+$container_solr_exporter_commands="source sh " + $container_solr_exporter_script_path
 
 $container_target_script=$container_name + ":" + $container_solr_exporter_script_path
 
@@ -41,6 +41,6 @@ if($solrExpoExist -eq 'solrexporter') {
 	# docker exec $container_name ls
 	$command_permission="chmod +x " + $container_solr_exporter_script_path
 	docker exec -u root -i $container_name bash -c $command_permission
-	docker exec -u root -i $container_name bash -c $container_solr_exporter_script_path
+	docker exec -u root -i $container_name bash -c $container_solr_exporter_commands
 	
 }
