@@ -10,7 +10,7 @@ $solr_exporter_config_jvm="solr-exporter-config_jvm.xml"
 # Container info
 $container_name="solrexporter"
 $container_solr_exporter_path="/opt/solr-8.8.2/contrib/prometheus-exporter/"
-$container_solr_exporter_commands=$container_solr_exporter_path + "bin/"  + " -p 8094 -z 10.10.193.107:2181 -f /opt/solr-8.8.2/contrib/prometheus-exporter/conf/solr-exporter-config_core.xml -n 16"
+$container_solr_exporter_commands=$container_solr_exporter_path + "bin/solr-exporter"  + " -p 8094 -z 10.10.193.107:2181 -f /opt/solr-8.8.2/contrib/prometheus-exporter/conf/solr-exporter-config_core.xml -n 16"
 
 
 $container_target_config_core=$container_name + ":" + $container_solr_exporter_path + "conf/" + $solr_exporter_config_core
