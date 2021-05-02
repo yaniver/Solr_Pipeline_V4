@@ -17,7 +17,8 @@ $container_target_config_core=$container_name + ":" + $container_solr_exporter_p
 $container_target_config_other=$container_name + ":" + $container_solr_exporter_path + "conf/" + $solr_exporter_config_other
 $container_target_config_jvm=$container_name + ":" + $container_solr_exporter_path + "conf/" + $solr_exporter_config_jvm
 
-# cd $solr_exporter_full_path
+cd $solr_exporter_full_path
+
 # Replace Zookeeper IP and Port in script file
 # $file_content=(Get-Content -path $script_path -Raw)
 #$string_to_search="-z (.*) -f"
