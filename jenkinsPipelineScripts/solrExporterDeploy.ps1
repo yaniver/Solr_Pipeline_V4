@@ -40,7 +40,7 @@ if($solrExpoExist -eq 'solrexporter') {
 	docker cp $solr_exporter_config_core $container_target_config_core
 	# docker exec $container_name ls
 	$command_permission="chmod +x " + $container_solr_exporter_script_path
-	docker exec $container_name -c $command_permission
-	# docker exec $container_name $container_solr_exporter_commands
+	#docker exec $container_name -c $command_permission
+	docker exec $container_name -c $container_solr_exporter_commands
 	
 }
