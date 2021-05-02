@@ -2,7 +2,7 @@ $solr_pipeline_home=$args[0]
 $zk_ip_port=$args[1]
 
 # Host info
-# $solr_exporter_full_path=$solr_pipeline_home + "\\SolrExporter"
+$solr_exporter_full_path=$solr_pipeline_home + "\\SolrExporter"
 $solr_exporter_config_core="solr-exporter-config_core.xml"
 $solr_exporter_config_other="solr-exporter-config_Jetty_Node_ClusterStatus_OverseerStatus.xml"
 $solr_exporter_config_jvm="solr-exporter-config_jvm.xml"
