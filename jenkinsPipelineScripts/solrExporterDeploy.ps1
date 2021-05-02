@@ -25,7 +25,7 @@ cd $solr_exporter_full_path
 
 # Replace Zookeeper IP and Port in script file
 $file_content=(Get-Content -path $script_path -Raw)
-$string_to_search="http://(.*)/solr "
+$string_to_search="-z (.*) -f"
 $file_content -match $string_to_search
 ($file_content -replace $matches[1],$zk_ip_port) | Set-Content -Path $script_path
 
