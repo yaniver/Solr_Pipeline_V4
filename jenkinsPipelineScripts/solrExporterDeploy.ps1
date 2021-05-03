@@ -37,7 +37,7 @@ if($solrExpoExist -eq 'solrexporter') {
 	$container_solr_exporter_command_core=$container_solr_exporter_path + "bin/solr-exporter"  + " -p 8094 -z " + $zk_ip_port + " -f " + $container_solr_exporter_path + "conf/solr-exporter-config_core.xml -n 16 & disown"
 	$container_solr_exporter_command_jvm=$container_solr_exporter_path + "bin/solr-exporter"  + " -p 8095 -z " + $zk_ip_port + " -f " + $container_solr_exporter_path + "conf/solr-exporter-config_jvm.xml -n 16 & disown"
 	$container_solr_exporter_command_other=$container_solr_exporter_path + "bin/solr-exporter"  + " -p 8096 -z " + $zk_ip_port + " -f " + $container_solr_exporter_path + "conf/solr-exporter-config_Jetty_Node_ClusterStatus_OverseerStatus.xml -n 16 & disown"
-	docker exec -u root -i $container_name bash -c $container_solr_exporter_command_core
+	#docker exec -u root -i $container_name bash -c $container_solr_exporter_command_core
 	docker exec -u root -i $container_name bash -c $container_solr_exporter_command_jvm
-	docker exec -u root -i $container_name bash -c $container_solr_exporter_command_other
+	#docker exec -u root -i $container_name bash -c $container_solr_exporter_command_other
 }
