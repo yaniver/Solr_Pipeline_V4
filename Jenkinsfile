@@ -16,6 +16,12 @@ pipeline {
 				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\solrExporterDeploy.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.ZK_IP_PORT}'"
             }
         }
+		stage('Loki - Grafana logs collector') {
+            steps {
+				echo 'Deploying Loki - Grafana logs collector'
+				//powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\solrExporterDeploy.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.ZK_IP_PORT}'"
+            }
+        }
         stage('Parallel Stage') {
             failFast true
             parallel {
