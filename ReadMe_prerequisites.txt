@@ -88,12 +88,7 @@ Following deployments are done by running Jenkins pipeline form Blue Ocena UI:
 
 GIT:
 ====
-  Push local changes to github -
-	git init (only for first time)
-	git add -u
-	git commit -m "<relevant comment>"
-	for checking if other files were change\added\deleted run command - git status
-	git push ( or git push origin master)
+  Push local changes to github by running commit.bat file
 
 
 Grafana Email support: 

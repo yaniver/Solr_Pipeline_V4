@@ -4,9 +4,9 @@ pipeline {
         timeout(time: 15, unit: 'HOURS')
     }
     stages {
-        stage('Prometheus') {
+        stage('Prometheus & Grafana') {
             steps {
-				echo 'Deploy Prometheus'
+				echo 'Deploy Prometheus & Grafana'
 				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\promdeploy.ps1 '${env.SOLR_PIPELINE_HOME}'"
             }
         }

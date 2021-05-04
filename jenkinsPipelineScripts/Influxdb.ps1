@@ -9,7 +9,7 @@ $container_name="influxdb"
 
 cd $influxdb_full_path
 
-$lab_path = influxdb_full_path + "\\" + $lab_name
+$lab_path = $influxdb_full_path + "\\" + $lab_name
 If(!(test-path $lab_path))
 {
       New-Item -ItemType Directory -Force -Path $lab_path
