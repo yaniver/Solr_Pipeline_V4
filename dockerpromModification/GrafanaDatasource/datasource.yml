@@ -12,6 +12,7 @@ datasources:
   - name: InfluxDB
     type: influxDB
     access: proxy
+    orgId: 2
     url: http://influxdb:8086
     password: admin
     user: admin
