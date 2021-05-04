@@ -4,19 +4,19 @@ pipeline {
         timeout(time: 15, unit: 'HOURS')
     }
     stages {
-        stage('Prometheus & Grafana') {
+		stage('Influxdb') {
+            steps {
+				echo 'Deploy Influxdb'
+				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\Influxdb.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.LAB_NAME}'"
+			}
+			}
+		stage('Prometheus & Grafana') {
             steps {
 				echo 'Deploy Prometheus & Grafana'
 				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\promdeploy.ps1 '${env.SOLR_PIPELINE_HOME}'"
             }
         }
-		stage('Influxdb') {
-            steps {
-				echo 'Deploy Influxdb'
-				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\Influxdb.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.LAB_NAME}'"
-            }
-        }
-        stage('Solr Exporter') {
+		stage('Solr Exporter') {
             steps {
 				echo 'Deploying Solr Exporter'
 				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\solrExporterDeploy.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.ZK_IP_PORT}'"
