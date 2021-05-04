@@ -10,6 +10,12 @@ pipeline {
 				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\promdeploy.ps1 '${env.SOLR_PIPELINE_HOME}'"
             }
         }
+		stage('Influxdb') {
+            steps {
+				echo 'Deploy Influxdb'
+				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\Influxdb.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.LAB_NAME}'"
+            }
+        }
         stage('Solr Exporter') {
             steps {
 				echo 'Deploying Solr Exporter'
@@ -43,6 +49,7 @@ pipeline {
     environment {
         ZK_IP_PORT = '10.10.193.107:2181'
         SOLR_PIPELINE_HOME = 'C:\\Solr_Pipeline'
+		LAB_NAME = 'L1650_v8.6'
     }
     post {
         always {

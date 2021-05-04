@@ -21,7 +21,7 @@ $solrExpoExist=$(docker ps -f name=$container_name --format '{{.Names}}')
 if($solrExpoExist -eq 'solrexporter') {            
 	Write-Host "Solr exporter container already exist so no need to create additional container"
 } else {            
-    Write-Host "Solr exporter container does not exist, start creating the container"
+    Write-Host "Solr exporter container does not exist, start creating the container..."
 	docker run --name $container_name --network=dockprom_monitor-net -d --restart always -p 8094:8094 -p 8095:8095 -p 8096:8096 solr:8.8.2-slim
 	
 	$solr_exporter_config_core="solr-exporter-config_core.xml"
