@@ -19,7 +19,7 @@ if($solrExpoExist -eq 'influxdb') {
 } else {
     Write-Host "Influxdb container does not exist, start creating the container..."
 	Write-Host "Influxdb Container as volume for presistent data when container is deleted"
-	docker run --name $container_name --network=dockprom_monitor-net -d --restart always -p 8086:8086 -v $lab_path:/var/lib/influxdb influxdb:1.8
-	Invoke-WebRequest -Uri http://localhost:8086/query -UseBasicParsing -Method Post -Body "q=CREATE DATABASE search"
-	Invoke-WebRequest -Uri http://localhost:8086/query -UseBasicParsing -Method Post -Body "q=CREATE DATABASE jmeter"
+	#docker run --name $container_name --network=dockprom_monitor-net -d --restart always -p 8086:8086 -v $lab_path:/var/lib/influxdb influxdb:1.8
+	#Invoke-WebRequest -Uri http://localhost:8086/query -UseBasicParsing -Method Post -Body "q=CREATE DATABASE search"
+	#Invoke-WebRequest -Uri http://localhost:8086/query -UseBasicParsing -Method Post -Body "q=CREATE DATABASE jmeter"
 }
