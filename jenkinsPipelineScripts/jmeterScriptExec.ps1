@@ -9,6 +9,7 @@ $container_name="jmeter"
 cd $jmeter_full_path
 
 docker build -t $container_name .
+docker run --name jmeter -p 8983:8983
 
 # JENKINS_HOME="/var/lib/jenkins"
 # export timestamp=$(date +%Y%m%d_%H%M%S)
