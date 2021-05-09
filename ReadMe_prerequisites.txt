@@ -53,7 +53,7 @@ Install Performance labs (8.6 and 8.7)
 		set WebDaUser=WebDaUser
 		set WebDaPassword=WebDaPassword
 		Then start first all ZK vm’s and then Solr Vm’s
--	In Jenkins client vm, add to hosts file all solr VM’s (name to ip)
+	In Jenkins client vm, add to hosts file all solr VM’s (name to ip)
 	In IDU server, Install MetricaLauncer.exe follow this steps -
 	- Unzip file C:\Program Files\Varonis\DatAdvantage\TopologyManager\EventFlow\Influx\Latest.zip.
 	- Execute "Varonis.Infra.MetricsLauncher" and select Auto option.
@@ -64,6 +64,8 @@ Install Performance labs (8.6 and 8.7)
 (Folders, AD Data, Exchange data and 30 days Events retention base on the previous data )
 Note: data creation is outside of pipeline automation since it’s done single time after the lab creation
 but quantity validation for each data type will be done automatically. 
+
+ Start DBAdapter events simulator with 3k EPS for CIFS events.
 
 ==========================================================================================================================
 

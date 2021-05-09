@@ -34,6 +34,7 @@ pipeline {
                 stage('JMeter run') {
                     steps {
 						echo 'Deploying JMeter load'
+						powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\jmeterScriptExec.ps1 '${env.SOLR_PIPELINE_HOME}'"
                         //sh '~/CICD/jenkinsPipelineShellScripts/jmeterScriptExec.sh'
                     }
                 }
