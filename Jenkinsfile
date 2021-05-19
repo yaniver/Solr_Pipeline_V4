@@ -34,7 +34,7 @@ pipeline {
                 stage('JMeter run') {
                     steps {
 						echo 'Deploying JMeter load'
-						powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\jmeterScriptExec.ps1 '${env.SOLR_PIPELINE_HOME}'"
+						powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\jmeterScriptExec.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.SEARCH_DAY_FROM}'  '${env.DOMAIN}'"
                         //sh '~/CICD/jenkinsPipelineShellScripts/jmeterScriptExec.sh'
                     }
                 }
@@ -51,6 +51,9 @@ pipeline {
         ZK_IP_PORT = '10.10.193.107:2181'
         SOLR_PIPELINE_HOME = 'C:\\Solr_Pipeline'
 		LAB_NAME = 'L1650_v8.6'
+		IDU_IP = '10.10.193.100'
+		SEARCH_DAY_FROM = '2021-05-10'
+		DOMAIN = 'L1650'
     }
     post {
         always {

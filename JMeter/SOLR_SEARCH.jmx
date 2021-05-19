@@ -1,0 +1,2087 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="4.0" jmeter="4.0 r1823414">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="SOLR_SEARCH" enabled="true">
+      <stringProp name="TestPlan.comments">This test plan was created by the BlazeMeter converter v.2.1.386. Please contact support@blazemeter.com for further support.</stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+    </TestPlan>
+    <hashTree>
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config - Static parameters" enabled="true">
+        <stringProp name="delimiter">,</stringProp>
+        <stringProp name="fileEncoding"></stringProp>
+        <stringProp name="filename">${__property(csv_staticParams)}</stringProp>
+        <boolProp name="ignoreFirstLine">true</boolProp>
+        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <stringProp name="shareMode">shareMode.all</stringProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="variableNames">PROTOCOL,BASE_URL_1,INFLUXDB_IP,INFLUXDB_DBNAME,SCENARIO_TYPE,DAY_FROM,USERNAME,PASSWORD,DOMAIN,TENANT_ID,ROLLUP_TYPE</stringProp>
+      </CSVDataSet>
+      <hashTree/>
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config - Search body parameters" enabled="true">
+        <stringProp name="filename">${__property(my_csv)}</stringProp>
+        <stringProp name="fileEncoding"></stringProp>
+        <stringProp name="variableNames">DAYS,FILTERS</stringProp>
+        <boolProp name="ignoreFirstLine">true</boolProp>
+        <stringProp name="delimiter">,</stringProp>
+        <boolProp name="quotedData">true</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="shareMode">shareMode.thread</stringProp>
+      </CSVDataSet>
+      <hashTree/>
+      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+        <collectionProp name="HeaderManager.headers">
+          <elementProp name="User-Agent" elementType="Header">
+            <stringProp name="Header.name">User-Agent</stringProp>
+            <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36</stringProp>
+          </elementProp>
+        </collectionProp>
+      </HeaderManager>
+      <hashTree/>
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults (define 2 min timeout)" enabled="true">
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+          <collectionProp name="Arguments.arguments"/>
+        </elementProp>
+        <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+        <stringProp name="HTTPSampler.port"></stringProp>
+        <stringProp name="HTTPSampler.protocol">${PROTOCOL}</stringProp>
+        <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+        <stringProp name="HTTPSampler.path"></stringProp>
+        <boolProp name="HTTPSampler.image_parser">true</boolProp>
+        <boolProp name="HTTPSampler.concurrentDwn">true</boolProp>
+        <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+        <stringProp name="HTTPSampler.response_timeout">120000</stringProp>
+      </ConfigTestElement>
+      <hashTree/>
+      <DNSCacheManager guiclass="DNSCachePanel" testclass="DNSCacheManager" testname="DNS Cache Manager" enabled="true">
+        <collectionProp name="DNSCacheManager.servers"/>
+        <boolProp name="DNSCacheManager.clearEachIteration">true</boolProp>
+        <boolProp name="DNSCacheManager.isCustomResolver">false</boolProp>
+      </DNSCacheManager>
+      <hashTree/>
+      <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
+        <collectionProp name="AuthManager.auth_list">
+          <elementProp name="" elementType="Authorization">
+            <stringProp name="Authorization.url"></stringProp>
+            <stringProp name="Authorization.username">${USERNAME}</stringProp>
+            <stringProp name="Authorization.password">${PASSWORD}</stringProp>
+            <stringProp name="Authorization.domain">${DOMAIN}</stringProp>
+            <stringProp name="Authorization.realm"></stringProp>
+          </elementProp>
+        </collectionProp>
+      </AuthManager>
+      <hashTree/>
+      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+        <collectionProp name="CookieManager.cookies"/>
+        <boolProp name="CookieManager.clearEachIteration">true</boolProp>
+      </CookieManager>
+      <hashTree/>
+      <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="true">
+        <boolProp name="clearEachIteration">true</boolProp>
+        <boolProp name="useExpires">false</boolProp>
+      </CacheManager>
+      <hashTree/>
+      <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="setTotalIDUs (JSR223 Sampler)" enabled="true">
+        <stringProp name="cacheKey">true</stringProp>
+        <stringProp name="filename"></stringProp>
+        <stringProp name="parameters"></stringProp>
+        <stringProp name="script">def baseurl1 = vars.get(&quot;BASE_URL_1&quot;);
+//log.info(&quot;================BASE_URL_1 value is &quot; + baseurl1);
+
+
+//Handle multi base urls meaning several IDU&apos;s
+String j;
+if (baseurl1 != null &amp;&amp; baseurl1.indexOf(&apos;{&apos;)&gt;=0){
+	//remove char {  and char } from string
+	baseurl1 = baseurl1.substring(1, baseurl1.length() - 1);
+	//Save all base urls
+	String[] tokensBaseURL = baseurl1.split(&quot;;&quot;);
+	int arraySize = tokensBaseURL.length;
+	vars.put(&quot;TOTAL_IDUs&quot;, Integer.toString(arraySize));
+	props.put(&quot;TOTAL_IDUs&quot;, Integer.toString(arraySize));
+	//Tokenize IDU IPs
+	for (int i=0; i&lt;arraySize; i++){
+		j = Integer.toString(i+1);
+		vars.put(&quot;BASE_URL_&quot;+j, tokensBaseURL[i]);
+		log.info(&quot;================New BASE_URL_&quot; + j + &quot; value is &quot; + vars.get(&quot;BASE_URL_&quot;+j));
+	}
+}
+
+
+</stringProp>
+        <stringProp name="scriptLanguage">groovy</stringProp>
+      </JSR223PreProcessor>
+      <hashTree/>
+      <SetupThreadGroup guiclass="SetupThreadGroupGui" testclass="SetupThreadGroup" testname="INITILIZATION  - Login_Plus_GetTOPfilters (setUp Thread Group)" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(Threads,1)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">10</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </SetupThreadGroup>
+      <hashTree>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="SetThreadBaseURL" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">log.info(&quot;================INITILIZATION: Total IDUs=&quot; + vars.get(&quot;TOTAL_IDUs&quot;));
+int currentThreadNum=ctx.getThreadNum();
+currentThreadNumStr = Integer.toString(currentThreadNum+1);
+vars.put(&quot;THREAD_ID&quot;, currentThreadNumStr);
+
+int totalIDUs = Integer.parseInt(vars.get(&quot;TOTAL_IDUs&quot;));
+/*if (currentThreadNum &gt;= totalIDUs){
+	log.info(&apos;Exit Thread ID:&apos; + vars.get(&quot;THREAD_ID&quot;) + &apos; - thread exceeded total IDUs count&apos;);
+	SampleResult.setStopThread(true);
+}else{*/
+	int desiredUrlID = currentThreadNum % totalIDUs;
+	desiredUrlIDStr = Integer.toString(desiredUrlID+1);
+	vars.put(&quot;URL_ID&quot;, desiredUrlIDStr);
+	vars.put(&quot;BASE_URL_1&quot;, vars.get(&quot;BASE_URL_&quot; + vars.get(&quot;URL_ID&quot;)));
+	log.info(&quot;================INITILIZATION: THREAD_ID=&quot; + vars.get(&quot;THREAD_ID&quot;) + &quot;; BASE_URL_1=&quot; + vars.get(&quot;BASE_URL_1&quot;));
+//}</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="SetFileNotExist (JSR223 Sampler)" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">def isFileExists = &quot;false&quot;;
+log.info(&quot;=========THREAD_ID=&quot;  + vars.get(&quot;THREAD_ID&quot;) + &quot; - isFileExists value is &quot; + isFileExists);
+vars.put(&quot;IsFileExists&quot;, isFileExists);</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="CheckFiletExist (JSR223 Sampler)" enabled="false">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">def isFileExists = &quot;false&quot;;
+def newFileName = vars.get(&quot;BASE_URL_1&quot;);
+def filePathLocation = &quot;.\\..\\Projects\\SolrSearch_queryTool\\&quot; + newFileName + &quot;.csv&quot;;
+def file = new File(filePathLocation);
+def lines = 0  ;
+
+
+if (file.exists()){
+	isFileExists = &quot;true&quot;;
+	String fileContents = file.getText(&apos;UTF-8&apos;);
+
+	fileContents.eachLine { line -&gt;
+		lines++;
+		String[] tokens = line.split(&quot;,&quot;);
+		props.setProperty(&quot;EVENT_TYPE_ID1&quot;, tokens[0])
+		props.setProperty(&quot;SID1&quot;, tokens[1])
+		props.setProperty(&quot;FOLDER_DIR_ID1&quot;, tokens[2])
+		props.setProperty(&quot;FILER_ID1&quot;, tokens[3])
+	}
+	log.info(&apos;=========Properties EVENT_TYPE_ID1 value is &apos; + props.getProperty(&quot;EVENT_TYPE_ID1&quot;))
+	log.info(&apos;=========Properties SID1 value is &apos; + props.getProperty(&quot;SID1&quot;))
+	log.info(&apos;=========Properties FOLDER_DIR_ID1 value is &apos; + props.getProperty(&quot;FOLDER_DIR_ID1&quot;))
+	log.info(&apos;=========Properties FILER_ID1 value is &apos; + props.getProperty(&quot;FILER_ID1&quot;))
+} else {
+	isFileExists = &quot;false&quot;;
+	}
+
+log.info(&quot;=========isFileExists value is &quot; + isFileExists);
+vars.put(&quot;IsFileExists&quot;, isFileExists);</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="DateRangeRetentionFiltering (JSR223 Sampler)" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">import java.text.SimpleDateFormat;
+
+
+//minDate&quot;:&quot;2019-02-09T00:00:00+02:00&quot;,&quot;maxDate
+Date dateNow = new Date();
+def minDate = dateNow.minus(31);
+minDate = minDate.format(&apos;yyyy-MM-dd&apos;);
+String minDateWithTime = &quot;\&quot;&quot; + minDate + &quot;T00:00:00+02:00&quot; + &quot;\&quot;&quot;
+vars.put(&quot;minDate&quot;, minDateWithTime);
+log.info(&quot;=========THREAD_ID=&quot;  + vars.get(&quot;THREAD_ID&quot;) + &quot; - minDate param value is &quot; + vars.get(&quot;minDate&quot;));
+SimpleDateFormat maxDate = new SimpleDateFormat(&quot;yyyy-MM-dd&apos;T&apos;HH:mm:ssXXX&quot;);
+String maxDateNew = &quot;\&quot;&quot; + maxDate.format(new Date()) + &quot;\&quot;&quot;;
+vars.put(&quot;maxDate&quot;, maxDateNew);
+log.info(&quot;=========THREAD_ID=&quot;  + vars.get(&quot;THREAD_ID&quot;) + &quot; - maxDate value is &quot; + vars.get(&quot;maxDate&quot;));
+
+</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Transaction - OPLogin" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">true</boolProp>
+        </TransactionController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="../DatAdvantage/#/app/analytics/events/1$" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">DatAdvantage/#/app/analytics/events/1$</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                  <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                  <stringProp name="Header.value">1</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">def responseCode = prev.getResponseCode().toString();
+
+
+if ( responseCode != &quot;200&quot;){
+	log.info(&apos;=========THREAD_ID=&apos;  + vars.get(&quot;THREAD_ID&quot;) + &apos; - OPLogin: first request failed, reasons can be incorrect value in PROTOCOL param or Cloud Auth is required and not OP&apos;);
+}</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="../DatAdvantage/auth/configuration" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">DatAdvantage/auth/configuration</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">https://${BASE_URL_1}/DatAdvantage/</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GetOPToken (../DatAdvantage/api/authentication/win)" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="grant_type" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">grant_type</stringProp>
+                  <stringProp name="Argument.value">client_credentials</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">DatAdvantage/api/authentication/win</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="Origin" elementType="Header">
+                  <stringProp name="Header.name">Origin</stringProp>
+                  <stringProp name="Header.value">https://${BASE_URL_1}</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json;charset=UTF-8</stringProp>
+                </elementProp>
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">https://${BASE_URL_1}/DatAdvantage/</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">token_type</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$..token_type</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">-1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">No_Default</stringProp>
+              <boolProp name="JSONPostProcessor.compute_concat">true</boolProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">access_token</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$..access_token</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">-1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">No_Default</stringProp>
+              <boolProp name="JSONPostProcessor.compute_concat">true</boolProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">def responseCode = prev.getResponseCode().toString();
+
+
+if ( responseCode == &quot;200&quot;){
+	log.info(&quot;=========THREAD_ID=&quot;  + vars.get(&quot;THREAD_ID&quot;) + &quot; - setUp Thread Group: OP Authentication was finished successfully&quot;);
+	vars.put(&quot;cloudAuthEnable&quot;, &quot;false&quot;);
+	props.put(&quot;cloudAuthEnable&quot;, &quot;false&quot;);
+	vars.put(&quot;requestType&quot;, &quot;DatAdvantage&quot;);
+	props.put(&quot;requestType&quot;, &quot;DatAdvantage&quot;);
+	log.info(&apos;=========THREAD_ID=&apos;  + vars.get(&quot;THREAD_ID&quot;) + &apos; - setUp Thread Group: requestType value = &apos; + vars.get(&quot;requestType&quot;));
+} 
+else
+{
+	log.info(&quot;=========THREAD_ID=&quot;  + vars.get(&quot;THREAD_ID&quot;) + &quot; - setUp Thread Group: OP Authentication failed, initilaize Cloud OKTA authentication&quot;);
+	vars.put(&quot;cloudAuthEnable&quot;, &quot;true&quot;);
+	props.put(&quot;cloudAuthEnable&quot;, &quot;true&quot;);
+
+	vars.put(&quot;requestType&quot;, vars.get(&quot;TENANT_ID&quot;));
+	props.put(&quot;requestType&quot;, vars.get(&quot;TENANT_ID&quot;));
+	log.info(&apos;=========THREAD_ID=&apos;  + vars.get(&quot;THREAD_ID&quot;) + &apos; - setUp Thread Group:requestType value = &apos; + vars.get(&quot;requestType&quot;));
+}
+
+</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+          </hashTree>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="SaveTokenAsProp (JSR223 Sampler)" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">def responseCode = prev.getResponseCode().toString();
+
+
+if ( responseCode == &quot;200&quot;){
+
+	//${token_type_1} ${access_token_1}
+	props.put(&quot;access_token_1&quot;, vars.get(&quot;access_token_1&quot;));
+	props.put(&quot;token_type_1&quot;, &quot;bearer&quot;);
+	log.info(&apos;==========setUp Thread Group: THREAD_ID=&apos; + vars.get(&quot;THREAD_ID&quot;) + &apos; - access_token_1 value = &apos; + vars.get(&quot;access_token_1&quot;));
+	log.info(&apos;==========setUp Thread Group: THREAD_ID=&apos; + vars.get(&quot;THREAD_ID&quot;) + &apos; - token_type_1 value = &apos; + vars.get(&quot;token_type_1&quot;));
+} </stringProp>
+          </JSR223Sampler>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname=".../DatAdvantage/api/applicationService/configuration" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">DatAdvantage/api/applicationService/configuration</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">https://${BASE_URL_1}/DatAdvantage/</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">${token_type_1} ${access_token_1}</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname=".../DatAdvantage/api/UserPreferences" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">DatAdvantage/api/UserPreferences</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">https://${BASE_URL_1}/DatAdvantage/</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">${token_type_1} ${access_token_1}</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="..../DatAdvantage/api/entitymodel/attributepaths" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">DatAdvantage/api/entitymodel/attributepaths</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">https://${BASE_URL_1}/DatAdvantage/</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">${token_type_1} ${access_token_1}</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Transaction - Cloud Login(=OKTA)" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">true</boolProp>
+        </TransactionController>
+        <hashTree>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Check_CloudOKTAAuthentication (If Controller)" enabled="true">
+            <stringProp name="IfController.condition">${__javaScript(&quot;${cloudAuthEnable}&quot; == &quot;true&quot;,)}</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+            <boolProp name="IfController.useExpression">true</boolProp>
+          </IfController>
+          <hashTree>
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="SeleniumLogin_CloudOKTA (JSR223 Sampler)" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.logging.LoggingPreferences;
+import org.openqa.selenium.logging.LogType;
+import java.util.logging.Level;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+def value = &quot;&quot;;
+def match;
+
+
+props.put(&quot;USERNAME&quot;, vars.get(&quot;USERNAME&quot;));
+log.info(&quot;===========Cloud OKTA - USERNAME value is &quot; + props.get(&quot;USERNAME&quot;));
+props.put(&quot;PASSWORD&quot;, vars.get(&quot;PASSWORD&quot;));
+log.info(&quot;===========Cloud OKTA - PASSWORD value is &quot; + props.get(&quot;PASSWORD&quot;));
+props.put(&quot;DOMAIN&quot;, vars.get(&quot;DOMAIN&quot;));
+log.info(&quot;===========Cloud OKTA - DOMAIN value is &quot; + props.get(&quot;DOMAIN&quot;));
+props.put(&quot;TENANT_ID&quot;, vars.get(&quot;TENANT_ID&quot;));
+log.info(&quot;===========Cloud OKTA - TENANT_ID value is &quot; + props.get(&quot;TENANT_ID&quot;));
+
+
+	System.setProperty(&quot;webdriver.chrome.driver&quot;, &quot;C:\\apache-jmeter-4.0\\chromedriver_win32\\71.0.3578.137\\chromedriver.exe&quot;);
+	HashMap&lt;String, Object&gt; chromePrefs = new HashMap&lt;String, Object&gt;();
+	DesiredCapabilities cap = DesiredCapabilities.chrome();
+	LoggingPreferences logPrefs = new LoggingPreferences();
+	ChromeOptions chromeOptions = new ChromeOptions();
+	chromeOptions.addArguments(&quot;--headless&quot;);
+	logPrefs.enable(LogType.PERFORMANCE, Level.INFO);
+	cap.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
+	cap.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+	WebDriver driver = new ChromeDriver(cap);
+	driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
+	driver.get(&quot;https://sfdevoktassl.varonis.io/&quot; + vars.get(&quot;TENANT_ID&quot;) + &quot;/#/app/&quot;);
+
+	WebElement elementUsername = driver.findElement(By.id(&quot;okta-signin-username&quot;));
+	elementUsername.click();
+	//elementUsername.sendKeys(&quot;varadm@sig0f020.com&quot;);
+	elementUsername.sendKeys(props.get(&quot;USERNAME&quot;) + &quot;@&quot; + props.get(&quot;DOMAIN&quot;) + &quot;.com&quot;);
+	WebElement elementPW = driver.findElement(By.id(&quot;okta-signin-password&quot;));
+	elementPW.click();
+     //elementPW.sendKeys(&quot;NiouE98AxfWlMRDCZyUIj1ckTpKqGn&quot;);
+     elementPW.sendKeys(vars.get(&quot;PASSWORD&quot;));
+	WebElement elementSubmitBtn = driver.findElement(By.id(&quot;okta-signin-submit&quot;));
+	elementSubmitBtn.click();
+	WebElement elementAnalytics = driver.findElement(By.cssSelector(&quot;span[href=&apos;#/app/analytics&apos;]&quot;));
+	elementAnalytics.click();
+
+
+
+	List&lt;LogEntry&gt; entries = driver.manage().logs().get(LogType.PERFORMANCE).getAll();
+	log.info(entries.size() + &quot; &quot; + LogType.PERFORMANCE + &quot; log entries found&quot;);
+	for (LogEntry entry : entries) {
+
+		match = entry.getMessage() =~ /Authorization&quot;:&quot;bearer ([a-zA-Z0-9._-]*)/
+		if (match.find()) {
+			log.info(entry.getTimestamp() + &quot; &quot; + entry.getLevel() + &quot; &quot; + entry.getMessage());
+			value = match.group(1)
+			props.put(&quot;access_token_1&quot;, value);
+			vars.put(&quot;access_token_1&quot;, value);
+			log.info(&apos;==========access_token_1 value = &apos; + value);
+		     //break;
+		} 
+	}
+
+	value = &quot;bearer&quot;;
+	props.put(&quot;token_type_1&quot;, value);
+	vars.put(&quot;token_type_1&quot;, value);
+	props.put(&quot;driver&quot;, driver);
+	</stringProp>
+            </JSR223Sampler>
+            <hashTree>
+              <ResultAction guiclass="ResultActionGui" testclass="ResultAction" testname="ExitAppOnLoginFailure (Result Status Action Handler)" enabled="true">
+                <intProp name="OnError.action">3</intProp>
+              </ResultAction>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+        </hashTree>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="ExecuteSearch_GetTopFilters (If Controller)" enabled="true">
+          <stringProp name="IfController.condition">${__javaScript(&quot;${IsFileExists}&quot; == &quot;false&quot;,)}</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+          <boolProp name="IfController.useExpression">true</boolProp>
+        </IfController>
+        <hashTree>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="SetFiltersQueryParam (JSR223 Sampler)" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">def progress1 = &quot;0&quot;;
+vars.put(&apos;progress1&apos;,progress1)
+
+//filterQuery = &quot;\&quot;filters\&quot;:[{\&quot;path\&quot;:\&quot;Event.Time\&quot;,\&quot;operator\&quot;:\&quot;LastDays\&quot;,\&quot;values\&quot;:[{\&quot;Event.Time\&quot;:3}]}]&quot;;
+//In multi Tenant POC I want to select different date range in which I have data
+def dayFrom = vars.get(&quot;DAY_FROM&quot;);
+Date dateFrom = Date.parse(&quot;yyyy-MM-dd&quot;,dayFrom);
+Date dateTo = dateFrom.plus(1);
+String newDate = dateTo.format(&apos;yyyy-MM-dd&apos;);
+vars.put(&apos;DAY_TO&apos;, newDate);
+
+Random random = new Random();
+String rndNumber = String.valueOf(random.nextInt(48) + 10);
+vars.put(&apos;RANDOM_MIN&apos;, rndNumber);
+
+filterQuery = &quot;\&quot;filters\&quot;:[{\&quot;path\&quot;:\&quot;Event.Time\&quot;,\&quot;operator\&quot;:\&quot;Between\&quot;,\&quot;values\&quot;:[{\&quot;Event.Time\&quot;:\&quot;&quot; + vars.get(&quot;DAY_FROM&quot;) + &quot;T00:00:00+02:00\&quot;,\&quot;Event.Time0\&quot;:\&quot;&quot; + vars.get(&quot;DAY_TO&quot;) + &quot;T23:&quot; + vars.get(&quot;RANDOM_MIN&quot;) + &quot;:00+02:00\&quot;}]}]&quot;;
+
+/*filterQuery = &quot;\&quot;filters\&quot;:[{\&quot;path\&quot;:\&quot;Event.Time\&quot;,\&quot;operator\&quot;:\&quot;Between\&quot;,\&quot;values\&quot;:[{\&quot;Event.Time\&quot;:\&quot;&quot; + vars.get(&quot;DAY_FROM&quot;) + &quot;T00:00:00+02:00\&quot;,\&quot;Event.Time0\&quot;:\&quot;&quot; + vars.get(&quot;DAY_FROM&quot;) + &quot;T02:59:00+02:00\&quot;}]}]&quot;;*/
+
+vars.put(&apos;filterQuery&apos;,filterQuery);
+
+def rollupType = vars.get(&quot;ROLLUP_TYPE&quot;);
+rollupType = &quot;\&quot;&quot; + rollupType + &quot;\&quot;&quot;
+vars.put(&apos;rollupType&apos;,rollupType);
+log.info(&quot;================INITILIZATION: rollupType=&quot; + vars.get(&quot;ROLLUP_TYPE&quot;));
+
+
+</stringProp>
+          </JSR223Sampler>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ExecuteSearchAsync_GetTopFacets (HTTP Request)" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;facets&quot;:[{&quot;name&quot;:&quot;Event.EventOnResource.Folder.Filer.Platform.Name&quot;,&quot;path&quot;:&quot;Event.EventOnResource.Folder.Filer.Platform.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Type.Name&quot;,&quot;path&quot;:&quot;Event.Type.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Alert.Rule.Severity.Name&quot;,&quot;path&quot;:&quot;Event.Alert.Rule.Severity.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventBy.Name&quot;,&quot;path&quot;:&quot;Event.EventBy.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventOnUser.Name&quot;,&quot;path&quot;:&quot;Event.EventOnUser.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventOnGroup.Name&quot;,&quot;path&quot;:&quot;Event.EventOnGroup.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventOnResource.Folder.Path&quot;,&quot;path&quot;:&quot;Event.EventOnResource.Folder.Path&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Alert.Rule.Name&quot;,&quot;path&quot;:&quot;Event.Alert.Rule.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Operation.Name&quot;,&quot;path&quot;:&quot;Event.Operation.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventOnResource.Folder.Filer.Name&quot;,&quot;path&quot;:&quot;Event.EventOnResource.Folder.Filer.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.CollectionDeviceHostname&quot;,&quot;path&quot;:&quot;Event.CollectionDeviceHostname&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Status.Name&quot;,&quot;path&quot;:&quot;Event.Status.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventBy.Department&quot;,&quot;path&quot;:&quot;Event.EventBy.Department&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventOnResource.Folder.IsSensitive&quot;,&quot;path&quot;:&quot;Event.EventOnResource.Folder.IsSensitive&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventOnResource.Folder.Flag.Name&quot;,&quot;path&quot;:&quot;Event.EventOnResource.Folder.Flag.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.IP&quot;,&quot;path&quot;:&quot;Event.IP&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.IsAlerted&quot;,&quot;path&quot;:&quot;Event.IsAlerted&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventOnGroup.Flag.Name&quot;,&quot;path&quot;:&quot;Event.EventOnGroup.Flag.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.DeviceName&quot;,&quot;path&quot;:&quot;Event.DeviceName&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventOnUser.Flag.Name&quot;,&quot;path&quot;:&quot;Event.EventOnUser.Flag.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventBy.Flag.Name&quot;,&quot;path&quot;:&quot;Event.EventBy.Flag.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventOnResource.ObjectType.Name&quot;,&quot;path&quot;:&quot;Event.EventOnResource.ObjectType.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.File.Name&quot;,&quot;path&quot;:&quot;Event.File.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.File.Type&quot;,&quot;path&quot;:&quot;Event.File.Type&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventBy.AccountType.Name&quot;,&quot;path&quot;:&quot;Event.EventBy.AccountType.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventBy.IsStale&quot;,&quot;path&quot;:&quot;Event.EventBy.IsStale&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventBy.IsDisabled&quot;,&quot;path&quot;:&quot;Event.EventBy.IsDisabled&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventBy.Manager.Name&quot;,&quot;path&quot;:&quot;Event.EventBy.Manager.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventBy.Domain.Name&quot;,&quot;path&quot;:&quot;Event.EventBy.Domain.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Location.SubdivisionName&quot;,&quot;path&quot;:&quot;Event.Location.SubdivisionName&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Location.CountryName&quot;,&quot;path&quot;:&quot;Event.Location.CountryName&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Location.BlacklistedLocation&quot;,&quot;path&quot;:&quot;Event.Location.BlacklistedLocation&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Destination.URL.Reputation.Name&quot;,&quot;path&quot;:&quot;Event.Destination.URL.Reputation.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.OrgOpCode&quot;,&quot;path&quot;:&quot;Event.OrgOpCode&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Device.ExternalIP&quot;,&quot;path&quot;:&quot;Event.Device.ExternalIP&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Destination.URL.Categorization.Name&quot;,&quot;path&quot;:&quot;Event.Destination.URL.Categorization.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Device.ExternalIPThreatTypesName&quot;,&quot;path&quot;:&quot;Event.Device.ExternalIPThreatTypesName&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.ConnectionTypeName&quot;,&quot;path&quot;:&quot;Event.ConnectionTypeName&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Device.IsMaliciousExternalIP&quot;,&quot;path&quot;:&quot;Event.Device.IsMaliciousExternalIP&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Device.ExternalIPReputationName&quot;,&quot;path&quot;:&quot;Event.Device.ExternalIPReputationName&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.AuthenticationProtocolName&quot;,&quot;path&quot;:&quot;Event.AuthenticationProtocolName&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Destination.IP&quot;,&quot;path&quot;:&quot;Event.Destination.IP&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Destination.DeviceName&quot;,&quot;path&quot;:&quot;Event.Destination.DeviceName&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Destination.Domain&quot;,&quot;path&quot;:&quot;Event.Destination.Domain&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Device.OperatingSystemName&quot;,&quot;path&quot;:&quot;Event.Device.OperatingSystemName&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventBy.IsMailboxOwner&quot;,&quot;path&quot;:&quot;Event.EventBy.IsMailboxOwner&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventBy.IsLockout&quot;,&quot;path&quot;:&quot;Event.EventBy.IsLockout&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Events_on_sensitive_data&quot;,&quot;path&quot;:&quot;Event.EventOnResource.Folder.IsSensitive&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.EventOnResource.Folder.IsSensitive&quot;,&quot;operator&quot;:4,&quot;values&quot;:[{&quot;Value&quot;:1}]}]},{&quot;name&quot;:&quot;Alerted_events&quot;,&quot;path&quot;:&quot;Event.IsAlerted&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.IsAlerted&quot;,&quot;operator&quot;:4,&quot;values&quot;:[{&quot;Value&quot;:1}]}]},{&quot;name&quot;:&quot;Folder_deletion&quot;,&quot;path&quot;:&quot;Event.Type.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.Type.ID&quot;,&quot;operator&quot;:1,&quot;values&quot;:[{&quot;Value&quot;:32}]}]},{&quot;name&quot;:&quot;User_locked_out&quot;,&quot;path&quot;:&quot;Event.Type.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.Type.ID&quot;,&quot;operator&quot;:1,&quot;values&quot;:[{&quot;Value&quot;:5011}]}]},{&quot;name&quot;:&quot;DS_object_set_security&quot;,&quot;path&quot;:&quot;Event.Type.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.Type.ID&quot;,&quot;operator&quot;:1,&quot;values&quot;:[{&quot;Value&quot;:5006}]}]},{&quot;name&quot;:&quot;GPO_link_modified&quot;,&quot;path&quot;:&quot;Event.Type.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.Type.ID&quot;,&quot;operator&quot;:1,&quot;values&quot;:[{&quot;Value&quot;:5022}]}]},{&quot;name&quot;:&quot;GPO_setting_modified&quot;,&quot;path&quot;:&quot;Event.Type.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.Type.ID&quot;,&quot;operator&quot;:1,&quot;values&quot;:[{&quot;Value&quot;:5023}]}]},{&quot;name&quot;:&quot;Folder_permissions_changes&quot;,&quot;path&quot;:&quot;Event.Type.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.Type.ID&quot;,&quot;operator&quot;:1,&quot;values&quot;:[{&quot;Value&quot;:512}]}]},{&quot;name&quot;:&quot;Failed_events&quot;,&quot;path&quot;:&quot;Event.Status.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.Status.ID&quot;,&quot;operator&quot;:1,&quot;values&quot;:[{&quot;Value&quot;:&quot;0&quot;}]}]},{&quot;name&quot;:&quot;High_severity_alerts&quot;,&quot;path&quot;:&quot;Event.Alert.Rule.Severity.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.Alert.Rule.Severity.ID&quot;,&quot;operator&quot;:1,&quot;values&quot;:[{&quot;Value&quot;:&quot;0&quot;}]}]},{&quot;name&quot;:&quot;Event_by_service_account&quot;,&quot;path&quot;:&quot;Event.EventBy.AccountType.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.EventBy.AccountType.ID&quot;,&quot;operator&quot;:11,&quot;values&quot;:[{&quot;Value&quot;:16}]}]},{&quot;name&quot;:&quot;Event_by_admin_account&quot;,&quot;path&quot;:&quot;Event.EventBy.AccountType.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.EventBy.AccountType.ID&quot;,&quot;operator&quot;:11,&quot;values&quot;:[{&quot;Value&quot;:64}]}]},{&quot;name&quot;:&quot;Event_by_executive_account&quot;,&quot;path&quot;:&quot;Event.EventBy.AccountType.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.EventBy.AccountType.ID&quot;,&quot;operator&quot;:11,&quot;values&quot;:[{&quot;Value&quot;:2048}]}]},{&quot;name&quot;:&quot;Event_by_stale_account&quot;,&quot;path&quot;:&quot;Event.EventBy.IsStale&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.EventBy.IsStale&quot;,&quot;operator&quot;:4,&quot;values&quot;:[{&quot;Value&quot;:&quot;Yes&quot;}]}]},{&quot;name&quot;:&quot;Event_by_disabled_account&quot;,&quot;path&quot;:&quot;Event.EventBy.IsDisabled&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.EventBy.IsDisabled&quot;,&quot;operator&quot;:4,&quot;values&quot;:[{&quot;Value&quot;:&quot;Yes&quot;}]}]},{&quot;name&quot;:&quot;Event_in_blacklisted_location&quot;,&quot;path&quot;:&quot;Event.Location.BlacklistedLocation&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.Location.BlacklistedLocation&quot;,&quot;operator&quot;:4,&quot;values&quot;:[{&quot;Value&quot;:&quot;Yes&quot;}]}]},{&quot;name&quot;:&quot;Event_by_lockout_account&quot;,&quot;path&quot;:&quot;Event.EventBy.IsLockout&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.EventBy.IsLockout&quot;,&quot;operator&quot;:4,&quot;values&quot;:[{&quot;Value&quot;:&quot;Yes&quot;}]}]},{&quot;name&quot;:&quot;Event_by_accounts_with_expired_passwords&quot;,&quot;path&quot;:&quot;Event.EventBy.PasswordStatus.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.EventBy.PasswordStatus.ID&quot;,&quot;operator&quot;:1,&quot;values&quot;:[{&quot;Value&quot;:&quot;2&quot;}]}]},{&quot;name&quot;:&quot;Event_by_mailbox_owner&quot;,&quot;path&quot;:&quot;Event.EventBy.IsMailboxOwner&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.EventBy.IsMailboxOwner&quot;,&quot;operator&quot;:4,&quot;values&quot;:[{&quot;Value&quot;:&quot;Yes&quot;}]}]},{&quot;name&quot;:&quot;Impersonation_events&quot;,&quot;path&quot;:&quot;Event.Type.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.Type.ID&quot;,&quot;operator&quot;:1,&quot;values&quot;:[{&quot;Value&quot;:8002}]}]},{&quot;name&quot;:&quot;Sharing_events&quot;,&quot;path&quot;:&quot;Event.Type.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.Type.ID&quot;,&quot;operator&quot;:1,&quot;values&quot;:[{&quot;Value&quot;:7500},{&quot;Value&quot;:7502},{&quot;Value&quot;:7503},{&quot;Value&quot;:7505}]}]},{&quot;name&quot;:&quot;Row_Number_Identifier&quot;,&quot;path&quot;:&quot;&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:&quot;Count&quot;}},{&quot;name&quot;:&quot;Raw_Row_Number_Identifier&quot;,&quot;path&quot;:&quot;&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event_Chart_Facet_Identifier&quot;,&quot;path&quot;:&quot;Event.Time&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;dateRangeBehavior&quot;:{&quot;interval&quot;:2,&quot;rangeUnit&quot;:&quot;Day&quot;,&quot;isDense&quot;:false,&quot;minDate&quot;:${minDate},&quot;maxDate&quot;:${maxDate}},&quot;filters&quot;:[]}],&quot;rows&quot;:{&quot;columns&quot;:[&quot;Event.EventOnResource.Folder.Filer.Platform.Name&quot;,&quot;Event.Time&quot;,&quot;Event.Operation.Name&quot;,&quot;Event.Type.Name&quot;,&quot;Event.EventBy.Name&quot;,&quot;Event.EventOnObjectName&quot;,&quot;Event.EventOnResource.Folder.Path&quot;,&quot;Event.IsAlerted&quot;,&quot;Event.EventOnResource.Folder.IsSensitive&quot;,&quot;Event.Status.Name&quot;,&quot;Event.EventOnResource.Folder.Filer.Name&quot;,&quot;Event.TimeUTC&quot;,&quot;Event.ID&quot;,&quot;Event.EventOnResource.Folder.Filer.Platform.ID&quot;,&quot;Event.Operation.ID&quot;,&quot;Event.Type.ID&quot;,&quot;Event.EventBy.SidID&quot;,&quot;Event.EventOnResource.Folder.Filer.ID&quot;,&quot;Event.EventOnResource.Folder.DirID&quot;,&quot;Event.Status.ID&quot;],&quot;grouping&quot;:&quot;&quot;,&quot;ordering&quot;:[],&quot;filter&quot;:[]},&quot;query&quot;:{&quot;entityName&quot;:&quot;Event&quot;,&quot;filter&quot;:{&quot;filterOperator&quot;:0,${filterQuery}}},&quot;requestParams&quot;:{&quot;searchSource&quot;:1,&quot;searchSourceName&quot;:&quot;Event&quot;}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${requestType}/api/search/v2/search</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="StartSearchTime (JSR223 PostProcessor)" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">Date start = new Date();
+vars.put(&quot;start&quot;, start.toString());
+//log.info(&quot;==========start time is &quot; + vars.get(&quot;start&quot;));
+
+//Date startAuthToken = new Date();
+//vars.put(&quot;startAuthToken&quot;, startAuthToken.toString());
+//log.info(&quot;==========startAuthToken time is &quot; + vars.get(&quot;startAuthToken&quot;));
+</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="GetGuidProgress (JSR223 PostProcessor)" enabled="true">
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">def text = prev.getResponseDataAsString()
+//log.info(&apos;Search response text is &apos; + text)
+//[{&quot;location&quot;:&quot;v2/rows/1e5d563ca3554025b176f23be4af2ece/&quot;,&quot;dataType&quot;:&quot;rows&quot;},{&quot;location&quot;:&quot;v2/facets/1e5d563ca3554025b176f23be4af2ece/&quot;,&quot;dataType&quot;:&quot;facets&quot;},{&quot;location&quot;:&quot;v2/search/1e5d563ca3554025b176f23be4af2ece/terminate/&quot;,&quot;dataType&quot;:&quot;terminate&quot;}]
+
+def match = text =~ /rows\/([0-9a-z]*)/
+if (match.find()) {
+    def value = match.group(1)
+    vars.put(&apos;guidProgress&apos;, value) 
+}</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="Origin" elementType="Header">
+                  <stringProp name="Header.name">Origin</stringProp>
+                  <stringProp name="Header.value">https://${BASE_URL_1}</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">${token_type_1} ${access_token_1}</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json;charset=UTF-8</stringProp>
+                </elementProp>
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">https://${BASE_URL_1}/${requestType}/</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <WhileController guiclass="WhileControllerGui" testclass="WhileController" testname="ValidateSearchCompleted (While controller)" enabled="true">
+            <stringProp name="WhileController.condition">${__javaScript(&quot;${progress1}&quot; != &quot;100&quot;,)}</stringProp>
+          </WhileController>
+          <hashTree>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+              <stringProp name="ConstantTimer.delay">5000</stringProp>
+            </ConstantTimer>
+            <hashTree/>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GetFacetSearchProgress_init - (HTTP Request)" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">${requestType}/api/search/v2/facets/${guidProgress}</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="GetFacetSearchProgress_init (JSR223 Sampler)" enabled="true">
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="script">import java.util.concurrent.TimeUnit;
+
+def responseCode = prev.getResponseCode().toString();
+def text = prev.getResponseDataAsString();
+def value = &quot;&quot;;
+def match;
+
+
+match = text =~ /progress&quot;:([0-9]*)/
+if (match.find()) {
+    value = match.group(1)
+    vars.put(&quot;progress1&quot;, value);
+    log.info(&apos;==========Thread ID=&apos; + vars.get(&quot;THREAD_ID&quot;) + &apos; - progress value = &apos; + value);
+}
+
+if ( responseCode == &quot;401&quot;){
+	vars.put(&quot;refreshAuthToken&quot;, &quot;True&quot;);
+}
+
+
+if ( responseCode == &quot;200&quot;){	
+	//props.put(&quot;access_token_1&quot;, vars.get(&quot;access_token_1&quot;));
+	props.put(&quot;access_token_1_ThreadID_&quot;+vars.get(&quot;THREAD_ID&quot;), vars.get(&quot;access_token_1&quot;));
+	props.put(&quot;token_type_1&quot;, &quot;bearer&quot;);
+	//Event.EventBy.SidID&quot;],&quot;facetBuckets&quot;:[{&quot;display&quot;:&quot;CAABA01.B8A\\ED0FBD68&quot;,&quot;keys&quot;:[&quot;1377047&quot;],&quot;measurement&quot;:18432687,&quot;ratio&quot;:0.7383607072472457612436684184},{&quot;display&quot;:&quot;CAABA01.B8A\\73D A6-341E361570&quot;,&quot;keys&quot;:[&quot;5989&quot;]
+	text = prev.getResponseDataAsString();
+	//log.info(&apos;==========Response content = &apos; + text)
+	//match = text =~ /Event.EventBy.SidID&quot;\],&quot;[&quot;\[\]a-zA-Z0-9:,.}{\\ ]*keys&quot;:\[&quot;([0-9]*)&quot;\],[&quot;a-zA-Z0-9:,.}{\\ -]*\[&quot;([0-9]*)/
+	match = text =~ /Users&quot;,&quot;keys&quot;:\[&quot;([0-9]*)&quot;]/
+	if (match.find()) {
+		value = match.group(1)
+   	 	log.info(&apos;==========Thread ID=&apos; + vars.get(&quot;THREAD_ID&quot;) + &apos; - SID1 value = &apos; + value);
+   		//vars.put(&quot;SID1&quot;, value);
+		props.setProperty(&quot;SID1&quot;, value); // Only properties can be used between Thread groups
+   		/*value = match.group(2)
+   		log.info(&apos;==========SID2 value = &apos; + value);
+   		props.setProperty(&quot;SID2&quot;, value);*/
+	}
+
+	//Event.Type.Name&quot;,&quot;facetKeys&quot;:[&quot;Event.Type.ID&quot;],&quot;facetBuckets&quot;:[{&quot;display&quot;:&quot;File opened&quot;,&quot;keys&quot;:[&quot;1&quot;],&quot;measurement&quot;:586650,&quot;ratio&quot;:0.487007326901333386462914722},{&quot;display&quot;:&quot;File modified&quot;,&quot;keys&quot;:[&quot;16384&quot;]
+	text = prev.getResponseDataAsString();
+	match = text =~ /Event.Type.Name&quot;,[&quot;a-zA-Z:\[\],.{} ()]*([0-9]*)/
+	if (match.find()) {
+		value = match.group(1)
+   	 	log.info(&apos;==========Thread ID=&apos; + vars.get(&quot;THREAD_ID&quot;) + &apos; - EVENT_TYPE_ID1 value = &apos; + value);
+   		props.setProperty(&quot;EVENT_TYPE_ID1&quot;, value);
+	}
+
+
+	text = prev.getResponseDataAsString();
+	match = text =~ /Event.EventOnResource.Folder.Filer.ID&quot;,&quot;Event.EventOnResource.Folder.DirID&quot;],[&quot;a-zA-Z0-9:\[{.\\ ]*,&quot;keys&quot;:\[&quot;([0-9]*)&quot;,&quot;([0-9]*)&quot;],[&quot;a-zA-Z0-9:,.}{\\]*\[&quot;([0-9]*)&quot;,&quot;([0-9]*)/
+	if (match.find()) {
+		value = match.group(1)
+   	 	log.info(&apos;==========Thread ID=&apos; + vars.get(&quot;THREAD_ID&quot;) + &apos; - FILER_ID1 value = &apos; + value);
+   		props.setProperty(&quot;FILER_ID1&quot;, value);
+   		value = match.group(2)
+   	 	log.info(&apos;==========Thread ID=&apos; + vars.get(&quot;THREAD_ID&quot;) + &apos; - FOLDER_DIR_ID1 value = &apos; + value);
+   		props.setProperty(&quot;FOLDER_DIR_ID1&quot;, value);
+	}
+}
+
+
+
+</stringProp>
+                <stringProp name="scriptLanguage">groovy</stringProp>
+              </JSR223PostProcessor>
+              <hashTree/>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                  </elementProp>
+                  <elementProp name="Authorization" elementType="Header">
+                    <stringProp name="Header.name">Authorization</stringProp>
+                    <stringProp name="Header.value">${token_type_1} ${access_token_1}</stringProp>
+                  </elementProp>
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://${BASE_URL_1}/${requestType}/</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <IfController guiclass="IfControllerPanel" testclass="IfController" testname="CheckOPAuth (If Controller)" enabled="true">
+              <stringProp name="IfController.condition">${__javaScript(&quot;${cloudAuthEnable}&quot; == &quot;false&quot;,)}</stringProp>
+              <boolProp name="IfController.evaluateAll">false</boolProp>
+              <boolProp name="IfController.useExpression">true</boolProp>
+            </IfController>
+            <hashTree>
+              <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller" enabled="true">
+                <stringProp name="IfController.condition">${__javaScript(&quot;${refreshAuthToken}&quot; == &quot;True&quot;,)}</stringProp>
+                <boolProp name="IfController.evaluateAll">false</boolProp>
+                <boolProp name="IfController.useExpression">true</boolProp>
+              </IfController>
+              <hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="../DatAdvantage/api/authentication/win" enabled="true">
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="grant_type" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                        <stringProp name="Argument.name">grant_type</stringProp>
+                        <stringProp name="Argument.value">client_credentials</stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">${requestType}/api/authentication/win</stringProp>
+                  <stringProp name="HTTPSampler.method">POST</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+                    <collectionProp name="HeaderManager.headers">
+                      <elementProp name="Accept" elementType="Header">
+                        <stringProp name="Header.name">Accept</stringProp>
+                        <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                      </elementProp>
+                      <elementProp name="Origin" elementType="Header">
+                        <stringProp name="Header.name">Origin</stringProp>
+                        <stringProp name="Header.value">https://${BASE_URL_1}</stringProp>
+                      </elementProp>
+                      <elementProp name="Content-Type" elementType="Header">
+                        <stringProp name="Header.name">Content-Type</stringProp>
+                        <stringProp name="Header.value">application/json;charset=UTF-8</stringProp>
+                      </elementProp>
+                      <elementProp name="Referer" elementType="Header">
+                        <stringProp name="Header.name">Referer</stringProp>
+                        <stringProp name="Header.value">https://${BASE_URL_1}/${requestType}/</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </HeaderManager>
+                  <hashTree/>
+                  <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+                    <stringProp name="JSONPostProcessor.referenceNames">token_type</stringProp>
+                    <stringProp name="JSONPostProcessor.jsonPathExprs">$..token_type</stringProp>
+                    <stringProp name="JSONPostProcessor.match_numbers">-1</stringProp>
+                    <stringProp name="JSONPostProcessor.defaultValues">No_Default</stringProp>
+                    <boolProp name="JSONPostProcessor.compute_concat">true</boolProp>
+                  </JSONPostProcessor>
+                  <hashTree/>
+                  <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+                    <stringProp name="JSONPostProcessor.referenceNames">access_token</stringProp>
+                    <stringProp name="JSONPostProcessor.jsonPathExprs">$..access_token</stringProp>
+                    <stringProp name="JSONPostProcessor.match_numbers">-1</stringProp>
+                    <stringProp name="JSONPostProcessor.defaultValues">No_Default</stringProp>
+                    <boolProp name="JSONPostProcessor.compute_concat">true</boolProp>
+                  </JSONPostProcessor>
+                  <hashTree/>
+                  <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="InitAuthVars_init (JSR223 PostProcessor)" enabled="true">
+                    <stringProp name="scriptLanguage">groovy</stringProp>
+                    <stringProp name="parameters"></stringProp>
+                    <stringProp name="filename"></stringProp>
+                    <stringProp name="cacheKey">true</stringProp>
+                    <stringProp name="script">vars.put(&quot;refreshAuthToken&quot;, &quot;False&quot;);
+
+//Date startAuthToken = new Date();
+//vars.put(&quot;startAuthToken&quot;, startAuthToken.toString());</stringProp>
+                  </JSR223PostProcessor>
+                  <hashTree/>
+                </hashTree>
+                <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="SaveNewAccesstoken_init (JSR223)" enabled="true">
+                  <stringProp name="scriptLanguage">groovy</stringProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="cacheKey">true</stringProp>
+                  <stringProp name="script">props.put(&quot;access_token_1&quot;, vars.get(&quot;access_token&quot;));
+vars.put(&quot;access_token_1&quot;, vars.get(&quot;access_token&quot;));
+def value = &quot;bearer&quot;;
+props.put(&quot;token_type_1&quot;, value);
+vars.put(&quot;token_type_1&quot;, value);</stringProp>
+                </JSR223Sampler>
+                <hashTree/>
+              </hashTree>
+            </hashTree>
+            <IfController guiclass="IfControllerPanel" testclass="IfController" testname="CheckCloudAuth (If Controller)" enabled="true">
+              <stringProp name="IfController.condition">${__javaScript(&quot;${cloudAuthEnable}&quot; == &quot;true&quot;,)}</stringProp>
+              <boolProp name="IfController.evaluateAll">false</boolProp>
+              <boolProp name="IfController.useExpression">true</boolProp>
+            </IfController>
+            <hashTree>
+              <IfController guiclass="IfControllerPanel" testclass="IfController" testname="RefreshCloudAuth (If Controller)" enabled="true">
+                <stringProp name="IfController.condition">${__javaScript(&quot;${refreshAuthToken}&quot; == &quot;True&quot;,)}</stringProp>
+                <boolProp name="IfController.evaluateAll">false</boolProp>
+                <boolProp name="IfController.useExpression">true</boolProp>
+              </IfController>
+              <hashTree>
+                <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="SeleniumLogin_CloudOKTA_init (JSR223 Sampler)" enabled="true">
+                  <stringProp name="scriptLanguage">groovy</stringProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="cacheKey">true</stringProp>
+                  <stringProp name="script">import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.logging.LoggingPreferences;
+import org.openqa.selenium.logging.LogType;
+import java.util.logging.Level;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+def value = &quot;&quot;;
+def match;
+
+
+	driver = props.get(&quot;driver&quot;);
+	driver.get(&quot;https://sfdevoktassl.varonis.io/&quot; + vars.get(&quot;TENANT_ID&quot;));
+
+	/*WebElement elementUsername = driver.findElement(By.id(&quot;okta-signin-username&quot;));
+	elementUsername.click();
+	elementUsername.sendKeys(&quot;varadm@sig0f020.com&quot;);
+	WebElement elementPW = driver.findElement(By.id(&quot;okta-signin-password&quot;));
+	elementPW.click();
+	elementPW.sendKeys(&quot;NiouE98AxfWlMRDCZyUIj1ckTpKqGn&quot;);
+	WebElement elementSubmitBtn = driver.findElement(By.id(&quot;okta-signin-submit&quot;));
+	elementSubmitBtn.click();
+	WebElement elementAnalytics = driver.findElement(By.cssSelector(&quot;span[href=&apos;#/app/analytics&apos;]&quot;));
+	elementAnalytics.click();*/
+
+
+	List&lt;LogEntry&gt; entries = driver.manage().logs().get(LogType.PERFORMANCE).getAll();
+	log.info(entries.size() + &quot; &quot; + LogType.PERFORMANCE + &quot; log entries found&quot;);
+	for (LogEntry entry : entries) {
+
+		match = entry.getMessage() =~ /Authorization&quot;:&quot;bearer ([a-zA-Z0-9._-]*)/
+		if (match.find()) {
+			log.info(entry.getTimestamp() + &quot; &quot; + entry.getLevel() + &quot; &quot; + entry.getMessage());
+			value = match.group(1)
+			props.put(&quot;access_token_1&quot;, value);
+			vars.put(&quot;access_token_1&quot;, value);
+			log.info(&apos;==========access_token_1 value = &apos; + value);
+		     //break;
+		} 
+	}
+
+	value = &quot;bearer&quot;;
+	props.put(&quot;token_type_1&quot;, value);
+	vars.put(&quot;token_type_1&quot;, value);
+	props.put(&quot;requestType&quot;, vars.get(&quot;TENANT_ID&quot;));
+	</stringProp>
+                </JSR223Sampler>
+                <hashTree>
+                  <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="InitAuthVars (JSR223 PostProcessor)" enabled="true">
+                    <stringProp name="scriptLanguage">groovy</stringProp>
+                    <stringProp name="parameters"></stringProp>
+                    <stringProp name="filename"></stringProp>
+                    <stringProp name="cacheKey">true</stringProp>
+                    <stringProp name="script">vars.put(&quot;refreshAuthToken&quot;, &quot;False&quot;);
+
+//Date startAuthToken = new Date();
+//vars.put(&quot;startAuthToken&quot;, startAuthToken.toString());</stringProp>
+                  </JSR223PostProcessor>
+                  <hashTree/>
+                </hashTree>
+              </hashTree>
+            </hashTree>
+          </hashTree>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="WriteFiltersPropertiesIntoFile (JSR223 Sampler)" enabled="false">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">def newFileName = vars.get(&quot;BASE_URL_1&quot;);
+def filePathLocation = &quot;.\\..\\Projects\\SolrSearch_queryTool\\&quot; + newFileName + &quot;.csv&quot;;
+
+File fileTarget = new File(filePathLocation);
+fileTarget.append(&apos;EventType,Sid,Path,Filler&apos;);
+fileTarget.append(&apos;\r\n&apos; + props.getProperty(&quot;EVENT_TYPE_ID1&quot;) + &apos;,&apos; + props.getProperty(&quot;SID1&quot;) + &apos;,&apos; + props.getProperty(&quot;FOLDER_DIR_ID1&quot;) + &apos;,&apos; + props.getProperty(&quot;FILER_ID1&quot;));
+fileTarget.createNewFile();</stringProp>
+          </JSR223Sampler>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="SEARCHES LOOP (Thread Group)" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(Threads,1)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">20</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration">0</stringProp>
+        <stringProp name="ThreadGroup.delay">0</stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Initialization (JSR223 Sampler)" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">import java.text.SimpleDateFormat;
+
+int totalIDUs = Integer.parseInt(props.get(&quot;TOTAL_IDUs&quot;));
+
+int currentThreadNum=ctx.getThreadNum();
+int desiredUrlID = currentThreadNum % totalIDUs;
+currentThreadNumStr = Integer.toString(currentThreadNum+1);
+desiredUrlIDStr = Integer.toString(desiredUrlID+1);
+vars.put(&quot;THREAD_ID&quot;, currentThreadNumStr);
+vars.put(&quot;URL_ID&quot;, desiredUrlIDStr);
+vars.put(&quot;BASE_URL_1&quot;, vars.get(&quot;BASE_URL_&quot; + vars.get(&quot;URL_ID&quot;)));
+log.info(&apos;===================SEARCHES LOOP: THREAD_ID=&apos; + vars.get(&quot;THREAD_ID&quot;) + &apos;; BASE_URL_1=&apos; + vars.get(&quot;BASE_URL_1&quot;));
+
+
+vars.put(&quot;cloudAuthEnable&quot;, props.get(&quot;cloudAuthEnable&quot;));
+log.info(&apos;=======cloudAuthEnable vars value = &apos; + vars.get(&quot;cloudAuthEnable&quot;));
+vars.put(&quot;refreshAuthToken&quot;, props.get(&quot;refreshAuthToken&quot;));
+log.info(&apos;=======refreshAuthToken vars value = &apos; + vars.get(&quot;refreshAuthToken&quot;));
+
+vars.put(&quot;progress&quot;, &quot;0&quot;);
+vars.put(&quot;totalEvents&quot;, &quot;0&quot;);
+
+int retryRequestCounter = 0;
+vars.put(&quot;retryRequestCounter&quot;, Integer.toString(retryRequestCounter));		
+
+vars.put(&quot;firstRow206Response&quot;, &quot;false&quot;);
+vars.put(&quot;firstFacet206Response&quot;, &quot;false&quot;);
+vars.put(&quot;rowTotalRT_isFound&quot;, &quot;false&quot;); // request to &quot;rows progress&quot; won&apos;t be send once this var will be true
+
+//temp code for Troubleshooting 200 response code in first facet response
+vars.put(&quot;facetInitialRT&quot;, &quot;0&quot;);
+vars.put(&quot;rowInitialRT&quot;, &quot;0&quot;);
+
+//Transform properties from SetUp Thread Group to vars in Thread Group in order to use it in ${&lt;var name&gt;} format in HTTP Request
+vars.put(&quot;requestType&quot;, props.get(&quot;requestType&quot;));
+log.info(&apos;==========Thread Group: requestType vars value = &apos; + vars.get(&quot;requestType&quot;));
+
+//access_token_1 property need to be used only at first search in SEARCHES LOOP Thread group
+//after first query access_token_1 var need to be used
+//String propsAccessToken = props.get(&quot;access_token_1&quot;);
+String propsAccessToken = props.get(&quot;access_token_1_ThreadID_&quot;+vars.get(&quot;THREAD_ID&quot;));
+if(propsAccessToken != null &amp;&amp; !propsAccessToken.isEmpty()){
+	//vars.put(&quot;access_token_1&quot;, props.get(&quot;access_token_1&quot;));
+	vars.put(&quot;access_token_1&quot;, props.get(&quot;access_token_1_ThreadID_&quot;+vars.get(&quot;THREAD_ID&quot;)));
+	vars.put(&quot;token_type_1&quot;, &quot;bearer&quot;);
+	//props.put(&quot;access_token_1&quot;, &quot;&quot;);
+	props.put(&quot;access_token_1_ThreadID_&quot;+vars.get(&quot;THREAD_ID&quot;), &quot;&quot;);
+}
+
+//minDate&quot;:&quot;2019-02-09T00:00:00+02:00&quot;,&quot;maxDate
+Date dateNow = new Date();
+def minDate = dateNow.minus(31);
+minDate = minDate.format(&apos;yyyy-MM-dd&apos;);
+String minDateWithTime = &quot;\&quot;&quot; + minDate + &quot;T00:00:00+02:00&quot; + &quot;\&quot;&quot;
+vars.put(&quot;minDate&quot;, minDateWithTime);
+log.info(&apos;=========minDate param value is &apos; + vars.get(&quot;minDate&quot;));
+SimpleDateFormat maxDate = new SimpleDateFormat(&quot;yyyy-MM-dd&apos;T&apos;HH:mm:ssXXX&quot;);
+String maxDateNew = &quot;\&quot;&quot; + maxDate.format(new Date()) + &quot;\&quot;&quot;;
+vars.put(&quot;maxDate&quot;, maxDateNew);
+log.info(&apos;=========maxDate value is &apos; + vars.get(&quot;maxDate&quot;));</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="SetFiltersQueryParams  (JSR223 Sampler)" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">import java.util.concurrent.ThreadLocalRandom;
+
+
+def progress = &quot;0&quot;;
+vars.put(&apos;progress&apos;,progress)
+
+//FILTERS in &quot;CSV Data...&quot; is set as &quot;Allow quoted data?&quot;=true so I can use string value with commoa such as &quot;Date,Sid&quot; otherwise only &quot;Date&quot; will be taken
+String filtersContent = vars.get(&quot;FILTERS&quot;);
+log.info(&apos;===============================THREAD_ID=&apos; + vars.get(&quot;THREAD_ID&quot;) + &apos; - filtersContent value is &apos; + filtersContent)
+String filtersContentNew = filtersContent.replace(&quot;,&quot;,&quot;\\,&quot;); //Set Tag values seperated with comma
+vars.put(&apos;filtersContentNew&apos;, filtersContentNew);
+
+//,{&quot;path&quot;:&quot;Event.Time&quot;,&quot;operator&quot;:&quot;Between&quot;,&quot;values&quot;:[{&quot;Event.Time&quot;:&quot;2018-12-20T00:00:00+02:00&quot;,&quot;Event.Time0&quot;:&quot;2019-01-19T23:59:00+02:00&quot;}]}]}}}
+def dayFrom = vars.get(&quot;DAY_FROM&quot;);
+Date dateFrom = Date.parse(&quot;yyyy-MM-dd&quot;,dayFrom);
+
+//temp code for changing dayFrom
+//int randomNum = ThreadLocalRandom.current().nextInt(1, 2 + 1);
+int randomNum = 0;
+Date newDateFrom = dateFrom.plus(randomNum);
+String newDateFromStr = newDateFrom.format(&apos;yyyy-MM-dd&apos;);
+vars.put(&apos;DAY_FROM&apos;, newDateFromStr);
+log.info(&quot;=============New DAY_FROM value = &quot; + vars.get(&quot;DAY_FROM&quot;));
+dayFrom = vars.get(&quot;DAY_FROM&quot;);
+dateFrom = Date.parse(&quot;yyyy-MM-dd&quot;,dayFrom);
+//End of temp code
+//Date dateTo = dateFrom.plus(vars.get(&quot;DAYS&quot;).toInteger() + 3);
+Date dateTo = dateFrom.plus(vars.get(&quot;DAYS&quot;).toInteger());
+String newDate = dateTo.format(&apos;yyyy-MM-dd&apos;);
+vars.put(&apos;DAY_TO&apos;, newDate);
+
+Random random = new Random();
+String rndNumber = String.valueOf(random.nextInt(48) + 10);
+vars.put(&apos;RANDOM_MIN&apos;, rndNumber);
+
+
+switch (filtersContent) {
+	case &quot;Date&quot;:
+		filterQuery = &quot;\&quot;filters\&quot;:[{\&quot;path\&quot;:\&quot;Event.Time\&quot;,\&quot;operator\&quot;:\&quot;Between\&quot;,\&quot;values\&quot;:[{\&quot;Event.Time\&quot;:\&quot;&quot; + vars.get(&quot;DAY_FROM&quot;) + &quot;T00:00:00+02:00\&quot;,\&quot;Event.Time0\&quot;:\&quot;&quot; + vars.get(&quot;DAY_TO&quot;) + &quot;T02:&quot; + vars.get(&quot;RANDOM_MIN&quot;) + &quot;:00+02:00\&quot;}]}]&quot;;
+		break;
+
+	case &quot;Date,Sid&quot;:	
+		filterQuery=&quot;\&quot;filters\&quot;:[{\&quot;path\&quot;:\&quot;Event.EventBy.SidID\&quot;,\&quot;operator\&quot;:\&quot;In\&quot;,\&quot;values\&quot;:[{\&quot;Event.EventBy.SidID\&quot;:\&quot;&quot; + props.getProperty(&quot;SID1&quot;) +&quot;\&quot;}]},{\&quot;path\&quot;:\&quot;Event.Time\&quot;,\&quot;operator\&quot;:\&quot;Between\&quot;,\&quot;values\&quot;:[{\&quot;Event.Time\&quot;:\&quot;&quot; + vars.get(&quot;DAY_FROM&quot;) + &quot;T00:00:00+02:00\&quot;,\&quot;Event.Time0\&quot;:\&quot;&quot; + vars.get(&quot;DAY_TO&quot;) + &quot;T02:59:00+02:00\&quot;}]}]&quot;;
+		break;
+
+	case &quot;Date,Path&quot;:
+		filterQuery = &quot;\&quot;filters\&quot;:[{\&quot;path\&quot;:\&quot;Event.EventOnResource.Folder.DirID\&quot;,\&quot;operator\&quot;:\&quot;In\&quot;,\&quot;values\&quot;:[{\&quot;Event.EventOnResource.Folder.Filer.ID\&quot;:\&quot;&quot; + props.getProperty(&quot;FILER_ID1&quot;) + &quot;\&quot;,\&quot;Event.EventOnResource.Folder.DirID\&quot;:\&quot;&quot; + props.getProperty(&quot;FOLDER_DIR_ID1&quot;) + &quot;\&quot;}]},{\&quot;path\&quot;:\&quot;Event.Time\&quot;,\&quot;operator\&quot;:\&quot;Between\&quot;,\&quot;values\&quot;:[{\&quot;Event.Time\&quot;:\&quot;&quot; + vars.get(&quot;DAY_FROM&quot;) + &quot;T00:00:00+02:00\&quot;,\&quot;Event.Time0\&quot;:\&quot;&quot; + vars.get(&quot;DAY_TO&quot;) + &quot;T02:59:00+02:00\&quot;}]}]&quot;;
+		break;
+
+	case &quot;Date,EventType&quot;:			
+		filterQuery = &quot;\&quot;filters\&quot;:[{\&quot;path\&quot;:\&quot;Event.Type.ID\&quot;,\&quot;operator\&quot;:\&quot;In\&quot;,\&quot;values\&quot;:[{\&quot;Event.Type.ID\&quot;:\&quot;&quot; + props.getProperty(&quot;EVENT_TYPE_ID1&quot;) + &quot;\&quot;}]},{\&quot;path\&quot;:\&quot;Event.Time\&quot;,\&quot;operator\&quot;:\&quot;Between\&quot;,\&quot;values\&quot;:[{\&quot;Event.Time\&quot;:\&quot;&quot; + vars.get(&quot;DAY_FROM&quot;) + &quot;T00:00:00+02:00\&quot;,\&quot;Event.Time0\&quot;:\&quot;&quot; + vars.get(&quot;DAY_TO&quot;) + &quot;T02:59:00+02:00\&quot;}]}]&quot;;
+		break;
+
+	case &quot;Date,Sid,Path&quot;:	
+		filterQuery = &quot;\&quot;filters\&quot;:[{\&quot;path\&quot;:\&quot;Event.EventBy.SidID\&quot;,\&quot;operator\&quot;:\&quot;In\&quot;,\&quot;values\&quot;:[{\&quot;Event.EventBy.SidID\&quot;:\&quot;&quot; + props.getProperty(&quot;SID1&quot;) + &quot;\&quot;}]},{\&quot;path\&quot;:\&quot;Event.EventOnResource.Folder.DirID\&quot;,\&quot;operator\&quot;:\&quot;In\&quot;,\&quot;values\&quot;:[{\&quot;Event.EventOnResource.Folder.Filer.ID\&quot;:\&quot;&quot; + props.getProperty(&quot;FILER_ID1&quot;) + &quot;\&quot;,\&quot;Event.EventOnResource.Folder.DirID\&quot;:\&quot;&quot; + props.getProperty(&quot;FOLDER_DIR_ID1&quot;) + &quot;\&quot;}]},{\&quot;path\&quot;:\&quot;Event.Time\&quot;,\&quot;operator\&quot;:\&quot;Between\&quot;,\&quot;values\&quot;:[{\&quot;Event.Time\&quot;:\&quot;&quot; + vars.get(&quot;DAY_FROM&quot;) + &quot;T00:00:00+02:00\&quot;,\&quot;Event.Time0\&quot;:\&quot;&quot; + vars.get(&quot;DAY_TO&quot;) + &quot;T02:59:00+02:00\&quot;}]}]&quot;;
+		break;
+
+	case &quot;Date,Path,EventType&quot;:		
+		filterQuery = &quot;\&quot;filters\&quot;:[{\&quot;path\&quot;:\&quot;Event.Type.ID\&quot;,\&quot;operator\&quot;:\&quot;In\&quot;,\&quot;values\&quot;:[{\&quot;Event.Type.ID\&quot;:\&quot;&quot; + props.getProperty(&quot;EVENT_TYPE_ID1&quot;) + &quot;\&quot;}]},{\&quot;path\&quot;:\&quot;Event.EventOnResource.Folder.DirID\&quot;,\&quot;operator\&quot;:\&quot;In\&quot;,\&quot;values\&quot;:[{\&quot;Event.EventOnResource.Folder.Filer.ID\&quot;:\&quot;&quot; + props.getProperty(&quot;FILER_ID1_UPDATED&quot;) + &quot;\&quot;,\&quot;Event.EventOnResource.Folder.DirID\&quot;:\&quot;&quot; + props.getProperty(&quot;FOLDER_DIR_ID1_UPDATED&quot;) + &quot;\&quot;}]},{\&quot;path\&quot;:\&quot;Event.Time\&quot;,\&quot;operator\&quot;:\&quot;Between\&quot;,\&quot;values\&quot;:[{\&quot;Event.Time\&quot;:\&quot;&quot; + vars.get(&quot;DAY_FROM&quot;) + &quot;T00:00:00+02:00\&quot;,\&quot;Event.Time0\&quot;:\&quot;&quot; + vars.get(&quot;DAY_TO&quot;) + &quot;T02:59:00+02:00\&quot;}]}]&quot;;
+		break;
+
+	case &quot;Date,Sid,EventType&quot;:		
+		filterQuery = &quot;\&quot;filters\&quot;:[{\&quot;path\&quot;:\&quot;Event.Type.ID\&quot;,\&quot;operator\&quot;:\&quot;In\&quot;,\&quot;values\&quot;:[{\&quot;Event.Type.ID\&quot;:\&quot;&quot; + props.getProperty(&quot;EVENT_TYPE_ID1&quot;) + &quot;\&quot;}]},{\&quot;path\&quot;:\&quot;Event.EventBy.SidID\&quot;,\&quot;operator\&quot;:\&quot;In\&quot;,\&quot;values\&quot;:[{\&quot;Event.EventBy.SidID\&quot;:\&quot;&quot; + props.getProperty(&quot;SID1&quot;) + &quot;\&quot;}]},{\&quot;path\&quot;:\&quot;Event.Time\&quot;,\&quot;operator\&quot;:\&quot;Between\&quot;,\&quot;values\&quot;:[{\&quot;Event.Time\&quot;:\&quot;&quot; + vars.get(&quot;DAY_FROM&quot;) + &quot;T00:00:00+02:00\&quot;,\&quot;Event.Time0\&quot;:\&quot;&quot; + vars.get(&quot;DAY_TO&quot;) + &quot;T02:59:00+02:00\&quot;}]}]&quot;;
+		break;
+
+	default:
+	 	filterQuery = &quot;\&quot;filters\&quot;:[{\&quot;path\&quot;:\&quot;Event.Time\&quot;,\&quot;operator\&quot;:\&quot;Between\&quot;,\&quot;values\&quot;:[{\&quot;Event.Time\&quot;:\&quot;&quot; + vars.get(&quot;DAY_FROM&quot;) + &quot;T00:00:00+02:00\&quot;,\&quot;Event.Time0\&quot;:\&quot;&quot; + vars.get(&quot;DAY_TO&quot;) + &quot;T02:59:00+02:00\&quot;}]}]&quot;;
+	}
+vars.put(&apos;filterQuery&apos;,filterQuery);
+log.info(&apos;===============================filterQuery value is &apos; + filterQuery);
+
+rollupType = &quot;\&quot;&quot; + vars.get(&quot;ROLLUP_TYPE&quot;) + &quot;\&quot;&quot;;
+vars.put(&apos;rollupType&apos;,rollupType);
+log.info(&apos;===============================rollupType value is &apos; + rollupType);</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="CheckValidFilterQuery (JSR223 Sampler)" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">import java.lang.*;
+
+String filterQuery = vars.get(&quot;filterQuery&quot;);
+String nullExist = filterQuery.contains(&quot;null&quot;);
+log.info(&apos;======THREAD_ID:&apos; + vars.get(&quot;THREAD_ID&quot;) + &apos; - nullExist value is &apos; + nullExist);
+vars.put(&quot;nullExist&quot;, nullExist);
+
+if (nullExist == &quot;true&quot;){
+	log.warn(&apos;======THREAD_ID:&apos; + vars.get(&quot;THREAD_ID&quot;) + &apos; - null value exist in filtersContent param, exit to next filter query&apos;);
+}</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="ExecuteSearch (If Controller)" enabled="true">
+          <stringProp name="IfController.condition">${__javaScript(&quot;${nullExist}&quot; == &quot;false&quot;,)}</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+          <boolProp name="IfController.useExpression">true</boolProp>
+        </IfController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ExecuteSearchAsync (HTTP Request)" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;facets&quot;:[{&quot;name&quot;:&quot;Event.EventOnResource.Folder.Filer.Platform.Name&quot;,&quot;path&quot;:&quot;Event.EventOnResource.Folder.Filer.Platform.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Type.Name&quot;,&quot;path&quot;:&quot;Event.Type.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Alert.Rule.Severity.Name&quot;,&quot;path&quot;:&quot;Event.Alert.Rule.Severity.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventBy.Name&quot;,&quot;path&quot;:&quot;Event.EventBy.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventOnUser.Name&quot;,&quot;path&quot;:&quot;Event.EventOnUser.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventOnGroup.Name&quot;,&quot;path&quot;:&quot;Event.EventOnGroup.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventOnResource.Folder.Path&quot;,&quot;path&quot;:&quot;Event.EventOnResource.Folder.Path&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Alert.Rule.Name&quot;,&quot;path&quot;:&quot;Event.Alert.Rule.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Operation.Name&quot;,&quot;path&quot;:&quot;Event.Operation.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventOnResource.Folder.Filer.Name&quot;,&quot;path&quot;:&quot;Event.EventOnResource.Folder.Filer.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.CollectionDeviceHostname&quot;,&quot;path&quot;:&quot;Event.CollectionDeviceHostname&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Status.Name&quot;,&quot;path&quot;:&quot;Event.Status.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventBy.Department&quot;,&quot;path&quot;:&quot;Event.EventBy.Department&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventOnResource.Folder.IsSensitive&quot;,&quot;path&quot;:&quot;Event.EventOnResource.Folder.IsSensitive&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventOnResource.Folder.Flag.Name&quot;,&quot;path&quot;:&quot;Event.EventOnResource.Folder.Flag.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.IP&quot;,&quot;path&quot;:&quot;Event.IP&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.IsAlerted&quot;,&quot;path&quot;:&quot;Event.IsAlerted&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventOnGroup.Flag.Name&quot;,&quot;path&quot;:&quot;Event.EventOnGroup.Flag.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.DeviceName&quot;,&quot;path&quot;:&quot;Event.DeviceName&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventOnUser.Flag.Name&quot;,&quot;path&quot;:&quot;Event.EventOnUser.Flag.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventBy.Flag.Name&quot;,&quot;path&quot;:&quot;Event.EventBy.Flag.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventOnResource.ObjectType.Name&quot;,&quot;path&quot;:&quot;Event.EventOnResource.ObjectType.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.File.Name&quot;,&quot;path&quot;:&quot;Event.File.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.File.Type&quot;,&quot;path&quot;:&quot;Event.File.Type&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventBy.AccountType.Name&quot;,&quot;path&quot;:&quot;Event.EventBy.AccountType.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventBy.IsStale&quot;,&quot;path&quot;:&quot;Event.EventBy.IsStale&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventBy.IsDisabled&quot;,&quot;path&quot;:&quot;Event.EventBy.IsDisabled&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventBy.Manager.Name&quot;,&quot;path&quot;:&quot;Event.EventBy.Manager.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventBy.Domain.Name&quot;,&quot;path&quot;:&quot;Event.EventBy.Domain.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Location.SubdivisionName&quot;,&quot;path&quot;:&quot;Event.Location.SubdivisionName&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Location.CountryName&quot;,&quot;path&quot;:&quot;Event.Location.CountryName&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Location.BlacklistedLocation&quot;,&quot;path&quot;:&quot;Event.Location.BlacklistedLocation&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Destination.URL.Reputation.Name&quot;,&quot;path&quot;:&quot;Event.Destination.URL.Reputation.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.OrgOpCode&quot;,&quot;path&quot;:&quot;Event.OrgOpCode&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Device.ExternalIP&quot;,&quot;path&quot;:&quot;Event.Device.ExternalIP&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Destination.URL.Categorization.Name&quot;,&quot;path&quot;:&quot;Event.Destination.URL.Categorization.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Device.ExternalIPThreatTypesName&quot;,&quot;path&quot;:&quot;Event.Device.ExternalIPThreatTypesName&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.ConnectionTypeName&quot;,&quot;path&quot;:&quot;Event.ConnectionTypeName&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Device.IsMaliciousExternalIP&quot;,&quot;path&quot;:&quot;Event.Device.IsMaliciousExternalIP&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Device.ExternalIPReputationName&quot;,&quot;path&quot;:&quot;Event.Device.ExternalIPReputationName&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.AuthenticationProtocolName&quot;,&quot;path&quot;:&quot;Event.AuthenticationProtocolName&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Destination.IP&quot;,&quot;path&quot;:&quot;Event.Destination.IP&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Destination.DeviceName&quot;,&quot;path&quot;:&quot;Event.Destination.DeviceName&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Destination.Domain&quot;,&quot;path&quot;:&quot;Event.Destination.Domain&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.Device.OperatingSystemName&quot;,&quot;path&quot;:&quot;Event.Device.OperatingSystemName&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventBy.IsMailboxOwner&quot;,&quot;path&quot;:&quot;Event.EventBy.IsMailboxOwner&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event.EventBy.IsLockout&quot;,&quot;path&quot;:&quot;Event.EventBy.IsLockout&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Events_on_sensitive_data&quot;,&quot;path&quot;:&quot;Event.EventOnResource.Folder.IsSensitive&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.EventOnResource.Folder.IsSensitive&quot;,&quot;operator&quot;:4,&quot;values&quot;:[{&quot;Value&quot;:1}]}]},{&quot;name&quot;:&quot;Alerted_events&quot;,&quot;path&quot;:&quot;Event.IsAlerted&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.IsAlerted&quot;,&quot;operator&quot;:4,&quot;values&quot;:[{&quot;Value&quot;:1}]}]},{&quot;name&quot;:&quot;Folder_deletion&quot;,&quot;path&quot;:&quot;Event.Type.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.Type.ID&quot;,&quot;operator&quot;:1,&quot;values&quot;:[{&quot;Value&quot;:32}]}]},{&quot;name&quot;:&quot;User_locked_out&quot;,&quot;path&quot;:&quot;Event.Type.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.Type.ID&quot;,&quot;operator&quot;:1,&quot;values&quot;:[{&quot;Value&quot;:5011}]}]},{&quot;name&quot;:&quot;DS_object_set_security&quot;,&quot;path&quot;:&quot;Event.Type.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.Type.ID&quot;,&quot;operator&quot;:1,&quot;values&quot;:[{&quot;Value&quot;:5006}]}]},{&quot;name&quot;:&quot;GPO_link_modified&quot;,&quot;path&quot;:&quot;Event.Type.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.Type.ID&quot;,&quot;operator&quot;:1,&quot;values&quot;:[{&quot;Value&quot;:5022}]}]},{&quot;name&quot;:&quot;GPO_setting_modified&quot;,&quot;path&quot;:&quot;Event.Type.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.Type.ID&quot;,&quot;operator&quot;:1,&quot;values&quot;:[{&quot;Value&quot;:5023}]}]},{&quot;name&quot;:&quot;Folder_permissions_changes&quot;,&quot;path&quot;:&quot;Event.Type.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.Type.ID&quot;,&quot;operator&quot;:1,&quot;values&quot;:[{&quot;Value&quot;:512}]}]},{&quot;name&quot;:&quot;Failed_events&quot;,&quot;path&quot;:&quot;Event.Status.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.Status.ID&quot;,&quot;operator&quot;:1,&quot;values&quot;:[{&quot;Value&quot;:&quot;0&quot;}]}]},{&quot;name&quot;:&quot;High_severity_alerts&quot;,&quot;path&quot;:&quot;Event.Alert.Rule.Severity.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.Alert.Rule.Severity.ID&quot;,&quot;operator&quot;:1,&quot;values&quot;:[{&quot;Value&quot;:&quot;0&quot;}]}]},{&quot;name&quot;:&quot;Event_by_service_account&quot;,&quot;path&quot;:&quot;Event.EventBy.AccountType.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.EventBy.AccountType.ID&quot;,&quot;operator&quot;:11,&quot;values&quot;:[{&quot;Value&quot;:16}]}]},{&quot;name&quot;:&quot;Event_by_admin_account&quot;,&quot;path&quot;:&quot;Event.EventBy.AccountType.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.EventBy.AccountType.ID&quot;,&quot;operator&quot;:11,&quot;values&quot;:[{&quot;Value&quot;:64}]}]},{&quot;name&quot;:&quot;Event_by_executive_account&quot;,&quot;path&quot;:&quot;Event.EventBy.AccountType.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.EventBy.AccountType.ID&quot;,&quot;operator&quot;:11,&quot;values&quot;:[{&quot;Value&quot;:2048}]}]},{&quot;name&quot;:&quot;Event_by_stale_account&quot;,&quot;path&quot;:&quot;Event.EventBy.IsStale&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.EventBy.IsStale&quot;,&quot;operator&quot;:4,&quot;values&quot;:[{&quot;Value&quot;:&quot;Yes&quot;}]}]},{&quot;name&quot;:&quot;Event_by_disabled_account&quot;,&quot;path&quot;:&quot;Event.EventBy.IsDisabled&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.EventBy.IsDisabled&quot;,&quot;operator&quot;:4,&quot;values&quot;:[{&quot;Value&quot;:&quot;Yes&quot;}]}]},{&quot;name&quot;:&quot;Event_in_blacklisted_location&quot;,&quot;path&quot;:&quot;Event.Location.BlacklistedLocation&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.Location.BlacklistedLocation&quot;,&quot;operator&quot;:4,&quot;values&quot;:[{&quot;Value&quot;:&quot;Yes&quot;}]}]},{&quot;name&quot;:&quot;Event_by_lockout_account&quot;,&quot;path&quot;:&quot;Event.EventBy.IsLockout&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.EventBy.IsLockout&quot;,&quot;operator&quot;:4,&quot;values&quot;:[{&quot;Value&quot;:&quot;Yes&quot;}]}]},{&quot;name&quot;:&quot;Event_by_accounts_with_expired_passwords&quot;,&quot;path&quot;:&quot;Event.EventBy.PasswordStatus.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.EventBy.PasswordStatus.ID&quot;,&quot;operator&quot;:1,&quot;values&quot;:[{&quot;Value&quot;:&quot;2&quot;}]}]},{&quot;name&quot;:&quot;Event_by_mailbox_owner&quot;,&quot;path&quot;:&quot;Event.EventBy.IsMailboxOwner&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.EventBy.IsMailboxOwner&quot;,&quot;operator&quot;:4,&quot;values&quot;:[{&quot;Value&quot;:&quot;Yes&quot;}]}]},{&quot;name&quot;:&quot;Impersonation_events&quot;,&quot;path&quot;:&quot;Event.Type.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.Type.ID&quot;,&quot;operator&quot;:1,&quot;values&quot;:[{&quot;Value&quot;:8002}]}]},{&quot;name&quot;:&quot;Sharing_events&quot;,&quot;path&quot;:&quot;Event.Type.Name&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;filters&quot;:[{&quot;path&quot;:&quot;Event.Type.ID&quot;,&quot;operator&quot;:1,&quot;values&quot;:[{&quot;Value&quot;:7500},{&quot;Value&quot;:7502},{&quot;Value&quot;:7503},{&quot;Value&quot;:7505}]}]},{&quot;name&quot;:&quot;Row_Number_Identifier&quot;,&quot;path&quot;:&quot;&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:&quot;Count&quot;}},{&quot;name&quot;:&quot;Raw_Row_Number_Identifier&quot;,&quot;path&quot;:&quot;&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}}},{&quot;name&quot;:&quot;Event_Chart_Facet_Identifier&quot;,&quot;path&quot;:&quot;Event.Time&quot;,&quot;measure&quot;:{&quot;path&quot;:&quot;Event.EventsCount&quot;,&quot;rollup&quot;:${rollupType}},&quot;dateRangeBehavior&quot;:{&quot;interval&quot;:2,&quot;rangeUnit&quot;:&quot;Day&quot;,&quot;isDense&quot;:false,&quot;minDate&quot;:${minDate},&quot;maxDate&quot;:${maxDate}},&quot;filters&quot;:[]}],&quot;rows&quot;:{&quot;columns&quot;:[&quot;Event.EventOnResource.Folder.Filer.Platform.Name&quot;,&quot;Event.Time&quot;,&quot;Event.Operation.Name&quot;,&quot;Event.Type.Name&quot;,&quot;Event.EventBy.Name&quot;,&quot;Event.EventOnObjectName&quot;,&quot;Event.EventOnResource.Folder.Path&quot;,&quot;Event.IsAlerted&quot;,&quot;Event.EventOnResource.Folder.IsSensitive&quot;,&quot;Event.Status.Name&quot;,&quot;Event.EventOnResource.Folder.Filer.Name&quot;,&quot;Event.TimeUTC&quot;,&quot;Event.ID&quot;,&quot;Event.EventOnResource.Folder.Filer.Platform.ID&quot;,&quot;Event.Operation.ID&quot;,&quot;Event.Type.ID&quot;,&quot;Event.EventBy.SidID&quot;,&quot;Event.EventOnResource.Folder.Filer.ID&quot;,&quot;Event.EventOnResource.Folder.DirID&quot;,&quot;Event.Status.ID&quot;],&quot;grouping&quot;:&quot;&quot;,&quot;ordering&quot;:[],&quot;filter&quot;:[]},&quot;query&quot;:{&quot;entityName&quot;:&quot;Event&quot;,&quot;filter&quot;:{&quot;filterOperator&quot;:0,${filterQuery}}},&quot;requestParams&quot;:{&quot;searchSource&quot;:1,&quot;searchSourceName&quot;:&quot;Event&quot;}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${requestType}/api/search/v2/search</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="StartSearchTime (JSR223 PostProcessor)" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">Date start = new Date();
+vars.put(&quot;start&quot;, start.toString());
+log.info(&quot;==========start time is &quot; + vars.get(&quot;start&quot;));
+
+//Date startAuthToken = new Date();
+//vars.put(&quot;startAuthToken&quot;, startAuthToken.toString());
+</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="GetGuidProgress (JSR223 PostProcessor)" enabled="true">
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">def text = prev.getResponseDataAsString()
+//log.info(&apos;Search response text is &apos; + text)
+//[{&quot;location&quot;:&quot;v2/rows/1e5d563ca3554025b176f23be4af2ece/&quot;,&quot;dataType&quot;:&quot;rows&quot;},{&quot;location&quot;:&quot;v2/facets/1e5d563ca3554025b176f23be4af2ece/&quot;,&quot;dataType&quot;:&quot;facets&quot;},{&quot;location&quot;:&quot;v2/search/1e5d563ca3554025b176f23be4af2ece/terminate/&quot;,&quot;dataType&quot;:&quot;terminate&quot;}]
+
+def match = text =~ /rows\/([0-9a-z]*)/
+if (match.find()) {
+    def value = match.group(1)
+    //log.info(&apos;------------------&apos;)
+    //log.info(&apos;guidProgress value = &apos; + value) 
+    vars.put(&apos;guidProgress&apos;, value) 
+}</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Origin</stringProp>
+                  <stringProp name="Header.value">https://${BASE_URL_1}</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">${token_type_1} ${access_token_1}</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json;charset=UTF-8</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">https://${BASE_URL_1}/${requestType}/</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <WhileController guiclass="WhileControllerGui" testclass="WhileController" testname="check_searchDoneAndRetryCounter (While controller)" enabled="true">
+            <stringProp name="WhileController.condition">${__javaScript(&quot;${progress}&quot; != &quot;100&quot; &amp;&amp; &quot;${retryRequestCounter}&quot; &lt; &quot;3&quot;,)}</stringProp>
+          </WhileController>
+          <hashTree>
+            <IfController guiclass="IfControllerPanel" testclass="IfController" testname="GetRowSearchProgress(If Controller)" enabled="true">
+              <stringProp name="IfController.condition">${__javaScript(&quot;${rowTotalRT_isFound}&quot; == &quot;false&quot;,)}</stringProp>
+              <boolProp name="IfController.evaluateAll">false</boolProp>
+              <boolProp name="IfController.useExpression">true</boolProp>
+            </IfController>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GetRowSearchProgress -  (HTTP Request)" enabled="true">
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="from" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">0</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                      <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                      <stringProp name="Argument.name">from</stringProp>
+                    </elementProp>
+                    <elementProp name="to" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">999</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                      <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                      <stringProp name="Argument.name">to</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">${requestType}/api/search/v2/rows/${guidProgress}</stringProp>
+                <stringProp name="HTTPSampler.method">GET</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Check row progress status (JSR223 Sampler)" enabled="true">
+                  <stringProp name="cacheKey">true</stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="script">def responseCode = prev.getResponseCode().toString();
+def firstRow206Response = vars.get(&quot;firstRow206Response&quot;).toString();
+def transactionRT = &quot;&quot;;
+
+Date stop = new Date();
+Date start = Date.parse(&quot;E MMM dd H:m:s z yyyy&quot;, vars.get(&quot;start&quot;));
+def diffInMS;
+def diffInMS_str;
+
+log.info(&apos;======THREAD_ID:&apos; + vars.get(&quot;THREAD_ID&quot;) + &apos; - Row processing - Response code value = &apos; + responseCode);
+
+//Results return --&gt; Response code 206 means &quot;Partial Content&quot; and first time it happen equal Row Initial Response Time
+//Zero Results --&gt; Response code 206 is not return and rowInitialRT will get &quot;Transaction_Search&quot; time
+if ( responseCode == &quot;206&quot;){
+	if (firstRow206Response == &quot;false&quot; ) {
+		//transactionRT = prev.getParent().getTime().toString();
+		//vars.put(&quot;rowInitialRT&quot;, transactionRT);
+		diffInMS = stop.getTime() - start.getTime();
+		diffInMS_str = diffInMS.toString();
+		vars.put(&quot;rowInitialRT&quot;, diffInMS_str);
+		
+		vars.put(&quot;firstRow206Response&quot;, &quot;true&quot;);
+	}
+}
+
+
+//Response code 200 equal Row Total Response Time
+if ( responseCode == &quot;200&quot;){
+	//transactionRT = prev.getParent().getTime().toString();
+	//vars.put(&quot;rowTotalRT&quot;, transactionRT);
+	def text = prev.getBytesAsLong().toString();
+	diffInMS = stop.getTime() - start.getTime();
+	diffInMS_str = diffInMS.toString();
+	vars.put(&quot;rowTotalRT&quot;, diffInMS_str);
+	vars.put(&quot;rowTotalRT_isFound&quot;, &quot;true&quot;); //Condition that will be checked in &quot;If Controller&quot;, &quot;rows progress&quot; request will be send only in false
+	vars.put(&quot;responseRowsInBytes&quot;, text);
+	log.info(&apos;======THREAD_ID:&apos; + vars.get(&quot;THREAD_ID&quot;) + &apos; - Row processing - Total responseRowsInBytes is &apos; + text);
+
+	//Handle a case where 206 response(=partial content) is not reurned for rows progress request meaning all rows content returned by first request
+	int rowInitialRT = Integer.parseInt(vars.get(&quot;rowInitialRT&quot;));
+	if (rowInitialRT == 0){
+		vars.put(&quot;rowInitialRT&quot;, vars.get(&quot;rowTotalRT&quot;));	
+	}
+}
+
+</stringProp>
+                  <stringProp name="scriptLanguage">groovy</stringProp>
+                </JSR223PostProcessor>
+                <hashTree/>
+                <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+                  <collectionProp name="HeaderManager.headers">
+                    <elementProp name="" elementType="Header">
+                      <stringProp name="Header.name">Accept</stringProp>
+                      <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                    </elementProp>
+                    <elementProp name="" elementType="Header">
+                      <stringProp name="Header.name">Authorization</stringProp>
+                      <stringProp name="Header.value">${token_type_1} ${access_token_1}</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </HeaderManager>
+                <hashTree/>
+              </hashTree>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GetFacetSearchProgress_loop - (HTTP Request)" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">${requestType}/api/search/v2/facets/${guidProgress}</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="GetFacetSearchProgress_loop  (JSR223 Sampler)" enabled="true">
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="script">import java.util.concurrent.TimeUnit;
+
+def responseCode = prev.getResponseCode().toString();
+def text = prev.getResponseDataAsString();
+def firstFacet206Response = vars.get(&quot;firstFacet206Response&quot;).toString();
+def value = &quot;&quot;;
+
+
+log.info(&apos;======THREAD_ID:&apos; + vars.get(&quot;THREAD_ID&quot;) + &apos; - Facet processing - Response code value = &apos; + responseCode);
+
+def match = text =~ /progress&quot;:([0-9]*)/
+if (match.find()) {
+	value = match.group(1)
+	//THREAD_ID value is &quot; + vars.get(&quot;THREAD_ID&quot;)
+	log.info(&apos;=======THREAD_ID:&apos; + vars.get(&quot;THREAD_ID&quot;) + &apos; - Facet processing - Progress value = &apos; + value);
+     //Check progress value in &quot;Validate Search completed (While controller)&quot;
+	vars.put(&quot;progress&quot;, value);
+}
+
+if ( responseCode == &quot;401&quot;){
+	vars.put(&quot;refreshAuthToken&quot;, &quot;True&quot;);
+}
+
+//Response code 206 means &quot;Partial Content&quot; and first time it happen equal Facet Initial Response Time
+if ( responseCode == &quot;206&quot;){
+	if (firstFacet206Response == &quot;false&quot; ) {
+		//transactionRT = prev.getParent().getTime().toString();
+		Date stop = new Date();
+		Date start = Date.parse(&quot;E MMM dd H:m:s z yyyy&quot;, vars.get(&quot;start&quot;));
+		def diffInMS = stop.getTime() - start.getTime();
+		def diffInMS_str = diffInMS.toString();
+		//vars.put(&quot;facetInitialRT&quot;, transactionRT);
+		vars.put(&quot;facetInitialRT&quot;, diffInMS_str);
+		
+		//firstFacet206Response will be set to false in next Thread Group loop meaning in next new search
+		vars.put(&quot;firstFacet206Response&quot;, &quot;true&quot;);
+	}
+}
+
+
+//Handle case when filtering with &quot;Date,Path,EventType&quot;  and return zero results 
+//Reason for zero results: path field is high cardinality field (lots of buckets) with low number of result in each bucket
+//Solution: Get top path value for filters &quot;Date,EventType&quot;
+String filtersContent = vars.get(&quot;FILTERS&quot;);
+if ( responseCode == &quot;200&quot; &amp;&amp; filtersContent == &quot;Date,EventType&quot;){
+	text = prev.getResponseDataAsString();
+	match = text =~ /Event.EventOnResource.Folder.Filer.ID&quot;,&quot;Event.EventOnResource.Folder.DirID&quot;],[&quot;a-zA-Z0-9\/_\-:\[{.\\ ]*,&quot;keys&quot;:\[&quot;([0-9]*)&quot;,&quot;([0-9]*)&quot;],/
+	if (match.find()) {
+		value = match.group(1)
+   	 	log.info(&apos;======THREAD_ID:&apos; + vars.get(&quot;THREAD_ID&quot;) + &apos; - Facet processing - TOP FILER_ID1_UPDATED value for Date,EventType filtering is &apos; + value);
+   		props.setProperty(&quot;FILER_ID1_UPDATED&quot;, value);
+   		value = match.group(2)
+   	 	log.info(&apos;======THREAD_ID:&apos; + vars.get(&quot;THREAD_ID&quot;) + &apos; - Facet processing - TOP FOLDER_DIR_ID1_UPDATED value for Date,EventType filtering is &apos; + value);
+   		props.setProperty(&quot;FOLDER_DIR_ID1_UPDATED&quot;, value);
+	}
+}
+
+
+if ( responseCode == &quot;500&quot; || responseCode == &quot;&quot; || responseCode == &quot;404&quot;){
+	int retryRequestCounter = Integer.parseInt(vars.get(&quot;retryRequestCounter&quot;));
+	retryRequestCounter++;
+	vars.put(&quot;retryRequestCounter&quot;, Integer.toString(retryRequestCounter));
+	TimeUnit.SECONDS.sleep(3);
+	//log.info(&apos;==========retryRequestCounter value after increment &apos; + vars.get(&quot;retryRequestCounter&quot;));
+}else{
+	retryRequestCounter = 0;
+	vars.put(&quot;retryRequestCounter&quot;, Integer.toString(retryRequestCounter));		
+	}</stringProp>
+                <stringProp name="scriptLanguage">groovy</stringProp>
+              </JSR223PostProcessor>
+              <hashTree/>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                  </elementProp>
+                  <elementProp name="Authorization" elementType="Header">
+                    <stringProp name="Header.name">Authorization</stringProp>
+                    <stringProp name="Header.value">${token_type_1} ${access_token_1}</stringProp>
+                  </elementProp>
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://${BASE_URL_1}/${requestType}/</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <IfController guiclass="IfControllerPanel" testclass="IfController" testname="CheckOPAuth (If Controller)" enabled="true">
+              <stringProp name="IfController.condition">${__javaScript(&quot;${cloudAuthEnable}&quot; == &quot;false&quot;,)}</stringProp>
+              <boolProp name="IfController.evaluateAll">false</boolProp>
+              <boolProp name="IfController.useExpression">true</boolProp>
+            </IfController>
+            <hashTree>
+              <IfController guiclass="IfControllerPanel" testclass="IfController" testname="RefreshOPAuth (If Controller)" enabled="true">
+                <stringProp name="IfController.condition">${__javaScript(&quot;${refreshAuthToken}&quot; == &quot;True&quot;,)}</stringProp>
+                <boolProp name="IfController.evaluateAll">false</boolProp>
+                <boolProp name="IfController.useExpression">true</boolProp>
+              </IfController>
+              <hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="AuthWin (HTTP Request)" enabled="true">
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="grant_type" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                        <stringProp name="Argument.name">grant_type</stringProp>
+                        <stringProp name="Argument.value">client_credentials</stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">${requestType}/api/authentication/win</stringProp>
+                  <stringProp name="HTTPSampler.method">POST</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+                    <collectionProp name="HeaderManager.headers">
+                      <elementProp name="Accept" elementType="Header">
+                        <stringProp name="Header.name">Accept</stringProp>
+                        <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                      </elementProp>
+                      <elementProp name="Origin" elementType="Header">
+                        <stringProp name="Header.name">Origin</stringProp>
+                        <stringProp name="Header.value">https://${BASE_URL_1}</stringProp>
+                      </elementProp>
+                      <elementProp name="Content-Type" elementType="Header">
+                        <stringProp name="Header.name">Content-Type</stringProp>
+                        <stringProp name="Header.value">application/json;charset=UTF-8</stringProp>
+                      </elementProp>
+                      <elementProp name="Referer" elementType="Header">
+                        <stringProp name="Header.name">Referer</stringProp>
+                        <stringProp name="Header.value">https://${BASE_URL_1}/${requestType}/</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </HeaderManager>
+                  <hashTree/>
+                  <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="TokenTypeExtraction (JSON Extractor)" enabled="true">
+                    <stringProp name="JSONPostProcessor.referenceNames">token_type</stringProp>
+                    <stringProp name="JSONPostProcessor.jsonPathExprs">$..token_type</stringProp>
+                    <stringProp name="JSONPostProcessor.match_numbers">-1</stringProp>
+                    <stringProp name="JSONPostProcessor.defaultValues">No_Default</stringProp>
+                    <boolProp name="JSONPostProcessor.compute_concat">true</boolProp>
+                  </JSONPostProcessor>
+                  <hashTree/>
+                  <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="AccesstokenExtraction (JSON Extractor)" enabled="true">
+                    <stringProp name="JSONPostProcessor.referenceNames">access_token</stringProp>
+                    <stringProp name="JSONPostProcessor.jsonPathExprs">$..access_token</stringProp>
+                    <stringProp name="JSONPostProcessor.match_numbers">-1</stringProp>
+                    <stringProp name="JSONPostProcessor.defaultValues">No_Default</stringProp>
+                    <boolProp name="JSONPostProcessor.compute_concat">true</boolProp>
+                  </JSONPostProcessor>
+                  <hashTree/>
+                  <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="InitAuthVars (JSR223 PostProcessor)" enabled="true">
+                    <stringProp name="scriptLanguage">groovy</stringProp>
+                    <stringProp name="parameters"></stringProp>
+                    <stringProp name="filename"></stringProp>
+                    <stringProp name="cacheKey">true</stringProp>
+                    <stringProp name="script">vars.put(&quot;refreshAuthToken&quot;, &quot;False&quot;);
+
+//Date startAuthToken = new Date();
+//vars.put(&quot;startAuthToken&quot;, startAuthToken.toString());</stringProp>
+                  </JSR223PostProcessor>
+                  <hashTree/>
+                </hashTree>
+              </hashTree>
+            </hashTree>
+            <IfController guiclass="IfControllerPanel" testclass="IfController" testname="CheckCloudAuth (If Controller)" enabled="true">
+              <stringProp name="IfController.condition">${__javaScript(&quot;${cloudAuthEnable}&quot; == &quot;true&quot;,)}</stringProp>
+              <boolProp name="IfController.evaluateAll">false</boolProp>
+              <boolProp name="IfController.useExpression">true</boolProp>
+            </IfController>
+            <hashTree>
+              <IfController guiclass="IfControllerPanel" testclass="IfController" testname="RefreshCloudAuth (If Controller)" enabled="true">
+                <stringProp name="IfController.condition">${__javaScript(&quot;${refreshAuthToken}&quot; == &quot;True&quot;,)}</stringProp>
+                <boolProp name="IfController.evaluateAll">false</boolProp>
+                <boolProp name="IfController.useExpression">true</boolProp>
+              </IfController>
+              <hashTree>
+                <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="SeleniumLogin_CloudOKTA (JSR223 Sampler)" enabled="true">
+                  <stringProp name="scriptLanguage">groovy</stringProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="cacheKey">true</stringProp>
+                  <stringProp name="script">import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.logging.LoggingPreferences;
+import org.openqa.selenium.logging.LogType;
+import java.util.logging.Level;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+def value = &quot;&quot;;
+def match;
+
+
+	driver = props.get(&quot;driver&quot;);
+	driver.get(&quot;https://sfdevoktassl.varonis.io/&quot; + vars.get(&quot;TENANT_ID&quot;));
+
+	/*WebElement elementUsername = driver.findElement(By.id(&quot;okta-signin-username&quot;));
+	elementUsername.click();
+	elementUsername.sendKeys(&quot;varadm@sig0f020.com&quot;);
+	WebElement elementPW = driver.findElement(By.id(&quot;okta-signin-password&quot;));
+	elementPW.click();
+	elementPW.sendKeys(&quot;NiouE98AxfWlMRDCZyUIj1ckTpKqGn&quot;);
+	WebElement elementSubmitBtn = driver.findElement(By.id(&quot;okta-signin-submit&quot;));
+	elementSubmitBtn.click();
+	WebElement elementAnalytics = driver.findElement(By.cssSelector(&quot;span[href=&apos;#/app/analytics&apos;]&quot;));
+	elementAnalytics.click();*/
+
+
+	List&lt;LogEntry&gt; entries = driver.manage().logs().get(LogType.PERFORMANCE).getAll();
+	log.info(entries.size() + &quot; &quot; + LogType.PERFORMANCE + &quot; log entries found&quot;);
+	for (LogEntry entry : entries) {
+
+		match = entry.getMessage() =~ /Authorization&quot;:&quot;bearer ([a-zA-Z0-9._-]*)/
+		if (match.find()) {
+			log.info(entry.getTimestamp() + &quot; &quot; + entry.getLevel() + &quot; &quot; + entry.getMessage());
+			value = match.group(1)
+			props.put(&quot;access_token_1&quot;, value);
+			vars.put(&quot;access_token_1&quot;, value);
+			log.info(&apos;==========access_token_1 value = &apos; + value);
+		     //break;
+		} 
+	}
+
+	value = &quot;bearer&quot;;
+	props.put(&quot;token_type_1&quot;, value);
+	vars.put(&quot;token_type_1&quot;, value);
+	props.put(&quot;requestType&quot;, vars.get(&quot;TENANT_ID&quot;));
+	</stringProp>
+                </JSR223Sampler>
+                <hashTree>
+                  <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="InitAuthVars (JSR223 PostProcessor)" enabled="true">
+                    <stringProp name="scriptLanguage">groovy</stringProp>
+                    <stringProp name="parameters"></stringProp>
+                    <stringProp name="filename"></stringProp>
+                    <stringProp name="cacheKey">true</stringProp>
+                    <stringProp name="script">vars.put(&quot;refreshAuthToken&quot;, &quot;False&quot;);
+
+//Date startAuthToken = new Date();
+//vars.put(&quot;startAuthToken&quot;, startAuthToken.toString());</stringProp>
+                  </JSR223PostProcessor>
+                  <hashTree/>
+                </hashTree>
+              </hashTree>
+            </hashTree>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+              <stringProp name="ConstantTimer.delay">500</stringProp>
+            </ConstantTimer>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="InfluxDB (Transaction Controller)" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">false</boolProp>
+        </TransactionController>
+        <hashTree>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="ValidSearchRequest (If Controller)" enabled="true">
+            <stringProp name="IfController.condition">${__javaScript(&quot;${nullExist}&quot; == &quot;false&quot;,)}</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+            <boolProp name="IfController.useExpression">true</boolProp>
+          </IfController>
+          <hashTree>
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="SetInfluxDB_Params (JSR223 Sampler)" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">def responseCode = prev.getResponseCode().toString();//prev.getParent().getResponseCode().toString();
+//def transactionRT = prev.getTime().toString();//prev.getParent().getTime().toString();
+Long number;
+
+// Response code 200 meaning both Facets and Rows requested are completed
+// Response code=200 can mean (1)Search finished with zero result  OR (2)Search finished with result bigger then zero - both cases are handled here
+if (responseCode == &quot;200&quot;){
+	vars.put(&apos;successful&apos;, &quot;True&quot;) 
+	def text = prev.getBytesAsLong().toString();//prev.getParent().getBytesAsLong().toString();
+	def text2 = prev.getResponseDataAsString();
+	def text2New = text2.replace(&quot;[&quot;, &quot;&quot;).replace(&quot;]&quot;, &quot;&quot;); //Removing [ and ] characters since these characters are used in RegEx string
+	def match2 = text2New =~ /&quot;Row_Number_Identifier&quot;,[&quot;a-zA-Z:,{0-9.]*},&quot;cardinality&quot;:([0-9]*)/
+	//log.info(&apos;============text2New value &apos; + text2New);
+	
+	if (match2.find()) { //Result above zero returned
+		def value2 = match2.group(1);
+	     vars.put(&quot;totalEvents&quot;, value2);
+		vars.put(&quot;rowTotalRT&quot;, vars.get(&quot;rowTotalRT&quot;));
+		vars.put(&quot;rowInitialRT&quot;, vars.get(&quot;rowInitialRT&quot;));
+		vars.put(&quot;facetInitialRT&quot;, vars.get(&quot;facetInitialRT&quot;));
+
+		//vars.put(&quot;facetTotalRT&quot;, transactionRT);
+		Date stop = new Date();
+		Date start = Date.parse(&quot;E MMM dd H:m:s z yyyy&quot;, vars.get(&quot;start&quot;));
+		def diffInMS = stop.getTime() - start.getTime();
+		def diffInMS_str = diffInMS.toString();
+		vars.put(&quot;facetTotalRT&quot;, diffInMS_str);
+
+		
+		vars.put(&quot;responseFacetsInBytes&quot;, text);
+		log.info(&apos;==============================Total responseFacetsInBytes is &apos; + text);
+
+	} else { //Zero results returned
+		vars.put(&quot;totalEvents&quot;, &quot;0&quot;);
+		vars.put(&quot;facetInitialRT&quot;, &quot;0&quot;);
+		vars.put(&quot;rowInitialRT&quot;, &quot;0&quot;);
+		vars.put(&quot;facetTotalRT&quot;, &quot;0&quot;);
+		vars.put(&quot;rowTotalRT&quot;, &quot;0&quot;);
+		vars.put(&quot;responseFacetsInBytes&quot;, &quot;0&quot;);
+		}
+		Thread.sleep(5000);
+} else {
+	vars.put(&apos;successful&apos;, &quot;False&quot;) 
+	}
+
+//def transactionName = prev.toString();//prev.getParent().toString();
+//vars.put(&apos;transactionName&apos;, transactionName);
+
+
+
+/*log.info(&apos;===================Total Events = &apos; + vars.get(&quot;totalEvents&quot;)); 
+log.info(&apos;=====================================facetInitialRT = &apos; + vars.get(&quot;facetInitialRT&quot;))
+log.info(&apos;=====================================facetTotalRT = &apos; + vars.get(&quot;facetTotalRT&quot;))
+log.info(&apos;=====================================rowInitialRT = &apos; + vars.get(&quot;rowInitialRT&quot;))
+log.info(&apos;=====================================rowTotalRT = &apos; + vars.get(&quot;rowTotalRT&quot;))*/
+
+
+</stringProp>
+            </JSR223Sampler>
+            <hashTree/>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="InfluxDB_RowsWriter - Response Time (HTTP Request)" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">SearchOperations,dayCount=${DAYS},type=Rows,host=${BASE_URL_1},successful=${successful},application=NewDAEventsSearch,requestKind=${filtersContentNew},searchId=${guidProgress},scenarioType=FullScenario firstResponseTimeMs=${rowInitialRT},completeResponseTimeMs=${rowTotalRT},resultCount=${totalEvents},responseSizeInBytes=${responseRowsInBytes}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${INFLUXDB_IP}</stringProp>
+              <stringProp name="HTTPSampler.port">8086</stringProp>
+              <stringProp name="HTTPSampler.protocol">http</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/write?db=${INFLUXDB_DBNAME}</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree/>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="InfluxDB_FacetWriter - Response Time (HTTP Request)" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">SearchOperations,dayCount=${DAYS},type=Facets,host=${BASE_URL_1},successful=${successful},application=NewDAEventsSearch,requestKind=${filtersContentNew},searchId=${guidProgress},scenarioType=FullScenario firstResponseTimeMs=${facetInitialRT},completeResponseTimeMs=${facetTotalRT},resultCount=${totalEvents},responseSizeInBytes=${responseFacetsInBytes}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${INFLUXDB_IP}</stringProp>
+              <stringProp name="HTTPSampler.port">8086</stringProp>
+              <stringProp name="HTTPSampler.protocol">http</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/write?db=${INFLUXDB_DBNAME}</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree/>
+          </hashTree>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="InvalidSearchRequest (If Controller)" enabled="true">
+            <stringProp name="IfController.condition">${__javaScript(&quot;${nullExist}&quot; == &quot;true&quot;,)}</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+            <boolProp name="IfController.useExpression">true</boolProp>
+          </IfController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="InfluxDBWriter (HTTP Request)" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">SearchOperations,dayCount=${DAYS},type=Facets,host=${BASE_URL_1},successful=False,application=NewDAEventsSearch,requestKind=${filtersContentNew},scenarioType=FullScenario firstResponseTimeMs=-1,completeResponseTimeMs=-1,resultCount=-1,responseSizeInBytes=-1</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${INFLUXDB_IP}</stringProp>
+              <stringProp name="HTTPSampler.port">8086</stringProp>
+              <stringProp name="HTTPSampler.protocol">http</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/write?db=${INFLUXDB_DBNAME}</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree/>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="InfluxDBWriter (HTTP Request)" enabled="false">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">SearchOperations,dayCount=${DAYS},type=Facets,host=${BASE_URL_1},successful=False,application=NewDAEventsSearch,requestKind=${filtersContentNew},scenarioType=FullScenario</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${INFLUXDB_IP}</stringProp>
+              <stringProp name="HTTPSampler.port">8086</stringProp>
+              <stringProp name="HTTPSampler.protocol">http</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/write?db=${INFLUXDB_DBNAME}</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree/>
+          </hashTree>
+          <BackendListener guiclass="BackendListenerGui" testclass="BackendListener" testname="InfluxDB writer - Apache JMeter Dashboard (Backend Listener)" enabled="false">
+            <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="influxdbMetricsSender" elementType="Argument">
+                  <stringProp name="Argument.name">influxdbMetricsSender</stringProp>
+                  <stringProp name="Argument.value">org.apache.jmeter.visualizers.backend.influxdb.HttpMetricsSender</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="influxdbUrl" elementType="Argument">
+                  <stringProp name="Argument.name">influxdbUrl</stringProp>
+                  <stringProp name="Argument.value">http://10.52.12.6:8086/write?db=jmeter</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="application" elementType="Argument">
+                  <stringProp name="Argument.name">application</stringProp>
+                  <stringProp name="Argument.value">NewDAEventsSearch</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="measurement" elementType="Argument">
+                  <stringProp name="Argument.name">measurement</stringProp>
+                  <stringProp name="Argument.value">jmeter</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="summaryOnly" elementType="Argument">
+                  <stringProp name="Argument.name">summaryOnly</stringProp>
+                  <stringProp name="Argument.value">false</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="samplersRegex" elementType="Argument">
+                  <stringProp name="Argument.name">samplersRegex</stringProp>
+                  <stringProp name="Argument.value">*</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="percentiles" elementType="Argument">
+                  <stringProp name="Argument.name">percentiles</stringProp>
+                  <stringProp name="Argument.value">90;95;99</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="testTitle" elementType="Argument">
+                  <stringProp name="Argument.name">testTitle</stringProp>
+                  <stringProp name="Argument.value">Test name</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="eventTags" elementType="Argument">
+                  <stringProp name="Argument.name">eventTags</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="classname">org.apache.jmeter.visualizers.backend.influxdb.InfluxdbBackendListenerClient</stringProp>
+          </BackendListener>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <PostThreadGroup guiclass="PostThreadGroupGui" testclass="PostThreadGroup" testname="tearDown Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </PostThreadGroup>
+      <hashTree>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="StopSelenium (JSR223 Sampler)" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">if (props.get(&quot;driver&quot;) != null){
+	props.get(&quot;driver&quot;).close(); //Close window
+	props.get(&quot;driver&quot;).quit();// Stop chromedriver.exe
+	log.info(&apos;======Quit Selenium driver&apos;);
+}</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller" enabled="false">
+          <stringProp name="IfController.condition">${__javaScript(&quot;${cloudAuthEnable}&quot; == &quot;true&quot;,)}</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+          <boolProp name="IfController.useExpression">true</boolProp>
+        </IfController>
+        <hashTree/>
+      </hashTree>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
