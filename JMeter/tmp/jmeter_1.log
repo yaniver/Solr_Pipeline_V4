@@ -1,8 +1,8 @@
-2021-05-19 14:53:27,949 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
-2021-05-19 14:53:28,030 INFO o.a.j.JMeter: Loading user properties from: /opt/apache-jmeter-5.2/bin/user.properties
-2021-05-19 14:53:28,032 INFO o.a.j.JMeter: Loading system properties from: /opt/apache-jmeter-5.2/bin/system.properties
-2021-05-19 14:53:28,033 INFO o.a.j.JMeter: Setting JMeter property: csv_staticParams=/mnt/jmeter/static_parameters
-2021-05-19 14:53:28,035 ERROR o.a.j.JMeter: An error occurred: 
+2021-05-19 14:58:23,382 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2021-05-19 14:58:23,429 INFO o.a.j.JMeter: Loading user properties from: /opt/apache-jmeter-5.2/bin/user.properties
+2021-05-19 14:58:23,431 INFO o.a.j.JMeter: Loading system properties from: /opt/apache-jmeter-5.2/bin/system.properties
+2021-05-19 14:58:23,433 INFO o.a.j.JMeter: Setting JMeter property: csv_staticParams=/mnt/jmeter/static_parameters
+2021-05-19 14:58:23,435 ERROR o.a.j.JMeter: An error occurred: 
 java.lang.IllegalArgumentException: Unknown arg: .txt
 	at org.apache.jmeter.JMeter.initializeProperties(JMeter.java:848) ~[ApacheJMeter_core.jar:5.2]
 	at org.apache.jmeter.JMeter.start(JMeter.java:461) [ApacheJMeter_core.jar:5.2]
