@@ -2,9 +2,9 @@
 
 set -e
 freeMem=`awk '/MemFree/ { print int($2/1024) }' /proc/meminfo`
-s=$(($freeMem/10*7))
-x=$(($freeMem/10*7))
-n=$(($freeMem/10*2))
+s=$(($freeMem/10*2))
+x=$(($freeMem/10*2))
+n=$(($freeMem/10*0.5))
 export JVM_ARGS="-Xmn${n}m -Xms${s}m -Xmx${x}m"
 
 echo "START Running Jmeter on `date`"
