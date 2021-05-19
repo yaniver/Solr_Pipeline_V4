@@ -17,6 +17,12 @@ $file_content=(Get-Content -path $script_path -Raw)
 $string_to_search=",{(.*)},"
 $file_content -match $string_to_search
 ($file_content -replace $matches[1],$idu_ip) | Set-Content -Path $script_path
+$string_to_search="Custom,(.*),"
+$file_content -match $string_to_search
+($file_content -replace $matches[1],$search_day_from) | Set-Content -Path $script_path
+$string_to_search="p@ssword1,(.*),"
+$file_content -match $string_to_search
+($file_content -replace $matches[1],$domain) | Set-Content -Path $script_path
 
 docker build -t $container_name .
 
