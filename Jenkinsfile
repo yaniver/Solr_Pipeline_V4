@@ -52,7 +52,7 @@ pipeline {
         SOLR_PIPELINE_HOME = 'C:\\Solr_Pipeline'
 		LAB_NAME = 'L1650_v8.6'
 		IDU_IP = '10.10.193.100'
-		SEARCH_DAY_FROM = '20210510'
+		SEARCH_DAY_FROM = '2021-05-10'
 		DOMAIN = 'L1650'
     }
     post {
