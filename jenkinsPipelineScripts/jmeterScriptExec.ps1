@@ -17,6 +17,7 @@ $file_content=(Get-Content -path $script_path -Raw)
 $string_to_search=",{(.*)},"
 $file_content -match $string_to_search
 ($file_content -replace $matches[1],$idu_ip) | Set-Content -Path $script_path
+# Custom,2020-01-01,adminis
 $string_to_search="tom,(.*),"
 $file_content -match $string_to_search
 ($file_content -replace $matches[1],$search_day_from) | Set-Content -Path $script_path
