@@ -31,19 +31,19 @@ pipeline {
         stage('Parallel Stage') {
             failFast true
             parallel {
-                stage('JMeter run') {
-                    steps {
-						echo 'Deploying JMeter load'
-						powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\jmeterScriptExec.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.SEARCH_DAY_FROM}'  '${env.DOMAIN}'"
-                        //sh '~/CICD/jenkinsPipelineShellScripts/jmeterScriptExec.sh'
-                    }
-                }
                 stage('Grafana Alerts') {
                     steps {
 						echo 'Deploying Grafana Alerts'
-                        //sh '~/CICD/jenkinsPipelineShellScripts/grafanaAlert.sh'
+                        //powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\grafana_alert.ps1"
                     }
                 }
+                stage('JMeter run') {
+                    steps {
+						echo 'Deploying JMeter load'
+						//powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\jmeterScriptExec.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.SEARCH_DAY_FROM}'  '${env.DOMAIN}'"
+                    }
+                }
+
             }
         }
     }
