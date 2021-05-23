@@ -1,40 +1,4 @@
-Prerequsites (Installing Docker + Docker-compose + Jenkins + GIT): 
-============
-  - In Windows VM (with internet connection), install Java + Jenkins + GIT + Docker desktop
-	  
-  - Open CMD and cd to C:\ and run command "git clone --depth=1 https://github.com/yaniver/Solr_Pipeline.git"
-  
-  - cd  "Solr_Pipeline" folder
-  
-  - Run command "git init"
-  
-  - Follow steps in "Install Performance labs" section below
-  
-  - In Jenkinsfile created in "Solr_Pipeline" folder, update ZK_IP_PORT inside "environment" section.
-
-
-Jenkins - login + Plugins install
-===============================
-Open browser (http://localhost:8080/) and Copy-Paste value from  file "..\jenkins\secrets\initialAdminPassword"
-Add user name and pw (username:yaniv ;  pw=err) and change Jenkins URL to VM hostname
-
-In case you have internet connection -
-	Select "Installed suggested Plugins"
-	Inside Jenkins Plugin Manager-->Available, install blue ocean plugin
-Otherwise -
-	Extarct plugins.zip content inside C:\Users\yeran\AppData\Local\Jenkins\.jenkins\plugins and restart Jenkins service.
-	
-Enter Blue ocean UI, upload existing pipeline (from Jenkins file located in GitHub) by creating new pipeline (note: github token required for login)
-
-Enter new created jenkins pipeline and in Select "Configure" and in "Scan Repository Triggers" check checkbox "Priodically if not otherwise run" and set interval to 1 min.
-
-Environment config:
-- In JMeter folder, update Solr ip and collections name in collectionsList.txt.
-
-
-
-
-Install Performance labs (8.6 and 8.7)
+1. Install Performance labs (8.6 and 8.7)
 ========================
 	Update SQL Server configuration (memory, …) base on "SQL Server Database troubleshooting Performance Guide.docx" document located in "Solr_Pipeline" folder.
 	Install clean lab with valid build.
@@ -72,29 +36,74 @@ but quantity validation for each data type will be done automatically.
 
 
 
-Following deployments are done by running Jenkins pipeline form Blue Ocena UI:
+
+2. Prerequsites (Installing Docker + Docker-compose + Jenkins + GIT): 
+===============
+  - In Windows VM (with internet connection), install Java + Jenkins + GIT + Docker desktop
+	  
+  - Open CMD and cd to C:\ and run command "git clone --depth=1 https://github.com/yaniver/Solr_Pipeline.git"
+  
+  - cd  "Solr_Pipeline" folder
+  
+  - Run command "git init"
+  
+  - In Jenkinsfile created in "Solr_Pipeline" folder, update ZK_IP_PORT inside "environment" section.
+
+
+
+
+
+3. Jenkins - login + Plugins install
+====================================
+Open browser (http://localhost:8080/) and Copy-Paste value from  file "..\jenkins\secrets\initialAdminPassword"
+Add user name and pw (username:yaniv ;  pw=err) and change Jenkins URL to VM hostname
+
+In case you have internet connection -
+	Select "Installed suggested Plugins"
+	Inside Jenkins Plugin Manager-->Available, install blue ocean plugin
+Otherwise -
+	Extarct plugins.zip content inside C:\Users\yeran\AppData\Local\Jenkins\.jenkins\plugins and restart Jenkins service.
+	
+Enter Blue ocean UI, upload existing pipeline (from Jenkins file located in GitHub) by creating new pipeline (note: github token required for login)
+
+Enter new created jenkins pipeline and in Select "Configure" and in "Scan Repository Triggers" check checkbox "Priodically if not otherwise run" and set interval to 1 min.
+
+
+
+
+
+
+4. Run Jenkins pipeline
+=======================
+in CMD under C:\Solr_Pipeline folder run commit.bat that will commit any changes done in files to GitHub and trigger the pipeline
+(more details about the content of the pipeline can be found below OR by looking at Jenkinsfile content
+Note: Slack notification channel should already be configured in Grafana UI under "Notification channels" and if not then create a Slack channel (as described below).
+
+
+
+
+
+Following deployments are done by running Jenkins pipeline form Blue Ocena UI (not all deployments included here):
 =============================================================================
 	Prometheus+Grafana+Alert_Manager Installation:
 	=============================================
 	Link (Full details): https://github.com/stefanprodan/dockprom
-	Check script in ../CICD/jenkinsPipelineShellScripts/dockpromDeploy.sh
+	Check script in ../Solr_Pipeline/jenkinsPipelineShellScripts/promdeploy.ps1
 	(note: in case you need to delete all resources create by docker-compose including volume run the following command "sudo docker-compose down -v")
 
-	Prometheus exporter:
+	Solr exporter:
 	===================
-	Check script in ../CICD/jenkinsPipelineShellScripts/solrExporterDeploy.sh
+	Check script in ../Solr_Pipeline/jenkinsPipelineShellScripts/solrExporterDeploy.ps1
 
 	JMeter deploy:
 	==============
-	Check script in ../CICD/jenkinsPipelineShellScripts/jmeterScriptExec.sh
-
-GIT:
-====
-  Push local changes to github by running commit.bat file
+	Check script in ../Solr_Pipeline/jenkinsPipelineShellScripts/jmeterScriptExec.ps1
 
 
-Grafana Email support: 
-====================
+
+
+Grafana Notification channel support: 
+===================================
   Option 1 (no internet - "email")-
   Note 1: this option will work only inside LAB VM
   Note 2: GF_... setting not required since i already define it in dockprom.zip in docker-compose.yml
@@ -110,7 +119,7 @@ Grafana Email support:
   - In Grafana UI add email notification channel (you define a user that already exist in above SMTP server).
 
   Option 2 (Internet exist - "Microsoft Teams")-
-  - In Grafana UI add Microsoft Teams notification channel and configure it with "Teams Incoming webhook url"
-    note: Teams Incoming webhook url = https://outlook.office.com/webhook/625e7c6e-9df3-4f88-bc78-41ed9ae4443b@080f3eaf-1e2e-4baf-8c3b-e36006ff4ee8/IncomingWebhook/5a10e4f9a23b4d87bced776b5bbdbb91/1214397b-7abf-44ec-b4eb-a7477eabbae1
+  - In Grafana UI add Slack notification channel and configure it with "Slack Incoming webhook url"
+    note: Teams Incoming webhook url = https://hooks.slack.com/services/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
 
 
