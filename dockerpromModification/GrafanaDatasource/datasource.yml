@@ -9,6 +9,18 @@ datasources:
     basicAuth: false
     isDefault: true
     editable: true
+  - name: VaronisMetrics
+    type: influxdb
+    access: proxy
+    orgId: 1
+    url: http://99.99.999.999:8086
+    password: admin
+    user: admin
+    database: Varonis
+    basicAuth: true
+    basicAuthUser: admin
+    basicAuthPassword: admin
+    isDefault: false
   - name: InfluxDB
     type: influxdb
     access: proxy

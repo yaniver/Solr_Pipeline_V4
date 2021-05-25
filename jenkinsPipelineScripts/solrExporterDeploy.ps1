@@ -10,13 +10,6 @@ $container_solr_exporter_path="/opt/solr-8.8.2/contrib/prometheus-exporter/"
 
 cd $solr_exporter_full_path
 
-# Replace Zookeeper IP and Port in script file
-# $file_content=(Get-Content -path $script_path -Raw)
-#$string_to_search="-z (.*) -f"
-#$file_content -match $string_to_search
-#($file_content -replace $matches[1],$zk_ip_port) | Set-Content -Path $script_path
-
-
 $solrExpoExist=$(docker ps -f name=$container_name --format '{{.Names}}')
 if($solrExpoExist -eq 'solrexporter') {            
 	Write-Host "Solr exporter container already exist so no need to create additional container"
