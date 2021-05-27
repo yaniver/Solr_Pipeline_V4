@@ -29,7 +29,7 @@ $file_content -match $string_to_search
 $file_content=(Get-Content -path $script_path -Raw)
 $string_to_search="p@ssword1,(.*),,"
 $file_content -match $string_to_search
-#($file_content -replace $matches[1],$domain) | Set-Content -Path $script_path
+($file_content -replace $matches[1],$domain) | Set-Content -Path $script_path
 
 docker build -t $container_name .
 
