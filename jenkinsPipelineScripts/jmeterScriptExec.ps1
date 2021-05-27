@@ -11,20 +11,24 @@ $container_name="jmeter"
 
 cd $jmeter_full_path
 
-#$script_path=$jmeter_full_path + "\\static_parameters.txt"
 # Replace params in JMeter config file
-#$file_content=(Get-Content -path $script_path -Raw)
+$script_path=$jmeter_full_path + "\\static_parameters.txt"
 # Replace to idu_ip
-#$string_to_search=",{(.*)},"
-#$file_content -match $string_to_search
-#($file_content -replace $matches[1],$idu_ip) | Set-Content -Path $script_path
+$file_content=(Get-Content -path $script_path -Raw)
+$string_to_search="{(.*)}"
+$file_content -match $string_to_search
+($file_content -replace $matches[1],$idu_ip) | Set-Content -Path $script_path
+
 # Replace to search_day_from
-#$string_to_search="tom,(.*),"
-#$file_content -match $string_to_search
-#($file_content -replace $matches[1],$search_day_from) | Set-Content -Path $script_path
+$file_content=(Get-Content -path $script_path -Raw)
+$string_to_search="tom,(.*),a"
+$file_content -match $string_to_search
+($file_content -replace $matches[1],$search_day_from) | Set-Content -Path $script_path
+
 # Replace to domain
-#$string_to_search="p@ssword1,(.*),"
-#$file_content -match $string_to_search
+$file_content=(Get-Content -path $script_path -Raw)
+$string_to_search="p@ssword1,(.*),,"
+$file_content -match $string_to_search
 #($file_content -replace $matches[1],$domain) | Set-Content -Path $script_path
 
 docker build -t $container_name .

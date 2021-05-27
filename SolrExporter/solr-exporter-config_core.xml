@@ -19,8 +19,27 @@
 
   <rules>
   
-   <ping>
-   </ping>
+    <ping>
+      <lst name="request">
+        <lst name="query">
+          <str name="path">/admin/ping</str>
+        </lst>
+        <arr name="jsonQueries">
+          <str>
+            . as $object | $object |
+            (if $object.status == "OK" then 1.0 else 0.0 end) as $value |
+            {
+              name         : "solr_ping",
+              type         : "GAUGE",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/ping.html",
+              label_names  : [],
+              label_values : [],
+              value        : $value
+            }
+          </str>
+        </arr>
+      </lst>
+    </ping>
 
     <metrics>
       <lst name="request">

@@ -1,2 +1,5 @@
 PROTOCOL,BASE_URL,INFLUXDB_IP,INFLUXDB_DBNAME,SCENARIO_TYPE,DAY_FROM,USERNAME,PASSWORD,DOMAIN,TENANT_ID,ROLLUP_TYPE
-https,{10.10.193.100},influxdb,search,Custom,2021-05-10,administrator,p@ssword1,L1650,,Sum
+https,{10.10.999.999},influxdb,search,Custom,2020-01-10,administrator,p@ssword1,L1999,,Sum
+
+
+
