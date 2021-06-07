@@ -13,7 +13,7 @@ datasources:
     type: influxdb
     access: proxy
     orgId: 1
-    url: http://10.10.193.100:8086
+    url: http://10.10.193.88:8086
     password: admin
     user: admin
     database: Varonis
@@ -33,6 +33,8 @@ datasources:
     basicAuthUser: admin
     basicAuthPassword: admin
     isDefault: false
+
+
 
 
 
