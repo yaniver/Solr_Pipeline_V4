@@ -1,0 +1,71 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1623071669012,41,SetThreadBaseURL,200,OK,INITILIZATION  - Login_Plus_GetTOPfilters (setUp Thread Group) 1-1,text,true,,0,0,1,1,null,0,0,0
+1623071669058,18,SetFileNotExist (JSR223 Sampler),200,OK,INITILIZATION  - Login_Plus_GetTOPfilters (setUp Thread Group) 1-1,text,true,,0,0,1,1,null,0,0,0
+1623071669078,64,DateRangeRetentionFiltering (JSR223 Sampler),200,OK,INITILIZATION  - Login_Plus_GetTOPfilters (setUp Thread Group) 1-1,text,true,,0,0,1,1,null,0,0,0
+1623071669143,12201,Transaction - OPLogin,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,"Number of samples in transaction : 7, number of failing samples : 6",INITILIZATION  - Login_Plus_GetTOPfilters (setUp Thread Group) 1-1,,false,,16656,0,1,1,null,0,311,0
+1623071669304,2096,../DatAdvantage/#/app/analytics/events/1$,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 10.10.193.88:443 [/10.10.193.88] failed: Connection refused (Connection refused),INITILIZATION  - Login_Plus_GetTOPfilters (setUp Thread Group) 1-1,text,false,,2776,0,1,1,https://10.10.193.88/DatAdvantage/#/app/analytics/events/1$,0,0,2095
+1623071671437,2021,../DatAdvantage/auth/configuration,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 10.10.193.88:443 [/10.10.193.88] failed: Connection refused (Connection refused),INITILIZATION  - Login_Plus_GetTOPfilters (setUp Thread Group) 1-1,text,false,,2776,0,1,1,https://10.10.193.88/DatAdvantage/auth/configuration,0,0,2021
+1623071673464,2022,GetOPToken (../DatAdvantage/api/authentication/win),Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 10.10.193.88:443 [/10.10.193.88] failed: Connection refused (Connection refused),INITILIZATION  - Login_Plus_GetTOPfilters (setUp Thread Group) 1-1,text,false,,2776,0,1,1,https://10.10.193.88/DatAdvantage/api/authentication/win,0,0,2022
+1623071675583,17,SaveTokenAsProp (JSR223 Sampler),200,OK,INITILIZATION  - Login_Plus_GetTOPfilters (setUp Thread Group) 1-1,text,true,,0,0,1,1,null,0,0,0
+1623071675602,2012,.../DatAdvantage/api/applicationService/configuration,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 10.10.193.88:443 [/10.10.193.88] failed: Connection refused (Connection refused),INITILIZATION  - Login_Plus_GetTOPfilters (setUp Thread Group) 1-1,text,false,,2776,0,1,1,https://10.10.193.88/DatAdvantage/api/applicationService/configuration,0,0,2011
+1623071677617,2013,.../DatAdvantage/api/UserPreferences,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 10.10.193.88:443 [/10.10.193.88] failed: Connection refused (Connection refused),INITILIZATION  - Login_Plus_GetTOPfilters (setUp Thread Group) 1-1,text,false,,2776,0,1,1,https://10.10.193.88/DatAdvantage/api/UserPreferences,0,0,2012
+1623071679632,2020,..../DatAdvantage/api/entitymodel/attributepaths,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 10.10.193.88:443 [/10.10.193.88] failed: Connection refused (Connection refused),INITILIZATION  - Login_Plus_GetTOPfilters (setUp Thread Group) 1-1,text,false,,2776,0,1,1,https://10.10.193.88/DatAdvantage/api/entitymodel/attributepaths,0,0,2020
+1623071681655,330,Transaction - Cloud Login(=OKTA),500,,INITILIZATION  - Login_Plus_GetTOPfilters (setUp Thread Group) 1-1,,false,,0,0,1,1,null,0,0,0
+1623071681852,133,SeleniumLogin_CloudOKTA (JSR223 Sampler),500,"javax.script.ScriptException: org.codehaus.groovy.control.MultipleCompilationErrorsException: startup failed:
+Script8.groovy: 3: unable to resolve class org.openqa.selenium.WebDriver
+ @ line 3, column 1.
+   import org.openqa.selenium.WebDriver;
+   ^
+
+Script8.groovy: 8: unable to resolve class org.openqa.selenium.remote.CapabilityType
+ @ line 8, column 1.
+   import org.openqa.selenium.remote.CapabilityType;
+   ^
+
+Script8.groovy: 9: unable to resolve class org.openqa.selenium.remote.DesiredCapabilities
+ @ line 9, column 1.
+   import org.openqa.selenium.remote.DesiredCapabilities;
+   ^
+
+Script8.groovy: 11: unable to resolve class org.openqa.selenium.logging.LogType
+ @ line 11, column 1.
+   import org.openqa.selenium.logging.LogType;
+   ^
+
+Script8.groovy: 10: unable to resolve class org.openqa.selenium.logging.LoggingPreferences
+ @ line 10, column 1.
+   import org.openqa.selenium.logging.LoggingPreferences;
+   ^
+
+Script8.groovy: 5: unable to resolve class org.openqa.selenium.WebElement
+ @ line 5, column 1.
+   import org.openqa.selenium.WebElement;
+   ^
+
+Script8.groovy: 4: unable to resolve class org.openqa.selenium.By
+ @ line 4, column 1.
+   import org.openqa.selenium.By;
+   ^
+
+Script8.groovy: 15: unable to resolve class org.openqa.selenium.support.ui.WebDriverWait
+ @ line 15, column 1.
+   import org.openqa.selenium.support.ui.WebDriverWait;
+   ^
+
+Script8.groovy: 7: unable to resolve class org.openqa.selenium.chrome.ChromeOptions
+ @ line 7, column 1.
+   import org.openqa.selenium.chrome.ChromeOptions;
+   ^
+
+Script8.groovy: 6: unable to resolve class org.openqa.selenium.chrome.ChromeDriver
+ @ line 6, column 1.
+   import org.openqa.selenium.chrome.ChromeDriver;
+   ^
+
+Script8.groovy: 14: unable to resolve class org.openqa.selenium.logging.LogEntry
+ @ line 14, column 1.
+   import org.openqa.selenium.logging.LogEntry;
+   ^
+
+11 errors
+",INITILIZATION  - Login_Plus_GetTOPfilters (setUp Thread Group) 1-1,text,false,,0,0,1,1,null,0,0,0
