@@ -47,7 +47,7 @@ but quantity validation for each data type will be done automatically.
   
   - Run command "git init"
   
-  - In Jenkinsfile created in "Solr_Pipeline" folder, update ZK_IP_PORT inside "environment" section.
+  - In Jenkinsfile created in "Solr_Pipeline" folder, update params inside "environment" section.
 
 
 

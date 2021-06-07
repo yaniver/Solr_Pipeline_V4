@@ -47,12 +47,12 @@ pipeline {
         }
     }
     environment {
-        ZK_IP_PORT = '10.10.193.107:2181'
-        SOLR_PIPELINE_HOME = 'C:\\Solr_Pipeline'
-		LAB_NAME = 'L1650_v8.6'
-		IDU_IP = '10.10.193.100'
-		SEARCH_DAY_FROM = '2021-05-10'
-		DOMAIN = 'L1650'
+        ZK_IP_PORT = '10.10.193.92:2181'
+        SOLR_PIPELINE_HOME = 'C:\\Solr_Pipeline_V2'
+		LAB_NAME = 'L1648_v8.7'
+		IDU_IP = '10.10.193.88'
+		SEARCH_DAY_FROM = '2021-05-09'
+		DOMAIN = 'L1648'
     }
     post {
         always {
