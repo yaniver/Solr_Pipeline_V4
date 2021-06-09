@@ -1,51 +1,51 @@
-2021-06-09 15:53:39,466 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
-2021-06-09 15:53:39,501 INFO o.a.j.JMeter: Loading user properties from: /opt/apache-jmeter-5.2/bin/user.properties
-2021-06-09 15:53:39,502 INFO o.a.j.JMeter: Loading system properties from: /opt/apache-jmeter-5.2/bin/system.properties
-2021-06-09 15:53:39,503 INFO o.a.j.JMeter: Setting JMeter property: csv_staticParams=/mnt/jmeter/static_parameters.txt
-2021-06-09 15:53:39,504 INFO o.a.j.JMeter: Setting JMeter property: my_csv=/mnt/jmeter/searchbody_parameters.txt
-2021-06-09 15:53:39,505 INFO o.a.j.JMeter: Setting JMeter property: Threads=1
-2021-06-09 15:53:39,507 INFO o.a.j.JMeter: Copyright (c) 1998-2019 The Apache Software Foundation
-2021-06-09 15:53:39,508 INFO o.a.j.JMeter: Version 5.2
-2021-06-09 15:53:39,509 INFO o.a.j.JMeter: java.version=1.8.0_212
-2021-06-09 15:53:39,509 INFO o.a.j.JMeter: java.vm.name=OpenJDK 64-Bit Server VM
-2021-06-09 15:53:39,510 INFO o.a.j.JMeter: os.name=Linux
-2021-06-09 15:53:39,511 INFO o.a.j.JMeter: os.arch=amd64
-2021-06-09 15:53:39,512 INFO o.a.j.JMeter: os.version=5.4.72-microsoft-standard-WSL2
-2021-06-09 15:53:39,512 INFO o.a.j.JMeter: file.encoding=UTF-8
-2021-06-09 15:53:39,513 INFO o.a.j.JMeter: java.awt.headless=true
-2021-06-09 15:53:39,513 INFO o.a.j.JMeter: Max memory     =3080716288
-2021-06-09 15:53:39,514 INFO o.a.j.JMeter: Available Processors =12
-2021-06-09 15:53:39,522 INFO o.a.j.JMeter: Default Locale=English (EN)
-2021-06-09 15:53:39,524 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
-2021-06-09 15:53:39,524 INFO o.a.j.JMeter: JMeterHome=/opt/apache-jmeter-5.2
-2021-06-09 15:53:39,525 INFO o.a.j.JMeter: user.dir  =/opt/apache-jmeter-5.2
-2021-06-09 15:53:39,526 INFO o.a.j.JMeter: PWD       =/opt/apache-jmeter-5.2
-2021-06-09 15:53:39,527 INFO o.a.j.JMeter: IP: 172.18.0.11 Name: 4102af1219a7 FullName: 4102af1219a7
-2021-06-09 15:53:39,546 INFO o.a.j.s.FileServer: Default base='/opt/apache-jmeter-5.2'
-2021-06-09 15:53:39,567 INFO o.a.j.s.FileServer: Set new base='/mnt/jmeter'
-2021-06-09 15:53:39,905 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
-2021-06-09 15:53:39,932 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
-2021-06-09 15:53:39,954 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
-2021-06-09 15:53:39,974 INFO o.a.j.s.SaveService: Loading file: /mnt/jmeter/SOLR_SEARCH.jmx
-2021-06-09 15:53:40,107 INFO o.a.j.p.h.c.CookieManager: Settings: Delete null: true Check: true Allow variable: true Save: false Prefix: COOKIE_
-2021-06-09 15:53:40,117 INFO o.a.j.p.h.c.CacheManager: Will only cache the following methods: [GET]
-2021-06-09 15:53:40,187 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
-2021-06-09 15:53:40,189 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
-2021-06-09 15:53:40,189 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
-2021-06-09 15:53:40,190 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
-2021-06-09 15:53:40,191 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
-2021-06-09 15:53:40,192 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
-2021-06-09 15:53:40,951 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
-2021-06-09 15:53:40,952 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to ISO-8859-1
-2021-06-09 15:53:40,953 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
-2021-06-09 15:53:40,954 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
-2021-06-09 15:53:41,033 INFO o.a.j.JMeter: Creating summariser <summary>
-2021-06-09 15:53:41,055 INFO o.a.j.e.StandardJMeterEngine: Running the test!
-2021-06-09 15:53:41,060 INFO o.a.j.s.SampleEvent: List of sample_variables: []
-2021-06-09 15:53:41,061 INFO o.a.j.s.SampleEvent: List of sample_variables: []
-2021-06-09 15:53:41,080 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must contain the string: '.functions.'
-2021-06-09 15:53:41,081 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must not contain the string: '.gui.'
-2021-06-09 15:53:41,088 WARN o.a.j.r.ClassFinder: Can not open the jar /opt/apache-jmeter-5.2/lib/ext/jmeter-plugins-dummy-0.2.jar, message: error in opening zip file
+2021-06-09 16:03:55,560 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2021-06-09 16:03:55,597 INFO o.a.j.JMeter: Loading user properties from: /opt/apache-jmeter-5.2/bin/user.properties
+2021-06-09 16:03:55,599 INFO o.a.j.JMeter: Loading system properties from: /opt/apache-jmeter-5.2/bin/system.properties
+2021-06-09 16:03:55,600 INFO o.a.j.JMeter: Setting JMeter property: csv_staticParams=/mnt/jmeter/static_parameters.txt
+2021-06-09 16:03:55,601 INFO o.a.j.JMeter: Setting JMeter property: my_csv=/mnt/jmeter/searchbody_parameters.txt
+2021-06-09 16:03:55,602 INFO o.a.j.JMeter: Setting JMeter property: Threads=1
+2021-06-09 16:03:55,604 INFO o.a.j.JMeter: Copyright (c) 1998-2019 The Apache Software Foundation
+2021-06-09 16:03:55,605 INFO o.a.j.JMeter: Version 5.2
+2021-06-09 16:03:55,606 INFO o.a.j.JMeter: java.version=1.8.0_212
+2021-06-09 16:03:55,606 INFO o.a.j.JMeter: java.vm.name=OpenJDK 64-Bit Server VM
+2021-06-09 16:03:55,607 INFO o.a.j.JMeter: os.name=Linux
+2021-06-09 16:03:55,608 INFO o.a.j.JMeter: os.arch=amd64
+2021-06-09 16:03:55,608 INFO o.a.j.JMeter: os.version=5.4.72-microsoft-standard-WSL2
+2021-06-09 16:03:55,609 INFO o.a.j.JMeter: file.encoding=UTF-8
+2021-06-09 16:03:55,610 INFO o.a.j.JMeter: java.awt.headless=true
+2021-06-09 16:03:55,610 INFO o.a.j.JMeter: Max memory     =3026190336
+2021-06-09 16:03:55,611 INFO o.a.j.JMeter: Available Processors =12
+2021-06-09 16:03:55,620 INFO o.a.j.JMeter: Default Locale=English (EN)
+2021-06-09 16:03:55,621 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2021-06-09 16:03:55,622 INFO o.a.j.JMeter: JMeterHome=/opt/apache-jmeter-5.2
+2021-06-09 16:03:55,623 INFO o.a.j.JMeter: user.dir  =/opt/apache-jmeter-5.2
+2021-06-09 16:03:55,623 INFO o.a.j.JMeter: PWD       =/opt/apache-jmeter-5.2
+2021-06-09 16:03:55,624 INFO o.a.j.JMeter: IP: 172.18.0.11 Name: 3dca1100aabd FullName: 3dca1100aabd
+2021-06-09 16:03:55,639 INFO o.a.j.s.FileServer: Default base='/opt/apache-jmeter-5.2'
+2021-06-09 16:03:55,651 INFO o.a.j.s.FileServer: Set new base='/mnt/jmeter'
+2021-06-09 16:03:55,888 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2021-06-09 16:03:55,901 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2021-06-09 16:03:55,911 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
+2021-06-09 16:03:55,924 INFO o.a.j.s.SaveService: Loading file: /mnt/jmeter/SOLR_SEARCH.jmx
+2021-06-09 16:03:56,018 INFO o.a.j.p.h.c.CookieManager: Settings: Delete null: true Check: true Allow variable: true Save: false Prefix: COOKIE_
+2021-06-09 16:03:56,024 INFO o.a.j.p.h.c.CacheManager: Will only cache the following methods: [GET]
+2021-06-09 16:03:56,078 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2021-06-09 16:03:56,079 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2021-06-09 16:03:56,080 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2021-06-09 16:03:56,081 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2021-06-09 16:03:56,082 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
+2021-06-09 16:03:56,083 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
+2021-06-09 16:03:56,657 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
+2021-06-09 16:03:56,659 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to ISO-8859-1
+2021-06-09 16:03:56,659 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
+2021-06-09 16:03:56,660 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
+2021-06-09 16:03:56,710 INFO o.a.j.JMeter: Creating summariser <summary>
+2021-06-09 16:03:56,731 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2021-06-09 16:03:56,739 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2021-06-09 16:03:56,740 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2021-06-09 16:03:56,754 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must contain the string: '.functions.'
+2021-06-09 16:03:56,755 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must not contain the string: '.gui.'
+2021-06-09 16:03:56,761 WARN o.a.j.r.ClassFinder: Can not open the jar /opt/apache-jmeter-5.2/lib/ext/jmeter-plugins-dummy-0.2.jar, message: error in opening zip file
 java.util.zip.ZipException: error in opening zip file
 	at java.util.zip.ZipFile.open(Native Method) ~[?:1.8.0_212]
 	at java.util.zip.ZipFile.<init>(ZipFile.java:225) ~[?:1.8.0_212]
@@ -60,7 +60,7 @@ java.util.zip.ZipException: error in opening zip file
 	at org.apache.jmeter.engine.PreCompiler.<init>(PreCompiler.java:55) [ApacheJMeter_core.jar:5.2]
 	at org.apache.jmeter.engine.StandardJMeterEngine.run(StandardJMeterEngine.java:361) [ApacheJMeter_core.jar:5.2]
 	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_212]
-2021-06-09 15:53:41,128 WARN o.a.j.r.ClassFinder: Can not open the jar /opt/apache-jmeter-5.2/lib/ext/jmeter-plugins-cmn-jmeter-0.5.jar, message: error in opening zip file
+2021-06-09 16:03:56,794 WARN o.a.j.r.ClassFinder: Can not open the jar /opt/apache-jmeter-5.2/lib/ext/jmeter-plugins-cmn-jmeter-0.5.jar, message: error in opening zip file
 java.util.zip.ZipException: error in opening zip file
 	at java.util.zip.ZipFile.open(Native Method) ~[?:1.8.0_212]
 	at java.util.zip.ZipFile.<init>(ZipFile.java:225) ~[?:1.8.0_212]
@@ -75,71 +75,349 @@ java.util.zip.ZipException: error in opening zip file
 	at org.apache.jmeter.engine.PreCompiler.<init>(PreCompiler.java:55) [ApacheJMeter_core.jar:5.2]
 	at org.apache.jmeter.engine.StandardJMeterEngine.run(StandardJMeterEngine.java:361) [ApacheJMeter_core.jar:5.2]
 	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_212]
-2021-06-09 15:53:41,938 INFO o.a.j.JMeter: Running test (1623246821938)
-2021-06-09 15:53:41,941 INFO o.a.j.e.StandardJMeterEngine: Starting setUp thread groups
-2021-06-09 15:53:41,942 INFO o.a.j.e.StandardJMeterEngine: Starting setUp ThreadGroup: 1 : INITILIZATION  - Login_Plus_GetTOPfilters (setUp Thread Group) 
-2021-06-09 15:53:41,943 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group INITILIZATION  - Login_Plus_GetTOPfilters (setUp Thread Group).
-2021-06-09 15:53:41,944 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
-2021-06-09 15:53:41,944 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=1 ramp-up=10 delayedStart=false
-2021-06-09 15:53:41,959 INFO o.a.j.t.ThreadGroup: Started thread group number 1
-2021-06-09 15:53:41,960 INFO o.a.j.e.StandardJMeterEngine: Waiting for all setup thread groups to exit
-2021-06-09 15:53:41,975 INFO o.a.j.t.JMeterThread: Thread started: INITILIZATION  - Login_Plus_GetTOPfilters (setUp Thread Group) 1-1
-2021-06-09 15:53:41,978 INFO o.a.j.s.FileServer: Stored: /mnt/jmeter/searchbody_parameters.txt Alias: /mnt/jmeter/searchbody_parameters.txt@984895790
-2021-06-09 15:53:42,013 INFO o.a.j.s.FileServer: Stored: /mnt/jmeter/static_parameters.txt
-2021-06-09 15:53:42,695 INFO o.a.j.m.J.setTotalIDUs (JSR223 Sampler): ================New BASE_URL_1 value is 10.10.193.88
-2021-06-09 15:53:42,725 INFO o.a.j.p.j.s.J.SetThreadBaseURL: ================INITILIZATION: Total IDUs=1
-2021-06-09 15:53:42,734 INFO o.a.j.p.j.s.J.SetThreadBaseURL: ================INITILIZATION: THREAD_ID=1; BASE_URL_1=10.10.193.88
-2021-06-09 15:53:42,751 INFO o.a.j.p.j.s.J.SetFileNotExist (JSR223 Sampler): =========THREAD_ID=1 - isFileExists value is false
-2021-06-09 15:53:42,794 INFO o.a.j.p.j.s.J.DateRangeRetentionFiltering (JSR223 Sampler): =========THREAD_ID=1 - minDate param value is "2021-05-09T00:00:00+02:00"
-2021-06-09 15:53:42,804 INFO o.a.j.p.j.s.J.DateRangeRetentionFiltering (JSR223 Sampler): =========THREAD_ID=1 - maxDate value is "2021-06-09T15:53:42+02:00"
-2021-06-09 15:53:42,846 INFO o.a.j.p.h.s.HTTPHCAbstractImpl: Local host = 4102af1219a7
-2021-06-09 15:53:42,857 INFO o.a.j.p.h.s.HTTPHC4Impl: HTTP request retry count = 0
-2021-06-09 15:53:43,116 INFO o.a.j.p.h.p.BaseParser: Created org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
-2021-06-09 15:53:43,221 INFO o.a.j.p.h.s.ResourcesDownloader: Creating ResourcesDownloader with keepalive_inseconds : 60
-2021-06-09 15:53:44,253 INFO o.a.j.p.h.p.BaseParser: Created org.apache.jmeter.protocol.http.parser.CssParser
-2021-06-09 15:53:46,085 WARN c.h.c.r.e.LoggingCSSParseErrorHandler: [30091:17] Unexpected rule '@charset': charset rule in the middle of the file is not allowed!
-2021-06-09 15:53:47,614 WARN c.h.c.r.e.LoggingCSSParseErrorHandler: [70470:17] Unexpected rule '@charset': charset rule in the middle of the file is not allowed!
-2021-06-09 15:53:52,045 WARN o.a.h.i.a.HttpAuthenticator: NEGOTIATE authentication error: Invalid name provided (Mechanism level: KrbException: Cannot locate default realm)
-2021-06-09 15:53:52,189 INFO o.a.j.e.J.JSR223 PostProcessor: =========THREAD_ID=1 - setUp Thread Group: OP Authentication was finished successfully
-2021-06-09 15:53:52,191 INFO o.a.j.e.J.JSR223 PostProcessor: =========THREAD_ID=1 - setUp Thread Group: requestType value = DatAdvantage
-2021-06-09 15:53:52,208 INFO o.a.j.p.j.s.J.SaveTokenAsProp (JSR223 Sampler): ==========setUp Thread Group: THREAD_ID=1 - access_token_1 value = eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiTDE2NDhcXEFkbWluaXN0cmF0b3IiLCJodHRwOi8vdmFyb25pcy5jb20vaWRlbnRpdHkvY2xhaW1zL3NpZGlkIjo1MTAsImh0dHA6Ly92YXJvbmlzLmNvbS9pZGVudGl0eS9jbGFpbXMvdGVuYW50aWQiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJodHRwOi8vdmFyb25pcy5jb20vaWRlbnRpdHkvY2xhaW1zL3JlcXVlc3RJUCI6IjE3Mi4xNi4yLjY3IiwibmJmIjoxNjIzMjQ2ODMzLCJleHAiOjE2MjMyNDc0MzMsImlzcyI6Imh0dHA6Ly93d3cudmFyb25pcy5jb20iLCJhdWQiOiJkYTR3ZWIifQ.hZoSjwrfbWFdewoR4qIbZjjvYQQ3jqW0RI42jf1eHqQ
-2021-06-09 15:53:52,209 INFO o.a.j.p.j.s.J.SaveTokenAsProp (JSR223 Sampler): ==========setUp Thread Group: THREAD_ID=1 - token_type_1 value = bearer
-2021-06-09 15:53:53,503 INFO o.a.j.p.j.s.J.SetFiltersQueryParam (JSR223 Sampler): ================INITILIZATION: rollupType=Sum
-2021-06-09 15:53:58,697 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 3
-2021-06-09 15:54:03,809 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 5
-2021-06-09 15:54:03,813 INFO o.a.j.r.Summariser: summary +      7 in 00:00:22 =    0.3/s Avg:    42 Min:    14 Max:    62 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
-2021-06-09 15:54:08,924 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 5
-2021-06-09 15:54:14,045 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 5
-2021-06-09 15:54:19,158 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 6
-2021-06-09 15:54:24,287 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 6
-2021-06-09 15:54:29,414 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 6
-2021-06-09 15:54:34,518 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 7
-2021-06-09 15:54:34,520 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    65 Min:    58 Max:    83 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
-2021-06-09 15:54:34,522 INFO o.a.j.r.Summariser: summary =     13 in 00:00:53 =    0.2/s Avg:    53 Min:    14 Max:    83 Err:     0 (0.00%)
-2021-06-09 15:54:39,622 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 7
-2021-06-09 15:54:44,738 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 7
-2021-06-09 15:54:49,850 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 8
-2021-06-09 15:54:54,993 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 8
-2021-06-09 15:55:00,084 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 8
-2021-06-09 15:55:00,087 INFO o.a.j.r.Summariser: summary +      5 in 00:00:26 =    0.2/s Avg:    57 Min:    52 Max:    63 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
-2021-06-09 15:55:00,088 INFO o.a.j.r.Summariser: summary =     18 in 00:01:18 =    0.2/s Avg:    54 Min:    14 Max:    83 Err:     0 (0.00%)
-2021-06-09 15:55:05,207 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 9
-2021-06-09 15:55:10,295 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 9
-2021-06-09 15:55:15,393 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 9
-2021-06-09 15:55:20,477 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 10
-2021-06-09 15:55:25,589 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 10
-2021-06-09 15:55:30,699 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 10
-2021-06-09 15:55:30,701 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    62 Min:    54 Max:    78 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
-2021-06-09 15:55:30,703 INFO o.a.j.r.Summariser: summary =     24 in 00:01:49 =    0.2/s Avg:    56 Min:    14 Max:    83 Err:     0 (0.00%)
-2021-06-09 15:55:35,811 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 11
-2021-06-09 15:55:40,938 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 11
-2021-06-09 15:55:46,047 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 11
-2021-06-09 15:55:51,167 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 11
-2021-06-09 15:55:56,265 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 12
-2021-06-09 15:56:01,355 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 12
-2021-06-09 15:56:01,358 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    67 Min:    56 Max:    84 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
-2021-06-09 15:56:01,362 INFO o.a.j.r.Summariser: summary =     30 in 00:02:19 =    0.2/s Avg:    58 Min:    14 Max:    84 Err:     0 (0.00%)
-2021-06-09 15:56:06,478 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 12
-2021-06-09 15:56:11,594 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 13
-2021-06-09 15:56:16,694 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 13
-2021-06-09 15:56:21,836 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 13
+2021-06-09 16:03:57,267 INFO o.a.j.JMeter: Running test (1623247437267)
+2021-06-09 16:03:57,270 INFO o.a.j.e.StandardJMeterEngine: Starting setUp thread groups
+2021-06-09 16:03:57,271 INFO o.a.j.e.StandardJMeterEngine: Starting setUp ThreadGroup: 1 : INITILIZATION  - Login_Plus_GetTOPfilters (setUp Thread Group) 
+2021-06-09 16:03:57,272 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group INITILIZATION  - Login_Plus_GetTOPfilters (setUp Thread Group).
+2021-06-09 16:03:57,273 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2021-06-09 16:03:57,273 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=1 ramp-up=10 delayedStart=false
+2021-06-09 16:03:57,283 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2021-06-09 16:03:57,284 INFO o.a.j.e.StandardJMeterEngine: Waiting for all setup thread groups to exit
+2021-06-09 16:03:57,294 INFO o.a.j.t.JMeterThread: Thread started: INITILIZATION  - Login_Plus_GetTOPfilters (setUp Thread Group) 1-1
+2021-06-09 16:03:57,296 INFO o.a.j.s.FileServer: Stored: /mnt/jmeter/searchbody_parameters.txt Alias: /mnt/jmeter/searchbody_parameters.txt@1076119627
+2021-06-09 16:03:57,321 INFO o.a.j.s.FileServer: Stored: /mnt/jmeter/static_parameters.txt
+2021-06-09 16:03:57,884 INFO o.a.j.m.J.setTotalIDUs (JSR223 Sampler): ================New BASE_URL_1 value is 10.10.193.88
+2021-06-09 16:03:57,908 INFO o.a.j.p.j.s.J.SetThreadBaseURL: ================INITILIZATION: Total IDUs=1
+2021-06-09 16:03:57,917 INFO o.a.j.p.j.s.J.SetThreadBaseURL: ================INITILIZATION: THREAD_ID=1; BASE_URL_1=10.10.193.88
+2021-06-09 16:03:57,934 INFO o.a.j.p.j.s.J.SetFileNotExist (JSR223 Sampler): =========THREAD_ID=1 - isFileExists value is false
+2021-06-09 16:03:57,975 INFO o.a.j.p.j.s.J.DateRangeRetentionFiltering (JSR223 Sampler): =========THREAD_ID=1 - minDate param value is "2021-05-09T00:00:00+02:00"
+2021-06-09 16:03:57,984 INFO o.a.j.p.j.s.J.DateRangeRetentionFiltering (JSR223 Sampler): =========THREAD_ID=1 - maxDate value is "2021-06-09T16:03:57+02:00"
+2021-06-09 16:03:58,010 INFO o.a.j.p.h.s.HTTPHCAbstractImpl: Local host = 3dca1100aabd
+2021-06-09 16:03:58,019 INFO o.a.j.p.h.s.HTTPHC4Impl: HTTP request retry count = 0
+2021-06-09 16:03:58,208 INFO o.a.j.p.h.p.BaseParser: Created org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2021-06-09 16:03:58,261 INFO o.a.j.p.h.s.ResourcesDownloader: Creating ResourcesDownloader with keepalive_inseconds : 60
+2021-06-09 16:03:59,126 INFO o.a.j.p.h.p.BaseParser: Created org.apache.jmeter.protocol.http.parser.CssParser
+2021-06-09 16:04:00,753 WARN c.h.c.r.e.LoggingCSSParseErrorHandler: [30091:17] Unexpected rule '@charset': charset rule in the middle of the file is not allowed!
+2021-06-09 16:04:02,068 WARN c.h.c.r.e.LoggingCSSParseErrorHandler: [70470:17] Unexpected rule '@charset': charset rule in the middle of the file is not allowed!
+2021-06-09 16:04:06,259 WARN o.a.h.i.a.HttpAuthenticator: NEGOTIATE authentication error: Invalid name provided (Mechanism level: KrbException: Cannot locate default realm)
+2021-06-09 16:04:06,393 INFO o.a.j.e.J.JSR223 PostProcessor: =========THREAD_ID=1 - setUp Thread Group: OP Authentication was finished successfully
+2021-06-09 16:04:06,396 INFO o.a.j.e.J.JSR223 PostProcessor: =========THREAD_ID=1 - setUp Thread Group: requestType value = DatAdvantage
+2021-06-09 16:04:06,416 INFO o.a.j.p.j.s.J.SaveTokenAsProp (JSR223 Sampler): ==========setUp Thread Group: THREAD_ID=1 - access_token_1 value = eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiTDE2NDhcXEFkbWluaXN0cmF0b3IiLCJodHRwOi8vdmFyb25pcy5jb20vaWRlbnRpdHkvY2xhaW1zL3NpZGlkIjo1MTAsImh0dHA6Ly92YXJvbmlzLmNvbS9pZGVudGl0eS9jbGFpbXMvdGVuYW50aWQiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJodHRwOi8vdmFyb25pcy5jb20vaWRlbnRpdHkvY2xhaW1zL3JlcXVlc3RJUCI6IjE3Mi4xNi4yLjY3IiwibmJmIjoxNjIzMjQ3NDQ3LCJleHAiOjE2MjMyNDgwNDcsImlzcyI6Imh0dHA6Ly93d3cudmFyb25pcy5jb20iLCJhdWQiOiJkYTR3ZWIifQ.rbY76lgLRoafTszE-Sb8EA_p9HtsNMFPVEOzZASUfkI
+2021-06-09 16:04:06,417 INFO o.a.j.p.j.s.J.SaveTokenAsProp (JSR223 Sampler): ==========setUp Thread Group: THREAD_ID=1 - token_type_1 value = bearer
+2021-06-09 16:04:07,625 INFO o.a.j.p.j.s.J.SetFiltersQueryParam (JSR223 Sampler): ================INITILIZATION: rollupType=Sum
+2021-06-09 16:04:17,967 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 3
+2021-06-09 16:04:23,100 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 4
+2021-06-09 16:04:28,222 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 4
+2021-06-09 16:04:33,387 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 4
+2021-06-09 16:04:33,402 INFO o.a.j.r.Summariser: summary +     10 in 00:00:36 =    0.3/s Avg:    52 Min:    14 Max:    79 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:04:38,574 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 5
+2021-06-09 16:04:43,687 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 5
+2021-06-09 16:04:48,848 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 5
+2021-06-09 16:04:54,022 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 5
+2021-06-09 16:04:59,187 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 5
+2021-06-09 16:05:04,384 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 5
+2021-06-09 16:05:04,389 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    66 Min:    53 Max:    87 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:05:04,391 INFO o.a.j.r.Summariser: summary =     16 in 00:01:07 =    0.2/s Avg:    57 Min:    14 Max:    87 Err:     0 (0.00%)
+2021-06-09 16:05:09,554 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 6
+2021-06-09 16:05:14,684 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 6
+2021-06-09 16:05:19,798 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 6
+2021-06-09 16:05:24,906 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 6
+2021-06-09 16:05:30,017 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 6
+2021-06-09 16:05:30,019 INFO o.a.j.r.Summariser: summary +      5 in 00:00:26 =    0.2/s Avg:    64 Min:    59 Max:    71 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:05:30,020 INFO o.a.j.r.Summariser: summary =     21 in 00:01:33 =    0.2/s Avg:    59 Min:    14 Max:    87 Err:     0 (0.00%)
+2021-06-09 16:05:35,122 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 7
+2021-06-09 16:05:40,282 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 7
+2021-06-09 16:05:45,422 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 7
+2021-06-09 16:05:50,561 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 7
+2021-06-09 16:05:55,691 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 7
+2021-06-09 16:06:00,794 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 7
+2021-06-09 16:06:00,797 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    70 Min:    55 Max:   100 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:06:00,798 INFO o.a.j.r.Summariser: summary =     27 in 00:02:04 =    0.2/s Avg:    61 Min:    14 Max:   100 Err:     0 (0.00%)
+2021-06-09 16:06:05,902 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 7
+2021-06-09 16:06:11,005 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 8
+2021-06-09 16:06:16,121 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 8
+2021-06-09 16:06:21,245 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 8
+2021-06-09 16:06:26,364 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 8
+2021-06-09 16:06:31,470 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 8
+2021-06-09 16:06:31,472 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    65 Min:    52 Max:    71 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:06:31,473 INFO o.a.j.r.Summariser: summary =     33 in 00:02:34 =    0.2/s Avg:    62 Min:    14 Max:   100 Err:     0 (0.00%)
+2021-06-09 16:06:36,587 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 8
+2021-06-09 16:06:41,683 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 9
+2021-06-09 16:06:46,822 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 9
+2021-06-09 16:06:51,948 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 9
+2021-06-09 16:06:57,055 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 9
+2021-06-09 16:07:02,161 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 9
+2021-06-09 16:07:02,165 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    64 Min:    54 Max:    78 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:07:02,166 INFO o.a.j.r.Summariser: summary =     39 in 00:03:05 =    0.2/s Avg:    62 Min:    14 Max:   100 Err:     0 (0.00%)
+2021-06-09 16:07:07,283 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 10
+2021-06-09 16:07:12,397 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 10
+2021-06-09 16:07:17,492 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 10
+2021-06-09 16:07:22,634 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 10
+2021-06-09 16:07:27,841 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 10
+2021-06-09 16:07:33,011 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 10
+2021-06-09 16:07:33,014 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    69 Min:    52 Max:    89 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:07:33,015 INFO o.a.j.r.Summariser: summary =     45 in 00:03:36 =    0.2/s Avg:    63 Min:    14 Max:   100 Err:     0 (0.00%)
+2021-06-09 16:07:38,122 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 10
+2021-06-09 16:07:43,223 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 11
+2021-06-09 16:07:48,308 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 11
+2021-06-09 16:07:53,398 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 11
+2021-06-09 16:07:58,499 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 11
+2021-06-09 16:08:03,607 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 11
+2021-06-09 16:08:03,609 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    57 Min:    51 Max:    67 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:08:03,610 INFO o.a.j.r.Summariser: summary =     51 in 00:04:06 =    0.2/s Avg:    62 Min:    14 Max:   100 Err:     0 (0.00%)
+2021-06-09 16:08:08,701 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 11
+2021-06-09 16:08:13,786 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 12
+2021-06-09 16:08:18,883 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 12
+2021-06-09 16:08:23,998 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 12
+2021-06-09 16:08:29,096 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 12
+2021-06-09 16:08:34,217 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 12
+2021-06-09 16:08:34,218 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    67 Min:    56 Max:    84 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:08:34,219 INFO o.a.j.r.Summariser: summary =     57 in 00:04:37 =    0.2/s Avg:    63 Min:    14 Max:   100 Err:     0 (0.00%)
+2021-06-09 16:08:39,302 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 12
+2021-06-09 16:08:44,420 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 13
+2021-06-09 16:08:49,562 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 13
+2021-06-09 16:08:54,702 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 13
+2021-06-09 16:08:59,803 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 13
+2021-06-09 16:09:04,890 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 13
+2021-06-09 16:09:04,893 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    60 Min:    48 Max:    78 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:09:04,894 INFO o.a.j.r.Summariser: summary =     63 in 00:05:08 =    0.2/s Avg:    63 Min:    14 Max:   100 Err:     0 (0.00%)
+2021-06-09 16:09:09,997 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 14
+2021-06-09 16:09:15,101 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 14
+2021-06-09 16:09:20,206 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 14
+2021-06-09 16:09:25,307 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 14
+2021-06-09 16:09:30,402 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 14
+2021-06-09 16:09:30,404 INFO o.a.j.r.Summariser: summary +      5 in 00:00:26 =    0.2/s Avg:    71 Min:    60 Max:    82 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:09:30,406 INFO o.a.j.r.Summariser: summary =     68 in 00:05:33 =    0.2/s Avg:    63 Min:    14 Max:   100 Err:     0 (0.00%)
+2021-06-09 16:09:35,508 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 14
+2021-06-09 16:09:40,606 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 15
+2021-06-09 16:09:45,691 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 15
+2021-06-09 16:09:50,812 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 15
+2021-06-09 16:09:55,938 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 15
+2021-06-09 16:10:01,045 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 15
+2021-06-09 16:10:01,048 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    61 Min:    50 Max:    75 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:10:01,051 INFO o.a.j.r.Summariser: summary =     74 in 00:06:04 =    0.2/s Avg:    63 Min:    14 Max:   100 Err:     0 (0.00%)
+2021-06-09 16:10:06,172 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 15
+2021-06-09 16:10:11,273 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 16
+2021-06-09 16:10:16,409 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 16
+2021-06-09 16:10:21,578 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 16
+2021-06-09 16:10:26,687 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 16
+2021-06-09 16:10:31,788 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 16
+2021-06-09 16:10:31,792 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    66 Min:    53 Max:    74 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:10:31,794 INFO o.a.j.r.Summariser: summary =     80 in 00:06:35 =    0.2/s Avg:    63 Min:    14 Max:   100 Err:     0 (0.00%)
+2021-06-09 16:10:36,908 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 17
+2021-06-09 16:10:42,007 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 17
+2021-06-09 16:10:47,105 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 17
+2021-06-09 16:10:52,210 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 17
+2021-06-09 16:10:57,286 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 17
+2021-06-09 16:11:02,383 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 17
+2021-06-09 16:11:02,389 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    67 Min:    55 Max:    84 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:11:02,390 INFO o.a.j.r.Summariser: summary =     86 in 00:07:05 =    0.2/s Avg:    63 Min:    14 Max:   100 Err:     0 (0.00%)
+2021-06-09 16:11:07,495 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 18
+2021-06-09 16:11:12,571 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 18
+2021-06-09 16:11:17,672 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 18
+2021-06-09 16:11:22,777 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 18
+2021-06-09 16:11:27,880 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 18
+2021-06-09 16:11:32,965 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 18
+2021-06-09 16:11:32,967 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    63 Min:    52 Max:    70 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:11:32,969 INFO o.a.j.r.Summariser: summary =     92 in 00:07:36 =    0.2/s Avg:    63 Min:    14 Max:   100 Err:     0 (0.00%)
+2021-06-09 16:11:38,089 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 18
+2021-06-09 16:11:43,195 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 19
+2021-06-09 16:11:48,292 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 19
+2021-06-09 16:11:53,376 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 19
+2021-06-09 16:11:58,489 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 19
+2021-06-09 16:12:03,580 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 19
+2021-06-09 16:12:03,582 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    67 Min:    57 Max:    77 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:12:03,583 INFO o.a.j.r.Summariser: summary =     98 in 00:08:06 =    0.2/s Avg:    64 Min:    14 Max:   100 Err:     0 (0.00%)
+2021-06-09 16:12:08,662 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 20
+2021-06-09 16:12:13,787 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 20
+2021-06-09 16:12:18,917 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 20
+2021-06-09 16:12:24,060 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 20
+2021-06-09 16:12:29,172 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 20
+2021-06-09 16:12:34,258 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 20
+2021-06-09 16:12:34,263 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    63 Min:    49 Max:    93 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:12:34,269 INFO o.a.j.r.Summariser: summary =    104 in 00:08:37 =    0.2/s Avg:    64 Min:    14 Max:   100 Err:     0 (0.00%)
+2021-06-09 16:12:39,374 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 21
+2021-06-09 16:12:44,518 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 21
+2021-06-09 16:12:49,635 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 21
+2021-06-09 16:12:54,745 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 21
+2021-06-09 16:12:59,832 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 21
+2021-06-09 16:13:04,926 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 21
+2021-06-09 16:13:04,928 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    70 Min:    57 Max:   111 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:13:04,929 INFO o.a.j.r.Summariser: summary =    110 in 00:09:08 =    0.2/s Avg:    64 Min:    14 Max:   111 Err:     0 (0.00%)
+2021-06-09 16:13:10,049 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 22
+2021-06-09 16:13:15,136 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 22
+2021-06-09 16:13:20,222 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 22
+2021-06-09 16:13:25,318 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 22
+2021-06-09 16:13:30,433 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 22
+2021-06-09 16:13:30,436 INFO o.a.j.r.Summariser: summary +      5 in 00:00:26 =    0.2/s Avg:    69 Min:    58 Max:    90 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:13:30,437 INFO o.a.j.r.Summariser: summary =    115 in 00:09:33 =    0.2/s Avg:    64 Min:    14 Max:   111 Err:     0 (0.00%)
+2021-06-09 16:13:35,583 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 22
+2021-06-09 16:13:40,747 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 23
+2021-06-09 16:13:45,839 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 23
+2021-06-09 16:13:50,957 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 23
+2021-06-09 16:13:56,078 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 23
+2021-06-09 16:14:01,186 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 23
+2021-06-09 16:14:01,189 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    66 Min:    55 Max:    79 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:14:01,190 INFO o.a.j.r.Summariser: summary =    121 in 00:10:04 =    0.2/s Avg:    64 Min:    14 Max:   111 Err:     0 (0.00%)
+2021-06-09 16:14:13,417 WARN o.a.h.i.a.HttpAuthenticator: NEGOTIATE authentication error: Invalid name provided (Mechanism level: KrbException: Cannot locate default realm)
+2021-06-09 16:14:18,507 ERROR o.a.j.p.j.s.JSR223Sampler: Problem in JSR223 script SaveNewAccesstoken_init (JSR223), message: javax.script.ScriptException: java.lang.NullPointerException
+javax.script.ScriptException: java.lang.NullPointerException
+	at org.codehaus.groovy.jsr223.GroovyScriptEngineImpl.eval(GroovyScriptEngineImpl.java:324) ~[groovy-all-2.4.16.jar:2.4.16]
+	at org.codehaus.groovy.jsr223.GroovyCompiledScript.eval(GroovyCompiledScript.java:72) ~[groovy-all-2.4.16.jar:2.4.16]
+	at javax.script.CompiledScript.eval(CompiledScript.java:92) ~[?:1.8.0_212]
+	at org.apache.jmeter.util.JSR223TestElement.processFileOrScript(JSR223TestElement.java:223) ~[ApacheJMeter_core.jar:5.2]
+	at org.apache.jmeter.protocol.java.sampler.JSR223Sampler.sample(JSR223Sampler.java:71) [ApacheJMeter_java.jar:5.2]
+	at org.apache.jmeter.threads.JMeterThread.doSampling(JMeterThread.java:627) [ApacheJMeter_core.jar:5.2]
+	at org.apache.jmeter.threads.JMeterThread.executeSamplePackage(JMeterThread.java:551) [ApacheJMeter_core.jar:5.2]
+	at org.apache.jmeter.threads.JMeterThread.processSampler(JMeterThread.java:490) [ApacheJMeter_core.jar:5.2]
+	at org.apache.jmeter.threads.JMeterThread.run(JMeterThread.java:257) [ApacheJMeter_core.jar:5.2]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_212]
+Caused by: java.lang.NullPointerException
+	at java.util.Hashtable.put(Hashtable.java:460) ~[?:1.8.0_212]
+	at java_util_Map$put.call(Unknown Source) ~[?:?]
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:47) ~[groovy-all-2.4.16.jar:2.4.16]
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:116) ~[groovy-all-2.4.16.jar:2.4.16]
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:136) ~[groovy-all-2.4.16.jar:2.4.16]
+	at Script13.run(Script13.groovy:1) ~[?:?]
+	at org.codehaus.groovy.jsr223.GroovyScriptEngineImpl.eval(GroovyScriptEngineImpl.java:321) ~[groovy-all-2.4.16.jar:2.4.16]
+	... 9 more
+2021-06-09 16:14:23,608 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 24
+2021-06-09 16:14:28,691 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 24
+2021-06-09 16:14:33,794 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 24
+2021-06-09 16:14:33,795 INFO o.a.j.r.Summariser: summary +      6 in 00:00:33 =    0.2/s Avg:   406 Min:    28 Max:  2181 Err:     2 (33.33%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:14:33,796 INFO o.a.j.r.Summariser: summary =    127 in 00:10:37 =    0.2/s Avg:    80 Min:    14 Max:  2181 Err:     2 (1.57%)
+2021-06-09 16:14:38,914 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 25
+2021-06-09 16:14:44,008 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 25
+2021-06-09 16:14:49,098 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 25
+2021-06-09 16:14:54,197 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 25
+2021-06-09 16:14:59,285 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 25
+2021-06-09 16:15:04,371 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 26
+2021-06-09 16:15:04,373 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    65 Min:    56 Max:    76 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:15:04,374 INFO o.a.j.r.Summariser: summary =    133 in 00:11:07 =    0.2/s Avg:    80 Min:    14 Max:  2181 Err:     2 (1.50%)
+2021-06-09 16:15:09,465 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 26
+2021-06-09 16:15:14,547 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 26
+2021-06-09 16:15:19,631 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 26
+2021-06-09 16:15:24,777 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 26
+2021-06-09 16:15:29,964 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 26
+2021-06-09 16:15:35,060 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 27
+2021-06-09 16:15:35,064 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    61 Min:    47 Max:    86 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:15:35,068 INFO o.a.j.r.Summariser: summary =    139 in 00:11:38 =    0.2/s Avg:    79 Min:    14 Max:  2181 Err:     2 (1.44%)
+2021-06-09 16:15:40,163 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 27
+2021-06-09 16:15:45,247 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 27
+2021-06-09 16:15:50,323 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 27
+2021-06-09 16:15:55,417 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 27
+2021-06-09 16:16:00,515 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 27
+2021-06-09 16:16:00,522 INFO o.a.j.r.Summariser: summary +      5 in 00:00:25 =    0.2/s Avg:    61 Min:    53 Max:    69 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:16:00,524 INFO o.a.j.r.Summariser: summary =    144 in 00:12:03 =    0.2/s Avg:    78 Min:    14 Max:  2181 Err:     2 (1.39%)
+2021-06-09 16:16:05,646 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 27
+2021-06-09 16:16:10,734 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 28
+2021-06-09 16:16:15,827 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 28
+2021-06-09 16:16:20,900 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 28
+2021-06-09 16:16:26,014 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 28
+2021-06-09 16:16:31,099 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 28
+2021-06-09 16:16:31,100 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    66 Min:    49 Max:    88 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:16:31,102 INFO o.a.j.r.Summariser: summary =    150 in 00:12:34 =    0.2/s Avg:    78 Min:    14 Max:  2181 Err:     2 (1.33%)
+2021-06-09 16:16:36,203 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 29
+2021-06-09 16:16:41,302 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 29
+2021-06-09 16:16:46,384 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 29
+2021-06-09 16:16:51,476 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 29
+2021-06-09 16:16:56,552 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 29
+2021-06-09 16:17:01,643 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 30
+2021-06-09 16:17:01,645 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    62 Min:    52 Max:    77 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:17:01,646 INFO o.a.j.r.Summariser: summary =    156 in 00:13:04 =    0.2/s Avg:    77 Min:    14 Max:  2181 Err:     2 (1.28%)
+2021-06-09 16:17:06,750 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 30
+2021-06-09 16:17:12,463 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 30
+2021-06-09 16:17:17,548 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 30
+2021-06-09 16:17:22,642 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 30
+2021-06-09 16:17:27,736 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 30
+2021-06-09 16:17:32,847 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 31
+2021-06-09 16:17:32,849 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    65 Min:    60 Max:    71 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:17:32,850 INFO o.a.j.r.Summariser: summary =    162 in 00:13:36 =    0.2/s Avg:    77 Min:    14 Max:  2181 Err:     2 (1.23%)
+2021-06-09 16:17:37,993 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 31
+2021-06-09 16:17:43,169 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 31
+2021-06-09 16:17:48,288 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 31
+2021-06-09 16:17:53,406 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 31
+2021-06-09 16:17:58,489 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 31
+2021-06-09 16:18:03,600 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 32
+2021-06-09 16:18:03,606 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    68 Min:    59 Max:    86 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:18:03,607 INFO o.a.j.r.Summariser: summary =    168 in 00:14:06 =    0.2/s Avg:    76 Min:    14 Max:  2181 Err:     2 (1.19%)
+2021-06-09 16:18:08,700 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 32
+2021-06-09 16:18:13,787 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 32
+2021-06-09 16:18:18,873 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 32
+2021-06-09 16:18:23,953 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 32
+2021-06-09 16:18:29,037 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 32
+2021-06-09 16:18:34,134 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 33
+2021-06-09 16:18:34,135 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    64 Min:    60 Max:    68 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:18:34,136 INFO o.a.j.r.Summariser: summary =    174 in 00:14:37 =    0.2/s Avg:    76 Min:    14 Max:  2181 Err:     2 (1.15%)
+2021-06-09 16:18:39,238 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 33
+2021-06-09 16:18:44,321 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 33
+2021-06-09 16:18:49,403 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 33
+2021-06-09 16:18:54,534 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 33
+2021-06-09 16:18:59,681 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 33
+2021-06-09 16:19:04,782 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 34
+2021-06-09 16:19:04,784 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    65 Min:    55 Max:    81 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:19:04,786 INFO o.a.j.r.Summariser: summary =    180 in 00:15:08 =    0.2/s Avg:    76 Min:    14 Max:  2181 Err:     2 (1.11%)
+2021-06-09 16:19:09,894 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 34
+2021-06-09 16:19:14,969 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 34
+2021-06-09 16:19:20,053 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 34
+2021-06-09 16:19:25,153 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 34
+2021-06-09 16:19:30,243 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 34
+2021-06-09 16:19:30,246 INFO o.a.j.r.Summariser: summary +      5 in 00:00:25 =    0.2/s Avg:    66 Min:    56 Max:    81 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:19:30,247 INFO o.a.j.r.Summariser: summary =    185 in 00:15:33 =    0.2/s Avg:    75 Min:    14 Max:  2181 Err:     2 (1.08%)
+2021-06-09 16:19:35,352 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 35
+2021-06-09 16:19:40,460 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 35
+2021-06-09 16:19:45,559 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 35
+2021-06-09 16:19:50,650 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 35
+2021-06-09 16:19:55,792 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 35
+2021-06-09 16:20:00,947 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 35
+2021-06-09 16:20:00,954 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    70 Min:    56 Max:    94 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:20:00,956 INFO o.a.j.r.Summariser: summary =    191 in 00:16:04 =    0.2/s Avg:    75 Min:    14 Max:  2181 Err:     2 (1.05%)
+2021-06-09 16:20:06,084 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 36
+2021-06-09 16:20:11,164 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 36
+2021-06-09 16:20:16,287 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 36
+2021-06-09 16:20:21,375 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 36
+2021-06-09 16:20:26,492 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 36
+2021-06-09 16:20:31,589 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 36
+2021-06-09 16:20:31,591 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    63 Min:    54 Max:    78 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:20:31,592 INFO o.a.j.r.Summariser: summary =    197 in 00:16:34 =    0.2/s Avg:    75 Min:    14 Max:  2181 Err:     2 (1.02%)
+2021-06-09 16:20:36,683 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 37
+2021-06-09 16:20:41,766 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 37
+2021-06-09 16:20:46,872 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 37
+2021-06-09 16:20:51,971 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 37
+2021-06-09 16:20:57,102 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 37
+2021-06-09 16:21:02,221 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 38
+2021-06-09 16:21:02,232 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    69 Min:    50 Max:    85 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:21:02,234 INFO o.a.j.r.Summariser: summary =    203 in 00:17:05 =    0.2/s Avg:    75 Min:    14 Max:  2181 Err:     2 (0.99%)
+2021-06-09 16:21:07,339 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 38
+2021-06-09 16:21:12,450 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 38
+2021-06-09 16:21:17,528 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 38
+2021-06-09 16:21:22,629 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 38
+2021-06-09 16:21:27,724 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 38
+2021-06-09 16:21:32,806 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 38
+2021-06-09 16:21:32,810 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    67 Min:    58 Max:    78 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:21:32,811 INFO o.a.j.r.Summariser: summary =    209 in 00:17:36 =    0.2/s Avg:    74 Min:    14 Max:  2181 Err:     2 (0.96%)
+2021-06-09 16:21:37,912 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 39
+2021-06-09 16:21:42,992 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 39
+2021-06-09 16:21:48,104 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 39
+2021-06-09 16:21:53,195 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 39
+2021-06-09 16:21:58,279 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 39
+2021-06-09 16:22:03,378 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 39
+2021-06-09 16:22:03,380 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    67 Min:    56 Max:    81 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:22:03,381 INFO o.a.j.r.Summariser: summary =    215 in 00:18:06 =    0.2/s Avg:    74 Min:    14 Max:  2181 Err:     2 (0.93%)
+2021-06-09 16:22:08,470 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 40
+2021-06-09 16:22:13,586 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 40
+2021-06-09 16:22:18,668 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 40
+2021-06-09 16:22:24,231 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 40
+2021-06-09 16:22:29,357 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 40
+2021-06-09 16:22:34,492 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 41
+2021-06-09 16:22:34,495 INFO o.a.j.r.Summariser: summary +      6 in 00:00:31 =    0.2/s Avg:    65 Min:    54 Max:    73 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:22:34,497 INFO o.a.j.r.Summariser: summary =    221 in 00:18:37 =    0.2/s Avg:    74 Min:    14 Max:  2181 Err:     2 (0.90%)
+2021-06-09 16:22:39,598 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 41
+2021-06-09 16:22:44,683 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 41
+2021-06-09 16:22:49,803 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 41
+2021-06-09 16:22:54,938 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 41
+2021-06-09 16:23:00,081 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 41
+2021-06-09 16:23:00,083 INFO o.a.j.r.Summariser: summary +      5 in 00:00:26 =    0.2/s Avg:    64 Min:    51 Max:    73 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+2021-06-09 16:23:00,086 INFO o.a.j.r.Summariser: summary =    226 in 00:19:03 =    0.2/s Avg:    74 Min:    14 Max:  2181 Err:     2 (0.88%)
+2021-06-09 16:23:05,214 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 42
+2021-06-09 16:23:10,338 INFO o.a.j.e.J.GetFacetSearchProgress_init (JSR223 Sampler): ==========Thread ID=1 - progress value = 42
