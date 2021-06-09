@@ -21,7 +21,7 @@ cmd.exe --% /c winrm set winrm/config/service @{AllowUnencrypted="true"}
 }
 
 $servicename = "sonard"
-if (Get-Service $servicename -ErrorAction SilentlyContinue -Session $Session)
+if (Invoke-Command -Session $Session -ScriptBlock {Get-Service $servicename -ErrorAction SilentlyContinue})
 {
 	Write-Host "$servicename already exists in IDU server and will not be created again"
 }
@@ -54,7 +54,7 @@ Invoke-Command -Session $Session_db -ScriptBlock {
 cmd.exe --% /c winrm set winrm/config/service @{AllowUnencrypted="true"}
 }
 
-if (Get-Service $servicename -ErrorAction SilentlyContinue -Session $Session_db)
+if (Invoke-Command -Session $Session_db -ScriptBlock {Get-Service $servicename -ErrorAction SilentlyContinue})
 {
 	Write-Host "$servicename already exists in DB server and will not be created again"
 }
