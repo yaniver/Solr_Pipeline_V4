@@ -17,7 +17,7 @@ cmd.exe --% /c winrm set winrm/config/service @{AllowUnencrypted="true"}
 }
 
 
-$servicename = “sonard”
+$servicename = "sonard"
 if (Get-Service $servicename -ErrorAction SilentlyContinue)
 {
 	Write-Host "$servicename already exists and will not be created again"
