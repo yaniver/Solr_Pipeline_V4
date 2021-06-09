@@ -41,13 +41,13 @@ but quantity validation for each data type will be done automatically.
 ===============
   - In Windows VM (with internet connection), install Java + Jenkins + GIT + Docker desktop
 	  
-  - Open CMD and cd to C:\ and run command "git clone --depth=1 https://github.com/yaniver/Solr_Pipeline.git"
+  - Open CMD and cd to C:\ and run command "git clone --depth=1 https://github.com/yaniver/Solr_Pipeline_V2.git"
   
-  - cd  "Solr_Pipeline" folder
+  - cd  "Solr_Pipeline_V2" folder
   
   - Run command "git init"
   
-  - In Jenkinsfile created in "Solr_Pipeline" folder, update params inside "environment" section.
+  - In Jenkinsfile created in "Solr_Pipeline_V2" folder, update params inside "environment" section.
 
 
 
@@ -56,13 +56,15 @@ but quantity validation for each data type will be done automatically.
 3. Jenkins - login + Plugins install
 ====================================
 Open browser (http://localhost:8080/) and Copy-Paste value from  file "..\jenkins\secrets\initialAdminPassword"
-Add user name and pw (username:yaniv ;  pw=err) and change Jenkins URL to VM hostname
+(file location - C:\Windows\SysWOW64\config\systemprofile\AppData\Local\Jenkins\.jenkins\secrets)
+Add user name and pw (username:yaniver ;  pw=Eran2717) and change Jenkins URL to VM hostname
 
 In case you have internet connection -
 	Select "Installed suggested Plugins"
 	Inside Jenkins Plugin Manager-->Available, install blue ocean plugin
 Otherwise -
 	Extarct plugins.zip content inside C:\Users\yeran\AppData\Local\Jenkins\.jenkins\plugins and restart Jenkins service.
+	(or in C:\Windows\SysWOW64\config\systemprofile\AppData\Local\Jenkins\.jenkins\plugins)
 	
 Enter Blue ocean UI, upload existing pipeline (from Jenkins file located in GitHub) by creating new pipeline (note: github token required for login)
 
