@@ -66,7 +66,6 @@ pipeline {
 		DOMAIN = 'L1648'
 		SQL_INSTANCE = 'L1648-DV2\R2'
 		SHADOW_DB_NAME = 'L1648-DV1'
-		
     }
     post {
         always {
