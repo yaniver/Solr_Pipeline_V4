@@ -64,6 +64,9 @@ pipeline {
 		ZK_IP_PORT = '10.10.193.92:2181'
 		SEARCH_DAY_FROM = '2021-05-09'
 		DOMAIN = 'L1648'
+		SQL_INSTANCE = 'L1648-DV2\R2'
+		SHADOW_DB_NAME = 'L1648-DV1'
+		
     }
     post {
         always {
