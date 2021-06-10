@@ -21,7 +21,9 @@ cmd.exe --% /c winrm set winrm/config/service @{AllowUnencrypted="true"}
 }
 
 $servicename = "sonard"
-if (Invoke-Command -Session $Session -ScriptBlock {Get-Service $servicename -ErrorAction SilentlyContinue})
+
+# The command uses the Using scope modifier to identify a local variable in a remote command
+if (Invoke-Command -Session $Session -ScriptBlock {Get-Service $Using:servicename -ErrorAction SilentlyContinue})
 {
 	Write-Host "$servicename already exists in IDU server and will not be created again"
 }
@@ -54,7 +56,7 @@ Invoke-Command -Session $Session_db -ScriptBlock {
 cmd.exe --% /c winrm set winrm/config/service @{AllowUnencrypted="true"}
 }
 
-if (Invoke-Command -Session $Session_db -ScriptBlock {Get-Service $servicename -ErrorAction SilentlyContinue})
+if (Invoke-Command -Session $Session_db -ScriptBlock {Get-Service $Using:servicename -ErrorAction SilentlyContinue})
 {
 	Write-Host "$servicename already exists in DB server and will not be created again"
 }
