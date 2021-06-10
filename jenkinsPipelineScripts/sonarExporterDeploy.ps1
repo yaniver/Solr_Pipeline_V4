@@ -48,7 +48,7 @@ Else {
 
 # Deploy Sonar exporter on DB server
 # ==================================
-$Session_db = New-PSSession -ComputerName $idb_ip -Credential $Credential
+$Session_db = New-PSSession -ComputerName $db_ip -Credential $Credential
 
 Invoke-Command -Session $Session_db -ScriptBlock {
 cmd.exe --% /c winrm set winrm/config/service @{AllowUnencrypted="true"}
