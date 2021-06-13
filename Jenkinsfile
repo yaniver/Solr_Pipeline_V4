@@ -56,6 +56,7 @@ pipeline {
             }
         }
     }
+	// All Backslash need to be doubled in Jenkinsfile (grovy syntax)
     environment {
         SOLR_PIPELINE_HOME = 'C:\\Solr_Pipeline_V4'
 		LAB_NAME = 'L1648_v8.7'

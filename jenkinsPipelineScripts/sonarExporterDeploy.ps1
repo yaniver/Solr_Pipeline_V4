@@ -2,6 +2,8 @@ $solr_pipeline_home=$args[0]
 $idu_ip=$args[1]
 $db_ip=$args[2]
 $sql_instance=$args[3]
+# Remove double backslash since it's required in Jenkinsfile
+$sql_instance = $sql_instance -replace '\\(.)', '$1'
 $shadow_db_name=$args[4]
 $domain_name=$args[5]
 
@@ -36,7 +38,33 @@ Else {
 	# Copy locally the required configuration before copy the entire folder+configuration to the remote server
 	$source_path = $sonar_config_path + "\\IDU\\Sonar.config"
 	$dest_path = $sonar_full_path + "\\out\\Config"
+	
+	$file_content=(Get-Content -path $source_path -Raw)
+	$string_to_search='sqldb" providerName="mssql" connectionString="Server=(.*);Database'
+	$file_content -match $string_to_search
+	# Add additional backslash otherwise I'll get "the regular expression pattern \ is not valid"
+	$matches[1]=$matches[1] -replace '\\', '\\'
+	($file_content -replace $matches[1],$sql_instance) | Set-Content -Path $source_path
+	
+	$file_content=(Get-Content -path $source_path -Raw)
+	$string_to_search="Database='(.*)'; User"
+	$file_content -match $string_to_search
+	($file_content -replace $matches[1],$shadow_db_name) | Set-Content -Path $source_path
+	
+	$file_content=(Get-Content -path $source_path -Raw)
+	$string_to_search='sqldb_vrnsdomaindb" providerName="mssql" connectionString="Server=(.*);Database'
+	$file_content -match $string_to_search
+	$matches[1]=$matches[1] -replace '\\', '\\'
+	($file_content -replace $matches[1],$sql_instance) | Set-Content -Path $source_path
+	
+	$file_content=(Get-Content -path $source_path -Raw)
+	$string_to_search='db" url="http://(.*):5985'
+	$file_content -match $string_to_search
+	($file_content -replace $matches[1],$db_ip) | Set-Content -Path $source_path
+	
 	Copy-Item $source_path -Destination $dest_path
+	
+	
 	
 	# Replace exporter port and copy locally the required configuration before copy the entire folder+configuration to the remote server
 	$destination_path = $sonar_full_path + "\\out"
@@ -46,7 +74,6 @@ Else {
 	$file_content -match $string_to_search
 	($file_content -replace $matches[1],"9180") | Set-Content -Path $config_path
 	Copy-Item $config_path -Destination $destination_path
-	
 	
 	#Copy Sonar folder to remote server
 	Copy-Item $sonar_full_path -Destination "C:\Sonar\" -ToSession $Session -Recurse
