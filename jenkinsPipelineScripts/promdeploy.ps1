@@ -16,12 +16,12 @@ $config_prometheus_path=$solr_pipeline_home + "\\dockerpromModification\\Prometh
 $file_content=(Get-Content -path $config_prometheus_path -Raw)
 $string_to_search="'(.*):9190"
 $file_content -match $string_to_search
-($file_content -replace $matches[1],$db_ip) | Set-Content -Path $config_path
+($file_content -replace $matches[1],$db_ip) | Set-Content -Path $config_prometheus_path
 
 $file_content=(Get-Content -path $config_prometheus_path -Raw)
 $string_to_search="'(.*):9180"
 $file_content -match $string_to_search
-($file_content -replace $matches[1],$idu_ip) | Set-Content -Path $config_path
+($file_content -replace $matches[1],$idu_ip) | Set-Content -Path $config_prometheus_path
 
 git clone https://github.com/stefanprodan/dockprom
 Copy-Item -Path "${SOLR_PIPELINE_HOME}\dockerpromModification\GrafanaDashboardExtra\*.json" -Destination "${SOLR_PIPELINE_HOME}\dockprom\grafana\provisioning\dashboards" -Force -Verbose
