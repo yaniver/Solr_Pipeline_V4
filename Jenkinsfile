@@ -13,7 +13,7 @@ pipeline {
 		stage('Prometheus & Grafana') {
             steps {
 				echo 'Deploy Prometheus & Grafana'
-				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\promdeploy.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'"
+				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\promdeploy.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.DB_IP}'"
             }
         }
 		stage('Prometheus exporters deployment') {

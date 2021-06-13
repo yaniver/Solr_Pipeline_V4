@@ -1,5 +1,6 @@
 $solr_pipeline_home=$args[0]
 $idu_ip=$args[1]
+$db_ip=$args[2]
 
 
 cd $solr_pipeline_home
@@ -8,6 +9,17 @@ cd $solr_pipeline_home
 $config_path=$solr_pipeline_home + "\\dockerpromModification\\GrafanaDatasource\\datasource.yml"
 $file_content=(Get-Content -path $config_path -Raw)
 $string_to_search="http://(.*):8086"
+$file_content -match $string_to_search
+($file_content -replace $matches[1],$idu_ip) | Set-Content -Path $config_path
+
+$config_prometheus_path=$solr_pipeline_home + "\\dockerpromModification\\Prometheus\\prometheus.yml"
+$file_content=(Get-Content -path $config_prometheus_path -Raw)
+$string_to_search="targets: ['(.*):9190"
+$file_content -match $string_to_search
+($file_content -replace $matches[1],$db_ip) | Set-Content -Path $config_path
+
+$file_content=(Get-Content -path $config_prometheus_path -Raw)
+$string_to_search="targets: ['(.*):9180"
 $file_content -match $string_to_search
 ($file_content -replace $matches[1],$idu_ip) | Set-Content -Path $config_path
 
