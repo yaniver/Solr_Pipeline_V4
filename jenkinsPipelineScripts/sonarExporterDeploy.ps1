@@ -3,7 +3,7 @@ $idu_ip=$args[1]
 $db_ip=$args[2]
 $sql_instance=$args[3]
 # Remove double backslash since it's required in Jenkinsfile
-$sql_instance = $sql_instance -replace '\\(.)', '$1'
+# $sql_instance = $sql_instance -replace '\\(.)', '$1'
 $shadow_db_name=$args[4]
 $domain_name=$args[5]
 Write-Host "sql_instance begin value  = $sql_instance"
