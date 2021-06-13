@@ -30,10 +30,10 @@ $servicename = "sonard"
 # The command uses the Using scope modifier to identify a local variable in a remote command
 if (Invoke-Command -Session $Session -ScriptBlock {Get-Service $Using:servicename -ErrorAction SilentlyContinue})
 {
-	Write-Host "$Using:servicename already exists in IDU server and will not be created again"
+	Write-Host "sonard service already exists in IDU server and will not be created again"
 }
 Else {
-	Write-Host "$Using:servicename not found in IDU server, start creating it"
+	Write-Host "sonard service not found in IDU server, start creating it"
 	
 	# Copy locally the required configuration before copy the entire folder+configuration to the remote server
 	$source_path = $sonar_config_path + "\\IDU\\Sonar.config"
@@ -84,7 +84,7 @@ Else {
 	Invoke-Command -Session $Session -ScriptBlock {sc.exe start sonard}
 	Start-Sleep -s 10
 	
-	Write-Host "$Using:servicename created successfully in IDU server."
+	Write-Host "sonard service created successfully in IDU server."
 }
 
 
@@ -98,10 +98,10 @@ cmd.exe --% /c winrm set winrm/config/service @{AllowUnencrypted="true"}
 
 if (Invoke-Command -Session $Session_db -ScriptBlock {Get-Service $Using:servicename -ErrorAction SilentlyContinue})
 {
-	Write-Host "$Using:servicename already exists in DB server and will not be created again"
+	Write-Host "sonard service already exists in DB server and will not be created again"
 }
 Else {
-	Write-Host "$Using:servicename not found in DB server, start creating it"
+	Write-Host "sonard service not found in DB server, start creating it"
 	
 	$source_path = $sonar_config_path + "\\DB\\Sonar.config"
 	$dest_path = $sonar_full_path + "\\out\\Config"
@@ -121,5 +121,5 @@ Else {
 	Invoke-Command -Session $Session_db -ScriptBlock {sc.exe start sonard}
 	Start-Sleep -s 10
 	
-	Write-Host "$Using:servicename created successfully in DB server."
+	Write-Host "sonard service created successfully in DB server."
 }

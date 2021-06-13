@@ -22,7 +22,7 @@ pipeline {
                 stage('Sonar Exporter') {
                     steps {
 						echo 'Deploying Sonar Exporter'
-						powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\sonarExporterDeploy.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.DB_IP}'  '${env.SQL_INSTANCE}' '${env.SHADOW_DB}' '${env.DOMAIN}'"
+						powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\sonarExporterDeploy.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.DB_IP}'  '${env.SQL_INSTANCE}' '${env.SHADOW_DB_NAME}' '${env.DOMAIN}'"
                     }
                 }
                 stage('Solr Exporter') {
