@@ -6,6 +6,7 @@ $sql_instance=$args[3]
 $sql_instance = $sql_instance -replace '\\(.)', '$1'
 $shadow_db_name=$args[4]
 $domain_name=$args[5]
+Write-Host "sql_instance begin value  = $sql_instance"
 
 
 $sonar_full_path=$solr_pipeline_home + "\\Sonar"
@@ -42,8 +43,11 @@ Else {
 	$file_content=(Get-Content -path $source_path -Raw)
 	$string_to_search='sqldb" providerName="mssql" connectionString="Server=(.*);Database'
 	$file_content -match $string_to_search
+	Write-Host "matche value 1 = $matches[1]"
 	# Add additional backslash otherwise I'll get "the regular expression pattern \ is not valid"
 	$matches[1]=$matches[1] -replace '\\', '\\'
+	Write-Host "matche value 2 = $matches[1]"
+	Write-Host "sql_instance value  = $sql_instance"
 	($file_content -replace $matches[1],$sql_instance) | Set-Content -Path $source_path
 	
 	$file_content=(Get-Content -path $source_path -Raw)
