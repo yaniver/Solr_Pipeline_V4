@@ -57,7 +57,7 @@ pipeline {
         }
     }
     environment {
-        SOLR_PIPELINE_HOME = 'C:\\Solr_Pipeline_V2'
+        SOLR_PIPELINE_HOME = 'C:\\Solr_Pipeline_V4'
 		LAB_NAME = 'L1648_v8.7'
 		IDU_IP = '10.10.193.88'
 		DB_IP = '10.10.193.93'
