@@ -1,6 +1,7 @@
 $solr_pipeline_home=$args[0]
 $idu_ip=$args[1]
 $db_ip=$args[2]
+$grafana_version=$args[3]
 
 
 cd $solr_pipeline_home
@@ -28,6 +29,13 @@ Copy-Item -Path "${SOLR_PIPELINE_HOME}\dockerpromModification\GrafanaDashboardEx
 Copy-Item -Path "${SOLR_PIPELINE_HOME}\dockerpromModification\GrafanaDatasource\*.yml" -Destination "${SOLR_PIPELINE_HOME}\dockprom\grafana\provisioning\datasources" -Force -Verbose
 Copy-Item -Path "${SOLR_PIPELINE_HOME}\dockerpromModification\Prometheus\*.yml" -Destination "${SOLR_PIPELINE_HOME}\dockprom\prometheus" -Force -Verbose
 cd dockprom
+
+$config_path = $solr_pipeline_home + "\\dockprom\\docker-compose.yml"
+$file_content=(Get-Content -path $config_path -Raw)
+$string_to_search='grafana/grafana:(.*)'
+$file_content -match $string_to_search
+($file_content -replace $matches[1],$grafana_version) | Set-Content -Path $config_path
+
 $ADMIN_USER="admin"
 $ADMIN_PASSWORD="admin"
 docker-compose up -d

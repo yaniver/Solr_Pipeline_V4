@@ -13,7 +13,7 @@ pipeline {
 		stage('Prometheus & Grafana') {
             steps {
 				echo 'Deploy Prometheus & Grafana'
-				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\promdeploy.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.DB_IP}'"
+				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\promdeploy.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.DB_IP}'  '${env.GRAFANA_VERSION}'"
             }
         }
 		stage('Prometheus exporters deployment') {
@@ -66,7 +66,8 @@ pipeline {
 		SEARCH_DAY_FROM = '2021-05-09'
 		DOMAIN = 'L1648'
 		SQL_INSTANCE = 'L1648-DV2\\R2'
-		SHADOW_DB_NAME='L1648-DV1'
+		SHADOW_DB_NAME = 'L1648-DV1'
+		GRAFANA_VERSION = '8.0.2'
     }
     post {
         always {
