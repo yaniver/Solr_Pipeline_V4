@@ -15,8 +15,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 11,
-  "iteration": 1620741226879,
+  "id": 43,
+  "iteration": 1623675524894,
   "links": [],
   "panels": [
     {
@@ -25,10 +25,6 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "InfluxDB",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -60,7 +56,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.0.2",
       "pointradius": 3,
       "points": true,
       "renderer": "flot",
@@ -146,7 +142,7 @@
       "timeShift": null,
       "title": "First response time",
       "tooltip": {
-        "shared": true,
+        "shared": false,
         "sort": 0,
         "value_type": "individual"
       },
@@ -161,6 +157,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:597",
           "format": "dtdurationms",
           "label": null,
           "logBase": 2,
@@ -169,6 +166,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:598",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -189,10 +187,6 @@
       "dashes": false,
       "datasource": "InfluxDB",
       "decimals": 1,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -224,7 +218,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.0.2",
       "pointradius": 1,
       "points": true,
       "renderer": "flot",
@@ -310,7 +304,7 @@
       "timeShift": null,
       "title": "Complete response time",
       "tooltip": {
-        "shared": true,
+        "shared": false,
         "sort": 0,
         "value_type": "individual"
       },
@@ -325,6 +319,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:676",
           "format": "dtdurationms",
           "label": null,
           "logBase": 2,
@@ -333,6 +328,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:677",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -349,10 +345,6 @@
     {
       "columns": [],
       "datasource": "InfluxDB",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "fontSize": "100%",
       "gridPos": {
         "h": 9,
@@ -545,10 +537,6 @@
     {
       "columns": [],
       "datasource": "InfluxDB",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "fontSize": "100%",
       "gridPos": {
         "h": 6,
@@ -861,10 +849,6 @@
     {
       "columns": [],
       "datasource": "InfluxDB",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "fontSize": "100%",
       "gridPos": {
         "h": 6,
@@ -1034,10 +1018,6 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1066,7 +1046,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.0.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1146,10 +1126,6 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1181,7 +1157,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.0.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1254,10 +1230,6 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1287,7 +1259,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.0.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1351,10 +1323,6 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "fill": 0,
       "gridPos": {
         "h": 7,
@@ -1381,7 +1349,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.0.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1444,10 +1412,6 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -1472,7 +1436,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.0.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1535,10 +1499,6 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -1563,7 +1523,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.0.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1627,10 +1587,6 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "fill": 1,
       "gridPos": {
         "h": 8,
@@ -1657,7 +1613,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.0.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1777,10 +1733,6 @@
       "dashes": false,
       "datasource": "Prometheus",
       "description": "Ratio of cache hits to lookups for the current index searcher.",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "fill": 0,
       "gridPos": {
         "h": 8,
@@ -1809,7 +1761,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1904,10 +1856,6 @@
     {
       "columns": [],
       "datasource": "InfluxDB",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "fontSize": "100%",
       "gridPos": {
         "h": 5,
@@ -1997,10 +1945,6 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "fill": 0,
       "gridPos": {
         "h": 5,
@@ -2028,7 +1972,7 @@
       "links": [],
       "nullPointMode": "null as zero",
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.0.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2089,10 +2033,6 @@
     {
       "columns": [],
       "datasource": "InfluxDB",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "fontSize": "100%",
       "gridPos": {
         "h": 8,
@@ -2265,10 +2205,6 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "fill": 1,
       "gridPos": {
         "h": 8,
@@ -2298,7 +2234,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.0.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3147,13 +3083,6 @@
           "renderer": "flot",
           "repeat": "base_url",
           "repeatDirection": "h",
-          "scopedVars": {
-            "base_url": {
-              "selected": false,
-              "text": "http://10.52.12.12:3182/solr",
-              "value": "http://10.52.12.12:3182/solr"
-            }
-          },
           "seriesOverrides": [],
           "spaceLength": 10,
           "stack": false,
@@ -3327,7 +3256,7 @@
     }
   ],
   "refresh": "10s",
-  "schemaVersion": 27,
+  "schemaVersion": 30,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -3336,8 +3265,12 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "All",
-          "value": "$__all"
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": "Prometheus",
         "definition": "",
@@ -3358,7 +3291,6 @@
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -3366,9 +3298,13 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
-          "text": "All",
-          "value": "$__all"
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": "Prometheus",
         "definition": "",
@@ -3389,7 +3325,6 @@
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -3398,8 +3333,12 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "All",
-          "value": "$__all"
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": "InfluxDB",
         "definition": "",
@@ -3417,7 +3356,6 @@
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -3426,8 +3364,12 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "All",
-          "value": "$__all"
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": "InfluxDB",
         "definition": "",
@@ -3445,7 +3387,6 @@
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -3454,8 +3395,12 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "All",
-          "value": "$__all"
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": "InfluxDB",
         "definition": "",
@@ -3473,7 +3418,6 @@
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -3482,8 +3426,12 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "All",
-          "value": "$__all"
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": "InfluxDB",
         "definition": "",
@@ -3501,7 +3449,6 @@
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -3510,8 +3457,12 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "All",
-          "value": "$__all"
+          "text": [
+            "Date"
+          ],
+          "value": [
+            "Date"
+          ]
         },
         "datasource": "InfluxDB",
         "definition": "",
@@ -3529,7 +3480,6 @@
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -3538,8 +3488,12 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "All",
-          "value": "$__all"
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": "InfluxDB",
         "definition": "",
@@ -3557,7 +3511,6 @@
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -3565,7 +3518,7 @@
     ]
   },
   "time": {
-    "from": "now-12h",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {
@@ -3593,8 +3546,8 @@
       "30d"
     ]
   },
-  "timezone": "utc",
+  "timezone": "",
   "title": "Search Performance",
   "uid": "",
-  "version": 1
+  "version": 7
 }
