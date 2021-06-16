@@ -12,6 +12,7 @@ $User = $domain_name + "\Administrator"
 $PWord = ConvertTo-SecureString -String "p@ssword1" -AsPlainText -Force
 $Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $PWord
 $Session = New-PSSession -ComputerName $idu_ip -Credential $Credential
+$Session2 = New-PSSession -ComputerName $idu_ip -Credential $Credential
 
 # Get RabbitMQ password from remote IDU Server
 # ===========================================
@@ -57,11 +58,11 @@ $file_content -match $string_to_search
 ($file_content -replace $matches[1],"9418") | Set-Content -Path $source_path
 
 #Copy RabbitMQ exporter folder to remote server
-Copy-Item $rabbit_full_path -Destination "C:\RabbitMQ_exporter2\" -ToSession $Session -Recurse
+Copy-Item $rabbit_full_path -Destination "C:\RabbitMQ_exporter2\" -ToSession $Session2 -Recurse
 
 # Run RabbitMQ_exporter on remote server in background (by using AsJob flag)
 # 2. In case you need more RabbitMQ queues to monitor than update param "include_queues" in config.example.json 
 # 3. Open CMD and run command "rabbitmq_exporter.exe  -config-file config.example.json"
-Invoke-Command -Session $Session -ScriptBlock {
+Invoke-Command -Session $Session2 -ScriptBlock {
 cmd.exe --% /c C:\RabbitMQ_exporter2\rabbitmq_exporter.exe  -config-file config.example.json
 } -AsJob

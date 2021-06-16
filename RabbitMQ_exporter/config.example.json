@@ -1,8 +1,8 @@
 {
     "rabbit_url": "http://127.0.0.1:15672",
     "rabbit_user": "VaronisRabbitMQ",
-    "rabbit_pass": "7b_9#ag0oOG99",
-    "publish_port": "9419",
+    "rabbit_pass": "7b_9#ag0oOGqn",
+    "publish_port": "9418",
     "publish_addr": "",
     "output_format": "TTY",
     "ca_file": "ca.pem",
@@ -24,6 +24,9 @@
     "timeout": 30,
     "max_queues": 0
 }
+
+
+
 
 
 
