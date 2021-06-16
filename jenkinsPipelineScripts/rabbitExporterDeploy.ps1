@@ -16,21 +16,22 @@ $Session = New-PSSession -ComputerName $idu_ip -Credential $Credential
 # Get RabbitMQ password from remote IDU Server
 # ===========================================
 $rabbit_connection_string_encoded = Invoke-Command -Session $Session -ScriptBlock {(Get-ItemProperty -Path HKLM:\SOFTWARE\Varonis\VSB -Name ConnectionString).ConnectionString}
+Write-Host "====rabbit_connection_string_encoded = $rabbit_connection_string_encoded"
 $rabbit_connection_string_deencoded = Invoke-Command -ScriptBlock {..\CryptoVaronis\vrnsCrypto.ps1 $rabbit_connection_string_encoded}
+Write-Host "====rabbit_connection_string_deencoded = $rabbit_connection_string_deencoded"
 
 # host=localhost;password=7b_9#ag0oOGqn;site=d6363289-6109-420f-8553-bca9cabca783;user=VaronisRabbitMQ;writer_site=d6363289-6109-420f-8553-bca9cabca783
 $string_to_search = "password=(.*);site"
 $rabbit_connection_string_deencoded -match $string_to_search
 $rabbit_password = $matches[1]
+Write-Host "====matches = $matches[1]"
 Write-Host "====rabbit password 1 = $rabbit_password"
 
 $source_path = $rabbit_full_path + "\\config.example.json"
 $file_content=(Get-Content -path $source_path -Raw)
 # "rabbit_pass": "ixu306ecyJ#d",
 $string_to_search='rabbit_pass": "(.*)",'
-Write-Host "====rabbit password 2 = $rabbit_password"
 $file_content -match $string_to_search
-Write-Host "====rabbit password 3 = $rabbit_password"
 ($file_content -replace $matches[1],$rabbit_password) | Set-Content -Path $source_path
 
 #Copy RabbitMQ exporter folder to remote server
