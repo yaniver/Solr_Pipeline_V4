@@ -31,6 +31,12 @@ pipeline {
 						powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\solrExporterDeploy.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.ZK_IP_PORT}'"
 					}
 				}
+                stage('RabbitMQ Exporter') {
+                    steps {
+						echo 'Deploying Solr Exporter'
+						powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\rabbitExporterDeploy.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.DOMAIN}'"
+					}
+				}
             }
         }
 		stage('Loki - Grafana logs collector') {
