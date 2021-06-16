@@ -5,7 +5,7 @@ $domain_name=$args[2]
 $rabbit_full_path=$solr_pipeline_home + "\\RabbitMQ_exporter"
 $crypto_full_path_script=$solr_pipeline_home + "\\CryptoVaronis\\vrnsCrypto.ps1"
 
-
+cd $rabbit_full_path
  
 # Create session for remote server for using it when I need to run command on remote server
 $User = $domain_name + "\Administrator"
