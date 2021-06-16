@@ -16,17 +16,17 @@ scrape_configs:
   - job_name: 'rabbitmq_idu'
     scrape_interval: 10s
     static_configs:
-      - targets: ['10.10.999.99:9419']
+      - targets: ['10.10.193.88:9419']
 
   - job_name: 'sonar_db'
     scrape_interval: 10s
     static_configs:
-      - targets: ['10.10.888.88:9190']
+      - targets: ['10.10.193.93:9190']
 
   - job_name: 'sonar_idu'
     scrape_interval: 10s
     static_configs:
-      - targets: ['10.10.777.77:9180']
+      - targets: ['10.10.193.88:9180']
 
   - job_name: 'solrexporter_core'
     scrape_interval: 10s
@@ -71,6 +71,9 @@ alerting:
 #    scrape_interval: 10s
 #    static_configs:
 #      - targets: ['eventlog-proxy:5000', 'eventlog:5000']
+
+
+
 
 
 

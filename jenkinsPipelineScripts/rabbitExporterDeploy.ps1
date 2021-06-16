@@ -38,4 +38,4 @@ Copy-Item $rabbit_full_path -Destination "C:\RabbitMQ_exporter\" -ToSession $Ses
 # 3. Open CMD and run command "rabbitmq_exporter.exe  -config-file config.example.json"
 Invoke-Command -Session $Session -ScriptBlock {
 cmd.exe --% /c C:\RabbitMQ_exporter\rabbitmq_exporter.exe  -config-file config.example.json
-}
+} -AsJob
