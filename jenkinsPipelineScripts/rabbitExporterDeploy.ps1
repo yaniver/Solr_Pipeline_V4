@@ -39,6 +39,12 @@ $string_to_search='publish_port": "(.*)",'
 $file_content -match $string_to_search
 ($file_content -replace $matches[1],"9419") | Set-Content -Path $source_path
 
+$file_content=(Get-Content -path $source_path -Raw)
+# "include_queues": "SolrLoader",
+$string_to_search='include_queues": "(.*)",'
+$file_content -match $string_to_search
+($file_content -replace $matches[1],"SolrLoader") | Set-Content -Path $source_path
+
 #Copy RabbitMQ exporter folder to remote server
 Copy-Item $rabbit_full_path -Destination "C:\RabbitMQ_exporter\" -ToSession $Session -Recurse
 
@@ -56,6 +62,12 @@ $file_content=(Get-Content -path $source_path -Raw)
 $string_to_search='publish_port": "(.*)",'
 $file_content -match $string_to_search
 ($file_content -replace $matches[1],"9418") | Set-Content -Path $source_path
+
+$file_content=(Get-Content -path $source_path -Raw)
+# "include_queues": "SolrLoader",
+$string_to_search='include_queues": "(.*)",'
+$file_content -match $string_to_search
+($file_content -replace $matches[1],"enricher") | Set-Content -Path $source_path
 
 #Copy RabbitMQ exporter folder to remote server
 Copy-Item $rabbit_full_path -Destination "C:\RabbitMQ_exporter2\" -ToSession $Session2 -Recurse
