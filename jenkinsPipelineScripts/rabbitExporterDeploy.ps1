@@ -16,7 +16,6 @@ $Session = New-PSSession -ComputerName $idu_ip -Credential $Credential
 # Get RabbitMQ password from remote IDU Server
 # ===========================================
 $rabbit_connection_string_encoded = Invoke-Command -Session $Session -ScriptBlock {(Get-ItemProperty -Path HKLM:\SOFTWARE\Varonis\VSB -Name ConnectionString).ConnectionString}
-Write-Host "====rabbit_connection_string_encoded = $rabbit_connection_string_encoded"
 $rabbit_connection_string_deencoded = Invoke-Command -ScriptBlock {..\CryptoVaronis\vrnsCrypto.ps1 $rabbit_connection_string_encoded}
 Write-Host "====rabbit_connection_string_deencoded = $rabbit_connection_string_deencoded"
 
@@ -24,8 +23,7 @@ Write-Host "====rabbit_connection_string_deencoded = $rabbit_connection_string_d
 $string_to_search = "password=(.*);site"
 $rabbit_connection_string_deencoded -match $string_to_search
 $rabbit_password = $matches[1]
-Write-Host "====matches = $matches[1]"
-Write-Host "====rabbit password 1 = $rabbit_password"
+Write-Host "====rabbit password = $rabbit_password"
 
 $source_path = $rabbit_full_path + "\\config.example.json"
 $file_content=(Get-Content -path $source_path -Raw)

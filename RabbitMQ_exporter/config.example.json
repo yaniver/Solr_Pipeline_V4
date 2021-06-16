@@ -1,7 +1,7 @@
 {
     "rabbit_url": "http://127.0.0.1:15672",
     "rabbit_user": "VaronisOwner",
-    "rabbit_pass": "7b_9#ag0oOG99",
+    "rabbit_pass": "7b_9#ag0oOGqn",
     "publish_port": "9419",
     "publish_addr": "",
     "output_format": "TTY",
@@ -24,6 +24,7 @@
     "timeout": 30,
     "max_queues": 0
 }
+
 
 
 
