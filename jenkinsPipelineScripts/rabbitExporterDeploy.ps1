@@ -33,27 +33,24 @@ $string_to_search='rabbit_pass": "(.*)",'
 $file_content -match $string_to_search
 ($file_content -replace $matches[1],$rabbit_password) | Set-Content -Path $source_path
 
-$file_content=(Get-Content -path $source_path -Raw)
-# "publish_port": "9419",
-$string_to_search='publish_port": "(.*)",'
-$file_content -match $string_to_search
-($file_content -replace $matches[1],"9419") | Set-Content -Path $source_path
 
-$file_content=(Get-Content -path $source_path -Raw)
-# "include_queues": "SolrLoader",
-$string_to_search='include_queues": "(.*)",'
-$file_content -match $string_to_search
-($file_content -replace $matches[1],"SolrLoader") | Set-Content -Path $source_path
+
+#$file_content=(Get-Content -path $source_path -Raw)
+#$string_to_search='publish_port": "(.*)",'
+#$file_content -match $string_to_search
+#($file_content -replace $matches[1],"9419") | Set-Content -Path $source_path
+
+#$file_content=(Get-Content -path $source_path -Raw)
+#$string_to_search='include_queues": "(.*)",'
+#$file_content -match $string_to_search
+#($file_content -replace $matches[1],"SolrLoader") | Set-Content -Path $source_path
 
 #Copy RabbitMQ exporter folder to remote server
-Copy-Item $rabbit_full_path -Destination "C:\RabbitMQ_exporter\" -ToSession $Session -Recurse
+#Copy-Item $rabbit_full_path -Destination "C:\RabbitMQ_exporter\" -ToSession $Session -Recurse
 
-# Run RabbitMQ_exporter on remote server in background (by using AsJob flag)
-# 2. In case you need more RabbitMQ queues to monitor than update param "include_queues" in config.example.json 
-# 3. Open CMD and run command "rabbitmq_exporter.exe  -config-file config.example.json"
-Invoke-Command -Session $Session -ScriptBlock {
-cmd.exe --% /c C:\RabbitMQ_exporter\rabbitmq_exporter.exe  -config-file config.example.json
-} -AsJob
+#Invoke-Command -Session $Session -ScriptBlock {
+#cmd.exe --% /c C:\RabbitMQ_exporter\rabbitmq_exporter.exe  -config-file config.example.json
+#} -AsJob
 
 
 
@@ -64,7 +61,6 @@ $file_content -match $string_to_search
 ($file_content -replace $matches[1],"9418") | Set-Content -Path $source_path
 
 $file_content=(Get-Content -path $source_path -Raw)
-# "include_queues": "SolrLoader",
 $string_to_search='include_queues": "(.*)",'
 $file_content -match $string_to_search
 ($file_content -replace $matches[1],"enricher") | Set-Content -Path $source_path
@@ -72,9 +68,6 @@ $file_content -match $string_to_search
 #Copy RabbitMQ exporter folder to remote server
 Copy-Item $rabbit_full_path -Destination "C:\RabbitMQ_exporter2\" -ToSession $Session2 -Recurse
 
-# Run RabbitMQ_exporter on remote server in background (by using AsJob flag)
-# 2. In case you need more RabbitMQ queues to monitor than update param "include_queues" in config.example.json 
-# 3. Open CMD and run command "rabbitmq_exporter.exe  -config-file config.example.json"
 Invoke-Command -Session $Session2 -ScriptBlock {
 cmd.exe --% /c C:\RabbitMQ_exporter2\rabbitmq_exporter.exe  -config-file config.example.json
 } -AsJob

@@ -10,7 +10,7 @@
     "key_file": "client-key.pem",
     "insecure_skip_verify": false,
     "exlude_metrics": [],
-    "include_queues": "SolrLoader",
+    "include_queues": "enricher",
     "skip_queues": "^$",
     "skip_vhost": "^$",
     "include_vhost": ".*",
@@ -24,6 +24,11 @@
     "timeout": 30,
     "max_queues": 0
 }
+
+
+
+
+
 
 
 
