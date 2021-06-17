@@ -121,3 +121,6 @@ Else {
 	
 	Write-Host "sonard service created successfully in DB server."
 }
+
+Remove-PSSession $Session
+Remove-PSSession $Session_db
