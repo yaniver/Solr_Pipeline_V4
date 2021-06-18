@@ -10,7 +10,7 @@ $domain_name=$args[5]
 $global:sonar_full_path=$solr_pipeline_home + "\\Sonar"
 $global:sonar_config_path=$sonar_full_path + "\\sonarConfiguration"
 
-$sonar_config_path_sourceToCopyToRemoteServer = $sonar_full_path + "\\out\\Config"
+$sonar_config2_file_path = $sonar_full_path + "\\out\\Config\\Sonar.config"
 $sonar_config_file_path = $sonar_full_path + "\\out\\Sonard.dll.config"
 $servicename = "sonard"
 
@@ -81,7 +81,7 @@ if (Invoke-Command -Session $Session -ScriptBlock {Get-Service $Using:servicenam
 	SetSonarConfig -port "9180" -folder_name "IDU"
 	
 	Write-Host "Copy only configuration files to remote server"
-	Copy-Item $sonar_config_path_sourceToCopyToRemoteServer -Destination "C:\Sonar\out\Config\" -ToSession $Session -Recurse
+	Copy-Item $sonar_config2_file_path -Destination "C:\Sonar\out\Config\" -ToSession $Session
 	Copy-Item $sonar_config_file_path -Destination "C:\Sonar\out\" -ToSession $Session
 	
 	# Reload new configuration by restart service
@@ -122,7 +122,7 @@ if (Invoke-Command -Session $Session_db -ScriptBlock {Get-Service $Using:service
 	SetSonarConfig -port "9190" -folder_name "DB"
 	
 	Write-Host "Copy only configuration files to remote server"
-	Copy-Item $sonar_config_path_sourceToCopyToRemoteServer -Destination "C:\Sonar\out\Config\" -ToSession $Session_db -Recurse
+	Copy-Item $sonar_config2_file_path -Destination "C:\Sonar\out\Config\" -ToSession $Session_db
 	Copy-Item $sonar_config_file_path -Destination "C:\Sonar\out\" -ToSession $Session_db
 	
 	# Reload new configuration
