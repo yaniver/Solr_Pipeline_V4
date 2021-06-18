@@ -64,7 +64,7 @@ pipeline {
 		stage('Clean') {
             steps {
 				echo 'Clean'
-				//powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\clean.ps1 '${env.SOLR_PIPELINE_HOME}'"
+				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\clean.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.DELETE_ALL_DB_DATA}'"
             }
         }
     }
@@ -80,6 +80,7 @@ pipeline {
 		SQL_INSTANCE = 'L1648-DV2\\R2'
 		SHADOW_DB_NAME = 'L1648-DV1'
 		GRAFANA_VERSION = '8.0.2'
+		DELETE_ALL_DB_DATA = 'false'
     }
     post {
         always {

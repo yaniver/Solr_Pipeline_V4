@@ -81,7 +81,7 @@ if (Invoke-Command -Session $Session -ScriptBlock {Get-Service $Using:servicenam
 	SetSonarConfig -port "9180" -folder_name "IDU"
 	
 	Write-Host "Copy only configuration files to remote server"
-	Copy-Item $sonar_config_path_sourceToCopyToRemoteServer -Destination "C:\Sonar\out\Config\" -ToSession $Session -Recurse
+	Copy-Item $sonar_config_path_sourceToCopyToRemoteServer -Destination "C:\Sonar\out\" -ToSession $Session -Recurse
 	Copy-Item $sonar_config_file_path -Destination "C:\Sonar\out\" -ToSession $Session
 	
 	# Reload new configuration by restart service
@@ -101,7 +101,7 @@ Else {
 	SetSonarConfig -port "9180"
 	
 	Write-Host "Copy all Sonar exporter files to remote server"
-	Copy-Item $sonar_full_path -Destination "C:\Sonar\" -ToSession $Session -Recurse
+	Copy-Item $sonar_full_path -Destination "C:\" -ToSession $Session -Recurse
 
 	# Create Sonard service remotlly + start service
 	Invoke-Command -Session $Session -ScriptBlock {sc.exe create sonard binpath=C:\Sonar\out\Sonard.exe start=auto obj=LocalSystem depend="WinRM"}
@@ -122,7 +122,7 @@ if (Invoke-Command -Session $Session_db -ScriptBlock {Get-Service $Using:service
 	SetSonarConfig -port "9190" -folder_name "DB"
 	
 	Write-Host "Copy only configuration files to remote server"
-	Copy-Item $sonar_config_path_sourceToCopyToRemoteServer -Destination "C:\Sonar\out\Config\" -ToSession $Session_db -Recurse
+	Copy-Item $sonar_config_path_sourceToCopyToRemoteServer -Destination "C:\Sonar\out\" -ToSession $Session_db -Recurse
 	Copy-Item $sonar_config_file_path -Destination "C:\Sonar\out\" -ToSession $Session_db
 	
 	# Reload new configuration
@@ -142,7 +142,7 @@ Else {
 	SetSonarConfig -port "9190" -folder_name "DB"
 	
 	Write-Host "Copy all Sonar exporter files to remote server"
-	Copy-Item $sonar_full_path -Destination "C:\Sonar\" -ToSession $Session_db -Recurse
+	Copy-Item $sonar_full_path -Destination "C:\" -ToSession $Session_db -Recurse
 
 	Invoke-Command -Session $Session_db -ScriptBlock {sc.exe create sonard binpath=C:\Sonar\out\Sonard.exe start=auto obj=LocalSystem depend="WinRM"}
 	Invoke-Command -Session $Session_db -ScriptBlock {sc.exe start sonard}
