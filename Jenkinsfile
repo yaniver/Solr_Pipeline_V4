@@ -16,7 +16,7 @@ pipeline {
 				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\promdeploy.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.DB_IP}'  '${env.GRAFANA_VERSION}'"
             }
         }
-		stage('Prometheus exporters deployment') {
+		stage('Prometheus metrics exporters') {
             failFast true
             parallel {
                 stage('Sonar Exporter') {
@@ -59,6 +59,12 @@ pipeline {
 						powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\jmeterScriptExec.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.SEARCH_DAY_FROM}'  '${env.DOMAIN}'"
                     }
                 }
+            }
+        }
+		stage('Clean') {
+            steps {
+				echo 'Clean'
+				//powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\clean.ps1 '${env.SOLR_PIPELINE_HOME}'"
             }
         }
     }
