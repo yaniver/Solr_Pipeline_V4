@@ -57,11 +57,11 @@ Else {
 
 	# Option 1 - create service
 	Invoke-Command -Session $Session3 -ScriptBlock {
-	sc.exe create $servicename1 binpath= "C:\RabbitMQ_exporter\rabbitmq_exporter.exe --config-file C:\RabbitMQ_exporter\config.example.json" DisplayName= "RabbitMQ_Exporter_solrloader" start=auto obj=LocalSystem
+	sc.exe create $Using:servicename1 binpath= "C:\RabbitMQ_exporter\rabbitmq_exporter.exe --config-file C:\RabbitMQ_exporter\config.example.json" DisplayName= "RabbitMQ_Exporter_solrloader" start=auto obj=LocalSystem
 	}
 
 	Invoke-Command -Session $Session3 -ScriptBlock {
-	sc.exe start $servicename1
+	sc.exe start $Using:servicename1
 	}
 
 	# Option 2 - Create process
@@ -86,11 +86,11 @@ Else {
 	Copy-Item $rabbit_full_path -Destination "C:\RabbitMQ_exporter2\" -ToSession $Session2 -Recurse
 
 	Invoke-Command -Session $Session2 -ScriptBlock {
-	sc.exe create $servicename2 binpath= "C:\RabbitMQ_exporter2\rabbitmq_exporter.exe --config-file C:\RabbitMQ_exporter2\config.example.json" DisplayName= "RabbitMQ_Exporter_enricher" start=auto obj=LocalSystem
+	sc.exe create $Using:servicename2 binpath= "C:\RabbitMQ_exporter2\rabbitmq_exporter.exe --config-file C:\RabbitMQ_exporter2\config.example.json" DisplayName= "RabbitMQ_Exporter_enricher" start=auto obj=LocalSystem
 	}
 
 	Invoke-Command -Session $Session2 -ScriptBlock {
-	sc.exe start $servicename2
+	sc.exe start $Using:servicename2
 	}	
 }
 
