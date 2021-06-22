@@ -16,7 +16,7 @@ pipeline {
 				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\promdeploy.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.DB_IP}'  '${env.GRAFANA_VERSION}'"
             }
         }
-		stage('Prometheus metrics exporters') {
+		stage('Prometheus exporters') {
             failFast true
             parallel {
                 stage('Sonar Exporter') {
@@ -45,20 +45,15 @@ pipeline {
 				}
             }
         }
-		stage('Events injector') {
-            steps {
-				echo 'Starting Events RabbitMQ injection'
-				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\events_injector.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.DOMAIN}'  '${env.EVENTS_EPS_IN_THOUSANDS}'  '${env.SQL_INSTANCE}' '${env.SHADOW_DB_NAME}'"
-            }
-        }
         stage('Parallel Stage') {
             failFast true
             parallel {
-                stage('Empty step') {
-                    steps {
-						echo 'Empty step'
-                    }
-                }
+				stage('Events injector') {
+					steps {
+						echo 'Starting Events RabbitMQ injection'
+						powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\events_injector.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.DOMAIN}'  '${env.EVENTS_EPS_IN_THOUSANDS}'  '${env.SQL_INSTANCE}' '${env.SHADOW_DB_NAME}'"
+					}
+				}
                 stage('JMeter run') {
                     steps {
 						echo 'Deploying JMeter load'

@@ -45,15 +45,19 @@ Else {
 
 	#Copy events injector to remote server
 	Copy-Item $events_injector_full_path -Destination "C:\events_injector\" -ToSession $Session4 -Recurse
+	
+	Invoke-Command -Session $Session4 -ScriptBlock {
+	cmd.exe --% /c C:\events_injector\EndurenceVSBInjector.exe
+	} -AsJob
 
 	# Create service
-	Invoke-Command -Session $Session4 -ScriptBlock {
-	sc.exe create $Using:servicename1 binpath= "C:\events_injector\EndurenceVSBInjector.exe" DisplayName= "Events_injector" start=auto obj=LocalSystem
-	}
+	#Invoke-Command -Session $Session4 -ScriptBlock {
+	#sc.exe create $Using:servicename1 binpath= "C:\events_injector\EndurenceVSBInjector.exe" DisplayName= "Events_injector" start=auto obj=LocalSystem
+	#}
 
-	Invoke-Command -Session $Session4 -ScriptBlock {
-	sc.exe start $Using:servicename1
-	}
+	#Invoke-Command -Session $Session4 -ScriptBlock {
+	#sc.exe start $Using:servicename1
+	#}
 }
 
 Remove-PSSession $Session4
