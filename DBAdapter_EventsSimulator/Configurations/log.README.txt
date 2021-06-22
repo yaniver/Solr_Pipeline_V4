@@ -1,0 +1,73 @@
+dbgView/eventViewer/utf8File/utf16File sinks are formatting.
+
+The "format" property consists of ordinary multibyte characters (except %), which are taken unchanged, and conversion specifications.
+Each conversion specification has the following format:
+
+	introductory % character
+	conversion format specifier
+
+The following format specifiers are available:
+
+	% - writes literal %. The full conversion specification must be %%.
+	H - host name, as returned by ::GetComputerNameEx() Win API.
+	X - executable name, without extension, as returned by ::GetModuleFileName() Win API.
+	P - process ID.
+	T - thread ID, 5 chars width, padded with zeros.
+	D - date and time, in "YYYY/MM/DD hh:mm:ss.ms" format, as returned by ::GetSystemTime() Win API.
+	Z - date and time, in "YYYY/MM/DD hh:mm:ss.ms" format, as returned by ::GetLocalTime() Win API.
+	L - severity level, "FAT"/"ERR"/"WRN"/"INF"/"DBG"/"TRC".
+	I - indent offset, (2 * current depth) spaces.
+	S - scope name of context.
+	C - state of mutable contexts, empty for constant contexts.
+	M - message.
+	i - message id, in %d or %8X format, as returned by ::FormatMessage() Win API
+	t - message text, as returned by ::FormatMessage() Win API
+	B - opening/closing brace ('{'/'}') in enter/leave scope traces.
+	E - empty string.
+
+The following constraints are applied on format specifiers:
+
+	Each format specifier can be used only once.
+	Constant value specifiers (%, H, X, P, B) can be used everywhere.
+	All fixed width format specifiers (T, D, Z, L) can be used only before any of non-fixed width specifiers (I, S, C, M).
+	Either D or Z specifier can be used.
+
+Default formats are:
+
+	DbgView     - "[%L] %I%S(%C): %B%M".
+	EventViewer - "%X%S%E%P%T%M".
+	File/StdOut - "[%T] [%Z] [%L] %I%S(%C): %B%M\r\n".
+
+Default formats with message id are:
+
+	DbgView     - "[%L] %I%S(%C): %M failed with error=%i: '%t'".
+	EventViewer - "%X%S%E%P%T%i%t%M".
+	File/StdOut - "[%T] [%Z] [%L] %I%S(%C): %M failed with error=%i: '%t'\r\n".
+
+----------------------------------------------------------------------------
+
+"utf8FileSinkDetails" / "utf16FileSinkDetails"
+
+The "filename" property may use the following built-in placeholders:
+
+	<HOST>      - host name, as returned by ::GetComputerNameEx() Win API.
+	<EXE_NAME>  - executable name, without extension, as returned by ::GetModuleFileName() Win API.
+	<EXE_PATH>  - executable path, as returned by ::GetModuleFileName() Win API.
+	<PID>       - process ID.
+	<TIMESTAMP> - time of 'log.txt' parse, in "YYYYMMDD_hhmmss" format.
+
+The "filename" property may also use placeholders from application command line.
+E.g. running "app.exe -xxx yyy" will cause a replacement of "<xxx>" by "yyy" in "filename" property.
+Unmatched placeholders will be erased from "filename" (= replaced by empty string).
+
+The "maxFilesCount" property defines number of files and should be in [1, 100] range.
+
+The "maxFileSize" property defines maximum size of every file and should be "<number> [MB|MiB|GB|GiB|kB|KiB]" (match "\d+\s*(MB|MiB|GB|GiB|kB|KiB)?" regexp).
+
+----------------------------------------------------------------------------
+
+"eventViewerSinkDetails""
+
+The "sourceName" property may use all the placeholders as "filename" property of "utf8FileSinkDetails" / "utf16FileSinkDetails".
+
+----------------------------------------------------------------------------

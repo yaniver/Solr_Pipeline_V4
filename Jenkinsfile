@@ -37,12 +37,18 @@ pipeline {
 						powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\rabbitExporterDeploy.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.DOMAIN}'"
 					}
 				}
+                stage('Loki - Grafana logs collector') {
+                    steps {
+						echo 'Deploying Loki - Grafana logs collector'
+						//powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\loki_grafana.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.DOMAIN}'"
+					}
+				}
             }
         }
-		stage('Loki - Grafana logs collector') {
+		stage('Events injector') {
             steps {
-				echo 'Deploying Loki - Grafana logs collector'
-				//powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\solrExporterDeploy.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.ZK_IP_PORT}'"
+				echo 'Starting Events RabbitMQ injection'
+				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\events_injector.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.DOMAIN}'  '${env.EVENTS_EPS_IN_THOUSANDS}'  '${env.SQL_INSTANCE}' '${env.SHADOW_DB_NAME}'"
             }
         }
         stage('Parallel Stage') {
@@ -64,7 +70,7 @@ pipeline {
 		stage('Clean') {
             steps {
 				echo 'Clean'
-				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\clean.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.DELETE_ALL_DB_DATA}'"
+				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\clean.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.DELETE_ALL_DB_DATA}'  '${env.IDU_IP}'  '${env.DOMAIN}'"
             }
         }
     }
@@ -81,6 +87,7 @@ pipeline {
 		SHADOW_DB_NAME = 'L1648-DV1'
 		GRAFANA_VERSION = '8.0.2'
 		DELETE_ALL_DB_DATA = 'false'
+		EVENTS_EPS_IN_THOUSANDS = '1'
     }
     post {
         always {

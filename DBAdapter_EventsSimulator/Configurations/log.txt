@@ -1,0 +1,100 @@
+{
+	"sinks": {
+		"EventViewer": {
+			"eventViewerSinkDetails": {
+				"eventLogFolder": "Varonis",
+				"maxSize": 0,
+				"sourceName": "<EXE_NAME>(<type><f><s>)",
+				"messageFile": "",
+				"categoryCount": 3,
+				"defaultEventId": 901,
+				"defaultEventIdMessageId": 902
+			},
+			"isAggregating": true,
+			"aggregatingPeriodInSeconds": 900,
+			"filters": {
+				"AllInfo": {
+					"isActive": true,
+					"severityLevel": "SEVERITY_LEVEL_INFO",
+					"scopesSettings": {
+						"excludedSections": [ "External" ]
+					}
+				}
+			}
+		},
+		"Info file": {
+			"format": "[%T] [%Z] [%L] %S(%C): %B%M\r\n",
+			"utf8FileSinkDetails": {
+				"fileName": "<EXE_PATH>\\Logs\\<HOST>.<EXE_NAME>.<type><f><s>.<appId>.inf.txt",
+				"maxFilesCount": 3,
+				"maxFileSize": "4 MiB"
+			},
+			"filters": {
+				"AllTraces": {
+					"isActive": true,
+					"severityLevel": "SEVERITY_LEVEL_INFO",
+					"scopesSettings": {
+						"excludedSections": [ "External" ]
+					}
+				}
+			}
+		},
+		"Trace file": {
+			"utf8FileSinkDetails": {
+				"fileName": "<EXE_PATH>\\Logs\\<HOST>.<EXE_NAME>.<type><f><s>.<appId>.trc.txt",
+				"maxFilesCount": 3,
+				"maxFileSize": "4 MiB"
+			},
+			"filters": {
+				"Events": {
+					"isActive": false,
+					"severityLevel": "SEVERITY_LEVEL_TRACE",
+					"scopesSettings": {
+						"includedSections": [ "" ],
+						"excludedSections": [ "External", "VSB", "AMQP", "Task", "DelayedTask", "RepeatedTask", "TaskThreadsCache" ]
+					},
+					"constantContextsSettings": {
+					},
+					"mutableContextsSettings": {
+					},
+					"scopesSwitchSettings": {
+						"includedSections": [ "" ],
+						"excludedSections": []
+					}
+				},
+				"Resolver": {
+					"isActive": false,
+					"severityLevel": "SEVERITY_LEVEL_TRACE",
+					"scopesSettings": {
+						"includedSections": [ "Filers", "Resolver", "VSB.KeyValueStore", "UrlAnalisis", "Chain FileOrFolderParentUrlAndEntityName" ],
+						"excludedSections": [ "Resolver.InitializeHeartbeat", "VSB.KeyValueStore.RocksDB.RocksDBKeyValueStore.SyncCall" ]
+					},
+					"constantContextsSettings": {
+					},
+					"mutableContextsSettings": {
+					},
+					"scopesSwitchSettings": {
+						"includedSections": [ "" ],
+						"excludedSections": []
+					}
+				},
+				"AllTraces": {
+					"isActive": false,
+					"severityLevel": "SEVERITY_LEVEL_TRACE",
+					"scopesSettings": {
+						"includedSections": [ "" ],
+						"excludedSections": [ "External" ]
+					},
+					"constantContextsSettings": {
+					},
+					"mutableContextsSettings": {
+					},
+					"scopesSwitchSettings": {
+						"includedSections": [ "" ],
+						"excludedSections": []
+					}
+				}
+			}
+		}
+	}
+}

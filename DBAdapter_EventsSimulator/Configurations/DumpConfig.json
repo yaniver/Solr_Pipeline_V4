@@ -1,0 +1,12 @@
+{
+	"detailsLevel": "DETAILS_LEVEL_DIAGNOSTIC",
+	"hierarchySettings": {
+		"includedSections": [ "" ],
+		"excludedSections": []
+	},
+	"fileWriteStreamDetails": {
+		"fileName": "<EXE_PATH>\\<TIMESTAMP>.<EXE_NAME>.dump"
+	},
+	"jsonFormatterDetails": {
+	}
+}
