@@ -15,8 +15,10 @@ docker rm solrexporter -f
 docker rm jmeter -f
 
 Invoke-Command -Session $Session4 -ScriptBlock {
-	sc.exe stop $Using:servicename1
+	taskkill /IM EndurenceVSBInjector.exe /F
 }
+
+Remove-PSSession $Session4
 
 If ($delete_all_db_data  -eq 'true'){
 	docker rm influxdb -f
@@ -25,3 +27,4 @@ If ($delete_all_db_data  -eq 'true'){
 	$delete_folder = $solr_pipeline_home + "\\dockprom"
 	Remove-Item -Recurse -Force $delete_folder
 }
+

@@ -49,15 +49,7 @@ Else {
 	Invoke-Command -Session $Session4 -ScriptBlock {
 	cmd.exe --% /c C:\events_injector\EndurenceVSBInjector.exe
 	} -AsJob
-
-	# Create service
-	#Invoke-Command -Session $Session4 -ScriptBlock {
-	#sc.exe create $Using:servicename1 binpath= "C:\events_injector\EndurenceVSBInjector.exe" DisplayName= "Events_injector" start=auto obj=LocalSystem
-	#}
-
-	#Invoke-Command -Session $Session4 -ScriptBlock {
-	#sc.exe start $Using:servicename1
-	#}
 }
 
-Remove-PSSession $Session4
+# Not removing Session4 since otherwise the events simulator process will be killed and I want to kill it only in clean.ps1 script
+# Remove-PSSession $Session4
