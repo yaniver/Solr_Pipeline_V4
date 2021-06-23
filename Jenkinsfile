@@ -60,24 +60,6 @@ pipeline {
 						powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\jmeterScriptExec.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.SEARCH_DAY_FROM}'  '${env.DOMAIN}'"
                     }
                 }
-				stage('Validate Events injector active') {
-                    steps {
-						def retryAttempt = 0
-						retry(2) {
-							if (retryAttempt > 0) {
-							   sleep(5000)
-							}
-							retryAttempt = retryAttempt + 1
-							input "Retry"
-						}
-					}
-				}
-            }
-        }
-		stage('Clean') {
-            steps {
-				echo 'Clean'
-				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\clean.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.DELETE_ALL_DB_DATA}'  '${env.IDU_IP}'  '${env.DOMAIN}'"
             }
         }
     }
@@ -99,8 +81,7 @@ pipeline {
     post {
         always {
 			echo 'Clean environment'
-			//cleanWs()
-            //sh '~/CICD/jenkinsPipelineShellScripts/clean.sh'
+			powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\clean.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.DELETE_ALL_DB_DATA}'  '${env.IDU_IP}'  '${env.DOMAIN}'"
         }
     }
 }

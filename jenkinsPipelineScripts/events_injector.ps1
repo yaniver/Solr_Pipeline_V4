@@ -5,23 +5,24 @@ $events_eps_in_thousands=$args[3]
 $sql_instance=$args[4]
 $shadow_db_name=$args[5]
 
-$servicename1 = "events_injector"
+$process_name = "EndurenceVSBInjector.exe"
 $events_injector_full_path=$solr_pipeline_home + "\\DBAdapter_EventsSimulator"
 
 cd $events_injector_full_path
  
 # Create session for remote server for using it when I need to run command on remote server
+$TimeOut = New-PSSessionOption -IdleTimeoutMSec (New-TimeSpan -Days 3).TotalMilliSeconds #Create Session opened for 3 days so events simulator won't be closed after default of 2 hours
 $User = $domain_name + "\Administrator"
 $PWord = ConvertTo-SecureString -String "p@ssword1" -AsPlainText -Force
 $Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $PWord
-$Session4 = New-PSSession -ComputerName $idu_ip -Credential $Credential
+$Session4 = New-PSSession -ComputerName $idu_ip -Credential $Credential -Name Session4 -SessionOption $TimeOut
 
-if (Invoke-Command -Session $Session4 -ScriptBlock {Get-Service $Using:servicename1 -ErrorAction SilentlyContinue})
+if (Invoke-Command -Session $Session4 -ScriptBlock {Get-Process $Using:process_name -ErrorAction SilentlyContinue})
 {
-	Write-Host "events injector service already exists in IDU server and won't be created"
+	Write-Host "events injector process already exists in IDU server and won't be created"
 }
 Else {
-	Write-Host "Start creating events injector service in IDU server"
+	Write-Host "Start creating events injector process in IDU server"
 	
 	$source_path = $events_injector_full_path + "\\EndurenceVSBInjector.exe.config"
 	$file_content=(Get-Content -path $source_path -Raw)
