@@ -45,7 +45,7 @@ pipeline {
 				}
             }
         }
-        stage('Parallel Stage') {
+        stage('Starting Load') {
             failFast true
             parallel {
 				stage('Events injector') {
@@ -62,10 +62,8 @@ pipeline {
                 }
 				stage('Validate Events injector active') {
 					steps {
-						timeout(time: 1, unit: 'MINUTES') {
-							retry(3) {
-								echo 'Running validation'
-							}
+						retry(3) {
+							echo 'Running validation'
 						}
 					}
 				}
