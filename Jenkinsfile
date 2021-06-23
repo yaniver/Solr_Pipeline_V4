@@ -60,6 +60,15 @@ pipeline {
 						powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\jmeterScriptExec.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.SEARCH_DAY_FROM}'  '${env.DOMAIN}'"
                     }
                 }
+				stage('Validate Events injector active') {
+					steps {
+						timeout(time: 1, unit: 'MINUTES') {
+							retry(3) {
+								echo 'Running validation'
+							}
+						}
+					}
+				}
             }
         }
 		stage('Clean') {

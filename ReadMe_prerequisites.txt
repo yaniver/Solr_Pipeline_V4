@@ -1,5 +1,5 @@
 1. Install Performance labs (8.6 and 8.7)
-========================
+===========================
 	Update SQL Server configuration (memory, …) base on "SQL Server Database troubleshooting Performance Guide.docx" document located in "Solr_Pipeline" folder.
 	Install clean lab with valid build.
 	For enabling Solr Exporter extract Solr metrics -
@@ -29,27 +29,21 @@
 Note: data creation is outside of pipeline automation since it’s done single time after the lab creation
 but quantity validation for each data type will be done automatically. 
 
- Start DBAdapter events simulator with 3k EPS for CIFS events.
-
 ==========================================================================================================================
 
 
 
-
-
 2. Prerequsites (Installing Docker + Docker-compose + Jenkins + GIT): 
-===============
+====================================================================
   - In Windows VM (with internet connection), install Java + Jenkins + GIT + Docker desktop
 	  
-  - Open CMD and cd to C:\ and run command "git clone --depth=1 https://github.com/yaniver/Solr_Pipeline_V2.git"
+  - Open CMD and cd to C:\ and run command "git clone --depth=1 https://github.com/yaniver/Solr_Pipeline_V4.git"
   
-  - cd  "Solr_Pipeline_V2" folder
+  - cd  "Solr_Pipeline_V4" folder
   
   - Run command "git init"
   
-  - In Jenkinsfile created in "Solr_Pipeline_V2" folder, update params inside "environment" section.
-
-
+  - In Jenkinsfile created in "Solr_Pipeline_V4" folder, update params inside "environment" section.
 
 
 
@@ -72,12 +66,9 @@ Enter new created jenkins pipeline and in Select "Configure" and in "Scan Reposi
 
 
 
-
-
-
 4. Run Jenkins pipeline
 =======================
-in CMD under C:\Solr_Pipeline folder run commit.bat that will commit any changes done in files to GitHub and trigger the pipeline
+in CMD under C:\Solr_Pipeline_V4 folder run commit.bat that will commit any changes done in files to GitHub and trigger the pipeline
 (more details about the content of the pipeline can be found below OR by looking at Jenkinsfile content
 Note: Slack notification channel should already be configured in Grafana UI under "Notification channels" and if not then create a Slack channel (as described below).
 
@@ -85,21 +76,29 @@ Note: Slack notification channel should already be configured in Grafana UI unde
 
 
 
-Following deployments are done by running Jenkins pipeline form Blue Ocena UI (not all deployments included here):
-=============================================================================
-	Prometheus+Grafana+Alert_Manager Installation:
-	=============================================
-	Link (Full details): https://github.com/stefanprodan/dockprom
-	Check script in ../Solr_Pipeline/jenkinsPipelineShellScripts/promdeploy.ps1
-	(note: in case you need to delete all resources create by docker-compose including volume run the following command "sudo docker-compose down -v")
 
-	Solr exporter:
-	===================
-	Check script in ../Solr_Pipeline/jenkinsPipelineShellScripts/solrExporterDeploy.ps1
 
-	JMeter deploy:
-	==============
-	Check script in ../Solr_Pipeline/jenkinsPipelineShellScripts/jmeterScriptExec.ps1
+
+
+
+GENERAL NOTES:
+=============
+
+	Following deployments are done by running Jenkins pipeline form Blue Ocena UI (not all deployments included here):
+	=============================================================================
+		Prometheus+Grafana Installation:
+		=============================================
+		Link (Full details): https://github.com/stefanprodan/dockprom
+		Check script in ../Solr_Pipeline/jenkinsPipelineShellScripts/promdeploy.ps1
+		(note: in case you need to delete all resources create by docker-compose including volume run the following command "sudo docker-compose down -v")
+
+		Metrics exporters (such as Solr exporter):
+		========================================
+		Check script in ../Solr_Pipeline/jenkinsPipelineShellScripts/solrExporterDeploy.ps1
+
+		JMeter deploy:
+		==============
+		Check script in ../Solr_Pipeline/jenkinsPipelineShellScripts/jmeterScriptExec.ps1
 
 
 
@@ -120,8 +119,7 @@ Grafana Notification channel support:
   - In Grafana UI add alert rule in relevant graph (once alerts will be defined in dashboard you can export the json and save it in "dockerpromModification" folder).
   - In Grafana UI add email notification channel (you define a user that already exist in above SMTP server).
 
-  Option 2 (Internet exist - "Microsoft Teams")-
+  Option 2 (Internet exist - "Slack")-
   - In Grafana UI add Slack notification channel and configure it with "Slack Incoming webhook url"
-    note: Teams Incoming webhook url = https://hooks.slack.com/services/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
 
 
