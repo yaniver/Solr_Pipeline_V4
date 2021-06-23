@@ -61,10 +61,13 @@ pipeline {
                     }
                 }
 				stage('Validate Events injector active') {
-					steps {
-						retry(3) {
-							echo 'Running validation'
+					def retryAttempt = 0
+					retry(2) {
+						if (retryAttempt > 0) {
+						   sleep(5000)
 						}
+						retryAttempt = retryAttempt + 1
+						input "Retry"
 					}
 				}
             }
