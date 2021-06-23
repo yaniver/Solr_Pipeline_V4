@@ -61,13 +61,15 @@ pipeline {
                     }
                 }
 				stage('Validate Events injector active') {
-					def retryAttempt = 0
-					retry(2) {
-						if (retryAttempt > 0) {
-						   sleep(5000)
+                    steps {
+						def retryAttempt = 0
+						retry(2) {
+							if (retryAttempt > 0) {
+							   sleep(5000)
+							}
+							retryAttempt = retryAttempt + 1
+							input "Retry"
 						}
-						retryAttempt = retryAttempt + 1
-						input "Retry"
 					}
 				}
             }
