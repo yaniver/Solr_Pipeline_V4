@@ -1,0 +1,102 @@
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+
+positions:
+  filename: /tmp/positions.yaml
+
+clients:
+  - url: http://localhost:3100/loki/api/v1/push
+
+scrape_configs:
+- job_name: enricher
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: enricher
+      __path__: "C:/Program Files (x86)/Varonis/DatAdvantage/CifsDSPEnricher/Logs/Varonis.DSP.Cifs.Enricher.log"
+- job_name: sqlextractor
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: sqlextractor
+      __path__: "C:/Program Files (x86)/Varonis/DatAdvantage/SqlExtractor/Logs/SqlExtractor.log"
+- job_name: solrloader
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: solrloader
+      __path__: "C:/Program Files (x86)/Varonis/DatAdvantage/SolrLoader/Logs/SolrLoader.log"
+- job_name: SolrDataIndexer
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: SolrDataIndexer
+      __path__: "C:/Program Files (x86)/Varonis/DatAdvantage/SolrDataIndexer/Logs/SolrDataIndexer.log"
+- job_name: SolrMonitor
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: SolrMonitor
+      __path__: "C:/Program Files (x86)/Varonis/DatAdvantage/SolrMonitor/Logs/SolrMonitor.log"
+- job_name: Search
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: Search
+      __path__: "C:/Program Files (x86)/Varonis/DatAdvantage/Search/Logs/Search.log"
+- job_name: CollectionManager
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: CollectionManager
+      __path__: "C:/Program Files (x86)/Varonis/DatAdvantage/CollectionManager/Logs/CollectionManager.log"
+- job_name: Database_Adapter_Consumer
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: Database_Adapter_Consumer
+      __path__: "C:/Program Files/Varonis/Database Adapter Consumer/Logs/DbAdapterConsumer.log"
+- job_name: Database_Adapter_Loader
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: Database_Adapter_Loader
+      __path__: "C:/Program Files/Varonis/Database Adapter Loader/Log/DbAdapterLoader.log"
+- job_name: Solr
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: Solr
+      __path__: "C:/VaronisShare/Logs/Solr/Solr-Log.log"
+- job_name: SolrWatchdog
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: SolrWatchdog
+      __path__: "C:/VaronisShare/Logs/SolrWatchdog/Watchdog.log"
+- job_name: Zookeeper
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: Zookeeper
+      __path__: "C:/VaronisShare/Logs/Zookeeper/Zookeeper.log"
+- job_name: ZookeeperWatchdog
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: ZookeeperWatchdog
+      __path__: "C:/VaronisShare/Logs/ZookeeperWatchdog/Watchdog.log"
