@@ -4,8 +4,7 @@ $domain_name=$args[2]
 
 
 $loki_full_path=$solr_pipeline_home + "\\Loki_Grafana"
-$servicename = "loki"
-$servicename2 = "promtail"
+$process_name = "loki"
 
 $User = $domain_name + "\Administrator"
 $PWord = ConvertTo-SecureString -String "p@ssword1" -AsPlainText -Force
@@ -17,7 +16,7 @@ $Session = New-PSSession -ComputerName $idu_ip -Credential $Credential
 # Deploy Loki and Promtail on IDU server
 # ======================================
 # The command uses the Using scope modifier to identify a local variable in a remote command
-if (Invoke-Command -Session $Session -ScriptBlock {Get-Service $Using:servicename -ErrorAction SilentlyContinue})
+if (Invoke-Command -Session $Session -ScriptBlock {Get-Process $Using:process_name -ErrorAction SilentlyContinue})
 {
 	Write-Host "Loki & Promtail services already exists in IDU server"
 }
@@ -45,28 +44,19 @@ Else {
 	Write-Host "Copy Loki & promtail files to remote server"
 	Copy-Item $loki_full_path -Destination "C:\Loki_Promtail\" -ToSession $Session -Recurse
 
-	# Create service
 	Invoke-Command -Session $Session -ScriptBlock {
-	sc.exe create $Using:servicename binpath= "C:\Loki_Promtail\loki-windows-amd64.exe --config-file C:\Loki_Promtail\loki-local-config.yaml" DisplayName= "Loki Server" start=auto obj=LocalSystem
-	}
-
-	Invoke-Command -Session $Session -ScriptBlock {
-	sc.exe start $Using:servicename
-	}
+		cmd.exe --% /c C:\Loki_Promtail\loki-windows-amd64.exe --config-file C:\Loki_Promtail\loki-local-config.yaml
+	} -AsJob
 	
-	Start-Sleep -s 10
+	Start-Sleep -s 5
 	
 	Write-Host "Loki service created successfully in IDU server."
 	
 	Invoke-Command -Session $Session -ScriptBlock {
-	sc.exe create $Using:servicename2 binpath= "C:\Loki_Promtail\promtail-windows-amd64.exe --config-file C:\Loki_Promtail\promtail-local-config.yaml" DisplayName= "Promtail Server" start=auto obj=LocalSystem
-	}
-
-	Invoke-Command -Session $Session -ScriptBlock {
-	sc.exe start $Using:servicename2
-	}
+		cmd.exe --% /c C:\Loki_Promtail\promtail-windows-amd64.exe --config-file C:\Loki_Promtail\promtail-local-config.yaml
+	} -AsJob
 	
-	Start-Sleep -s 10
+	Start-Sleep -s 5
 	
 	Write-Host "Promtail service created successfully in IDU server."
 }
