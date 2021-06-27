@@ -4,7 +4,7 @@ datasources:
   - name: Loki
     type: loki
     access: proxy
-    url: http://host.docker.internal:3100
+    url: http://10.10.193.88:3100
     basicAuth: true
     basicAuthUser: admin
     basicAuthPassword: admin
@@ -13,7 +13,7 @@ datasources:
     type: prometheus
     access: proxy
     orgId: 1
-    url: http://host.docker.internal:3100/loki
+    url: http://10.10.193.88:3100/loki
     basicAuth: true
     basicAuthUser: admin
     basicAuthPassword: admin
@@ -50,6 +50,7 @@ datasources:
     basicAuthUser: admin
     basicAuthPassword: admin
     isDefault: false
+
 
 
 
