@@ -1,14 +1,23 @@
 apiVersion: 1
 
 datasources:
+  - name: Loki
+    type: loki
+    access: proxy
+    url: http://host.docker.internal:3100
+    basicAuth: true
+    basicAuthUser: admin
+    basicAuthPassword: admin
+    isDefault: false
   - name: loki-Prometheus
     type: prometheus
     access: proxy
     orgId: 1
-    url: ttp://prometheus:3100/loki
-    basicAuth: false
+    url: http://prometheus:3100/loki
+    basicAuth: true
+    basicAuthUser: admin
+    basicAuthPassword: admin
     isDefault: false
-    editable: true
   - name: Prometheus
     type: prometheus
     access: proxy
@@ -41,6 +50,7 @@ datasources:
     basicAuthUser: admin
     basicAuthPassword: admin
     isDefault: false
+
 
 
 
