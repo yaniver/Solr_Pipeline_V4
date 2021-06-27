@@ -13,7 +13,7 @@ pipeline {
 		stage('Loki - Grafana logs collector') {
 			steps {
 				echo 'Deploying Loki - Grafana logs collector'
-				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\loki_grafana.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.DOMAIN}'"
+				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\loki_deploy.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.DOMAIN}'"
 			}
 		}
 		stage('Prometheus & Grafana') {
