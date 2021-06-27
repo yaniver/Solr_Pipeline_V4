@@ -18,6 +18,14 @@ Invoke-Command -Session $Session4 -ScriptBlock {
 	taskkill /IM EndurenceVSBInjector.exe /F
 }
 
+Invoke-Command -Session $Session4 -ScriptBlock {
+	taskkill /IM promtail-windows-amd64.exe /F
+}
+
+Invoke-Command -Session $Session4 -ScriptBlock {
+	taskkill /IM loki-windows-amd64.exe /F
+}
+
 Remove-PSSession $Session4
 
 If ($delete_all_db_data  -eq 'true'){

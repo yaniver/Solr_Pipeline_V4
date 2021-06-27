@@ -11,6 +11,7 @@ $User = $domain_name + "\Administrator"
 $PWord = ConvertTo-SecureString -String "p@ssword1" -AsPlainText -Force
 $Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $PWord
 $Session = New-PSSession -ComputerName $idu_ip -Credential $Credential -Name Session -SessionOption $TimeOut
+$Session2 = New-PSSession -ComputerName $idu_ip -Credential $Credential -Name Session2 -SessionOption $TimeOut
 
 
 
@@ -45,6 +46,7 @@ Else {
 	Write-Host "Copy Loki & promtail files to remote server"
 	Copy-Item $loki_full_path -Destination "C:\Loki_Promtail\" -ToSession $Session -Recurse
 
+	# Session param set with Timeout param of 3 days so background process (-AsJob flag) won't be killed after 2 hours which is the default
 	Invoke-Command -Session $Session -ScriptBlock {
 		cmd.exe --% /c C:\Loki_Promtail\loki-windows-amd64.exe --config.file C:\Loki_Promtail\loki-local-config.yaml
 	} -AsJob
@@ -53,9 +55,9 @@ Else {
 	
 	Write-Host "Loki process created successfully in IDU server."
 	
-	Invoke-Command -Session $Session -ScriptBlock {
+	Invoke-Command -Session $Session2 -ScriptBlock {
 		cmd.exe --% /c C:\Loki_Promtail\promtail-windows-amd64.exe --config.file C:\Loki_Promtail\promtail-local-config.yaml
-	}
+	} -AsJob
 	
 	Start-Sleep -s 5
 	

@@ -47,6 +47,7 @@ Else {
 	#Copy events injector to remote server
 	Copy-Item $events_injector_full_path -Destination "C:\events_injector\" -ToSession $Session4 -Recurse
 	
+	# Session4 param set with Timeout param of 3 days so background process (-AsJob flag) won't be killed after 2 hours which is the default
 	Invoke-Command -Session $Session4 -ScriptBlock {
 	cmd.exe --% /c C:\events_injector\EndurenceVSBInjector.exe
 	} -AsJob
