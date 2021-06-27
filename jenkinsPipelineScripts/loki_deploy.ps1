@@ -19,7 +19,7 @@ $Session = New-PSSession -ComputerName $idu_ip -Credential $Credential -Name Ses
 # The command uses the Using scope modifier to identify a local variable in a remote command
 if (Invoke-Command -Session $Session -ScriptBlock {Get-Process $Using:process_name -ErrorAction SilentlyContinue})
 {
-	Write-Host "Loki & Promtail services already exists in IDU server"
+	Write-Host "Loki & Promtail processes already exists in IDU server"
 }
 Else {
 	Invoke-Command -Session $Session -ScriptBlock {
@@ -45,18 +45,17 @@ Else {
 	Write-Host "Copy Loki & promtail files to remote server"
 	Copy-Item $loki_full_path -Destination "C:\Loki_Promtail\" -ToSession $Session -Recurse
 
-	# Session need to be set with TimeOut param so session will continue to run
 	Invoke-Command -Session $Session -ScriptBlock {
-		cmd.exe --% /c C:\Loki_Promtail\loki-windows-amd64.exe --config-file C:\Loki_Promtail\loki-local-config.yaml
+		cmd.exe --% /c C:\Loki_Promtail\loki-windows-amd64.exe --config.file C:\Loki_Promtail\loki-local-config.yaml
 	} -AsJob
 	
-	Start-Sleep -s 5
+	Start-Sleep -s 10
 	
 	Write-Host "Loki process created successfully in IDU server."
 	
 	Invoke-Command -Session $Session -ScriptBlock {
-		cmd.exe --% /c C:\Loki_Promtail\promtail-windows-amd64.exe --config-file C:\Loki_Promtail\promtail-local-config.yaml
-	} -AsJob
+		cmd.exe --% /c C:\Loki_Promtail\promtail-windows-amd64.exe --config.file C:\Loki_Promtail\promtail-local-config.yaml
+	}
 	
 	Start-Sleep -s 5
 	
