@@ -6,10 +6,11 @@ $domain_name=$args[2]
 $loki_full_path=$solr_pipeline_home + "\\Loki_Grafana"
 $process_name = "loki"
 
+$TimeOut = New-PSSessionOption -IdleTimeoutMSec (New-TimeSpan -Days 3).TotalMilliSeconds #Create Session opened for 3 days so events simulator won't be closed after default of 2 hours
 $User = $domain_name + "\Administrator"
 $PWord = ConvertTo-SecureString -String "p@ssword1" -AsPlainText -Force
 $Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $PWord
-$Session = New-PSSession -ComputerName $idu_ip -Credential $Credential
+$Session = New-PSSession -ComputerName $idu_ip -Credential $Credential -Name Session -SessionOption $TimeOut
 
 
 
@@ -25,7 +26,7 @@ Else {
 		cmd.exe --% /c winrm set winrm/config/service @{AllowUnencrypted="true"}
 	}
 
-	Write-Host "Loki & Promtail services not found in IDU server, start creating it"
+	Write-Host "Loki & Promtail processes not found in IDU server, start creating it"
 	
 	cd $solr_pipeline_home
 
@@ -44,13 +45,14 @@ Else {
 	Write-Host "Copy Loki & promtail files to remote server"
 	Copy-Item $loki_full_path -Destination "C:\Loki_Promtail\" -ToSession $Session -Recurse
 
+	# Session need to be set with TimeOut param so session will continue to run
 	Invoke-Command -Session $Session -ScriptBlock {
 		cmd.exe --% /c C:\Loki_Promtail\loki-windows-amd64.exe --config-file C:\Loki_Promtail\loki-local-config.yaml
 	} -AsJob
 	
 	Start-Sleep -s 5
 	
-	Write-Host "Loki service created successfully in IDU server."
+	Write-Host "Loki process created successfully in IDU server."
 	
 	Invoke-Command -Session $Session -ScriptBlock {
 		cmd.exe --% /c C:\Loki_Promtail\promtail-windows-amd64.exe --config-file C:\Loki_Promtail\promtail-local-config.yaml
@@ -58,5 +60,5 @@ Else {
 	
 	Start-Sleep -s 5
 	
-	Write-Host "Promtail service created successfully in IDU server."
+	Write-Host "Promtail process created successfully in IDU server."
 }
