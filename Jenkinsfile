@@ -9,7 +9,13 @@ pipeline {
 				echo 'Deploy Influxdb'
 				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\Influxdb.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.LAB_NAME}'"
 			}
+		}
+		stage('Loki - Grafana logs collector') {
+			steps {
+				echo 'Deploying Loki - Grafana logs collector'
+				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\loki_grafana.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.DOMAIN}'"
 			}
+		}
 		stage('Prometheus & Grafana') {
             steps {
 				echo 'Deploy Prometheus & Grafana'
@@ -35,12 +41,6 @@ pipeline {
                     steps {
 						echo 'Deploying Solr Exporter'
 						powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\rabbitExporterDeploy.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.DOMAIN}'"
-					}
-				}
-                stage('Loki - Grafana logs collector') {
-                    steps {
-						echo 'Deploying Loki - Grafana logs collector'
-						//powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\loki_grafana.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.DOMAIN}'"
 					}
 				}
             }
