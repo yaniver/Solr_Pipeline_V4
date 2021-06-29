@@ -2,12 +2,16 @@
 ===========================
 	Update SQL Server configuration (memory, …) base on "SQL Server Database troubleshooting Performance Guide.docx" document located in "Solr_Pipeline" folder.
 	Install clean lab with valid build.
-	For enabling Solr Exporter extract Solr metrics -
+	Create Data prerequisites 
+	(Folders, AD Data, Exchange data and 30 days Events retention base on the previous data )
+	Note: data creation is outside of pipeline automation since it’s done single time after the lab creation
+	but quantity validation for each data type will be done automatically. 
+	Prerequisities for enabling Solr Exporter (=Solr metrics) -
 	-	In Varonis Management Console UI, set solr ssl to false by
-	(Search ssl in “Advanced Application configuration” and change value to 0.
-	Go to Solr configuration and change port from 2181 to 2182 and then back to 2181
-	and then click on “Save” button.
-	-	Disable zookeeper acl (so “solr exporter” will be able to authenticate) as describe in -	https://varonis.sharepoint.com/tfs/dev/Application/_layouts/15/Doc.aspx?sourcedoc={18c1dc17-1e1c-4de4-97c9-4eb450ec7b61}&action=edit&wd=target%28Zookeeper%20Acls.one%7Cead6b9d1-cc1b-4267-b16c-605a9aff61a1%2FHow%20to%20disable%20zookeeper%20acls%7Cbd43a3a6-a69b-4ec0-a928-b6174aba9b42%2F%29
+		(Search ssl in “Advanced Application configuration” and change value to 0.
+		Go to Solr configuration and change port from 2181 to 2182 and then back to 2181
+		and then click on “Save” button.
+	-	Disable zookeeper acl (so “solr exporter” will be able to authenticate) as describe in -					https://varonis.sharepoint.com/tfs/dev/Application/_layouts/15/Doc.aspx?sourcedoc={18c1dc17-1e1c-4de4-97c9-4eb450ec7b61}&action=edit&wd=target%28Zookeeper%20Acls.one%7Cead6b9d1-cc1b-4267-b16c-605a9aff61a1%2FHow%20to%20disable%20zookeeper%20acls%7Cbd43a3a6-a69b-4ec0-a928-b6174aba9b42%2F%29
 	-	In both Solr and ZK VM’s, set SolrAuthenticationEnable=”False” in watchdog config file.
 	-	Stop all Solr and ZK vm’s –
 		o	Compress WD folder only in Solr vm’s.
@@ -18,22 +22,15 @@
 		set WebDaPassword=WebDaPassword
 		Then start first all ZK vm’s and then Solr Vm’s
 	In Jenkins client vm, add to hosts file all solr VM’s (name to ip)
-	In IDU server, Install MetricaLauncer.exe follow this steps -
-	- Unzip file C:\Program Files\Varonis\DatAdvantage\TopologyManager\EventFlow\Influx\Latest.zip.
-	- Execute "Varonis.Infra.MetricsLauncher" and select Auto option.
-	- Login to Grafana with user and password "admin".
-	- Import Solr services grafana dashboard from TFS.
-	  TFS link - $/idu Client-Server/WebDA/v8.6/Common/Data Store Team Dashboard.json
-	Create Data prerequisites 
-(Folders, AD Data, Exchange data and 30 days Events retention base on the previous data )
-Note: data creation is outside of pipeline automation since it’s done single time after the lab creation
-but quantity validation for each data type will be done automatically. 
+
+Note: Make sure you import the last Solr services grafana dashboard from TFS (for Varonis services Grafana dashboard).
+TFS link - $/idu Client-Server/WebDA/v8.6/Common/Data Store Team Dashboard.json
 
 ==========================================================================================================================
 
 
 
-2. Prerequsites (Installing Docker + Docker-compose + Jenkins + GIT): 
+2. Prerequsites (Installing Jenkins + Docker + Docker-compose + GIT): 
 ====================================================================
   - In Windows VM (with internet connection), install Java + Jenkins + GIT + Docker desktop
 	  

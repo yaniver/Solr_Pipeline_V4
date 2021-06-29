@@ -4,16 +4,22 @@ pipeline {
         timeout(time: 15, unit: 'HOURS')
     }
     stages {
+		stage('Loki Server - Grafana logs collector') {
+			steps {
+				echo 'Deploying Loki - Grafana logs collector'
+				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\loki_deploy.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.DOMAIN}'"
+			}
+		}
+		stage('Varonis metrics Provider deploy') {
+			steps {
+				echo 'Deploying aronis metrics Provider'
+				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\varonis_provider_deploy.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.DOMAIN}'"
+			}
+		}
 		stage('Influxdb') {
             steps {
 				echo 'Deploy Influxdb'
 				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\Influxdb.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.LAB_NAME}'"
-			}
-		}
-		stage('Loki - Grafana logs collector') {
-			steps {
-				echo 'Deploying Loki - Grafana logs collector'
-				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\loki_deploy.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.DOMAIN}'"
 			}
 		}
 		stage('Prometheus & Grafana') {
