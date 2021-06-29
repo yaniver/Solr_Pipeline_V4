@@ -16,18 +16,23 @@ pipeline {
 				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\varonis_provider_deploy.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.DOMAIN}'"
 			}
 		}
-		stage('Influxdb') {
-            steps {
-				echo 'Deploy Influxdb'
-				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\Influxdb.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.LAB_NAME}'"
+		stage('InfluxDB, Prometheus and Grafana') {
+            failFast true
+            parallel {
+				stage('Influxdb') {
+					steps {
+						echo 'Deploy Influxdb'
+						powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\Influxdb.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.LAB_NAME}'"
+					}
+				}
+				stage('Prometheus & Grafana') {
+					steps {
+						echo 'Deploy Prometheus & Grafana'
+						powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\promdeploy.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.DB_IP}'  '${env.GRAFANA_VERSION}'"
+					}
+				}
 			}
 		}
-		stage('Prometheus & Grafana') {
-            steps {
-				echo 'Deploy Prometheus & Grafana'
-				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\promdeploy.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.DB_IP}'  '${env.GRAFANA_VERSION}'"
-            }
-        }
 		stage('Prometheus exporters') {
             failFast true
             parallel {

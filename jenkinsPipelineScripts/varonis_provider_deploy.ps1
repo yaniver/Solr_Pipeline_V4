@@ -9,7 +9,7 @@ $Folder_destonation = 'C:\Program Files\Varonis\DatAdvantage\TopologyManager\Eve
 $MetricLauncer_path = $Folder_destonation + "\" + $process_name
 
 
-$TimeOut = New-PSSessionOption -IdleTimeoutMSec (New-TimeSpan -Days 365).TotalMilliSeconds #Create Session opened for 3 days so events simulator won't be closed after default of 2 hours
+$TimeOut = New-PSSessionOption -IdleTimeoutMSec (New-TimeSpan -Days 14).TotalMilliSeconds #Create Session opened for 3 days so events simulator won't be closed after default of 2 hours
 $User = $domain_name + "\Administrator"
 $PWord = ConvertTo-SecureString -String "p@ssword1" -AsPlainText -Force
 $Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $PWord
@@ -40,8 +40,8 @@ Else {
 		}
 	}
 
-	# Session param set with Timeout param of 365 days so background process (-AsJob flag) won't be killed after 2 hours which is the default
-	# Set to 365 days since I need all the time access to InfluxDB created by Varonis.Infra.MetricsLauncher.exe process in IDU server
+	# Session param set with Timeout param of 14 days so background process (-AsJob flag) won't be killed after 2 hours which is the default
+	# Set to 14 days since I need all the time access to InfluxDB created by Varonis.Infra.MetricsLauncher.exe process in IDU server
 	Invoke-Command -Session $Session2 -ScriptBlock {
 		cmd.exe --% /c cd "C:\Program Files\Varonis\DatAdvantage\TopologyManager\EventFlow\Influx\Latest" & start Varonis.Infra.MetricsLauncher.exe -auto
 	} -AsJob
