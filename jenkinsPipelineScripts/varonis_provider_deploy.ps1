@@ -30,7 +30,7 @@ Else {
 	
 	Invoke-Command -Session $Session -ScriptBlock {
 		if (Test-Path -Path $Using:Folder_destonation) {
-			Write-Host "Varonis metrics Folder already exists and won't be created again."
+			Write-Host "Varonis metrics folder already exists and won't be created again."
 		} else {
 			Expand-Archive -LiteralPath 'C:\Program Files\Varonis\DatAdvantage\TopologyManager\EventFlow\Influx\Latest.zip' -DestinationPath $Using:Folder_destonation
 		}

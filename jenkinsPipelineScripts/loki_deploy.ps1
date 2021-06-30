@@ -5,6 +5,7 @@ $domain_name=$args[2]
 
 $loki_full_path=$solr_pipeline_home + "\\Loki_Grafana"
 $process_name = "loki"
+$Folder_destonation = 'C:\Loki_Promtail\'
 
 $TimeOut = New-PSSessionOption -IdleTimeoutMSec (New-TimeSpan -Days 3).TotalMilliSeconds #Create Session opened for 3 days so events simulator won't be closed after default of 2 hours
 $User = $domain_name + "\Administrator"
@@ -39,8 +40,14 @@ Else {
 	$file_content -match $string_to_search
 	($file_content -replace $matches[1],$idu_ip) | Set-Content -Path $config_path
 	
-	Write-Host "Copy Loki & promtail files to remote server"
-	Copy-Item $loki_full_path -Destination "C:\Loki_Promtail\" -ToSession $Session -Recurse
+	Invoke-Command -Session $Session -ScriptBlock {
+		if (Test-Path -Path $Using:Folder_destonation) {
+			Write-Host "Loki folder already exists and won't be created again."
+		} else {
+			Write-Host "Copy Loki folder to remote server"
+			Copy-Item $loki_full_path -Destination $Folder_destonation -ToSession $Session -Recurse -Force
+		}
+	}
 
 	# Session param set with Timeout param of 3 days so background process (-AsJob flag) won't be killed after 2 hours which is the default
 	Invoke-Command -Session $Session -ScriptBlock {
