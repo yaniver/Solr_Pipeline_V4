@@ -5,7 +5,7 @@ $events_eps_in_thousands=$args[3]
 $sql_instance=$args[4]
 $shadow_db_name=$args[5]
 
-$process_name = "EndurenceVSBInjector.exe"
+$process_name = "EndurenceVSBInjector"
 $events_injector_full_path=$solr_pipeline_home + "\\DBAdapter_EventsSimulator"
 
 cd $events_injector_full_path
@@ -45,7 +45,7 @@ Else {
 	($file_content -replace $matches[1],$sql_instance) | Set-Content -Path $source_path
 
 	#Copy events injector to remote server
-	Copy-Item $events_injector_full_path -Destination "C:\events_injector\" -ToSession $Session4 -Recurse
+	Copy-Item $events_injector_full_path -Destination "C:\events_injector\" -ToSession $Session4 -Recurse -Force
 	
 	# Session4 param set with Timeout param of 3 days so background process (-AsJob flag) won't be killed after 2 hours which is the default
 	Invoke-Command -Session $Session4 -ScriptBlock {

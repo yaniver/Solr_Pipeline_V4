@@ -23,10 +23,6 @@ if (Invoke-Command -Session $Session -ScriptBlock {Get-Process $Using:process_na
 	Write-Host "Loki & Promtail processes already exists in IDU server"
 }
 Else {
-	Invoke-Command -Session $Session -ScriptBlock {
-		cmd.exe --% /c winrm set winrm/config/service @{AllowUnencrypted="true"}
-	}
-
 	Write-Host "Loki & Promtail processes not found in IDU server, start creating it"
 	
 	cd $solr_pipeline_home

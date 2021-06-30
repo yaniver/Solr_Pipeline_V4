@@ -64,11 +64,6 @@ Else {
 	sc.exe start $Using:servicename1
 	}
 
-	# Option 2 - Create process
-	#Invoke-Command -Session $Session3 -ScriptBlock {
-	#cmd.exe --% /c C:\RabbitMQ_exporter\rabbitmq_exporter.exe  -config-file C:\RabbitMQ_exporter\config.example.json
-	#} -AsJob
-
 
 
 

@@ -92,10 +92,6 @@ if (Invoke-Command -Session $Session -ScriptBlock {Get-Service $Using:servicenam
 	Write-Host "sonard service successfully restarted in IDU server."
 }
 Else {
-	Invoke-Command -Session $Session -ScriptBlock {
-		cmd.exe --% /c winrm set winrm/config/service @{AllowUnencrypted="true"}
-	}
-
 	Write-Host "sonard service not found in IDU server, start creating it"
 	
 	SetSonarConfig -port "9180"
@@ -132,11 +128,7 @@ if (Invoke-Command -Session $Session_db -ScriptBlock {Get-Service $Using:service
 	
 	Write-Host "sonard service successfully restarted in DB server."
 }
-Else {
-	Invoke-Command -Session $Session_db -ScriptBlock {
-		cmd.exe --% /c winrm set winrm/config/service @{AllowUnencrypted="true"}
-	}
-	
+Else {	
 	Write-Host "sonard service not found in DB server, start creating it"
 	
 	SetSonarConfig -port "9190" -folder_name "DB"

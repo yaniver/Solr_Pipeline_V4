@@ -4,7 +4,7 @@ $domain_name=$args[2]
 
 
 
-$process_name = "Varonis.Infra.MetricsLauncher.exe"
+$process_name = "Varonis.Infra.MetricsLauncher"
 $Folder_destonation = 'C:\Program Files\Varonis\DatAdvantage\TopologyManager\EventFlow\Influx\Latest'
 $MetricLauncer_path = $Folder_destonation + "\" + $process_name
 
@@ -26,11 +26,7 @@ if (Invoke-Command -Session $Session -ScriptBlock {Get-Process $Using:process_na
 	Write-Host "Varonis.Infra.MetricsLauncher process with is InfluxDB already exists in IDU server"
 }
 Else {
-	Invoke-Command -Session $Session -ScriptBlock {
-		cmd.exe --% /c winrm set winrm/config/service @{AllowUnencrypted="true"}
-	}
-
-	Write-Host "Varonis.Infra.MetricsLauncher process not found in IDU server, start creating it + other processes required for Varonis metrics collection"
+	Write-Host "Varonis.Infra.MetricsLauncher process not found in IDU server, start creating this process and other processes required for Varonis metrics collection"
 	
 	Invoke-Command -Session $Session -ScriptBlock {
 		if (Test-Path -Path $Using:Folder_destonation) {
