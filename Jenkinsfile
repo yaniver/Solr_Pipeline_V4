@@ -4,7 +4,13 @@ pipeline {
         timeout(time: 15, unit: 'HOURS')
     }
     stages {
-		stage('Loki Server - Grafana logs collector') {
+		stage('Prerequisites') {
+			steps {
+				echo 'Prerequisites operations'
+				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\Prerequisites.ps1"
+			}
+		}
+		stage('Loki Server - Logs collector') {
 			steps {
 				echo 'Deploying Loki - Grafana logs collector'
 				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\loki_deploy.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.DOMAIN}'"
@@ -87,7 +93,7 @@ pipeline {
 		SHADOW_DB_NAME = 'L1648-DV1'
 		GRAFANA_VERSION = '8.0.2'
 		DELETE_ALL_DB_DATA = 'false'
-		EVENTS_EPS_IN_THOUSANDS = '1'
+		EVENTS_EPS_IN_THOUSANDS = '10'
     }
     post {
         always {
