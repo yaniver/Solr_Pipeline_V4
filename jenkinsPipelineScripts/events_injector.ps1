@@ -27,9 +27,9 @@ Else {
 	$source_path = $events_injector_full_path + "\\EndurenceVSBInjector.exe.config"
 	$file_content=(Get-Content -path $source_path -Raw)
 	#EPS_inThousands" value="1"/>
-	$string_to_search='EPS_inThousands" (.*)"'
+	$string_to_search='EPS_in(.*)"'
 	$file_content -match $string_to_search
-	$value_to_replace = 'value="' + $events_eps_in_thousands
+	$value_to_replace = 'Thousands" value="' + $events_eps_in_thousands
 	($file_content -replace $matches[1],$value_to_replace) | Set-Content -Path $source_path
 	
 	$file_content=(Get-Content -path $source_path -Raw)
