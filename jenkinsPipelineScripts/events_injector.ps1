@@ -27,9 +27,10 @@ Else {
 	$source_path = $events_injector_full_path + "\\EndurenceVSBInjector.exe.config"
 	$file_content=(Get-Content -path $source_path -Raw)
 	#EPS_inThousands" value="1"/>
-	$string_to_search='EPS_inThousands" value="(.*)"'
+	$string_to_search='EPS_inThousands" (.*)"'
 	$file_content -match $string_to_search
-	($file_content -replace $matches[1],$events_eps_in_thousands) | Set-Content -Path $source_path
+	$value_to_replace = 'value="' + $events_eps_in_thousands
+	($file_content -replace $matches[1],$value_to_replace) | Set-Content -Path $source_path
 	
 	$file_content=(Get-Content -path $source_path -Raw)
 	#sqlShadowDBPrefix" value="L1648-DV1"/>
