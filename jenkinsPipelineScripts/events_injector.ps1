@@ -44,8 +44,9 @@ Else {
 	$matches[1]=$matches[1] -replace '\\', '\\'
 	($file_content -replace $matches[1],$sql_instance) | Set-Content -Path $source_path
 
+	$source_folder_only_folder_content = $events_injector_full_path + "\*"
 	#Copy events injector to remote server
-	Copy-Item $events_injector_full_path -Destination "C:\events_injector\" -ToSession $Session4 -Recurse -Force
+	Copy-Item $source_folder_only_folder_content -Destination "C:\events_injector\" -ToSession $Session4 -Recurse -Force
 	
 	# Session4 param set with Timeout param of 3 days so background process (-AsJob flag) won't be killed after 2 hours which is the default
 	Invoke-Command -Session $Session4 -ScriptBlock {

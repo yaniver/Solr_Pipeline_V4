@@ -53,7 +53,8 @@ Else {
 	($file_content -replace $matches[1],"SolrLoader") | Set-Content -Path $source_path
 
 	#Copy RabbitMQ exporter folder to remote server
-	Copy-Item $rabbit_full_path -Destination "C:\RabbitMQ_exporter\" -ToSession $Session3 -Recurse
+	$source_folder_only_folder_content = $rabbit_full_path + "\*"
+	Copy-Item $source_folder_only_folder_content -Destination "C:\RabbitMQ_exporter\" -ToSession $Session3 -Recurse
 
 	# Option 1 - create service
 	Invoke-Command -Session $Session3 -ScriptBlock {
@@ -78,7 +79,8 @@ Else {
 	($file_content -replace $matches[1],"enricher") | Set-Content -Path $source_path
 
 	#Copy RabbitMQ exporter folder to remote server
-	Copy-Item $rabbit_full_path -Destination "C:\RabbitMQ_exporter2\" -ToSession $Session2 -Recurse
+	$source_folder_only_folder_content = $rabbit_full_path + "\*"
+	Copy-Item $source_folder_only_folder_content -Destination "C:\RabbitMQ_exporter2\" -ToSession $Session2 -Recurse
 
 	Invoke-Command -Session $Session2 -ScriptBlock {
 	sc.exe create $Using:servicename2 binpath= "C:\RabbitMQ_exporter2\rabbitmq_exporter.exe --config-file C:\RabbitMQ_exporter2\config.example.json" DisplayName= "RabbitMQ_Exporter_enricher" start=auto obj=LocalSystem

@@ -45,7 +45,8 @@ Else {
 			Write-Host "Loki folder already exists and won't be created again."
 		} else {
 			Write-Host "Copy Loki folder to remote server"
-			Copy-Item $loki_full_path -Destination $Folder_destonation -ToSession $Session -Recurse -Force
+			$source_folder_only_folder_content = $loki_full_path + "\*"
+			Copy-Item $source_folder_only_folder_content -Destination $Folder_destonation -ToSession $Session -Recurse -Force
 		}
 	}
 
