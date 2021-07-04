@@ -69,6 +69,7 @@ Invoke-Command -Session $Session_db -ScriptBlock {
 	cmd.exe --% /c winrm set winrm/config/service @{AllowUnencrypted="true"}
 }
 
+cd $solr_pipeline_home
 update_hosts_file_with_solr_ips
 
 Remove-PSSession $Session
