@@ -19,13 +19,42 @@
   "links": [],
   "panels": [
     {
+      "datasource": null,
+      "gridPos": {
+        "h": 5,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 83,
+      "options": {
+        "alertName": "",
+        "dashboardAlerts": true,
+        "maxItems": 10,
+        "showOptions": "current",
+        "sortOrder": 1,
+        "stateFilter": {
+          "alerting": true,
+          "execution_error": false,
+          "no_data": false,
+          "ok": false,
+          "paused": false,
+          "pending": false
+        },
+        "tags": []
+      },
+      "pluginVersion": "8.0.2",
+      "title": "Alerts list",
+      "type": "alertlist"
+    },
+    {
       "collapsed": true,
       "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 0
+        "y": 5
       },
       "id": 41,
       "panels": [
@@ -606,7 +635,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 1
+        "y": 6
       },
       "id": 55,
       "panels": [],
@@ -640,7 +669,7 @@
         "h": 5,
         "w": 4,
         "x": 0,
-        "y": 2
+        "y": 7
       },
       "id": 57,
       "interval": null,
@@ -735,7 +764,7 @@
         "h": 5,
         "w": 4,
         "x": 4,
-        "y": 2
+        "y": 7
       },
       "id": 59,
       "interval": null,
@@ -839,7 +868,7 @@
         "h": 5,
         "w": 4,
         "x": 8,
-        "y": 2
+        "y": 7
       },
       "id": 61,
       "interval": null,
@@ -939,7 +968,7 @@
         "h": 5,
         "w": 4,
         "x": 12,
-        "y": 2
+        "y": 7
       },
       "hideTimeOverride": false,
       "id": 63,
@@ -1022,7 +1051,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 7
+        "y": 12
       },
       "hiddenSeries": false,
       "id": 65,
@@ -1123,6 +1152,41 @@
       }
     },
     {
+      "alert": {
+        "alertRuleTags": {},
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                60000
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "B",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "for": "5m",
+        "frequency": "1m",
+        "handler": 1,
+        "name": "Events Latency alert",
+        "noDataState": "no_data",
+        "notifications": []
+      },
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -1141,7 +1205,7 @@
         "h": 6,
         "w": 12,
         "x": 12,
-        "y": 7
+        "y": 12
       },
       "hiddenSeries": false,
       "id": 67,
@@ -1195,7 +1259,16 @@
           "tags": []
         }
       ],
-      "thresholds": [],
+      "thresholds": [
+        {
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 60000,
+          "visible": true
+        }
+      ],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
@@ -1245,25 +1318,27 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "VaronisMetrics",
+      "description": "The number of elements we fetch from DB in a single fetch",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 11,
-        "w": 12,
+        "h": 7,
+        "w": 24,
         "x": 0,
-        "y": 13
+        "y": 18
       },
       "hiddenSeries": false,
-      "id": 69,
+      "id": 71,
       "legend": {
         "alignAsTable": true,
         "avg": true,
-        "current": false,
+        "current": true,
         "max": true,
-        "min": true,
+        "min": false,
+        "rightSide": false,
         "show": true,
-        "sort": null,
-        "sortDesc": null,
+        "sort": "avg",
+        "sortDesc": true,
         "total": false,
         "values": true
       },
@@ -1285,20 +1360,26 @@
       "steppedLine": false,
       "targets": [
         {
-          "alias": "Throughput",
-          "groupBy": [],
+          "groupBy": [
+            {
+              "params": [
+                "EntityName"
+              ],
+              "type": "tag"
+            }
+          ],
           "measurement": "CifsEnricher.FetchingThroughput",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT \"Sum\" FROM \"CifsEnricher.FetchingThroughput\" WHERE $timeFilter",
-          "rawQuery": true,
+          "query": "SELECT \"Sum\" FROM \"CifsEnricher.ConcurrentDbFetchesPerEntity\" WHERE $timeFilter",
+          "rawQuery": false,
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
             [
               {
                 "params": [
-                  "sum"
+                  "Count"
                 ],
                 "type": "field"
               }
@@ -1311,7 +1392,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Fetching Throughput",
+      "title": "DB Fetching Throughput",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1327,7 +1408,7 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:159",
+          "$$hashKey": "object:86",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1336,13 +1417,175 @@
           "show": true
         },
         {
-          "$$hashKey": "object:160",
+          "$$hashKey": "object:87",
           "format": "short",
           "label": null,
           "logBase": 1,
           "max": null,
           "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "alert": {
+        "alertRuleTags": {},
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                2000
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "for": "5m",
+        "frequency": "1m",
+        "handler": 1,
+        "name": "DB Fetching Time  alert",
+        "noDataState": "no_data",
+        "notifications": []
+      },
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "VaronisMetrics",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 25
+      },
+      "hiddenSeries": false,
+      "id": 80,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "sort": "avg",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.0.2",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "EntityName"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "CifsEnricher.FetchTime",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"Sum\" FROM \"CifsEnricher.ConcurrentDbFetchesPerEntity\" WHERE $timeFilter",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "Count"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": [
+        {
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 2000,
+          "visible": true
+        }
+      ],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "DB Fetching Time ",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:88",
+          "format": "ms",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
           "show": true
+        },
+        {
+          "$$hashKey": "object:89",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
         }
       ],
       "yaxis": {
@@ -1359,20 +1602,23 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 11,
-        "w": 12,
-        "x": 12,
-        "y": 13
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 32
       },
       "hiddenSeries": false,
-      "id": 71,
+      "id": 81,
       "legend": {
         "alignAsTable": true,
         "avg": true,
         "current": true,
         "max": true,
         "min": false,
+        "rightSide": false,
         "show": true,
+        "sort": "avg",
+        "sortDesc": true,
         "total": false,
         "values": true
       },
@@ -1426,7 +1672,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Fetching Running Tasks",
+      "title": "Concurrent Fetching Tasks",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1442,6 +1688,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:86",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1450,6 +1697,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:87",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1475,7 +1723,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 24
+        "y": 39
       },
       "hiddenSeries": false,
       "id": 73,
@@ -1579,7 +1827,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 24
+        "y": 39
       },
       "hiddenSeries": false,
       "id": 75,
@@ -1712,7 +1960,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 32
+        "y": 47
       },
       "hiddenSeries": false,
       "id": 77,
@@ -1820,7 +2068,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 32
+        "y": 47
       },
       "hiddenSeries": false,
       "id": 79,
@@ -1922,7 +2170,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 40
+        "y": 55
       },
       "id": 29,
       "panels": [
@@ -2558,7 +2806,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 41
+        "y": 56
       },
       "id": 27,
       "panels": [
@@ -4489,7 +4737,7 @@
       "type": "row"
     }
   ],
-  "refresh": false,
+  "refresh": "10s",
   "schemaVersion": 30,
   "style": "dark",
   "tags": [],
@@ -4497,8 +4745,8 @@
     "list": []
   },
   "time": {
-    "from": "2021-06-22T17:39:54.272Z",
-    "to": "2021-06-22T18:43:57.989Z"
+    "from": "now-30m",
+    "to": "now"
   },
   "timepicker": {
     "refresh_intervals": [
@@ -4528,5 +4776,5 @@
   "timezone": "",
   "title": "Data Store Team Dashboard",
   "uid": "",
-  "version": 26237
+  "version": 26269
 }

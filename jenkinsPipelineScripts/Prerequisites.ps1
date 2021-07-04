@@ -26,5 +26,26 @@ $clm_connection_string_encoded = Invoke-Command -Session $Session -ScriptBlock {
 $clm_connection_string_deencoded = Invoke-Command -ScriptBlock {.\CryptoVaronis\vrnsCrypto.ps1 $clm_connection_string_encoded}
 Write-Host "Collection manager connection string value  = " $clm_connection_string_deencoded
 
+
+#SolrConnectionString" connectionString="Data Source=http://l1648-solr2:3182/solr/,http://l1648-solr3:3182/solr/,http://l1648-solr4:3182/solr/;Initial
+$string_to_search='SolrConnectionString" connectionString="Data Source=(.*);Initial'
+$clm_connection_string_deencoded -match $string_to_search
+$solr_urls =$matches[1].Split(",")
+
+$solr_names = @(0..($solr_urls.Length-1))
+$string_to_search='http://(.*):3182/solr/'
+For ($i=0; $i -lt $solr_urls.Length; $i++) {
+	$solr_urls[$i] -match $string_to_search
+	$solr_names[$i] = $matches[1]
+}
+
+$solr_ips = @(0..($solr_urls.Length-1))
+For ($i=0; $i -lt $solr_names.Length; $i++) {
+	Invoke-Command -Session $Session -ScriptBlock {
+		$solr_ips = (Test-Connection -comp $solr_names[$i] -Count 1).ipv4address.ipaddressToString
+	}
+}
+
+
 Remove-PSSession $Session
 Remove-PSSession $Session_db
