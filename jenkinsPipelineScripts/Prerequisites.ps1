@@ -14,6 +14,7 @@ $global:Session_db = New-PSSession -ComputerName $db_ip -Credential $Credential
 
 
 function update_hosts_file_with_solr_ips {
+	param( [string]$lab_name )
 	$clm_connection_string_encoded = Invoke-Command -Session $Session -ScriptBlock {Select-Xml -Path "C:\Program Files (x86)\Varonis\DatAdvantage\CollectionManager\Varonis.CollectionManager.Service.exe.config" -XPath '/configuration/connectionStrings/EncryptedData' | ForEach-Object { $_.Node.InnerXML }}
 	$clm_connection_string_deencoded = Invoke-Command -ScriptBlock {.\CryptoVaronis\vrnsCrypto.ps1 $clm_connection_string_encoded}
 	Write-Host "Collection manager connection string value  = " $clm_connection_string_deencoded
@@ -22,7 +23,7 @@ function update_hosts_file_with_solr_ips {
 	#SolrConnectionString" connectionString="Data Source=http://l1648-solr2:3182/solr/,http://l1648-solr3:3182/solr/,http://l1648-solr4:3182/solr/;Initial
 	$string_to_search='SolrConnectionString" connectionString="Data Source=(.*);Initial'
 	$clm_connection_string_deencoded -match $string_to_search
-	$solr_urls =$matches[1].Split(",")
+	$solr_urls = $matches[1].Split(",")
 
 	$solr_names = @(0..($solr_urls.Length-1))
 	$string_to_search='http://(.*):3182/solr/'
@@ -70,7 +71,7 @@ Invoke-Command -Session $Session_db -ScriptBlock {
 }
 
 cd $solr_pipeline_home
-update_hosts_file_with_solr_ips
+update_hosts_file_with_solr_ips -lab_name $lab_name
 
 Remove-PSSession $Session
 Remove-PSSession $Session_db
