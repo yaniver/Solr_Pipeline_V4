@@ -7,7 +7,7 @@ pipeline {
 		stage('Prerequisites') {
 			steps {
 				echo 'Prerequisites operations'
-				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\Prerequisites.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.DB_IP}'  '${env.DOMAIN}'"
+				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\Prerequisites.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.DB_IP}'  '${env.DOMAIN}'  '${env.LAB_NAME}'"
 			}
 		}
 		stage('Loki Server - Logs collector') {
