@@ -23,6 +23,7 @@ function update_hosts_file_with_solr_ips {
 	#SolrConnectionString" connectionString="Data Source=http://l1648-solr2:3182/solr/,http://l1648-solr3:3182/solr/,http://l1648-solr4:3182/solr/;Initial
 	$string_to_search='SolrConnectionString" connectionString="Data Source=(.*);Initial'
 	$clm_connection_string_deencoded -match $string_to_search
+	echo $matches[1]
 	$solr_urls = $matches[1].Split(",")
 
 	$solr_names = @(0..($solr_urls.Length-1))

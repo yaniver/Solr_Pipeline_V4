@@ -21,7 +21,7 @@
     {
       "datasource": null,
       "gridPos": {
-        "h": 5,
+        "h": 6,
         "w": 24,
         "x": 0,
         "y": 0
@@ -30,6 +30,8 @@
       "options": {
         "alertName": "",
         "dashboardAlerts": true,
+        "dashboardTitle": "",
+        "folderId": null,
         "maxItems": 10,
         "showOptions": "current",
         "sortOrder": 1,
@@ -54,7 +56,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 5
+        "y": 6
       },
       "id": 41,
       "panels": [
@@ -635,7 +637,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 6
+        "y": 7
       },
       "id": 55,
       "panels": [],
@@ -669,7 +671,7 @@
         "h": 5,
         "w": 4,
         "x": 0,
-        "y": 7
+        "y": 8
       },
       "id": 57,
       "interval": null,
@@ -764,7 +766,7 @@
         "h": 5,
         "w": 4,
         "x": 4,
-        "y": 7
+        "y": 8
       },
       "id": 59,
       "interval": null,
@@ -868,7 +870,7 @@
         "h": 5,
         "w": 4,
         "x": 8,
-        "y": 7
+        "y": 8
       },
       "id": 61,
       "interval": null,
@@ -968,7 +970,7 @@
         "h": 5,
         "w": 4,
         "x": 12,
-        "y": 7
+        "y": 8
       },
       "hideTimeOverride": false,
       "id": 63,
@@ -1049,9 +1051,9 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 6,
-        "w": 12,
+        "w": 24,
         "x": 0,
-        "y": 12
+        "y": 13
       },
       "hiddenSeries": false,
       "id": 65,
@@ -1112,7 +1114,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Events Throughput",
+      "title": "Events written to DL",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1152,41 +1154,6 @@
       }
     },
     {
-      "alert": {
-        "alertRuleTags": {},
-        "conditions": [
-          {
-            "evaluator": {
-              "params": [
-                60000
-              ],
-              "type": "gt"
-            },
-            "operator": {
-              "type": "and"
-            },
-            "query": {
-              "params": [
-                "B",
-                "5m",
-                "now"
-              ]
-            },
-            "reducer": {
-              "params": [],
-              "type": "avg"
-            },
-            "type": "query"
-          }
-        ],
-        "executionErrorState": "alerting",
-        "for": "5m",
-        "frequency": "1m",
-        "handler": 1,
-        "name": "Events Latency alert",
-        "noDataState": "no_data",
-        "notifications": []
-      },
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -1203,9 +1170,9 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 6,
-        "w": 12,
-        "x": 12,
-        "y": 12
+        "w": 24,
+        "x": 0,
+        "y": 19
       },
       "hiddenSeries": false,
       "id": 67,
@@ -1259,16 +1226,7 @@
           "tags": []
         }
       ],
-      "thresholds": [
-        {
-          "colorMode": "critical",
-          "fill": true,
-          "line": true,
-          "op": "gt",
-          "value": 60000,
-          "visible": true
-        }
-      ],
+      "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
@@ -1322,10 +1280,10 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 24,
         "x": 0,
-        "y": 18
+        "y": 25
       },
       "hiddenSeries": false,
       "id": 71,
@@ -1478,7 +1436,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 25
+        "y": 33
       },
       "hiddenSeries": false,
       "id": 80,
@@ -1495,7 +1453,7 @@
         "total": false,
         "values": true
       },
-      "lines": true,
+      "lines": false,
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
@@ -1505,7 +1463,7 @@
       "percentage": false,
       "pluginVersion": "8.0.2",
       "pointradius": 5,
-      "points": false,
+      "points": true,
       "renderer": "flot",
       "seriesOverrides": [],
       "spaceLength": 10,
@@ -1605,7 +1563,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 32
+        "y": 40
       },
       "hiddenSeries": false,
       "id": 81,
@@ -1622,7 +1580,7 @@
         "total": false,
         "values": true
       },
-      "lines": true,
+      "lines": false,
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
@@ -1632,7 +1590,7 @@
       "percentage": false,
       "pluginVersion": "8.0.2",
       "pointradius": 5,
-      "points": false,
+      "points": true,
       "renderer": "flot",
       "seriesOverrides": [],
       "spaceLength": 10,
@@ -1723,7 +1681,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 39
+        "y": 47
       },
       "hiddenSeries": false,
       "id": 73,
@@ -1827,7 +1785,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 39
+        "y": 47
       },
       "hiddenSeries": false,
       "id": 75,
@@ -1960,7 +1918,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 47
+        "y": 55
       },
       "hiddenSeries": false,
       "id": 77,
@@ -2068,7 +2026,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 47
+        "y": 55
       },
       "hiddenSeries": false,
       "id": 79,
@@ -2170,7 +2128,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 55
+        "y": 63
       },
       "id": 29,
       "panels": [
@@ -2806,7 +2764,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 56
+        "y": 64
       },
       "id": 27,
       "panels": [
@@ -4745,7 +4703,7 @@
     "list": []
   },
   "time": {
-    "from": "now-30m",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {
@@ -4776,5 +4734,5 @@
   "timezone": "",
   "title": "Data Store Team Dashboard",
   "uid": "",
-  "version": 26269
+  "version": 26277
 }
