@@ -15,21 +15,12 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 3,
-  "iteration": 1609144600303,
+  "id": 48,
+  "iteration": 1625560087836,
   "links": [],
   "panels": [
     {
-      "dashboardFilter": "",
-      "dashboardTags": [],
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "folderId": null,
       "gridPos": {
         "h": 6,
         "w": 6,
@@ -37,19 +28,25 @@
         "y": 0
       },
       "id": 17,
-      "limit": 10,
-      "nameFilter": "",
-      "onlyAlertsOnDashboard": true,
-      "pluginVersion": "7.3.3",
-      "show": "current",
-      "sortOrder": 1,
-      "stateFilter": [
-        "alerting",
-        "ok",
-        "paused",
-        "execution_error",
-        "pending"
-      ],
+      "options": {
+        "alertName": "",
+        "dashboardAlerts": true,
+        "dashboardTitle": "",
+        "folderId": null,
+        "maxItems": 10,
+        "showOptions": "current",
+        "sortOrder": 1,
+        "stateFilter": {
+          "alerting": true,
+          "execution_error": true,
+          "no_data": false,
+          "ok": true,
+          "paused": true,
+          "pending": true
+        },
+        "tags": []
+      },
+      "pluginVersion": "8.0.2",
       "timeFrom": null,
       "timeShift": null,
       "title": "Alerts status",
@@ -63,7 +60,6 @@
       "datasource": "Loki",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "unit": "short"
         },
         "overrides": []
@@ -94,7 +90,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -162,7 +158,6 @@
       "datasource": "Loki",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "unit": "short"
         },
         "overrides": []
@@ -193,7 +188,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -271,7 +266,7 @@
               {
                 "evaluator": {
                   "params": [
-                    1
+                    10
                   ],
                   "type": "gt"
                 },
@@ -293,8 +288,8 @@
               }
             ],
             "executionErrorState": "alerting",
-            "for": "0m",
-            "frequency": "2m",
+            "for": "2m",
+            "frequency": "1m",
             "handler": 1,
             "name": "SolrLoader - Errors\\Warnings  count alert",
             "noDataState": "no_data",
@@ -307,7 +302,6 @@
           "datasource": "loki-Prometheus",
           "fieldConfig": {
             "defaults": {
-              "custom": {},
               "unit": "short"
             },
             "overrides": []
@@ -338,7 +332,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.3.3",
+          "pluginVersion": "8.0.2",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -360,7 +354,8 @@
               "fill": true,
               "line": true,
               "op": "gt",
-              "value": 1
+              "value": 10,
+              "visible": true
             }
           ],
           "timeFrom": null,
@@ -412,7 +407,7 @@
               {
                 "evaluator": {
                   "params": [
-                    4
+                    10
                   ],
                   "type": "gt"
                 },
@@ -435,7 +430,7 @@
             ],
             "executionErrorState": "alerting",
             "for": "2m",
-            "frequency": "5m",
+            "frequency": "1m",
             "handler": 1,
             "name": "SqlExtractor - Errors\\Warnings   count alert",
             "noDataState": "no_data",
@@ -448,7 +443,6 @@
           "datasource": "loki-Prometheus",
           "fieldConfig": {
             "defaults": {
-              "custom": {},
               "unit": "short"
             },
             "overrides": []
@@ -479,7 +473,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.3.3",
+          "pluginVersion": "8.0.2",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -501,7 +495,8 @@
               "fill": true,
               "line": true,
               "op": "gt",
-              "value": 4
+              "value": 10,
+              "visible": true
             }
           ],
           "timeFrom": null,
@@ -553,7 +548,7 @@
               {
                 "evaluator": {
                   "params": [
-                    4
+                    10
                   ],
                   "type": "gt"
                 },
@@ -574,9 +569,9 @@
                 "type": "query"
               }
             ],
-            "executionErrorState": "alerting",
+            "executionErrorState": "keep_state",
             "for": "2m",
-            "frequency": "5m",
+            "frequency": "1m",
             "handler": 1,
             "name": "Solr - Errors\\Warnings   count alert",
             "noDataState": "no_data",
@@ -589,7 +584,6 @@
           "datasource": "loki-Prometheus",
           "fieldConfig": {
             "defaults": {
-              "custom": {},
               "unit": "short"
             },
             "overrides": []
@@ -620,7 +614,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.3.3",
+          "pluginVersion": "8.0.2",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -642,7 +636,8 @@
               "fill": true,
               "line": true,
               "op": "gt",
-              "value": 4
+              "value": 10,
+              "visible": true
             }
           ],
           "timeFrom": null,
@@ -694,7 +689,7 @@
               {
                 "evaluator": {
                   "params": [
-                    1
+                    10
                   ],
                   "type": "gt"
                 },
@@ -716,8 +711,8 @@
               }
             ],
             "executionErrorState": "alerting",
-            "for": "0m",
-            "frequency": "5m",
+            "for": "2m",
+            "frequency": "1m",
             "handler": 1,
             "name": "CLM - Errors\\Warnings  count alert",
             "noDataState": "no_data",
@@ -730,7 +725,6 @@
           "datasource": "loki-Prometheus",
           "fieldConfig": {
             "defaults": {
-              "custom": {},
               "unit": "short"
             },
             "overrides": []
@@ -761,7 +755,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.3.3",
+          "pluginVersion": "8.0.2",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -783,7 +777,8 @@
               "fill": true,
               "line": true,
               "op": "gt",
-              "value": 1
+              "value": 10,
+              "visible": true
             }
           ],
           "timeFrom": null,
@@ -835,7 +830,7 @@
               {
                 "evaluator": {
                   "params": [
-                    4
+                    10
                   ],
                   "type": "gt"
                 },
@@ -858,7 +853,7 @@
             ],
             "executionErrorState": "alerting",
             "for": "2m",
-            "frequency": "5m",
+            "frequency": "1m",
             "handler": 1,
             "name": "SolrMonitor - Errors\\Warnings   count alert",
             "noDataState": "no_data",
@@ -871,7 +866,6 @@
           "datasource": "loki-Prometheus",
           "fieldConfig": {
             "defaults": {
-              "custom": {},
               "unit": "short"
             },
             "overrides": []
@@ -902,7 +896,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.3.3",
+          "pluginVersion": "8.0.2",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -924,7 +918,8 @@
               "fill": true,
               "line": true,
               "op": "gt",
-              "value": 4
+              "value": 10,
+              "visible": true
             }
           ],
           "timeFrom": null,
@@ -976,7 +971,7 @@
               {
                 "evaluator": {
                   "params": [
-                    4
+                    10
                   ],
                   "type": "gt"
                 },
@@ -997,9 +992,9 @@
                 "type": "query"
               }
             ],
-            "executionErrorState": "alerting",
+            "executionErrorState": "keep_state",
             "for": "2m",
-            "frequency": "5m",
+            "frequency": "1m",
             "handler": 1,
             "name": "Zookeeper WD - Errors\\Warnings   count alert",
             "noDataState": "no_data",
@@ -1012,7 +1007,6 @@
           "datasource": "loki-Prometheus",
           "fieldConfig": {
             "defaults": {
-              "custom": {},
               "unit": "short"
             },
             "overrides": []
@@ -1043,7 +1037,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.3.3",
+          "pluginVersion": "8.0.2",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -1065,7 +1059,8 @@
               "fill": true,
               "line": true,
               "op": "gt",
-              "value": 4
+              "value": 10,
+              "visible": true
             }
           ],
           "timeFrom": null,
@@ -1117,7 +1112,7 @@
               {
                 "evaluator": {
                   "params": [
-                    4
+                    10
                   ],
                   "type": "gt"
                 },
@@ -1138,9 +1133,9 @@
                 "type": "query"
               }
             ],
-            "executionErrorState": "alerting",
+            "executionErrorState": "keep_state",
             "for": "2m",
-            "frequency": "5m",
+            "frequency": "1m",
             "handler": 1,
             "name": "Solr WD - Errors\\Warnings   count alert",
             "noDataState": "no_data",
@@ -1153,7 +1148,6 @@
           "datasource": "loki-Prometheus",
           "fieldConfig": {
             "defaults": {
-              "custom": {},
               "unit": "short"
             },
             "overrides": []
@@ -1184,7 +1178,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.3.3",
+          "pluginVersion": "8.0.2",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -1206,7 +1200,8 @@
               "fill": true,
               "line": true,
               "op": "gt",
-              "value": 4
+              "value": 10,
+              "visible": true
             }
           ],
           "timeFrom": null,
@@ -1277,7 +1272,6 @@
       "datasource": "Loki",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "unit": "short"
         },
         "overrides": []
@@ -1309,7 +1303,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1371,29 +1365,6 @@
     },
     {
       "datasource": "Loki",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "align": null,
-            "filterable": false
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
       "gridPos": {
         "h": 7,
         "w": 12,
@@ -1402,6 +1373,8 @@
       },
       "id": 13,
       "options": {
+        "dedupStrategy": "none",
+        "enableLogDetails": true,
         "showLabels": false,
         "showTime": true,
         "sortOrder": "Descending",
@@ -1428,7 +1401,6 @@
       "datasource": "Loki",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "unit": "short"
         },
         "overrides": []
@@ -1460,7 +1432,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1520,29 +1492,6 @@
     },
     {
       "datasource": "Loki",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "align": null,
-            "filterable": false
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
       "gridPos": {
         "h": 7,
         "w": 12,
@@ -1551,6 +1500,8 @@
       },
       "id": 2,
       "options": {
+        "dedupStrategy": "none",
+        "enableLogDetails": true,
         "showLabels": false,
         "showTime": true,
         "sortOrder": "Descending",
@@ -1643,8 +1594,8 @@
       "type": "row"
     }
   ],
-  "refresh": "10s",
-  "schemaVersion": 26,
+  "refresh": "1m",
+  "schemaVersion": 30,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -1655,21 +1606,20 @@
           "selected": true,
           "text": [
             "CollectionManager",
-            "Database_Adapter_Consumer",
             "SolrMonitor",
-            "solrloader",
-            "sqlextractor"
+            "enricher",
+            "solrloader"
           ],
           "value": [
             "CollectionManager",
-            "Database_Adapter_Consumer",
             "SolrMonitor",
-            "solrloader",
-            "sqlextractor"
+            "enricher",
+            "solrloader"
           ]
         },
         "datasource": "loki-Prometheus",
         "definition": "label_values({job=~\"[\\\\w]+\"},job)",
+        "description": null,
         "error": null,
         "hide": 0,
         "includeAll": false,
@@ -1677,13 +1627,15 @@
         "multi": true,
         "name": "job",
         "options": [],
-        "query": "label_values({job=~\"[\\\\w]+\"},job)",
+        "query": {
+          "query": "label_values({job=~\"[\\\\w]+\"},job)",
+          "refId": "loki-Prometheus-job-Variable-Query"
+        },
         "refresh": 1,
         "regex": "/(.+)/",
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -1694,6 +1646,7 @@
           "text": "",
           "value": ""
         },
+        "description": null,
         "error": null,
         "hide": 0,
         "label": null,
@@ -1712,12 +1665,12 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "utc",
   "title": "Logs Dashboard",
   "uid": "",
-  "version": 55
+  "version": 12
 }
