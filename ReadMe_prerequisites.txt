@@ -21,7 +21,6 @@
 		set WebDaUser=WebDaUser
 		set WebDaPassword=WebDaPassword
 		Then start first all ZK vm’s and then Solr Vm’s
-	In Jenkins client vm, add to hosts file all solr VM’s (name to ip)
 
 Note: Make sure you import the last Solr services grafana dashboard from TFS (for Varonis services Grafana dashboard).
 TFS link - $/idu Client-Server/WebDA/v8.6/Common/Data Store Team Dashboard.json
