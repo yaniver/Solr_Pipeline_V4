@@ -292,7 +292,7 @@
             "frequency": "1m",
             "handler": 1,
             "name": "SolrLoader - Errors\\Warnings  count alert",
-            "noDataState": "no_data",
+            "noDataState": "keep_state",
             "notifications": []
           },
           "aliasColors": {},
@@ -433,7 +433,7 @@
             "frequency": "1m",
             "handler": 1,
             "name": "SqlExtractor - Errors\\Warnings   count alert",
-            "noDataState": "no_data",
+            "noDataState": "keep_state",
             "notifications": []
           },
           "aliasColors": {},
@@ -483,7 +483,8 @@
           "steppedLine": true,
           "targets": [
             {
-              "expr": "count_over_time({job=\"solr_sqlextractor\"} |~\"ERROR|WARN\" [1m])",
+              "exemplar": true,
+              "expr": "count_over_time({job=\"sqlextractor\"} |~\"ERROR|WARN\" [1m])",
               "interval": "",
               "legendFormat": "{{job}}",
               "refId": "A"
@@ -542,41 +543,6 @@
           }
         },
         {
-          "alert": {
-            "alertRuleTags": {},
-            "conditions": [
-              {
-                "evaluator": {
-                  "params": [
-                    10
-                  ],
-                  "type": "gt"
-                },
-                "operator": {
-                  "type": "and"
-                },
-                "query": {
-                  "params": [
-                    "A",
-                    "5m",
-                    "now"
-                  ]
-                },
-                "reducer": {
-                  "params": [],
-                  "type": "avg"
-                },
-                "type": "query"
-              }
-            ],
-            "executionErrorState": "keep_state",
-            "for": "2m",
-            "frequency": "1m",
-            "handler": 1,
-            "name": "Solr - Errors\\Warnings   count alert",
-            "noDataState": "no_data",
-            "notifications": []
-          },
           "aliasColors": {},
           "bars": true,
           "dashLength": 10,
@@ -597,7 +563,7 @@
             "y": 7
           },
           "hiddenSeries": false,
-          "id": 26,
+          "id": 35,
           "legend": {
             "avg": false,
             "current": false,
@@ -624,26 +590,18 @@
           "steppedLine": true,
           "targets": [
             {
-              "expr": "count_over_time({job=\"Solr\"} |~\"ERROR|WARN\" [1m])",
+              "exemplar": true,
+              "expr": "count_over_time({job=\"enricher\"} |~\"ERROR|WARN\" [1m])",
               "interval": "",
               "legendFormat": "{{job}}",
               "refId": "A"
             }
           ],
-          "thresholds": [
-            {
-              "colorMode": "critical",
-              "fill": true,
-              "line": true,
-              "op": "gt",
-              "value": 10,
-              "visible": true
-            }
-          ],
+          "thresholds": [],
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Solr - Errors\\Warnings count",
+          "title": "Enricher - Errors\\Warnings count",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -715,7 +673,7 @@
             "frequency": "1m",
             "handler": 1,
             "name": "CLM - Errors\\Warnings  count alert",
-            "noDataState": "no_data",
+            "noDataState": "keep_state",
             "notifications": []
           },
           "aliasColors": {},
@@ -856,7 +814,7 @@
             "frequency": "1m",
             "handler": 1,
             "name": "SolrMonitor - Errors\\Warnings   count alert",
-            "noDataState": "no_data",
+            "noDataState": "keep_state",
             "notifications": []
           },
           "aliasColors": {},
@@ -996,8 +954,149 @@
             "for": "2m",
             "frequency": "1m",
             "handler": 1,
+            "name": "Solr - Errors\\Warnings   count alert",
+            "noDataState": "keep_state",
+            "notifications": []
+          },
+          "aliasColors": {},
+          "bars": true,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "loki-Prometheus",
+          "fieldConfig": {
+            "defaults": {
+              "unit": "short"
+            },
+            "overrides": []
+          },
+          "fill": 2,
+          "fillGradient": 2,
+          "gridPos": {
+            "h": 5,
+            "w": 8,
+            "x": 16,
+            "y": 12
+          },
+          "hiddenSeries": false,
+          "id": 26,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "8.0.2",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": true,
+          "targets": [
+            {
+              "expr": "count_over_time({job=\"Solr\"} |~\"ERROR|WARN\" [1m])",
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [
+            {
+              "colorMode": "critical",
+              "fill": true,
+              "line": true,
+              "op": "gt",
+              "value": 10,
+              "visible": true
+            }
+          ],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Solr - Errors\\Warnings count",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:27",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:28",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "alert": {
+            "alertRuleTags": {},
+            "conditions": [
+              {
+                "evaluator": {
+                  "params": [
+                    10
+                  ],
+                  "type": "gt"
+                },
+                "operator": {
+                  "type": "and"
+                },
+                "query": {
+                  "params": [
+                    "A",
+                    "5m",
+                    "now"
+                  ]
+                },
+                "reducer": {
+                  "params": [],
+                  "type": "avg"
+                },
+                "type": "query"
+              }
+            ],
+            "executionErrorState": "keep_state",
+            "for": "2m",
+            "frequency": "1m",
+            "handler": 1,
             "name": "Zookeeper WD - Errors\\Warnings   count alert",
-            "noDataState": "no_data",
+            "noDataState": "keep_state",
             "notifications": []
           },
           "aliasColors": {},
@@ -1017,7 +1116,7 @@
             "h": 5,
             "w": 4,
             "x": 16,
-            "y": 12
+            "y": 17
           },
           "hiddenSeries": false,
           "id": 24,
@@ -1138,7 +1237,7 @@
             "frequency": "1m",
             "handler": 1,
             "name": "Solr WD - Errors\\Warnings   count alert",
-            "noDataState": "no_data",
+            "noDataState": "keep_state",
             "notifications": []
           },
           "aliasColors": {},
@@ -1158,7 +1257,7 @@
             "h": 5,
             "w": 4,
             "x": 20,
-            "y": 12
+            "y": 17
           },
           "hiddenSeries": false,
           "id": 25,
@@ -1672,5 +1771,5 @@
   "timezone": "utc",
   "title": "Logs Dashboard",
   "uid": "",
-  "version": 12
+  "version": 15
 }
