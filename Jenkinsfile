@@ -93,7 +93,7 @@ pipeline {
 		SHADOW_DB_NAME = 'L1648-DV1'
 		GRAFANA_VERSION = '8.0.2'
 		DELETE_ALL_DB_DATA = 'false'
-		EVENTS_EPS_IN_THOUSANDS = '10'
+		EVENTS_EPS_IN_THOUSANDS = '2'
     }
     post {
         always {
