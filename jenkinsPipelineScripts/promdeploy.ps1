@@ -37,6 +37,7 @@ $file_content -match $string_to_search
 git clone https://github.com/stefanprodan/dockprom
 Copy-Item -Path "${SOLR_PIPELINE_HOME}\dockerpromModification\GrafanaDashboardExtra\*.json" -Destination "${SOLR_PIPELINE_HOME}\dockprom\grafana\provisioning\dashboards" -Force -Verbose
 Copy-Item -Path "${SOLR_PIPELINE_HOME}\dockerpromModification\GrafanaDatasource\*.yml" -Destination "${SOLR_PIPELINE_HOME}\dockprom\grafana\provisioning\datasources" -Force -Verbose
+Copy-Item -Path "${SOLR_PIPELINE_HOME}\dockerpromModification\GrafanaPlugins\*.*" -Destination "${SOLR_PIPELINE_HOME}\dockprom\grafana\provisioning\plugins" -Force -Verbose
 Copy-Item -Path "${SOLR_PIPELINE_HOME}\dockerpromModification\Prometheus\*.yml" -Destination "${SOLR_PIPELINE_HOME}\dockprom\prometheus" -Force -Verbose
 cd dockprom
 
