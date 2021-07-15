@@ -52,7 +52,7 @@ Else {
 
 	# Session param set with Timeout param of 3 days so background process (-AsJob flag) won't be killed after 2 hours which is the default
 	Invoke-Command -Session $Session -ScriptBlock {
-		cmd.exe --% /c C:\Loki_Promtail\loki-windows-amd64.exe --config.file C:\Loki_Promtail\loki-local-config.yaml
+		Start-Process -wait -FilePath "loki-windows-amd64.exe" -WorkingDirectory "C:\Loki_Promtail" -ArgumentList "--config.file C:\Loki_Promtail\loki-local-config.yaml"
 	} -AsJob
 	
 	Start-Sleep -s 10
@@ -60,7 +60,7 @@ Else {
 	Write-Host "Loki process created successfully in IDU server."
 	
 	Invoke-Command -Session $Session2 -ScriptBlock {
-		cmd.exe --% /c C:\Loki_Promtail\promtail-windows-amd64.exe --config.file C:\Loki_Promtail\promtail-local-config.yaml
+		Start-Process -wait -FilePath "promtail-windows-amd64.exe" -WorkingDirectory "C:\Loki_Promtail" -ArgumentList "--config.file C:\Loki_Promtail\promtail-local-config.yaml"
 	} -AsJob
 	
 	Start-Sleep -s 5
