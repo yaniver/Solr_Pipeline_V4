@@ -823,7 +823,7 @@
       "type": "bargauge"
     },
     {
-      "collapsed": true,
+      "collapsed": false,
       "datasource": null,
       "gridPos": {
         "h": 1,
@@ -832,2425 +832,26 @@
         "y": 6
       },
       "id": 386,
-      "panels": [
-        {
-          "datasource": null,
-          "gridPos": {
-            "h": 5,
-            "w": 3,
-            "x": 0,
-            "y": 8
-          },
-          "id": 414,
-          "links": [],
-          "options": {
-            "content": "<br></br>\n<center>-----------------------</center>\n<h5><center>Enricher</center></h5>\n<center>-----------------------</center>",
-            "mode": "html"
-          },
-          "pluginVersion": "8.0.2",
-          "type": "text"
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Prometheus",
-          "decimals": 2,
-          "description": "Normalized  to real percent",
-          "fieldConfig": {
-            "defaults": {
-              "links": []
-            },
-            "overrides": []
-          },
-          "fill": 2,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 5,
-            "w": 5,
-            "x": 3,
-            "y": 8
-          },
-          "hiddenSeries": false,
-          "id": 415,
-          "legend": {
-            "alignAsTable": true,
-            "avg": true,
-            "current": false,
-            "max": false,
-            "min": false,
-            "rightSide": false,
-            "show": true,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "8.0.2",
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "exemplar": true,
-              "expr": "perfmon_process_enricher_precent_processor_time/(wmi_computersystem_sonar_NumberOfLogicalProcessors*100)*100",
-              "format": "time_series",
-              "hide": false,
-              "interval": "",
-              "intervalFactor": 1,
-              "legendFormat": "Enricher - % CPU",
-              "refId": "B"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "CPU",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "$$hashKey": "object:404",
-              "decimals": null,
-              "format": "percent",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": "0",
-              "show": true
-            },
-            {
-              "$$hashKey": "object:405",
-              "decimals": 1,
-              "format": "bytes",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": false
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Prometheus",
-          "fieldConfig": {
-            "defaults": {
-              "links": []
-            },
-            "overrides": []
-          },
-          "fill": 2,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 5,
-            "w": 5,
-            "x": 8,
-            "y": 8
-          },
-          "hiddenSeries": false,
-          "id": 416,
-          "legend": {
-            "alignAsTable": true,
-            "avg": true,
-            "current": false,
-            "max": false,
-            "min": false,
-            "rightSide": false,
-            "show": true,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "8.0.2",
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "exemplar": true,
-              "expr": "wmi_process_sonar_PrivateBytes{Name=\"Varonis.DSP.Cifs.Enricher.Service\"}",
-              "format": "time_series",
-              "hide": false,
-              "interval": "",
-              "intervalFactor": 1,
-              "legendFormat": "Enricher (Private Bytes)",
-              "refId": "A"
-            },
-            {
-              "exemplar": true,
-              "expr": "wmi_process_sonar_WorkingSet{Name=\"Varonis.DSP.Cifs.Enricher.Service\"}",
-              "format": "time_series",
-              "hide": true,
-              "interval": "",
-              "intervalFactor": 1,
-              "legendFormat": "Enricher (Working Set)",
-              "refId": "B"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Memory",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "$$hashKey": "object:698",
-              "decimals": 0,
-              "format": "bytes",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "$$hashKey": "object:699",
-              "decimals": 1,
-              "format": "bytes",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": false
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Prometheus",
-          "decimals": 1,
-          "fieldConfig": {
-            "defaults": {
-              "links": []
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 5,
-            "w": 5,
-            "x": 13,
-            "y": 8
-          },
-          "hiddenSeries": false,
-          "id": 417,
-          "legend": {
-            "alignAsTable": true,
-            "avg": true,
-            "current": false,
-            "max": false,
-            "min": false,
-            "rightSide": false,
-            "show": true,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "8.0.2",
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "exemplar": true,
-              "expr": "",
-              "format": "time_series",
-              "hide": false,
-              "interval": "",
-              "intervalFactor": 1,
-              "legendFormat": "Enricher - EPS",
-              "refId": "A"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "EPS",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "$$hashKey": "object:332",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "$$hashKey": "object:333",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": false
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "cacheTimeout": null,
-          "datasource": "Prometheus",
-          "fieldConfig": {
-            "defaults": {
-              "decimals": 0,
-              "mappings": [
-                {
-                  "id": 0,
-                  "op": "=",
-                  "text": "N/A",
-                  "type": 1,
-                  "value": "null"
-                }
-              ],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "#299c46",
-                    "value": null
-                  },
-                  {
-                    "color": "rgba(237, 129, 40, 0.89)",
-                    "value": 0.01
-                  },
-                  {
-                    "color": "#d44a3a",
-                    "value": 0.02
-                  }
-                ]
-              },
-              "unit": "s"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 15,
-            "w": 6,
-            "x": 18,
-            "y": 8
-          },
-          "id": 395,
-          "links": [],
-          "options": {
-            "displayMode": "lcd",
-            "orientation": "horizontal",
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "showUnfilled": true,
-            "text": {}
-          },
-          "pluginVersion": "8.0.2",
-          "targets": [
-            {
-              "expr": "perfmon_disk5_avg_disk_sec_read_DataLake_Partition",
-              "format": "time_series",
-              "intervalFactor": 1,
-              "legendFormat": "DataLake read",
-              "refId": "A"
-            },
-            {
-              "expr": "perfmon_disk5_avg_disk_sec_Write_DataLake_Partition",
-              "legendFormat": "DataLake write",
-              "refId": "B"
-            }
-          ],
-          "title": "Avg. Disk latency",
-          "type": "bargauge"
-        },
-        {
-          "datasource": null,
-          "gridPos": {
-            "h": 5,
-            "w": 3,
-            "x": 0,
-            "y": 13
-          },
-          "id": 317,
-          "links": [],
-          "options": {
-            "content": "<br></br>\n<center>-----------------------</center>\n<h5><center>SQLExtractor</center></h5>\n<center>-----------------------</center>",
-            "mode": "html"
-          },
-          "pluginVersion": "8.0.2",
-          "type": "text"
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Prometheus",
-          "decimals": 2,
-          "description": "Normalized  to real percent",
-          "fieldConfig": {
-            "defaults": {
-              "links": []
-            },
-            "overrides": []
-          },
-          "fill": 2,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 5,
-            "w": 5,
-            "x": 3,
-            "y": 13
-          },
-          "hiddenSeries": false,
-          "id": 388,
-          "legend": {
-            "alignAsTable": true,
-            "avg": true,
-            "current": false,
-            "max": false,
-            "min": false,
-            "rightSide": false,
-            "show": true,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "8.0.2",
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "exemplar": true,
-              "expr": "perfmon_process_sqlextractor_precent_processor_time/(wmi_computersystem_sonar_NumberOfLogicalProcessors*100)*100",
-              "format": "time_series",
-              "hide": false,
-              "interval": "",
-              "intervalFactor": 1,
-              "legendFormat": "Extractor - % CPU",
-              "refId": "B"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "CPU",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "$$hashKey": "object:404",
-              "decimals": null,
-              "format": "percent",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": "0",
-              "show": true
-            },
-            {
-              "$$hashKey": "object:405",
-              "decimals": 1,
-              "format": "bytes",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": false
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Prometheus",
-          "fieldConfig": {
-            "defaults": {
-              "links": []
-            },
-            "overrides": []
-          },
-          "fill": 2,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 5,
-            "w": 5,
-            "x": 8,
-            "y": 13
-          },
-          "hiddenSeries": false,
-          "id": 392,
-          "legend": {
-            "alignAsTable": true,
-            "avg": true,
-            "current": false,
-            "max": false,
-            "min": false,
-            "rightSide": false,
-            "show": true,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "8.0.2",
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "wmi_process_sonar_PrivateBytes{Name=\"Varonis.SqlExtractor\"}",
-              "format": "time_series",
-              "hide": false,
-              "intervalFactor": 1,
-              "legendFormat": "Extractor (Private Bytes)",
-              "refId": "A"
-            },
-            {
-              "expr": "wmi_process_sonar_WorkingSet{Name=\"Varonis.SqlExtractor\"}",
-              "format": "time_series",
-              "hide": true,
-              "intervalFactor": 1,
-              "legendFormat": "Extractor(Working Set)",
-              "refId": "B"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Memory",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "decimals": 0,
-              "format": "bytes",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "decimals": 1,
-              "format": "bytes",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": false
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Prometheus",
-          "decimals": 1,
-          "fieldConfig": {
-            "defaults": {
-              "links": []
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 5,
-            "w": 5,
-            "x": 13,
-            "y": 13
-          },
-          "hiddenSeries": false,
-          "id": 394,
-          "legend": {
-            "alignAsTable": true,
-            "avg": true,
-            "current": false,
-            "max": false,
-            "min": false,
-            "rightSide": false,
-            "show": true,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "8.0.2",
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "exemplar": true,
-              "expr": "rate(db_sqlextractor_batches_totaldoccount_metrics_TotalDocCount[5m])",
-              "format": "time_series",
-              "hide": false,
-              "interval": "",
-              "intervalFactor": 1,
-              "legendFormat": "Extractor - EPS",
-              "refId": "A"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "EPS",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "$$hashKey": "object:332",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "$$hashKey": "object:333",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": false
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "datasource": null,
-          "gridPos": {
-            "h": 5,
-            "w": 3,
-            "x": 0,
-            "y": 18
-          },
-          "id": 396,
-          "links": [],
-          "options": {
-            "content": "<br></br>\n<center>-----------------------</center>\n<h5><center>SolrLoader</center></h5>\n<center>-----------------------</center>",
-            "mode": "html"
-          },
-          "pluginVersion": "8.0.2",
-          "type": "text"
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Prometheus",
-          "decimals": 2,
-          "description": "Normalized  to real percent",
-          "fieldConfig": {
-            "defaults": {
-              "links": []
-            },
-            "overrides": []
-          },
-          "fill": 2,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 5,
-            "w": 5,
-            "x": 3,
-            "y": 18
-          },
-          "hiddenSeries": false,
-          "id": 397,
-          "legend": {
-            "alignAsTable": true,
-            "avg": true,
-            "current": false,
-            "max": false,
-            "min": false,
-            "rightSide": false,
-            "show": true,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "8.0.2",
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "perfmon_process_solrloader_precent_processor_time/(wmi_computersystem_sonar_NumberOfLogicalProcessors*100)*100",
-              "format": "time_series",
-              "hide": false,
-              "intervalFactor": 1,
-              "legendFormat": "Loader - % CPU",
-              "refId": "B"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "CPU",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "decimals": null,
-              "format": "percent",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": "0",
-              "show": true
-            },
-            {
-              "decimals": 1,
-              "format": "bytes",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": false
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Prometheus",
-          "fieldConfig": {
-            "defaults": {
-              "links": []
-            },
-            "overrides": []
-          },
-          "fill": 2,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 5,
-            "w": 5,
-            "x": 8,
-            "y": 18
-          },
-          "hiddenSeries": false,
-          "id": 398,
-          "legend": {
-            "alignAsTable": true,
-            "avg": true,
-            "current": false,
-            "max": false,
-            "min": false,
-            "rightSide": false,
-            "show": true,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "8.0.2",
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "wmi_process_sonar_PrivateBytes{Name=\"Varonis.SolrLoader.Service\"}",
-              "format": "time_series",
-              "hide": false,
-              "intervalFactor": 1,
-              "legendFormat": "Loader (Private Bytes)",
-              "refId": "A"
-            },
-            {
-              "expr": "wmi_process_sonar_WorkingSet{Name=\"Varonis.SolrLoader.Service\"}",
-              "format": "time_series",
-              "hide": true,
-              "intervalFactor": 1,
-              "legendFormat": "Loader (Working Set)",
-              "refId": "B"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Memory",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "decimals": 0,
-              "format": "bytes",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "decimals": 1,
-              "format": "bytes",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": false
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Prometheus",
-          "decimals": 1,
-          "fieldConfig": {
-            "defaults": {
-              "links": []
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 5,
-            "w": 5,
-            "x": 13,
-            "y": 18
-          },
-          "hiddenSeries": false,
-          "id": 399,
-          "legend": {
-            "alignAsTable": true,
-            "avg": true,
-            "current": false,
-            "max": false,
-            "min": false,
-            "rightSide": false,
-            "show": true,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "8.0.2",
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum(rate(solr_metrics_core_searcher_documents[5m]))",
-              "legendFormat": "Solr - EPS",
-              "refId": "A"
-            },
-            {
-              "expr": "win_perfmon_varonis_solr_loader_idu_documents_loaded_to_solr_rate_docs_per_sec",
-              "legendFormat": "Loader - EPS",
-              "refId": "B"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "EPS",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "$$hashKey": "object:354",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "$$hashKey": "object:355",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": false
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        }
-      ],
+      "panels": [],
       "title": "Services - Executive summary",
       "type": "row"
     },
     {
-      "collapsed": false,
       "datasource": null,
       "gridPos": {
-        "h": 1,
-        "w": 24,
+        "h": 5,
+        "w": 3,
         "x": 0,
         "y": 7
       },
-      "id": 335,
-      "panels": [],
-      "title": "Health - Services",
-      "type": "row"
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Prometheus",
-      "decimals": 2,
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 6,
-        "w": 24,
-        "x": 0,
-        "y": 8
-      },
-      "hiddenSeries": false,
-      "id": 413,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": true,
-        "max": false,
-        "min": false,
-        "rightSide": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.0.2",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "rabbitmq_queue_messages{queue=\"vsb.retention_topic=events_flow_input dst=cifs enricher\"}",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Enricher - Total Created",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Enricher RabbitMQ - Queue backlog",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:110",
-          "decimals": 1,
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:111",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Prometheus",
-      "decimals": 1,
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 5,
-        "w": 12,
-        "x": 0,
-        "y": 14
-      },
-      "hiddenSeries": false,
-      "id": 337,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": false,
-        "min": false,
-        "rightSide": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
+      "id": 414,
       "links": [],
-      "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "content": "<br></br>\n<center>-----------------------</center>\n<h5><center>Enricher</center></h5>\n<center>-----------------------</center>",
+        "mode": "html"
       },
-      "percentage": false,
       "pluginVersion": "8.0.2",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "perfmon_varonis_DBAdapter_v3_eventsPerSec_consumed",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": " ",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "DBAdapter - events per sec",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Prometheus",
-      "decimals": 2,
-      "description": "Events exist in Shadow DB but not yet extracted to DataLake by SQLExtractor",
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 5,
-        "w": 12,
-        "x": 12,
-        "y": 14
-      },
-      "hiddenSeries": false,
-      "id": 357,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": true,
-        "max": false,
-        "min": false,
-        "rightSide": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.0.2",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "db_shadowdb_backlog_missingevents_col2_MissigEvent_Backlog > 0",
-          "format": "time_series",
-          "hide": false,
-          "intervalFactor": 1,
-          "legendFormat": "LH0836-SOLR1",
-          "refId": "B"
-        },
-        {
-          "expr": "db_shadowdb_backlog_missingevents_col3_MissigEvent_Backlog > 0",
-          "format": "time_series",
-          "hide": false,
-          "intervalFactor": 1,
-          "legendFormat": "LH0836-DV1",
-          "refId": "C"
-        },
-        {
-          "expr": "db_shadowdb_backlog_missingevents_col4_MissigEvent_Backlog > 0",
-          "format": "time_series",
-          "hide": false,
-          "intervalFactor": 1,
-          "legendFormat": "LH0836-SOLR2",
-          "refId": "D"
-        },
-        {
-          "expr": "db_shadowdb_backlog_missingevents_col5_MissigEvent_Backlog > 0",
-          "legendFormat": "LH0836-SOLR3",
-          "refId": "A"
-        },
-        {
-          "expr": "db_shadowdb_backlog_missingevents_col6_MissigEvent_Backlog > 0",
-          "legendFormat": "LH0836-ZKPR1",
-          "refId": "E"
-        },
-        {
-          "expr": "db_shadowdb_backlog_missingevents_MissigEvent_Backlog > 0",
-          "legendFormat": "LH0836-DB01",
-          "refId": "F"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Shadow DB's - Events backlog",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "decimals": 0,
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Prometheus",
-      "decimals": 1,
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 5,
-        "w": 12,
-        "x": 0,
-        "y": 19
-      },
-      "hiddenSeries": false,
-      "id": 345,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": false,
-        "min": false,
-        "rightSide": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.0.2",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "rate(db_sqlextractor_batches_totaldoccount_metrics_TotalDocCount[5m])",
-          "format": "time_series",
-          "hide": false,
-          "intervalFactor": 1,
-          "legendFormat": " ",
-          "refId": "A"
-        },
-        {
-          "expr": "db_sqlextractor_batches_totaldoccount_metrics_TotalDocCount",
-          "format": "time_series",
-          "hide": true,
-          "intervalFactor": 1,
-          "refId": "B"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "SQLExtractor - events per sec",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Prometheus",
-      "decimals": 0,
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 5,
-        "w": 12,
-        "x": 12,
-        "y": 19
-      },
-      "hiddenSeries": false,
-      "id": 405,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": true,
-        "max": false,
-        "min": false,
-        "rightSide": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.0.2",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "rabbitmq_queue_messages{queue=\"vsb.topic=EventsDataLakeBulks;tag=SolrLoader Type=EventsBulkCreated\"}",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "SolrLoader - Total Created",
-          "refId": "A"
-        },
-        {
-          "expr": "rabbitmq_queue_messages{queue=\"vsb.topic=SolrLoader;tag=SolrLoader Type=NewBulkToReadFromRetry\"}",
-          "hide": false,
-          "legendFormat": "SolrLoader - Total Retry",
-          "refId": "B"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "SolrLoader RabbitMQ - Queue",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:110",
-          "decimals": 0,
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:111",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Prometheus",
-      "decimals": 2,
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 5,
-        "w": 24,
-        "x": 0,
-        "y": 24
-      },
-      "hiddenSeries": false,
-      "id": 412,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": false,
-        "min": false,
-        "rightSide": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.0.2",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "rate(db_solrdataindexer_batches_totaldoccount_metrics_TotalDocCount[5m])",
-          "format": "time_series",
-          "hide": false,
-          "intervalFactor": 1,
-          "legendFormat": " ",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "SolrDataIndexer - events per sec",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 4,
-        "w": 20,
-        "x": 0,
-        "y": 29
-      },
-      "hiddenSeries": false,
-      "id": 400,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "rightSide": true,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.0.2",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "db_sqlextractor_batches_metrics_TimeDiffInMS > 0",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "{{BatchId}}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "SQLExtractor - Batch Duration",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "series",
-        "name": null,
-        "show": true,
-        "values": [
-          "current"
-        ]
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:851",
-          "format": "ms",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:852",
-          "format": "s",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 4,
-        "w": 4,
-        "x": 20,
-        "y": 29
-      },
-      "hiddenSeries": false,
-      "id": 376,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "rightSide": true,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.0.2",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "avg(db_sqlextractor_batches_metrics_TimeDiffInMS> 1)",
-          "hide": false,
-          "instant": false,
-          "interval": "",
-          "legendFormat": "{{BatchId}}",
-          "refId": "B"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "SQLExtractor - Avg. Batches Duration",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "series",
-        "name": null,
-        "show": true,
-        "values": [
-          "current"
-        ]
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:925",
-          "decimals": 1,
-          "format": "ms",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:926",
-          "format": "s",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": "Prometheus",
-      "gridPos": {
-        "h": 11,
-        "w": 8,
-        "x": 0,
-        "y": 33
-      },
-      "id": 341,
-      "links": [],
-      "pluginVersion": "6.6.0",
-      "polystat": {
-        "animationSpeed": 2500,
-        "columnAutoSize": false,
-        "columns": 4,
-        "defaultClickThrough": "",
-        "defaultClickThroughNewTab": false,
-        "defaultClickThroughSanitize": false,
-        "displayLimit": 100,
-        "fontAutoScale": true,
-        "fontSize": 13,
-        "fontType": "Roboto",
-        "globalDecimals": 0,
-        "globalDisplayMode": "all",
-        "globalDisplayTextTriggeredEmpty": "OK",
-        "globalOperatorName": "current",
-        "globalThresholds": [
-          {
-            "color": "#F2495C",
-            "state": 0,
-            "value": 0
-          },
-          {
-            "color": "#73BF69",
-            "state": 0,
-            "value": 1
-          }
-        ],
-        "globalUnitFormat": "short",
-        "gradientEnabled": true,
-        "hexagonSortByDirection": 1,
-        "hexagonSortByField": "name",
-        "maxMetrics": 0,
-        "polygonBorderColor": "black",
-        "polygonBorderSize": 2,
-        "polygonGlobalFillColor": "#5794F2",
-        "radius": "",
-        "radiusAutoSize": true,
-        "rowAutoSize": true,
-        "rows": "",
-        "shape": "hexagon_pointed_top",
-        "tooltipDisplayMode": "all",
-        "tooltipDisplayTextTriggeredEmpty": "OK",
-        "tooltipFontSize": 12,
-        "tooltipFontType": "Roboto",
-        "tooltipPrimarySortDirection": 2,
-        "tooltipPrimarySortField": "thresholdLevel",
-        "tooltipSecondarySortDirection": 2,
-        "tooltipSecondarySortField": "value",
-        "tooltipTimestampEnabled": true
-      },
-      "savedComposites": [
-        {
-          "animateMode": "all",
-          "clickThrough": "",
-          "compositeName": "SqlExtractor",
-          "enabled": true,
-          "hideMembers": true,
-          "label": "COMPOSITE 1",
-          "members": [
-            {
-              "alias": "",
-              "seriesName": "SqlExtractor"
-            }
-          ],
-          "newTabEnabled": true,
-          "sanitizeURLEnabled": true,
-          "sanitizedURL": "",
-          "showName": true,
-          "showValue": false,
-          "thresholdLevel": 0
-        },
-        {
-          "animateMode": "all",
-          "clickThrough": "",
-          "compositeName": "DBAdapter",
-          "enabled": true,
-          "hideMembers": true,
-          "label": "COMPOSITE 2",
-          "members": [
-            {
-              "seriesName": "DBAdapter"
-            }
-          ],
-          "newTabEnabled": true,
-          "sanitizeURLEnabled": true,
-          "sanitizedURL": "",
-          "showName": true,
-          "showValue": false,
-          "thresholdLevel": 0
-        },
-        {
-          "animateMode": "all",
-          "clickThrough": "",
-          "compositeName": "DataLake",
-          "enabled": true,
-          "hideMembers": true,
-          "label": "COMPOSITE 3",
-          "members": [
-            {
-              "seriesName": "DataLake"
-            }
-          ],
-          "newTabEnabled": true,
-          "sanitizeURLEnabled": true,
-          "sanitizedURL": "",
-          "showName": true,
-          "showValue": false,
-          "thresholdLevel": 0
-        },
-        {
-          "animateMode": "all",
-          "clickThrough": "",
-          "compositeName": "Search",
-          "enabled": true,
-          "hideMembers": true,
-          "label": "COMPOSITE 4",
-          "members": [
-            {
-              "seriesName": "Search"
-            }
-          ],
-          "newTabEnabled": true,
-          "sanitizeURLEnabled": true,
-          "sanitizedURL": "",
-          "showName": true,
-          "showValue": false,
-          "thresholdLevel": 0
-        },
-        {
-          "animateMode": "all",
-          "clickThrough": "",
-          "compositeName": "SolrImporter",
-          "enabled": true,
-          "hideMembers": true,
-          "label": "COMPOSITE 5",
-          "members": [
-            {
-              "seriesName": "SolrImporter"
-            }
-          ],
-          "newTabEnabled": true,
-          "sanitizeURLEnabled": true,
-          "sanitizedURL": "",
-          "showName": true,
-          "showValue": false,
-          "thresholdLevel": 0
-        },
-        {
-          "animateMode": "all",
-          "clickThrough": "",
-          "compositeName": "SolrLoader",
-          "enabled": true,
-          "hideMembers": true,
-          "label": "COMPOSITE 6",
-          "members": [
-            {
-              "seriesName": "SolrLoader"
-            }
-          ],
-          "newTabEnabled": true,
-          "sanitizeURLEnabled": true,
-          "sanitizedURL": "",
-          "showName": true,
-          "showValue": false,
-          "thresholdLevel": 0
-        },
-        {
-          "animateMode": "all",
-          "clickThrough": "",
-          "compositeName": "AutoComplete",
-          "enabled": true,
-          "hideMembers": true,
-          "label": "COMPOSITE 7",
-          "members": [
-            {
-              "seriesName": "AutoComplete"
-            }
-          ],
-          "newTabEnabled": true,
-          "sanitizeURLEnabled": true,
-          "sanitizedURL": "",
-          "showName": true,
-          "showValue": false,
-          "thresholdLevel": 0
-        }
-      ],
-      "savedOverrides": [],
-      "targets": [
-        {
-          "expr": "wmi_service_sonar_ProcessId{Name=\"Varonis.SqlExtractor.Service\"}",
-          "format": "time_series",
-          "instant": false,
-          "intervalFactor": 1,
-          "legendFormat": "SqlExtractor",
-          "refId": "A"
-        },
-        {
-          "expr": "wmi_service_sonar_ProcessId{Name=\"Varonis.DBAdapter.Loader\"}",
-          "format": "time_series",
-          "hide": true,
-          "intervalFactor": 1,
-          "legendFormat": "DBAdapterV2",
-          "refId": "B"
-        },
-        {
-          "expr": "wmi_service_sonar_ProcessId{Name=\"Varonis.DataLake.Management.Service\"}",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "DataLake",
-          "refId": "C"
-        },
-        {
-          "expr": "wmi_service_sonar_ProcessId{Name=\"Varonis.SolrImporter.Service\"}",
-          "legendFormat": "SolrImporter",
-          "refId": "D"
-        },
-        {
-          "expr": "wmi_service_sonar_ProcessId{Name=\"Varonis.SolrLoader.Service\"}",
-          "legendFormat": "SolrLoader",
-          "refId": "E"
-        },
-        {
-          "expr": "wmi_service_sonar_ProcessId{Name=\"Varonis.Search.WebService\"}",
-          "legendFormat": "Search",
-          "refId": "F"
-        },
-        {
-          "expr": "wmi_service_sonar_ProcessId{Name=\"Varonis.AutoComplete.WebService\"}",
-          "legendFormat": "AutoComplete",
-          "refId": "H"
-        },
-        {
-          "expr": "wmi_service_sonar_ProcessId{Name=\"Varonis.DBAdapter.Consumer\"}",
-          "instant": false,
-          "legendFormat": "DBAdapterV3",
-          "refId": "G"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Services UP status",
-      "type": "grafana-polystat-panel"
-    },
-    {
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
-          },
-          "mappings": []
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 11,
-        "w": 16,
-        "x": 8,
-        "y": 33
-      },
-      "id": 426,
-      "options": {
-        "legend": {
-          "displayMode": "list",
-          "placement": "bottom"
-        },
-        "pieType": "pie",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "sum(db_notifications_metrics2_TimeDiffInMS) by (BatchStep)",
-          "interval": "",
-          "legendFormat": "{{BatchStep}}",
-          "refId": "A"
-        }
-      ],
-      "title": "CSS Notifications table",
-      "type": "piechart"
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 2,
-      "fillGradient": 3,
-      "gridPos": {
-        "h": 11,
-        "w": 8,
-        "x": 0,
-        "y": 44
-      },
-      "hiddenSeries": false,
-      "id": 362,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": true
-      },
-      "lines": false,
-      "linewidth": 2,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": true,
-      "pluginVersion": "8.0.2",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "wmi_disk_logical_sonar_PercentFreeSpace",
-          "format": "time_series",
-          "hide": false,
-          "intervalFactor": 1,
-          "legendFormat": "IDU",
-          "refId": "B"
-        },
-        {
-          "expr": "wmi_disk_logical_db_TempDB_PercentFreeSpace",
-          "format": "time_series",
-          "hide": false,
-          "intervalFactor": 1,
-          "legendFormat": "TempDB",
-          "refId": "A"
-        },
-        {
-          "expr": "wmi_disk_logical_db_DataDB_PercentFreeSpace",
-          "legendFormat": "DataDB",
-          "refId": "C"
-        },
-        {
-          "expr": "wmi_disk_logical_db_LogDB_PercentFreeSpace",
-          "legendFormat": "LogDB",
-          "refId": "D"
-        }
-      ],
-      "thresholds": [
-        {
-          "colorMode": "critical",
-          "fill": true,
-          "line": true,
-          "op": "lt",
-          "value": 10,
-          "yaxis": "left"
-        }
-      ],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Disk % Free Space",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "series",
-        "name": null,
-        "show": true,
-        "values": [
-          "current"
-        ]
-      },
-      "yaxes": [
-        {
-          "format": "percent",
-          "label": null,
-          "logBase": 1,
-          "max": "100",
-          "min": "0",
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "type": "text"
     },
     {
       "aliasColors": {},
@@ -3269,20 +870,20 @@
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
-        "h": 6,
-        "w": 8,
-        "x": 8,
-        "y": 44
+        "h": 5,
+        "w": 5,
+        "x": 3,
+        "y": 7
       },
       "hiddenSeries": false,
-      "id": 354,
+      "id": 415,
       "legend": {
         "alignAsTable": true,
         "avg": true,
-        "current": true,
+        "current": false,
         "max": false,
         "min": false,
-        "rightSide": true,
+        "rightSide": false,
         "show": true,
         "total": false,
         "values": true
@@ -3305,43 +906,21 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "perfmon_process_sqlextractor_precent_processor_time/(wmi_computersystem_sonar_NumberOfLogicalProcessors*100)*100",
-          "format": "time_series",
-          "hide": false,
-          "intervalFactor": 1,
-          "legendFormat": "SQLExtractor",
-          "refId": "B"
-        },
-        {
-          "expr": "perfmon_process_datalake_precent_processor_time/(wmi_computersystem_sonar_NumberOfLogicalProcessors*100)*100",
-          "hide": false,
-          "legendFormat": "DataLake ",
-          "refId": "A"
-        },
-        {
-          "expr": "perfmon_process_solrdataindexer_precent_processor_time/(wmi_computersystem_sonar_NumberOfLogicalProcessors*100)*100",
-          "legendFormat": "DataIndexer ",
-          "refId": "C"
-        },
-        {
-          "expr": "perfmon_process_solrloader_precent_processor_time/(wmi_computersystem_sonar_NumberOfLogicalProcessors*100)*100",
-          "legendFormat": "SolrLoader",
-          "refId": "D"
-        },
-        {
           "exemplar": true,
           "expr": "perfmon_process_enricher_precent_processor_time/(wmi_computersystem_sonar_NumberOfLogicalProcessors*100)*100",
+          "format": "time_series",
           "hide": false,
           "interval": "",
-          "legendFormat": "Enricher",
-          "refId": "E"
+          "intervalFactor": 1,
+          "legendFormat": "Enricher - % CPU",
+          "refId": "B"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "IDU - Process (% CPU Time)",
+      "title": "CPU",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -3357,7 +936,7 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:1117",
+          "$$hashKey": "object:404",
           "decimals": null,
           "format": "percent",
           "label": null,
@@ -3367,7 +946,7 @@
           "show": true
         },
         {
-          "$$hashKey": "object:1118",
+          "$$hashKey": "object:405",
           "decimals": 1,
           "format": "bytes",
           "label": null,
@@ -3397,20 +976,441 @@
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
-        "h": 6,
-        "w": 8,
-        "x": 16,
-        "y": 44
+        "h": 5,
+        "w": 5,
+        "x": 8,
+        "y": 7
       },
       "hiddenSeries": false,
-      "id": 351,
+      "id": 416,
       "legend": {
         "alignAsTable": true,
         "avg": true,
         "current": false,
         "max": false,
         "min": false,
-        "rightSide": true,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.0.2",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "wmi_process_sonar_PrivateBytes{Name=\"Varonis.DSP.Cifs.Enricher.Service\"}",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Enricher (Private Bytes)",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "wmi_process_sonar_WorkingSet{Name=\"Varonis.DSP.Cifs.Enricher.Service\"}",
+          "format": "time_series",
+          "hide": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Enricher (Working Set)",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Memory",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:698",
+          "decimals": 0,
+          "format": "bytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:699",
+          "decimals": 1,
+          "format": "bytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 5,
+        "x": 13,
+        "y": 7
+      },
+      "hiddenSeries": false,
+      "id": 417,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.0.2",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Enricher - EPS",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "EPS",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:332",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:333",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "decimals": 0,
+          "mappings": [
+            {
+              "id": 0,
+              "op": "=",
+              "text": "N/A",
+              "type": 1,
+              "value": "null"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 0.01
+              },
+              {
+                "color": "#d44a3a",
+                "value": 0.02
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 15,
+        "w": 6,
+        "x": 18,
+        "y": 7
+      },
+      "id": 395,
+      "links": [],
+      "options": {
+        "displayMode": "lcd",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "text": {}
+      },
+      "pluginVersion": "8.0.2",
+      "targets": [
+        {
+          "expr": "perfmon_disk5_avg_disk_sec_read_DataLake_Partition",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "DataLake read",
+          "refId": "A"
+        },
+        {
+          "expr": "perfmon_disk5_avg_disk_sec_Write_DataLake_Partition",
+          "legendFormat": "DataLake write",
+          "refId": "B"
+        }
+      ],
+      "title": "Avg. Disk latency",
+      "type": "bargauge"
+    },
+    {
+      "datasource": null,
+      "gridPos": {
+        "h": 5,
+        "w": 3,
+        "x": 0,
+        "y": 12
+      },
+      "id": 317,
+      "links": [],
+      "options": {
+        "content": "<br></br>\n<center>-----------------------</center>\n<h5><center>SQLExtractor</center></h5>\n<center>-----------------------</center>",
+        "mode": "html"
+      },
+      "pluginVersion": "8.0.2",
+      "type": "text"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "decimals": 2,
+      "description": "Normalized  to real percent",
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 2,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 5,
+        "x": 3,
+        "y": 12
+      },
+      "hiddenSeries": false,
+      "id": 388,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.0.2",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "perfmon_process_sqlextractor_precent_processor_time/(wmi_computersystem_sonar_NumberOfLogicalProcessors*100)*100",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Extractor - % CPU",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "CPU",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:404",
+          "decimals": null,
+          "format": "percent",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:405",
+          "decimals": 1,
+          "format": "bytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 2,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 5,
+        "x": 8,
+        "y": 12
+      },
+      "hiddenSeries": false,
+      "id": 392,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
         "show": true,
         "total": false,
         "values": true
@@ -3437,7 +1437,7 @@
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
-          "legendFormat": "SQLExtractor",
+          "legendFormat": "Extractor (Private Bytes)",
           "refId": "A"
         },
         {
@@ -3445,50 +1445,15 @@
           "format": "time_series",
           "hide": true,
           "intervalFactor": 1,
-          "legendFormat": "SQLExtractor - Working Set",
+          "legendFormat": "Extractor(Working Set)",
           "refId": "B"
-        },
-        {
-          "expr": "wmi_process_sonar_PrivateBytes{Name=\"Varonis.DataLake.Management.Service\"}",
-          "format": "time_series",
-          "hide": false,
-          "intervalFactor": 1,
-          "legendFormat": "DataLake",
-          "refId": "C"
-        },
-        {
-          "expr": "wmi_process_sonar_WorkingSet{Name=\"Varonis.DataLake.Management.Service\"}",
-          "format": "time_series",
-          "hide": true,
-          "intervalFactor": 1,
-          "legendFormat": "DataLake - Working Set",
-          "refId": "D"
-        },
-        {
-          "expr": "wmi_process_sonar_PrivateBytes{Name=\"Varonis.SolrDataIndexer.Service\"}",
-          "legendFormat": "DataIndexer",
-          "refId": "E"
-        },
-        {
-          "expr": "wmi_process_sonar_PrivateBytes{Name=\"Varonis.SolrLoader.Service\"}",
-          "hide": false,
-          "legendFormat": "SolrLoader",
-          "refId": "F"
-        },
-        {
-          "exemplar": true,
-          "expr": "wmi_process_sonar_PrivateBytes{Name=\"Varonis.DSP.Cifs.Enricher.Service\"}",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Enricher",
-          "refId": "G"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "IDU - Process (Private Bytes)",
+      "title": "Memory",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -3504,17 +1469,15 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:1191",
           "decimals": 0,
           "format": "bytes",
           "label": null,
-          "logBase": 2,
+          "logBase": 1,
           "max": null,
           "min": null,
           "show": true
         },
         {
-          "$$hashKey": "object:1192",
           "decimals": 1,
           "format": "bytes",
           "label": null,
@@ -3535,7 +1498,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
-      "decimals": 2,
+      "decimals": 1,
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -3546,19 +1509,19 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 5,
-        "w": 8,
-        "x": 8,
-        "y": 50
+        "w": 5,
+        "x": 13,
+        "y": 12
       },
       "hiddenSeries": false,
-      "id": 349,
+      "id": 394,
       "legend": {
         "alignAsTable": true,
         "avg": true,
         "current": false,
         "max": false,
         "min": false,
-        "rightSide": true,
+        "rightSide": false,
         "show": true,
         "total": false,
         "values": true
@@ -3581,40 +1544,21 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "perfmon_process_sqlserver_precent_processor_time/(wmi_computersystem_db_NumberOfLogicalProcessors*100)*100",
-          "hide": true,
-          "legendFormat": "SqlServer - % CPU time",
-          "refId": "A"
-        },
-        {
           "exemplar": true,
-          "expr": "perfmon_process_sqlserver_precent_processor_time/100",
+          "expr": "rate(db_sqlextractor_batches_totaldoccount_metrics_TotalDocCount[5m])",
+          "format": "time_series",
           "hide": false,
           "interval": "",
-          "legendFormat": "SqlServer - used cores",
-          "refId": "B"
-        },
-        {
-          "expr": "wmi_computersystem_db_NumberOfLogicalProcessors",
-          "hide": false,
-          "legendFormat": "SqlServer - Total cores",
-          "refId": "C"
+          "intervalFactor": 1,
+          "legendFormat": "Extractor - EPS",
+          "refId": "A"
         }
       ],
-      "thresholds": [
-        {
-          "colorMode": "critical",
-          "fill": true,
-          "line": true,
-          "op": "gt",
-          "value": 90,
-          "yaxis": "left"
-        }
-      ],
+      "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "DB - Process (% CPU Time)",
+      "title": "EPS",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -3630,20 +1574,139 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:1265",
-          "decimals": 2,
+          "$$hashKey": "object:332",
           "format": "short",
-          "label": "",
+          "label": null,
           "logBase": 1,
           "max": null,
           "min": null,
           "show": true
         },
         {
-          "$$hashKey": "object:1266",
+          "$$hashKey": "object:333",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "datasource": null,
+      "gridPos": {
+        "h": 5,
+        "w": 3,
+        "x": 0,
+        "y": 17
+      },
+      "id": 396,
+      "links": [],
+      "options": {
+        "content": "<br></br>\n<center>-----------------------</center>\n<h5><center>SolrLoader</center></h5>\n<center>-----------------------</center>",
+        "mode": "html"
+      },
+      "pluginVersion": "8.0.2",
+      "type": "text"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "decimals": 2,
+      "description": "Normalized  to real percent",
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 2,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 5,
+        "x": 3,
+        "y": 17
+      },
+      "hiddenSeries": false,
+      "id": 397,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.0.2",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "perfmon_process_solrloader_precent_processor_time/(wmi_computersystem_sonar_NumberOfLogicalProcessors*100)*100",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 1,
+          "legendFormat": "Loader - % CPU",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "CPU",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
           "decimals": null,
-          "format": "mbytes",
-          "label": "",
+          "format": "percent",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "decimals": 1,
+          "format": "bytes",
+          "label": null,
           "logBase": 1,
           "max": null,
           "min": null,
@@ -3667,23 +1730,23 @@
         },
         "overrides": []
       },
-      "fill": 1,
+      "fill": 2,
       "fillGradient": 0,
       "gridPos": {
         "h": 5,
-        "w": 8,
-        "x": 16,
-        "y": 50
+        "w": 5,
+        "x": 8,
+        "y": 17
       },
       "hiddenSeries": false,
-      "id": 347,
+      "id": 398,
       "legend": {
         "alignAsTable": true,
         "avg": true,
         "current": false,
         "max": false,
         "min": false,
-        "rightSide": true,
+        "rightSide": false,
         "show": true,
         "total": false,
         "values": true
@@ -3706,53 +1769,27 @@
       "steppedLine": false,
       "targets": [
         {
-          "exemplar": true,
-          "expr": "sum(db_dmv_top_queries_sqlextractor_memory_last_used_grant_kb)",
+          "expr": "wmi_process_sonar_PrivateBytes{Name=\"Varonis.SolrLoader.Service\"}",
           "format": "time_series",
           "hide": false,
-          "instant": false,
-          "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "SqlExtractor - used memory ",
+          "legendFormat": "Loader (Private Bytes)",
           "refId": "A"
         },
         {
-          "exemplar": true,
-          "expr": "sum(db_dmv_top_queries_sqlextractor_memory_last_grant_kb)",
+          "expr": "wmi_process_sonar_WorkingSet{Name=\"Varonis.SolrLoader.Service\"}",
           "format": "time_series",
-          "hide": false,
-          "interval": "",
+          "hide": true,
           "intervalFactor": 1,
-          "legendFormat": "SqlExtractor - Reserved memory",
+          "legendFormat": "Loader (Working Set)",
           "refId": "B"
-        },
-        {
-          "exemplar": true,
-          "expr": "sum(db_dmv_top_queries_enricher_memory_last_used_grant_kb)",
-          "format": "time_series",
-          "hide": false,
-          "instant": false,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "Enricher - used memory ",
-          "refId": "C"
-        },
-        {
-          "exemplar": true,
-          "expr": "sum(db_dmv_top_queries_enricher_memory_last_grant_kb)",
-          "format": "time_series",
-          "hide": false,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "Enricher - Reserved memory",
-          "refId": "D"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "DB - Process (memory used by services)",
+      "title": "Memory",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -3768,17 +1805,121 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:1339",
-          "decimals": null,
-          "format": "kbytes",
+          "decimals": 0,
+          "format": "bytes",
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": "0",
+          "min": null,
           "show": true
         },
         {
-          "$$hashKey": "object:1340",
+          "decimals": 1,
+          "format": "bytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 5,
+        "x": 13,
+        "y": 17
+      },
+      "hiddenSeries": false,
+      "id": 399,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.0.2",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(rate(solr_metrics_core_searcher_documents[5m]))",
+          "legendFormat": "Solr - EPS",
+          "refId": "A"
+        },
+        {
+          "expr": "win_perfmon_varonis_solr_loader_idu_documents_loaded_to_solr_rate_docs_per_sec",
+          "legendFormat": "Loader - EPS",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "EPS",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:354",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:355",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -3799,7 +1940,2082 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 55
+        "y": 22
+      },
+      "id": 335,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Prometheus",
+          "decimals": 2,
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 6,
+            "w": 24,
+            "x": 0,
+            "y": 8
+          },
+          "hiddenSeries": false,
+          "id": 413,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "max": false,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "8.0.2",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "rabbitmq_queue_messages{queue=\"vsb.retention_topic=events_flow_input dst=cifs enricher\"}",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "Enricher - Total Created",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Enricher RabbitMQ - Queue backlog",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:110",
+              "decimals": 1,
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:111",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Prometheus",
+          "decimals": 1,
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 5,
+            "w": 12,
+            "x": 0,
+            "y": 14
+          },
+          "hiddenSeries": false,
+          "id": 337,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": false,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "8.0.2",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "perfmon_varonis_DBAdapter_v3_eventsPerSec_consumed",
+              "format": "time_series",
+              "intervalFactor": 1,
+              "legendFormat": " ",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "DBAdapter - events per sec",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Prometheus",
+          "decimals": 2,
+          "description": "Events exist in Shadow DB but not yet extracted to DataLake by SQLExtractor",
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 5,
+            "w": 12,
+            "x": 12,
+            "y": 14
+          },
+          "hiddenSeries": false,
+          "id": 357,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "max": false,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "8.0.2",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "db_shadowdb_backlog_missingevents_col2_MissigEvent_Backlog > 0",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 1,
+              "legendFormat": "LH0836-SOLR1",
+              "refId": "B"
+            },
+            {
+              "expr": "db_shadowdb_backlog_missingevents_col3_MissigEvent_Backlog > 0",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 1,
+              "legendFormat": "LH0836-DV1",
+              "refId": "C"
+            },
+            {
+              "expr": "db_shadowdb_backlog_missingevents_col4_MissigEvent_Backlog > 0",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 1,
+              "legendFormat": "LH0836-SOLR2",
+              "refId": "D"
+            },
+            {
+              "expr": "db_shadowdb_backlog_missingevents_col5_MissigEvent_Backlog > 0",
+              "legendFormat": "LH0836-SOLR3",
+              "refId": "A"
+            },
+            {
+              "expr": "db_shadowdb_backlog_missingevents_col6_MissigEvent_Backlog > 0",
+              "legendFormat": "LH0836-ZKPR1",
+              "refId": "E"
+            },
+            {
+              "expr": "db_shadowdb_backlog_missingevents_MissigEvent_Backlog > 0",
+              "legendFormat": "LH0836-DB01",
+              "refId": "F"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Shadow DB's - Events backlog",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:649",
+              "decimals": 0,
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:650",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Prometheus",
+          "decimals": 1,
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 5,
+            "w": 12,
+            "x": 0,
+            "y": 19
+          },
+          "hiddenSeries": false,
+          "id": 345,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": false,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "8.0.2",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "rate(db_sqlextractor_batches_totaldoccount_metrics_TotalDocCount[5m])",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 1,
+              "legendFormat": " ",
+              "refId": "A"
+            },
+            {
+              "expr": "db_sqlextractor_batches_totaldoccount_metrics_TotalDocCount",
+              "format": "time_series",
+              "hide": true,
+              "intervalFactor": 1,
+              "refId": "B"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "SQLExtractor - events per sec",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Prometheus",
+          "decimals": 0,
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 5,
+            "w": 12,
+            "x": 12,
+            "y": 19
+          },
+          "hiddenSeries": false,
+          "id": 405,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "max": false,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "8.0.2",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "rabbitmq_queue_messages{queue=\"vsb.topic=EventsDataLakeBulks;tag=SolrLoader Type=EventsBulkCreated\"}",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "SolrLoader - Total Created",
+              "refId": "A"
+            },
+            {
+              "expr": "rabbitmq_queue_messages{queue=\"vsb.topic=SolrLoader;tag=SolrLoader Type=NewBulkToReadFromRetry\"}",
+              "hide": false,
+              "legendFormat": "SolrLoader - Total Retry",
+              "refId": "B"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "SolrLoader RabbitMQ - Queue",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:110",
+              "decimals": 0,
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:111",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Prometheus",
+          "decimals": 2,
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 5,
+            "w": 24,
+            "x": 0,
+            "y": 24
+          },
+          "hiddenSeries": false,
+          "id": 412,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": false,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "8.0.2",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "rate(db_solrdataindexer_batches_totaldoccount_metrics_TotalDocCount[5m])",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 1,
+              "legendFormat": " ",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "SolrDataIndexer - events per sec",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "alert": {
+            "alertRuleTags": {},
+            "conditions": [
+              {
+                "evaluator": {
+                  "params": [
+                    60000
+                  ],
+                  "type": "gt"
+                },
+                "operator": {
+                  "type": "and"
+                },
+                "query": {
+                  "params": [
+                    "A",
+                    "5m",
+                    "now"
+                  ]
+                },
+                "reducer": {
+                  "params": [],
+                  "type": "avg"
+                },
+                "type": "query"
+              }
+            ],
+            "executionErrorState": "keep_state",
+            "for": "5m",
+            "frequency": "1m",
+            "handler": 1,
+            "name": "SQLExtractor - Batch Duration alert",
+            "noDataState": "keep_state",
+            "notifications": []
+          },
+          "aliasColors": {},
+          "bars": true,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Prometheus",
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 4,
+            "w": 20,
+            "x": 0,
+            "y": 29
+          },
+          "hiddenSeries": false,
+          "id": 400,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "rightSide": true,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": false,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "8.0.2",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "db_sqlextractor_batches_metrics_TimeDiffInMS > 0",
+              "instant": true,
+              "interval": "",
+              "legendFormat": "{{BatchId}}",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [
+            {
+              "colorMode": "critical",
+              "fill": true,
+              "line": true,
+              "op": "gt",
+              "value": 60000,
+              "visible": true
+            }
+          ],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "SQLExtractor - Batch Duration",
+          "tooltip": {
+            "shared": false,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "series",
+            "name": null,
+            "show": true,
+            "values": [
+              "current"
+            ]
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:851",
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:852",
+              "format": "s",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": true,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Prometheus",
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 4,
+            "w": 4,
+            "x": 20,
+            "y": 29
+          },
+          "hiddenSeries": false,
+          "id": 376,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "rightSide": true,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": false,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "8.0.2",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "avg(db_sqlextractor_batches_metrics_TimeDiffInMS> 1)",
+              "hide": false,
+              "instant": false,
+              "interval": "",
+              "legendFormat": "{{BatchId}}",
+              "refId": "B"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "SQLExtractor - Avg. Batches Duration",
+          "tooltip": {
+            "shared": false,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "series",
+            "name": null,
+            "show": true,
+            "values": [
+              "current"
+            ]
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:925",
+              "decimals": 1,
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:926",
+              "format": "s",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "colors": [
+            "#299c46",
+            "rgba(237, 129, 40, 0.89)",
+            "#d44a3a"
+          ],
+          "datasource": "Prometheus",
+          "gridPos": {
+            "h": 11,
+            "w": 8,
+            "x": 0,
+            "y": 33
+          },
+          "id": 341,
+          "links": [],
+          "pluginVersion": "6.6.0",
+          "polystat": {
+            "animationSpeed": 2500,
+            "columnAutoSize": false,
+            "columns": 4,
+            "defaultClickThrough": "",
+            "defaultClickThroughNewTab": false,
+            "defaultClickThroughSanitize": false,
+            "displayLimit": 100,
+            "fontAutoScale": true,
+            "fontSize": 13,
+            "fontType": "Roboto",
+            "globalDecimals": 0,
+            "globalDisplayMode": "all",
+            "globalDisplayTextTriggeredEmpty": "OK",
+            "globalOperatorName": "current",
+            "globalThresholds": [
+              {
+                "color": "#F2495C",
+                "state": 0,
+                "value": 0
+              },
+              {
+                "color": "#73BF69",
+                "state": 0,
+                "value": 1
+              }
+            ],
+            "globalUnitFormat": "short",
+            "gradientEnabled": true,
+            "hexagonSortByDirection": 1,
+            "hexagonSortByField": "name",
+            "maxMetrics": 0,
+            "polygonBorderColor": "black",
+            "polygonBorderSize": 2,
+            "polygonGlobalFillColor": "#5794F2",
+            "radius": "",
+            "radiusAutoSize": true,
+            "rowAutoSize": true,
+            "rows": "",
+            "shape": "hexagon_pointed_top",
+            "tooltipDisplayMode": "all",
+            "tooltipDisplayTextTriggeredEmpty": "OK",
+            "tooltipFontSize": 12,
+            "tooltipFontType": "Roboto",
+            "tooltipPrimarySortDirection": 2,
+            "tooltipPrimarySortField": "thresholdLevel",
+            "tooltipSecondarySortDirection": 2,
+            "tooltipSecondarySortField": "value",
+            "tooltipTimestampEnabled": true
+          },
+          "savedComposites": [
+            {
+              "animateMode": "all",
+              "clickThrough": "",
+              "compositeName": "SqlExtractor",
+              "enabled": true,
+              "hideMembers": true,
+              "label": "COMPOSITE 1",
+              "members": [
+                {
+                  "alias": "",
+                  "seriesName": "SqlExtractor"
+                }
+              ],
+              "newTabEnabled": true,
+              "sanitizeURLEnabled": true,
+              "sanitizedURL": "",
+              "showName": true,
+              "showValue": false,
+              "thresholdLevel": 0
+            },
+            {
+              "animateMode": "all",
+              "clickThrough": "",
+              "compositeName": "DBAdapter",
+              "enabled": true,
+              "hideMembers": true,
+              "label": "COMPOSITE 2",
+              "members": [
+                {
+                  "seriesName": "DBAdapter"
+                }
+              ],
+              "newTabEnabled": true,
+              "sanitizeURLEnabled": true,
+              "sanitizedURL": "",
+              "showName": true,
+              "showValue": false,
+              "thresholdLevel": 0
+            },
+            {
+              "animateMode": "all",
+              "clickThrough": "",
+              "compositeName": "DataLake",
+              "enabled": true,
+              "hideMembers": true,
+              "label": "COMPOSITE 3",
+              "members": [
+                {
+                  "seriesName": "DataLake"
+                }
+              ],
+              "newTabEnabled": true,
+              "sanitizeURLEnabled": true,
+              "sanitizedURL": "",
+              "showName": true,
+              "showValue": false,
+              "thresholdLevel": 0
+            },
+            {
+              "animateMode": "all",
+              "clickThrough": "",
+              "compositeName": "Search",
+              "enabled": true,
+              "hideMembers": true,
+              "label": "COMPOSITE 4",
+              "members": [
+                {
+                  "seriesName": "Search"
+                }
+              ],
+              "newTabEnabled": true,
+              "sanitizeURLEnabled": true,
+              "sanitizedURL": "",
+              "showName": true,
+              "showValue": false,
+              "thresholdLevel": 0
+            },
+            {
+              "animateMode": "all",
+              "clickThrough": "",
+              "compositeName": "SolrImporter",
+              "enabled": true,
+              "hideMembers": true,
+              "label": "COMPOSITE 5",
+              "members": [
+                {
+                  "seriesName": "SolrImporter"
+                }
+              ],
+              "newTabEnabled": true,
+              "sanitizeURLEnabled": true,
+              "sanitizedURL": "",
+              "showName": true,
+              "showValue": false,
+              "thresholdLevel": 0
+            },
+            {
+              "animateMode": "all",
+              "clickThrough": "",
+              "compositeName": "SolrLoader",
+              "enabled": true,
+              "hideMembers": true,
+              "label": "COMPOSITE 6",
+              "members": [
+                {
+                  "seriesName": "SolrLoader"
+                }
+              ],
+              "newTabEnabled": true,
+              "sanitizeURLEnabled": true,
+              "sanitizedURL": "",
+              "showName": true,
+              "showValue": false,
+              "thresholdLevel": 0
+            },
+            {
+              "animateMode": "all",
+              "clickThrough": "",
+              "compositeName": "AutoComplete",
+              "enabled": true,
+              "hideMembers": true,
+              "label": "COMPOSITE 7",
+              "members": [
+                {
+                  "seriesName": "AutoComplete"
+                }
+              ],
+              "newTabEnabled": true,
+              "sanitizeURLEnabled": true,
+              "sanitizedURL": "",
+              "showName": true,
+              "showValue": false,
+              "thresholdLevel": 0
+            }
+          ],
+          "savedOverrides": [],
+          "targets": [
+            {
+              "expr": "wmi_service_sonar_ProcessId{Name=\"Varonis.SqlExtractor.Service\"}",
+              "format": "time_series",
+              "instant": false,
+              "intervalFactor": 1,
+              "legendFormat": "SqlExtractor",
+              "refId": "A"
+            },
+            {
+              "expr": "wmi_service_sonar_ProcessId{Name=\"Varonis.DBAdapter.Loader\"}",
+              "format": "time_series",
+              "hide": true,
+              "intervalFactor": 1,
+              "legendFormat": "DBAdapterV2",
+              "refId": "B"
+            },
+            {
+              "expr": "wmi_service_sonar_ProcessId{Name=\"Varonis.DataLake.Management.Service\"}",
+              "format": "time_series",
+              "intervalFactor": 1,
+              "legendFormat": "DataLake",
+              "refId": "C"
+            },
+            {
+              "expr": "wmi_service_sonar_ProcessId{Name=\"Varonis.SolrImporter.Service\"}",
+              "legendFormat": "SolrImporter",
+              "refId": "D"
+            },
+            {
+              "expr": "wmi_service_sonar_ProcessId{Name=\"Varonis.SolrLoader.Service\"}",
+              "legendFormat": "SolrLoader",
+              "refId": "E"
+            },
+            {
+              "expr": "wmi_service_sonar_ProcessId{Name=\"Varonis.Search.WebService\"}",
+              "legendFormat": "Search",
+              "refId": "F"
+            },
+            {
+              "expr": "wmi_service_sonar_ProcessId{Name=\"Varonis.AutoComplete.WebService\"}",
+              "legendFormat": "AutoComplete",
+              "refId": "H"
+            },
+            {
+              "expr": "wmi_service_sonar_ProcessId{Name=\"Varonis.DBAdapter.Consumer\"}",
+              "instant": false,
+              "legendFormat": "DBAdapterV3",
+              "refId": "G"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Services UP status",
+          "type": "grafana-polystat-panel"
+        },
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                }
+              },
+              "mappings": []
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 16,
+            "x": 8,
+            "y": 33
+          },
+          "id": 426,
+          "options": {
+            "legend": {
+              "displayMode": "list",
+              "placement": "bottom"
+            },
+            "pieType": "pie",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "tooltip": {
+              "mode": "single"
+            }
+          },
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "sum(db_notifications_metrics2_TimeDiffInMS) by (BatchStep)",
+              "interval": "",
+              "legendFormat": "{{BatchStep}}",
+              "refId": "A"
+            }
+          ],
+          "title": "CSS Notifications table",
+          "type": "piechart"
+        },
+        {
+          "aliasColors": {},
+          "bars": true,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Prometheus",
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 2,
+          "fillGradient": 3,
+          "gridPos": {
+            "h": 11,
+            "w": 8,
+            "x": 0,
+            "y": 44
+          },
+          "hiddenSeries": false,
+          "id": 362,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": false,
+            "total": false,
+            "values": true
+          },
+          "lines": false,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": true,
+          "pluginVersion": "8.0.2",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "wmi_disk_logical_sonar_PercentFreeSpace",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 1,
+              "legendFormat": "IDU",
+              "refId": "B"
+            },
+            {
+              "expr": "wmi_disk_logical_db_TempDB_PercentFreeSpace",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 1,
+              "legendFormat": "TempDB",
+              "refId": "A"
+            },
+            {
+              "expr": "wmi_disk_logical_db_DataDB_PercentFreeSpace",
+              "legendFormat": "DataDB",
+              "refId": "C"
+            },
+            {
+              "expr": "wmi_disk_logical_db_LogDB_PercentFreeSpace",
+              "legendFormat": "LogDB",
+              "refId": "D"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Disk % Free Space",
+          "tooltip": {
+            "shared": false,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "series",
+            "name": null,
+            "show": true,
+            "values": [
+              "current"
+            ]
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:1008",
+              "format": "percent",
+              "label": null,
+              "logBase": 1,
+              "max": "100",
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:1009",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Prometheus",
+          "decimals": 2,
+          "description": "Normalized  to real percent",
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 2,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 6,
+            "w": 8,
+            "x": 8,
+            "y": 44
+          },
+          "hiddenSeries": false,
+          "id": 354,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": false,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "8.0.2",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "perfmon_process_sqlextractor_precent_processor_time/(wmi_computersystem_sonar_NumberOfLogicalProcessors*100)*100",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 1,
+              "legendFormat": "SQLExtractor",
+              "refId": "B"
+            },
+            {
+              "expr": "perfmon_process_datalake_precent_processor_time/(wmi_computersystem_sonar_NumberOfLogicalProcessors*100)*100",
+              "hide": false,
+              "legendFormat": "DataLake ",
+              "refId": "A"
+            },
+            {
+              "expr": "perfmon_process_solrdataindexer_precent_processor_time/(wmi_computersystem_sonar_NumberOfLogicalProcessors*100)*100",
+              "legendFormat": "DataIndexer ",
+              "refId": "C"
+            },
+            {
+              "expr": "perfmon_process_solrloader_precent_processor_time/(wmi_computersystem_sonar_NumberOfLogicalProcessors*100)*100",
+              "legendFormat": "SolrLoader",
+              "refId": "D"
+            },
+            {
+              "exemplar": true,
+              "expr": "perfmon_process_enricher_precent_processor_time/(wmi_computersystem_sonar_NumberOfLogicalProcessors*100)*100",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "Enricher",
+              "refId": "E"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "IDU - Process (% CPU Time)",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:1117",
+              "decimals": null,
+              "format": "percent",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:1118",
+              "decimals": 1,
+              "format": "bytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Prometheus",
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 2,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 6,
+            "w": 8,
+            "x": 16,
+            "y": 44
+          },
+          "hiddenSeries": false,
+          "id": 351,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": false,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "8.0.2",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "wmi_process_sonar_PrivateBytes{Name=\"Varonis.SqlExtractor\"}",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 1,
+              "legendFormat": "SQLExtractor",
+              "refId": "A"
+            },
+            {
+              "expr": "wmi_process_sonar_WorkingSet{Name=\"Varonis.SqlExtractor\"}",
+              "format": "time_series",
+              "hide": true,
+              "intervalFactor": 1,
+              "legendFormat": "SQLExtractor - Working Set",
+              "refId": "B"
+            },
+            {
+              "expr": "wmi_process_sonar_PrivateBytes{Name=\"Varonis.DataLake.Management.Service\"}",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 1,
+              "legendFormat": "DataLake",
+              "refId": "C"
+            },
+            {
+              "expr": "wmi_process_sonar_WorkingSet{Name=\"Varonis.DataLake.Management.Service\"}",
+              "format": "time_series",
+              "hide": true,
+              "intervalFactor": 1,
+              "legendFormat": "DataLake - Working Set",
+              "refId": "D"
+            },
+            {
+              "expr": "wmi_process_sonar_PrivateBytes{Name=\"Varonis.SolrDataIndexer.Service\"}",
+              "legendFormat": "DataIndexer",
+              "refId": "E"
+            },
+            {
+              "expr": "wmi_process_sonar_PrivateBytes{Name=\"Varonis.SolrLoader.Service\"}",
+              "hide": false,
+              "legendFormat": "SolrLoader",
+              "refId": "F"
+            },
+            {
+              "exemplar": true,
+              "expr": "wmi_process_sonar_PrivateBytes{Name=\"Varonis.DSP.Cifs.Enricher.Service\"}",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "Enricher",
+              "refId": "G"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "IDU - Process (Private Bytes)",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:1191",
+              "decimals": 0,
+              "format": "bytes",
+              "label": null,
+              "logBase": 2,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:1192",
+              "decimals": 1,
+              "format": "bytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Prometheus",
+          "decimals": 2,
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 5,
+            "w": 8,
+            "x": 8,
+            "y": 50
+          },
+          "hiddenSeries": false,
+          "id": 349,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": false,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "8.0.2",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "perfmon_process_sqlserver_precent_processor_time/(wmi_computersystem_db_NumberOfLogicalProcessors*100)*100",
+              "hide": true,
+              "legendFormat": "SqlServer - % CPU time",
+              "refId": "A"
+            },
+            {
+              "exemplar": true,
+              "expr": "perfmon_process_sqlserver_precent_processor_time/100",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "SqlServer - used cores",
+              "refId": "B"
+            },
+            {
+              "expr": "wmi_computersystem_db_NumberOfLogicalProcessors",
+              "hide": false,
+              "legendFormat": "SqlServer - Total cores",
+              "refId": "C"
+            }
+          ],
+          "thresholds": [
+            {
+              "colorMode": "critical",
+              "fill": true,
+              "line": true,
+              "op": "gt",
+              "value": 90,
+              "yaxis": "left"
+            }
+          ],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "DB - Process (% CPU Time)",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:1265",
+              "decimals": 2,
+              "format": "short",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:1266",
+              "decimals": null,
+              "format": "mbytes",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Prometheus",
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 5,
+            "w": 8,
+            "x": 16,
+            "y": 50
+          },
+          "hiddenSeries": false,
+          "id": 347,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": false,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "8.0.2",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "sum(db_dmv_top_queries_sqlextractor_memory_last_used_grant_kb)",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "SqlExtractor - used memory ",
+              "refId": "A"
+            },
+            {
+              "exemplar": true,
+              "expr": "sum(db_dmv_top_queries_sqlextractor_memory_last_grant_kb)",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "SqlExtractor - Reserved memory",
+              "refId": "B"
+            },
+            {
+              "exemplar": true,
+              "expr": "sum(db_dmv_top_queries_enricher_memory_last_used_grant_kb)",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "Enricher - used memory ",
+              "refId": "C"
+            },
+            {
+              "exemplar": true,
+              "expr": "sum(db_dmv_top_queries_enricher_memory_last_grant_kb)",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "Enricher - Reserved memory",
+              "refId": "D"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "DB - Process (memory used by services)",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:1339",
+              "decimals": null,
+              "format": "kbytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:1340",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "datasource": null,
+          "gridPos": {
+            "h": 3,
+            "w": 24,
+            "x": 0,
+            "y": 55
+          },
+          "id": 423,
+          "links": [],
+          "options": {
+            "content": "<center>----------------------</center>\n<h4><center>ALERTS</center></h4>\n<center>----------------------</center>",
+            "mode": "html"
+          },
+          "pluginVersion": "8.0.2",
+          "type": "text"
+        },
+        {
+          "alert": {
+            "alertRuleTags": {},
+            "conditions": [
+              {
+                "evaluator": {
+                  "params": [
+                    5
+                  ],
+                  "type": "lt"
+                },
+                "operator": {
+                  "type": "and"
+                },
+                "query": {
+                  "params": [
+                    "A",
+                    "5m",
+                    "now"
+                  ]
+                },
+                "reducer": {
+                  "params": [],
+                  "type": "avg"
+                },
+                "type": "query"
+              }
+            ],
+            "executionErrorState": "keep_state",
+            "for": "5m",
+            "frequency": "1m",
+            "handler": 1,
+            "name": "Disk % Free Space alert",
+            "noDataState": "keep_state",
+            "notifications": []
+          },
+          "aliasColors": {},
+          "bars": true,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Prometheus",
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 2,
+          "fillGradient": 3,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 58
+          },
+          "hiddenSeries": false,
+          "id": 428,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": false,
+            "total": false,
+            "values": true
+          },
+          "lines": false,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": true,
+          "pluginVersion": "8.0.2",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "wmi_disk_logical_sonar_PercentFreeSpace",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 1,
+              "legendFormat": "IDU",
+              "refId": "B"
+            },
+            {
+              "expr": "wmi_disk_logical_db_TempDB_PercentFreeSpace",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 1,
+              "legendFormat": "TempDB",
+              "refId": "A"
+            },
+            {
+              "expr": "wmi_disk_logical_db_LogDB_PercentFreeSpace",
+              "legendFormat": "LogDB",
+              "refId": "D"
+            }
+          ],
+          "thresholds": [
+            {
+              "colorMode": "critical",
+              "fill": true,
+              "line": true,
+              "op": "lt",
+              "value": 5,
+              "visible": true
+            }
+          ],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Disk % Free Space",
+          "tooltip": {
+            "shared": false,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "series",
+            "name": null,
+            "show": true,
+            "values": [
+              "current"
+            ]
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:1008",
+              "format": "percent",
+              "label": null,
+              "logBase": 1,
+              "max": "100",
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:1009",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        }
+      ],
+      "title": "Health - Services",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 23
       },
       "id": 103,
       "panels": [
@@ -3833,6 +4049,8 @@
             "min": false,
             "rightSide": true,
             "show": true,
+            "sort": "avg",
+            "sortDesc": true,
             "total": false,
             "values": true
           },
@@ -3985,6 +4203,8 @@
             "min": false,
             "rightSide": true,
             "show": true,
+            "sort": "avg",
+            "sortDesc": true,
             "total": false,
             "values": true
           },
@@ -4186,6 +4406,8 @@
             "min": false,
             "rightSide": true,
             "show": true,
+            "sort": "avg",
+            "sortDesc": false,
             "total": false,
             "values": true
           },
@@ -4428,6 +4650,8 @@
             "min": false,
             "rightSide": false,
             "show": true,
+            "sort": "avg",
+            "sortDesc": true,
             "total": false,
             "values": true
           },
@@ -4588,6 +4812,8 @@
             "min": false,
             "rightSide": false,
             "show": true,
+            "sort": "avg",
+            "sortDesc": true,
             "total": false,
             "values": true
           },
@@ -4941,6 +5167,41 @@
           }
         },
         {
+          "alert": {
+            "alertRuleTags": {},
+            "conditions": [
+              {
+                "evaluator": {
+                  "params": [
+                    2000000000
+                  ],
+                  "type": "gt"
+                },
+                "operator": {
+                  "type": "and"
+                },
+                "query": {
+                  "params": [
+                    "A",
+                    "5m",
+                    "now"
+                  ]
+                },
+                "reducer": {
+                  "params": [],
+                  "type": "avg"
+                },
+                "type": "query"
+              }
+            ],
+            "executionErrorState": "keep_state",
+            "for": "5m",
+            "frequency": "1m",
+            "handler": 1,
+            "name": "Process - Private Bytes alert",
+            "noDataState": "keep_state",
+            "notifications": []
+          },
           "aliasColors": {},
           "bars": false,
           "dashLength": 10,
@@ -4970,6 +5231,8 @@
             "min": false,
             "rightSide": false,
             "show": true,
+            "sort": "avg",
+            "sortDesc": true,
             "total": false,
             "values": true
           },
@@ -5049,7 +5312,16 @@
               "refId": "G"
             }
           ],
-          "thresholds": [],
+          "thresholds": [
+            {
+              "colorMode": "critical",
+              "fill": true,
+              "line": true,
+              "op": "gt",
+              "value": 2000000000,
+              "visible": true
+            }
+          ],
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
@@ -5396,6 +5668,41 @@
           }
         },
         {
+          "alert": {
+            "alertRuleTags": {},
+            "conditions": [
+              {
+                "evaluator": {
+                  "params": [
+                    50
+                  ],
+                  "type": "gt"
+                },
+                "operator": {
+                  "type": "and"
+                },
+                "query": {
+                  "params": [
+                    "A",
+                    "5m",
+                    "now"
+                  ]
+                },
+                "reducer": {
+                  "params": [],
+                  "type": "avg"
+                },
+                "type": "query"
+              }
+            ],
+            "executionErrorState": "alerting",
+            "for": "5m",
+            "frequency": "1m",
+            "handler": 1,
+            "name": "Loader Service - Total Bulks Failures  alert",
+            "noDataState": "no_data",
+            "notifications": []
+          },
           "aliasColors": {},
           "bars": false,
           "dashLength": 10,
@@ -5453,7 +5760,16 @@
               "refId": "A"
             }
           ],
-          "thresholds": [],
+          "thresholds": [
+            {
+              "colorMode": "critical",
+              "fill": true,
+              "line": true,
+              "op": "gt",
+              "value": 50,
+              "visible": true
+            }
+          ],
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
@@ -5473,6 +5789,7 @@
           },
           "yaxes": [
             {
+              "$$hashKey": "object:261",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -5481,6 +5798,7 @@
               "show": true
             },
             {
+              "$$hashKey": "object:262",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -5600,7 +5918,7 @@
             "x": 0,
             "y": 49
           },
-          "id": 423,
+          "id": 427,
           "links": [],
           "options": {
             "content": "<center>----------------------</center>\n<h4><center>ALERTS</center></h4>\n<center>----------------------</center>",
@@ -5624,9 +5942,9 @@
           "fill": 1,
           "fillGradient": 0,
           "gridPos": {
-            "h": 6,
-            "w": 8,
-            "x": 8,
+            "h": 4,
+            "w": 12,
+            "x": 0,
             "y": 52
           },
           "hiddenSeries": false,
@@ -5790,9 +6108,9 @@
           "fill": 1,
           "fillGradient": 0,
           "gridPos": {
-            "h": 6,
-            "w": 8,
-            "x": 16,
+            "h": 4,
+            "w": 12,
+            "x": 12,
             "y": 52
           },
           "hiddenSeries": false,
@@ -5926,7 +6244,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 56
+        "y": 24
       },
       "id": 420,
       "panels": [
@@ -6249,7 +6567,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 57
+        "y": 25
       },
       "id": 242,
       "panels": [
@@ -7268,7 +7586,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 58
+        "y": 26
       },
       "id": 289,
       "panels": [
@@ -8432,11 +8750,46 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 59
+        "y": 27
       },
       "id": 82,
       "panels": [
         {
+          "alert": {
+            "alertRuleTags": {},
+            "conditions": [
+              {
+                "evaluator": {
+                  "params": [
+                    90
+                  ],
+                  "type": "gt"
+                },
+                "operator": {
+                  "type": "and"
+                },
+                "query": {
+                  "params": [
+                    "A",
+                    "5m",
+                    "now"
+                  ]
+                },
+                "reducer": {
+                  "params": [],
+                  "type": "avg"
+                },
+                "type": "query"
+              }
+            ],
+            "executionErrorState": "keep_state",
+            "for": "5m",
+            "frequency": "1m",
+            "handler": 1,
+            "name": "IDU - % CPU Load alert",
+            "noDataState": "keep_state",
+            "notifications": []
+          },
           "aliasColors": {},
           "bars": false,
           "dashLength": 10,
@@ -8508,7 +8861,7 @@
               "line": true,
               "op": "gt",
               "value": 90,
-              "yaxis": "left"
+              "visible": true
             }
           ],
           "timeFrom": null,
@@ -8530,6 +8883,7 @@
           },
           "yaxes": [
             {
+              "$$hashKey": "object:125",
               "format": "percent",
               "label": "",
               "logBase": 1,
@@ -8538,6 +8892,7 @@
               "show": true
             },
             {
+              "$$hashKey": "object:126",
               "format": "mbytes",
               "label": null,
               "logBase": 1,
@@ -8940,6 +9295,41 @@
           }
         },
         {
+          "alert": {
+            "alertRuleTags": {},
+            "conditions": [
+              {
+                "evaluator": {
+                  "params": [
+                    500
+                  ],
+                  "type": "lt"
+                },
+                "operator": {
+                  "type": "and"
+                },
+                "query": {
+                  "params": [
+                    "A",
+                    "5m",
+                    "now"
+                  ]
+                },
+                "reducer": {
+                  "params": [],
+                  "type": "avg"
+                },
+                "type": "query"
+              }
+            ],
+            "executionErrorState": "keep_state",
+            "for": "5m",
+            "frequency": "1m",
+            "handler": 1,
+            "name": "IDU - Available Memory alert",
+            "noDataState": "keep_state",
+            "notifications": []
+          },
           "aliasColors": {},
           "bars": false,
           "dashLength": 10,
@@ -9011,8 +9401,8 @@
               "fill": true,
               "line": true,
               "op": "lt",
-              "value": 1000,
-              "yaxis": "left"
+              "value": 500,
+              "visible": true
             }
           ],
           "timeFrom": null,
@@ -9034,6 +9424,7 @@
           },
           "yaxes": [
             {
+              "$$hashKey": "object:100",
               "decimals": 0,
               "format": "decmbytes",
               "label": null,
@@ -9043,6 +9434,7 @@
               "show": true
             },
             {
+              "$$hashKey": "object:101",
               "decimals": 1,
               "format": "decmbytes",
               "label": null,
@@ -9058,6 +9450,41 @@
           }
         },
         {
+          "alert": {
+            "alertRuleTags": {},
+            "conditions": [
+              {
+                "evaluator": {
+                  "params": [
+                    70
+                  ],
+                  "type": "gt"
+                },
+                "operator": {
+                  "type": "and"
+                },
+                "query": {
+                  "params": [
+                    "A",
+                    "5m",
+                    "now"
+                  ]
+                },
+                "reducer": {
+                  "params": [],
+                  "type": "avg"
+                },
+                "type": "query"
+              }
+            ],
+            "executionErrorState": "keep_state",
+            "for": "5m",
+            "frequency": "1m",
+            "handler": 1,
+            "name": "IDU - Paging - Percent usage alert",
+            "noDataState": "keep_state",
+            "notifications": []
+          },
           "aliasColors": {},
           "bars": false,
           "dashLength": 10,
@@ -9121,7 +9548,7 @@
               "line": true,
               "op": "gt",
               "value": 70,
-              "yaxis": "left"
+              "visible": true
             }
           ],
           "timeFrom": null,
@@ -9143,6 +9570,7 @@
           },
           "yaxes": [
             {
+              "$$hashKey": "object:237",
               "decimals": 1,
               "format": "percent",
               "label": null,
@@ -9152,6 +9580,7 @@
               "show": true
             },
             {
+              "$$hashKey": "object:238",
               "decimals": 1,
               "format": "short",
               "label": null,
@@ -9167,6 +9596,41 @@
           }
         },
         {
+          "alert": {
+            "alertRuleTags": {},
+            "conditions": [
+              {
+                "evaluator": {
+                  "params": [
+                    5
+                  ],
+                  "type": "lt"
+                },
+                "operator": {
+                  "type": "and"
+                },
+                "query": {
+                  "params": [
+                    "A",
+                    "5m",
+                    "now"
+                  ]
+                },
+                "reducer": {
+                  "params": [],
+                  "type": "avg"
+                },
+                "type": "query"
+              }
+            ],
+            "executionErrorState": "keep_state",
+            "for": "5m",
+            "frequency": "1m",
+            "handler": 1,
+            "name": "IDU Disk % Free Space alert",
+            "noDataState": "keep_state",
+            "notifications": []
+          },
           "aliasColors": {},
           "bars": true,
           "dashLength": 10,
@@ -9229,8 +9693,8 @@
               "fill": true,
               "line": true,
               "op": "lt",
-              "value": 10,
-              "yaxis": "left"
+              "value": 5,
+              "visible": true
             }
           ],
           "timeFrom": null,
@@ -9254,6 +9718,7 @@
           },
           "yaxes": [
             {
+              "$$hashKey": "object:106",
               "format": "percent",
               "label": null,
               "logBase": 1,
@@ -9262,6 +9727,7 @@
               "show": true
             },
             {
+              "$$hashKey": "object:107",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -10044,7 +10510,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 60
+        "y": 28
       },
       "id": 257,
       "panels": [
@@ -12199,7 +12665,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 61
+        "y": 29
       },
       "id": 216,
       "panels": [
@@ -12971,7 +13437,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 62
+        "y": 30
       },
       "id": 231,
       "panels": [
@@ -14139,7 +14605,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 63
+        "y": 31
       },
       "id": 125,
       "panels": [
@@ -16075,7 +16541,7 @@
     "list": []
   },
   "time": {
-    "from": "now-12h",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {
@@ -16107,5 +16573,5 @@
   "timezone": "",
   "title": "Varonis Services",
   "uid": "",
-  "version": 26
+  "version": 38
 }

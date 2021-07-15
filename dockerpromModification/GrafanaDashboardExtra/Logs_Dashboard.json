@@ -16,7 +16,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 48,
-  "iteration": 1625560087836,
+  "iteration": 1626367665787,
   "links": [],
   "panels": [
     {
@@ -287,7 +287,7 @@
                 "type": "query"
               }
             ],
-            "executionErrorState": "alerting",
+            "executionErrorState": "keep_state",
             "for": "2m",
             "frequency": "1m",
             "handler": 1,
@@ -428,7 +428,7 @@
                 "type": "query"
               }
             ],
-            "executionErrorState": "alerting",
+            "executionErrorState": "keep_state",
             "for": "2m",
             "frequency": "1m",
             "handler": 1,
@@ -543,6 +543,41 @@
           }
         },
         {
+          "alert": {
+            "alertRuleTags": {},
+            "conditions": [
+              {
+                "evaluator": {
+                  "params": [
+                    10
+                  ],
+                  "type": "gt"
+                },
+                "operator": {
+                  "type": "and"
+                },
+                "query": {
+                  "params": [
+                    "A",
+                    "5m",
+                    "now"
+                  ]
+                },
+                "reducer": {
+                  "params": [],
+                  "type": "avg"
+                },
+                "type": "query"
+              }
+            ],
+            "executionErrorState": "keep_state",
+            "for": "5m",
+            "frequency": "1m",
+            "handler": 1,
+            "name": "Enricher - Errors\\Warnings count alert",
+            "noDataState": "keep_state",
+            "notifications": []
+          },
           "aliasColors": {},
           "bars": true,
           "dashLength": 10,
@@ -597,7 +632,16 @@
               "refId": "A"
             }
           ],
-          "thresholds": [],
+          "thresholds": [
+            {
+              "colorMode": "critical",
+              "fill": true,
+              "line": true,
+              "op": "gt",
+              "value": 10,
+              "visible": true
+            }
+          ],
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
@@ -668,7 +712,7 @@
                 "type": "query"
               }
             ],
-            "executionErrorState": "alerting",
+            "executionErrorState": "keep_state",
             "for": "2m",
             "frequency": "1m",
             "handler": 1,
@@ -809,7 +853,7 @@
                 "type": "query"
               }
             ],
-            "executionErrorState": "alerting",
+            "executionErrorState": "keep_state",
             "for": "2m",
             "frequency": "1m",
             "handler": 1,
@@ -1344,6 +1388,105 @@
             "align": false,
             "alignLevel": null
           }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Loki",
+          "fieldConfig": {
+            "defaults": {
+              "unit": "short"
+            },
+            "overrides": []
+          },
+          "fill": 2,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 4,
+            "w": 24,
+            "x": 0,
+            "y": 22
+          },
+          "hiddenSeries": false,
+          "id": 36,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "8.0.2",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": true,
+          "targets": [
+            {
+              "expr": "count_over_time({job=~\"$job\"} |=\"INFO\" [1m])",
+              "legendFormat": "{{job}}",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Info count",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:27",
+              "decimals": 0,
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:28",
+              "decimals": 0,
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
         }
       ],
       "title": "Alerts",
@@ -1764,12 +1907,12 @@
     ]
   },
   "time": {
-    "from": "now-30m",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "utc",
   "title": "Logs Dashboard",
   "uid": "",
-  "version": 15
+  "version": 20
 }

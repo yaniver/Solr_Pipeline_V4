@@ -37,11 +37,11 @@ $file_content -match $string_to_search
 git clone https://github.com/stefanprodan/dockprom
 Copy-Item -Path "${SOLR_PIPELINE_HOME}\dockerpromModification\GrafanaDashboardExtra\*.json" -Destination "${SOLR_PIPELINE_HOME}\dockprom\grafana\provisioning\dashboards" -Force -Verbose
 Copy-Item -Path "${SOLR_PIPELINE_HOME}\dockerpromModification\GrafanaDatasource\*.yml" -Destination "${SOLR_PIPELINE_HOME}\dockprom\grafana\provisioning\datasources" -Force -Verbose
-$TARGETDIR="${SOLR_PIPELINE_HOME}\\dockprom\\grafana\\provisioning\\plugins\\grafana-polystat-panel\"
-if(!(Test-Path -Path $TARGETDIR))
-{
-	Copy-Item -Path "${SOLR_PIPELINE_HOME}\dockerpromModification\GrafanaPlugins\grafana-polystat-panel\" -Destination $TARGETDIR -Recurse -Force
-}
+#$TARGETDIR="${SOLR_PIPELINE_HOME}\\dockprom\\grafana\\provisioning\\plugins\\grafana-polystat-panel\"
+#if(!(Test-Path -Path $TARGETDIR))
+#{
+#	Copy-Item -Path "${SOLR_PIPELINE_HOME}\dockerpromModification\GrafanaPlugins\grafana-polystat-panel\" -Destination $TARGETDIR -Recurse -Force
+#}
 Copy-Item -Path "${SOLR_PIPELINE_HOME}\dockerpromModification\Prometheus\*.yml" -Destination "${SOLR_PIPELINE_HOME}\dockprom\prometheus" -Force -Verbose
 cd dockprom
 
