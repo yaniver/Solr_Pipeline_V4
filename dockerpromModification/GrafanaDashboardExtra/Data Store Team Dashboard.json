@@ -67,13 +67,19 @@
           "dashes": false,
           "datasource": "VaronisMetrics",
           "description": "Bulks that were saved to metadata table",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
           "fill": 1,
           "fillGradient": 0,
           "gridPos": {
             "h": 5,
             "w": 7,
             "x": 0,
-            "y": 7
+            "y": 1
           },
           "hiddenSeries": false,
           "id": 43,
@@ -94,7 +100,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.0.2",
+          "pluginVersion": "7.3.2",
           "pointradius": 5,
           "points": true,
           "renderer": "flot",
@@ -178,13 +184,19 @@
           "dashLength": 10,
           "dashes": false,
           "datasource": "VaronisMetrics",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
           "fill": 1,
           "fillGradient": 0,
           "gridPos": {
             "h": 5,
             "w": 7,
             "x": 7,
-            "y": 7
+            "y": 1
           },
           "hiddenSeries": false,
           "id": 45,
@@ -205,7 +217,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.0.2",
+          "pluginVersion": "7.3.2",
           "pointradius": 5,
           "points": true,
           "renderer": "flot",
@@ -286,12 +298,18 @@
         {
           "columns": [],
           "datasource": "VaronisMetrics",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
           "fontSize": "100%",
           "gridPos": {
             "h": 10,
             "w": 10,
             "x": 14,
-            "y": 7
+            "y": 1
           },
           "id": 50,
           "links": [],
@@ -378,13 +396,19 @@
           "dashLength": 10,
           "dashes": false,
           "datasource": "VaronisMetrics",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
           "fill": 1,
           "fillGradient": 0,
           "gridPos": {
             "h": 5,
             "w": 7,
             "x": 0,
-            "y": 12
+            "y": 6
           },
           "hiddenSeries": false,
           "id": 46,
@@ -408,7 +432,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.0.2",
+          "pluginVersion": "7.3.2",
           "pointradius": 5,
           "points": true,
           "renderer": "flot",
@@ -493,13 +517,19 @@
           "dashLength": 10,
           "dashes": false,
           "datasource": "VaronisMetrics",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
           "fill": 1,
           "fillGradient": 0,
           "gridPos": {
             "h": 5,
             "w": 7,
             "x": 7,
-            "y": 12
+            "y": 6
           },
           "hiddenSeries": false,
           "id": 47,
@@ -523,7 +553,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.0.2",
+          "pluginVersion": "7.3.2",
           "pointradius": 5,
           "points": true,
           "renderer": "flot",
@@ -601,7 +631,7 @@
       "type": "row"
     },
     {
-      "collapsed": false,
+      "collapsed": true,
       "datasource": null,
       "gridPos": {
         "h": 1,
@@ -1063,8 +1093,8 @@
           "measurement": "CifsEnricher.EventsCount",
           "orderByTime": "ASC",
           "policy": "autogen",
-          "query": "SELECT \"Sum\" FROM \"CifsEnricher.EventsCount\" WHERE $timeFilter",
-          "rawQuery": false,
+          "query": "SELECT \"Sum\" FROM \"autogen\".\"CifsEnricher.EventsCount\" WHERE $timeFilter",
+          "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
@@ -1124,41 +1154,118 @@
       }
     },
     {
-      "alert": {
-        "alertRuleTags": {},
-        "conditions": [
-          {
-            "evaluator": {
-              "params": [
-                90000
-              ],
-              "type": "gt"
-            },
-            "operator": {
-              "type": "and"
-            },
-            "query": {
-              "params": [
-                "A",
-                "5m",
-                "now"
-              ]
-            },
-            "reducer": {
-              "params": [],
-              "type": "avg"
-            },
-            "type": "query"
-          }
-        ],
-        "executionErrorState": "keep_state",
-        "for": "5m",
-        "frequency": "1m",
-        "handler": 1,
-        "name": "Events Latency alert",
-        "noDataState": "keep_state",
-        "notifications": []
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "VaronisMetrics",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 19
       },
+      "hiddenSeries": false,
+      "id": 84,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.0.2",
+      "pointradius": 5,
+      "points": true,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "Throughput",
+          "groupBy": [],
+          "measurement": "CifsEnricher.EventsCount",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT Sum(\"Sum\")/60 FROM \"autogen\".\"CifsEnricher.EventsCount\" WHERE $timeFilter GROUP BY time(1m)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "Sum"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "EPS - write to DL",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:83",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:84",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -1177,7 +1284,7 @@
         "h": 6,
         "w": 24,
         "x": 0,
-        "y": 19
+        "y": 25
       },
       "hiddenSeries": false,
       "id": 67,
@@ -1231,16 +1338,7 @@
           "tags": []
         }
       ],
-      "thresholds": [
-        {
-          "colorMode": "critical",
-          "fill": true,
-          "line": true,
-          "op": "gt",
-          "value": 90000,
-          "visible": true
-        }
-      ],
+      "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
@@ -1297,7 +1395,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 25
+        "y": 31
       },
       "hiddenSeries": false,
       "id": 71,
@@ -1450,7 +1548,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 33
+        "y": 39
       },
       "hiddenSeries": false,
       "id": 80,
@@ -1577,7 +1675,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 40
+        "y": 46
       },
       "hiddenSeries": false,
       "id": 81,
@@ -1695,7 +1793,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 47
+        "y": 53
       },
       "hiddenSeries": false,
       "id": 73,
@@ -1799,7 +1897,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 47
+        "y": 53
       },
       "hiddenSeries": false,
       "id": 75,
@@ -1932,7 +2030,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 55
+        "y": 61
       },
       "hiddenSeries": false,
       "id": 77,
@@ -2028,41 +2126,6 @@
       }
     },
     {
-      "alert": {
-        "alertRuleTags": {},
-        "conditions": [
-          {
-            "evaluator": {
-              "params": [
-                10
-              ],
-              "type": "gt"
-            },
-            "operator": {
-              "type": "and"
-            },
-            "query": {
-              "params": [
-                "A",
-                "5m",
-                "now"
-              ]
-            },
-            "reducer": {
-              "params": [],
-              "type": "avg"
-            },
-            "type": "query"
-          }
-        ],
-        "executionErrorState": "keep_state",
-        "for": "5m",
-        "frequency": "1m",
-        "handler": 1,
-        "name": "Process Message Failures alert",
-        "noDataState": "keep_state",
-        "notifications": []
-      },
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -2075,7 +2138,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 55
+        "y": 61
       },
       "hiddenSeries": false,
       "id": 79,
@@ -2128,16 +2191,7 @@
           "tags": []
         }
       ],
-      "thresholds": [
-        {
-          "colorMode": "critical",
-          "fill": true,
-          "line": true,
-          "op": "gt",
-          "value": 10,
-          "visible": true
-        }
-      ],
+      "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
@@ -2157,7 +2211,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:471",
           "decimals": 0,
           "format": "short",
           "label": null,
@@ -2167,7 +2220,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:472",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -2188,7 +2240,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 63
+        "y": 69
       },
       "id": 29,
       "panels": [
@@ -2200,14 +2252,12 @@
           "datasource": "VaronisMetrics",
           "decimals": 0,
           "fill": 1,
-          "fillGradient": 0,
           "gridPos": {
             "h": 6,
             "w": 13,
             "x": 0,
-            "y": 9
+            "y": 11
           },
-          "hiddenSeries": false,
           "id": 31,
           "legend": {
             "alignAsTable": true,
@@ -2224,11 +2274,7 @@
           "linewidth": 1,
           "links": [],
           "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
           "percentage": false,
-          "pluginVersion": "8.0.2",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -2260,7 +2306,6 @@
           ],
           "thresholds": [],
           "timeFrom": null,
-          "timeRegions": [],
           "timeShift": null,
           "title": "Number Of Extractors Tasks",
           "tooltip": {
@@ -2306,14 +2351,12 @@
           "dashes": false,
           "datasource": "VaronisMetrics",
           "fill": 1,
-          "fillGradient": 0,
           "gridPos": {
             "h": 6,
             "w": 11,
             "x": 13,
-            "y": 9
+            "y": 11
           },
-          "hiddenSeries": false,
           "id": 37,
           "legend": {
             "alignAsTable": true,
@@ -2331,11 +2374,7 @@
           "linewidth": 1,
           "links": [],
           "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
           "percentage": false,
-          "pluginVersion": "8.0.2",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -2367,7 +2406,6 @@
           ],
           "thresholds": [],
           "timeFrom": null,
-          "timeRegions": [],
           "timeShift": null,
           "title": "Batch Duration In Seconds",
           "tooltip": {
@@ -2414,14 +2452,12 @@
           "datasource": "VaronisMetrics",
           "decimals": 0,
           "fill": 1,
-          "fillGradient": 0,
           "gridPos": {
             "h": 6,
             "w": 8,
             "x": 0,
-            "y": 15
+            "y": 17
           },
-          "hiddenSeries": false,
           "id": 33,
           "legend": {
             "alignAsTable": true,
@@ -2437,11 +2473,7 @@
           "linewidth": 1,
           "links": [],
           "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
           "percentage": false,
-          "pluginVersion": "8.0.2",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -2479,7 +2511,6 @@
           ],
           "thresholds": [],
           "timeFrom": null,
-          "timeRegions": [],
           "timeShift": null,
           "title": "Batches Created",
           "tooltip": {
@@ -2519,41 +2550,6 @@
           }
         },
         {
-          "alert": {
-            "alertRuleTags": {},
-            "conditions": [
-              {
-                "evaluator": {
-                  "params": [
-                    10
-                  ],
-                  "type": "gt"
-                },
-                "operator": {
-                  "type": "and"
-                },
-                "query": {
-                  "params": [
-                    "A",
-                    "5m",
-                    "now"
-                  ]
-                },
-                "reducer": {
-                  "params": [],
-                  "type": "avg"
-                },
-                "type": "query"
-              }
-            ],
-            "executionErrorState": "keep_state",
-            "for": "5m",
-            "frequency": "1m",
-            "handler": 1,
-            "name": "Batches Failed alert",
-            "noDataState": "keep_state",
-            "notifications": []
-          },
           "aliasColors": {},
           "bars": true,
           "dashLength": 10,
@@ -2561,14 +2557,12 @@
           "datasource": "VaronisMetrics",
           "decimals": 0,
           "fill": 1,
-          "fillGradient": 0,
           "gridPos": {
             "h": 6,
             "w": 8,
             "x": 8,
-            "y": 15
+            "y": 17
           },
-          "hiddenSeries": false,
           "id": 34,
           "legend": {
             "alignAsTable": true,
@@ -2584,11 +2578,7 @@
           "linewidth": 1,
           "links": [],
           "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
           "percentage": false,
-          "pluginVersion": "8.0.2",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -2624,18 +2614,8 @@
               ]
             }
           ],
-          "thresholds": [
-            {
-              "colorMode": "critical",
-              "fill": true,
-              "line": true,
-              "op": "gt",
-              "value": 10,
-              "visible": true
-            }
-          ],
+          "thresholds": [],
           "timeFrom": null,
-          "timeRegions": [],
           "timeShift": null,
           "title": "Batches Failed",
           "tooltip": {
@@ -2653,7 +2633,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:631",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -2662,7 +2641,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:632",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -2684,14 +2662,12 @@
           "datasource": "VaronisMetrics",
           "decimals": 0,
           "fill": 1,
-          "fillGradient": 0,
           "gridPos": {
             "h": 6,
             "w": 8,
             "x": 16,
-            "y": 15
+            "y": 17
           },
-          "hiddenSeries": false,
           "id": 35,
           "legend": {
             "alignAsTable": true,
@@ -2707,11 +2683,7 @@
           "linewidth": 1,
           "links": [],
           "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
           "percentage": false,
-          "pluginVersion": "8.0.2",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -2749,7 +2721,6 @@
           ],
           "thresholds": [],
           "timeFrom": null,
-          "timeRegions": [],
           "timeShift": null,
           "title": "Batches Retries",
           "tooltip": {
@@ -2795,14 +2766,12 @@
           "dashes": false,
           "datasource": "VaronisMetrics",
           "fill": 1,
-          "fillGradient": 0,
           "gridPos": {
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 21
+            "y": 23
           },
-          "hiddenSeries": false,
           "id": 36,
           "legend": {
             "alignAsTable": true,
@@ -2819,11 +2788,7 @@
           "linewidth": 1,
           "links": [],
           "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
           "percentage": false,
-          "pluginVersion": "8.0.2",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -2862,7 +2827,6 @@
           ],
           "thresholds": [],
           "timeFrom": null,
-          "timeRegions": [],
           "timeShift": null,
           "title": "Extracted events count",
           "tooltip": {
@@ -2912,7 +2876,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 64
+        "y": 70
       },
       "id": 27,
       "panels": [
@@ -2947,7 +2911,7 @@
             "h": 3,
             "w": 4,
             "x": 0,
-            "y": 10
+            "y": 3
           },
           "id": 21,
           "interval": null,
@@ -3034,7 +2998,7 @@
             "h": 3,
             "w": 4,
             "x": 4,
-            "y": 10
+            "y": 3
           },
           "id": 6,
           "interval": null,
@@ -3121,7 +3085,7 @@
             "h": 3,
             "w": 4,
             "x": 8,
-            "y": 10
+            "y": 3
           },
           "id": 9,
           "interval": null,
@@ -3184,13 +3148,19 @@
           "dashes": false,
           "datasource": "VaronisMetrics",
           "decimals": 0,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
           "fill": 1,
           "fillGradient": 0,
           "gridPos": {
             "h": 9,
             "w": 12,
             "x": 12,
-            "y": 10
+            "y": 3
           },
           "hiddenSeries": false,
           "id": 15,
@@ -3212,7 +3182,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.0.2",
+          "pluginVersion": "7.3.2",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -3296,13 +3266,19 @@
           "dashes": false,
           "datasource": "VaronisMetrics",
           "decimals": 0,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
           "fill": 1,
           "fillGradient": 0,
           "gridPos": {
             "h": 6,
             "w": 6,
             "x": 0,
-            "y": 13
+            "y": 6
           },
           "hiddenSeries": false,
           "id": 39,
@@ -3324,7 +3300,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.0.2",
+          "pluginVersion": "7.3.2",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -3402,54 +3378,25 @@
           }
         },
         {
-          "alert": {
-            "alertRuleTags": {},
-            "conditions": [
-              {
-                "evaluator": {
-                  "params": [
-                    10
-                  ],
-                  "type": "gt"
-                },
-                "operator": {
-                  "type": "and"
-                },
-                "query": {
-                  "params": [
-                    "A",
-                    "5m",
-                    "now"
-                  ]
-                },
-                "reducer": {
-                  "params": [],
-                  "type": "avg"
-                },
-                "type": "query"
-              }
-            ],
-            "executionErrorState": "keep_state",
-            "for": "5m",
-            "frequency": "1m",
-            "handler": 1,
-            "name": "Bulks failures alert",
-            "noDataState": "keep_state",
-            "notifications": []
-          },
           "aliasColors": {},
           "bars": true,
           "dashLength": 10,
           "dashes": false,
           "datasource": "VaronisMetrics",
           "decimals": 0,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
           "fill": 1,
           "fillGradient": 0,
           "gridPos": {
             "h": 6,
             "w": 6,
             "x": 6,
-            "y": 13
+            "y": 6
           },
           "hiddenSeries": false,
           "id": 14,
@@ -3471,7 +3418,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.0.2",
+          "pluginVersion": "7.3.2",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -3507,16 +3454,7 @@
               ]
             }
           ],
-          "thresholds": [
-            {
-              "colorMode": "critical",
-              "fill": true,
-              "line": true,
-              "op": "gt",
-              "value": 10,
-              "visible": true
-            }
-          ],
+          "thresholds": [],
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
@@ -3536,7 +3474,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:791",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -3545,7 +3482,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:792",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -3566,13 +3502,19 @@
           "dashes": false,
           "datasource": "VaronisMetrics",
           "decimals": 0,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
           "fill": 1,
           "fillGradient": 0,
           "gridPos": {
             "h": 5,
             "w": 8,
             "x": 0,
-            "y": 19
+            "y": 12
           },
           "hiddenSeries": false,
           "id": 38,
@@ -3595,7 +3537,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.0.2",
+          "pluginVersion": "7.3.2",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -3679,13 +3621,19 @@
           "dashes": false,
           "datasource": "VaronisMetrics",
           "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
           "fill": 1,
           "fillGradient": 0,
           "gridPos": {
             "h": 5,
             "w": 8,
             "x": 8,
-            "y": 19
+            "y": 12
           },
           "hiddenSeries": false,
           "id": 8,
@@ -3708,7 +3656,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.0.2",
+          "pluginVersion": "7.3.2",
           "pointradius": 1,
           "points": false,
           "renderer": "flot",
@@ -3791,13 +3739,19 @@
           "dashLength": 10,
           "dashes": false,
           "datasource": "VaronisMetrics",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
           "fill": 1,
           "fillGradient": 0,
           "gridPos": {
             "h": 5,
             "w": 8,
             "x": 16,
-            "y": 19
+            "y": 12
           },
           "hiddenSeries": false,
           "id": 2,
@@ -3820,7 +3774,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.0.2",
+          "pluginVersion": "7.3.2",
           "pointradius": 1,
           "points": false,
           "renderer": "flot",
@@ -3906,13 +3860,19 @@
           "dashLength": 10,
           "dashes": false,
           "datasource": "VaronisMetrics",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
           "fill": 1,
           "fillGradient": 0,
           "gridPos": {
             "h": 5,
             "w": 8,
             "x": 0,
-            "y": 24
+            "y": 17
           },
           "hiddenSeries": false,
           "id": 13,
@@ -3935,7 +3895,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.0.2",
+          "pluginVersion": "7.3.2",
           "pointradius": 1,
           "points": true,
           "renderer": "flot",
@@ -4018,13 +3978,19 @@
           "dashLength": 10,
           "dashes": false,
           "datasource": "VaronisMetrics",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
           "fill": 1,
           "fillGradient": 0,
           "gridPos": {
             "h": 5,
             "w": 8,
             "x": 8,
-            "y": 24
+            "y": 17
           },
           "hiddenSeries": false,
           "id": 20,
@@ -4046,7 +4012,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.0.2",
+          "pluginVersion": "7.3.2",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -4130,13 +4096,19 @@
           "dashes": false,
           "datasource": "VaronisMetrics",
           "decimals": 0,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
           "fill": 1,
           "fillGradient": 0,
           "gridPos": {
             "h": 5,
             "w": 8,
             "x": 16,
-            "y": 24
+            "y": 17
           },
           "hiddenSeries": false,
           "id": 16,
@@ -4158,7 +4130,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.0.2",
+          "pluginVersion": "7.3.2",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -4241,13 +4213,19 @@
           "dashLength": 10,
           "dashes": false,
           "datasource": "VaronisMetrics",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
           "fill": 1,
           "fillGradient": 0,
           "gridPos": {
             "h": 5,
             "w": 8,
             "x": 0,
-            "y": 29
+            "y": 22
           },
           "hiddenSeries": false,
           "id": 23,
@@ -4269,7 +4247,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.0.2",
+          "pluginVersion": "7.3.2",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -4359,13 +4337,19 @@
           "dashes": false,
           "datasource": "VaronisMetrics",
           "decimals": 0,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
           "fill": 1,
           "fillGradient": 0,
           "gridPos": {
             "h": 5,
             "w": 8,
             "x": 8,
-            "y": 29
+            "y": 22
           },
           "hiddenSeries": false,
           "id": 24,
@@ -4387,7 +4371,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.0.2",
+          "pluginVersion": "7.3.2",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -4477,13 +4461,19 @@
           "dashes": false,
           "datasource": "VaronisMetrics",
           "decimals": 0,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
           "fill": 1,
           "fillGradient": 0,
           "gridPos": {
             "h": 5,
             "w": 8,
             "x": 16,
-            "y": 29
+            "y": 22
           },
           "hiddenSeries": false,
           "id": 25,
@@ -4505,7 +4495,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.0.2",
+          "pluginVersion": "7.3.2",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -4596,13 +4586,19 @@
           "datasource": "VaronisMetrics",
           "decimals": 0,
           "description": "Replay processes updates on percentage done",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
           "fill": 1,
           "fillGradient": 0,
           "gridPos": {
             "h": 7,
             "w": 12,
             "x": 0,
-            "y": 34
+            "y": 27
           },
           "hiddenSeries": false,
           "id": 51,
@@ -4627,7 +4623,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.0.2",
+          "pluginVersion": "7.3.2",
           "pointradius": 0.5,
           "points": true,
           "renderer": "flot",
@@ -4710,12 +4706,18 @@
         {
           "columns": [],
           "datasource": "VaronisMetrics",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
           "fontSize": "100%",
           "gridPos": {
             "h": 7,
             "w": 12,
             "x": 12,
-            "y": 34
+            "y": 27
           },
           "id": 53,
           "links": [],
@@ -4813,7 +4815,7 @@
     "list": []
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {
@@ -4844,5 +4846,5 @@
   "timezone": "",
   "title": "Data Store Team Dashboard",
   "uid": "",
-  "version": 26280
+  "version": 26283
 }
