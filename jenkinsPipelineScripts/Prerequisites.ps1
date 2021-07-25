@@ -64,6 +64,8 @@ function update_hosts_file_with_solr_ips {
 
 }
 
+# Done on the client for enabling remote connection to server
+Set-Item WSMan:\localhost\Client\TrustedHosts -Value * -Force
 
 Write-Host "Enable access to WinRM listener via HTTP in IDU server"
 Invoke-Command -Session $Session -ScriptBlock {
