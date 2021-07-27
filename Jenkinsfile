@@ -10,6 +10,12 @@ pipeline {
 				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\Prerequisites.ps1 '${env.SOLR_PIPELINE_HOME}'  '${env.IDU_IP}'  '${env.DB_IP}'  '${env.DOMAIN}'  '${env.LAB_NAME}'"
 			}
 		}
+		stage('VIP Deploy') {
+			steps {
+				echo 'VIP Deploy'
+				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\Install_vip.ps1"
+			}
+		}
 		stage('Loki Server - Logs collector') {
 			steps {
 				echo 'Deploying Loki - Grafana logs collector'
@@ -84,6 +90,7 @@ pipeline {
     environment {
         SOLR_PIPELINE_HOME = 'C:\\Solr_Pipeline_V4'
 		LAB_NAME = 'L1648_v8.7'
+		DA_VERSION = '8.7'
 		IDU_IP = '10.10.193.88'
 		DB_IP = '10.10.193.93'
 		ZK_IP_PORT = '10.10.193.92:2181'
