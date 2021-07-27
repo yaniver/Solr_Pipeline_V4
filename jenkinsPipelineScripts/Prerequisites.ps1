@@ -13,6 +13,46 @@ $global:Session = New-PSSession -ComputerName $idu_ip -Credential $Credential
 $global:Session_db = New-PSSession -ComputerName $db_ip -Credential $Credential
 
 
+function download_vip(){
+	#$User = "varonis\<user name>"
+	#$PWord = ConvertTo-SecureString -String "<password>" -AsPlainText -Force
+	#$Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $PWord
+	$Credential = Get-Credential
+
+	# Extract DA version (used for full DA installation OR getting DataStore VIP)
+	$response = (Invoke-WebRequest -Uri 'https://ci.varonis.com/PortalMvc/Admin/Branches/GetBuildVersion?brnachName=V6.4%20Releases%20&scenariosSetsName=DataPlatform%20ATP' -Credential $Credential).Links.Href
+	$string_to_search="Unstable\\(.*)"
+	$response -match $string_to_search
+	Write-Host "`nFull DA installation version: "$matches[1]
+	$full_da_version = $matches[1]
+
+	# Check if Last VIP already deployed and if not download it
+	$dest = ".\DataStoreVIP"
+	$da_version = $dest + "\last_da_version.txt"
+	$da_version_fromfile = Get-Content $da_version
+	if ([System.Version]$full_da_version -gt [System.Version]$da_version_fromfile)
+	{
+		# Extarct DataStore VIP Path
+		$full_DA_installation_path = "\\varonis.com\global\builds\IDU\6.4-Rel\Unstable\" + $matches[1] + "\WebDAVersion.txt"
+		$file_content = Get-Content -Path $full_DA_installation_path -Raw
+		Write-Host "`nWebDAVersion.txt content containing VIP path: "$file_content
+		$matches[0] = ""
+		$matches[1] = ""
+		$string_to_search="\\\\varonis.com\\global\\Engineering\\Releases\\DataStore\\(.*)vip"
+		$file_content -match $string_to_search
+
+		# Check if DataStore VIP exist in path
+		if (Test-Path $matches[0])
+		{
+		  #then copy
+		  $source = $matches[0] + "\DataStore.vip"
+		  Copy-Item $source -Destination $dest
+		  Set-Content $da_version $full_da_version
+		}
+	}
+	
+}
+
 function update_hosts_file_with_solr_ips {
 	param( [string]$lab_name )
 	$clm_connection_string_encoded = Invoke-Command -Session $Session -ScriptBlock {Select-Xml -Path "C:\Program Files (x86)\Varonis\DatAdvantage\CollectionManager\Varonis.CollectionManager.Service.exe.config" -XPath '/configuration/connectionStrings/EncryptedData' | ForEach-Object { $_.Node.InnerXML }}
@@ -78,6 +118,8 @@ Invoke-Command -Session $Session_db -ScriptBlock {
 
 cd $solr_pipeline_home
 update_hosts_file_with_solr_ips -lab_name $lab_name
+
+download_vip
 
 Remove-PSSession $Session
 Remove-PSSession $Session_db
