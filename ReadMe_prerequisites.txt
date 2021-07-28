@@ -51,7 +51,7 @@ TFS link - $/idu Client-Server/WebDA/v8.6/Common/Data Store Team Dashboard.json
 ====================================
 Open browser (http://localhost:8080/) and Copy-Paste value from  file "..\jenkins\secrets\initialAdminPassword"
 (file location - C:\Windows\SysWOW64\config\systemprofile\AppData\Local\Jenkins\.jenkins\secrets)
-Add user name and pw (username:yaniver ;  pw=Eran2717) and change Jenkins URL to VM hostname
+Add user name and pw (username:yaniver ;  pw=err) and change Jenkins URL to VM hostname
 
 In case you have internet connection -
 	Select "Installed suggested Plugins"
