@@ -32,6 +32,10 @@ TFS link - $/idu Client-Server/WebDA/v8.6/Common/Data Store Team Dashboard.json
 2. Prerequsites (Installing Jenkins + Docker + Docker-compose + GIT): 
 ====================================================================
   - In Windows VM (with internet connection), install Java + Jenkins + GIT + Docker desktop
+    Offline (no internet): Download msi from online VM, copy here and install them + 
+	Load offline Docker images from Images folder in CMD by ruuning command "docker load –i c:\images\<image tar file>"
+	(tar file where created in online VM with this command as example - "docker save -o c:\images\prometheus.tar prom/prometheus")
+	  
 	  
   - Open CMD and cd to C:\ and run command "git clone --depth=1 https://github.com/yaniver/Solr_Pipeline_V4.git"
   
