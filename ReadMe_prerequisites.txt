@@ -22,7 +22,7 @@
 		set WebDaPassword=WebDaPassword
 		Then start first all ZK vm’s and then Solr Vm’s
 
-Note: Make sure you import the last Solr services grafana dashboard from TFS (for Varonis services Grafana dashboard)..
+Note: Make sure you import the last Solr services grafana dashboard from TFS (for Varonis services Grafana dashboard).
 TFS link - $/idu Client-Server/WebDA/v8.6/Common/Data Store Team Dashboard.json
 
 ==========================================================================================================================
