@@ -94,7 +94,7 @@ if (Invoke-Command -Session $Session -ScriptBlock {Get-Service $Using:servicenam
 Else {
 	Write-Host "sonard service not found in IDU server, start creating it"
 	
-	SetSonarConfig -port "9180"
+	SetSonarConfig -port "9180" -folder_name "IDU"
 	
 	Write-Host "Copy all Sonar exporter files to remote server"
 	Copy-Item $sonar_full_path -Destination "C:\Sonar\" -ToSession $Session -Recurse

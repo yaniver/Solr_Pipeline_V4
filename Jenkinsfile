@@ -13,7 +13,7 @@ pipeline {
 		stage('VIP Deploy') {
 			steps {
 				echo 'VIP Deploy'
-				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\Install_vip.ps1"
+				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\Install_vip.ps1 '${env.DA_VERSION}'  '${env.ONLINE_VM}'  '${env.IDU_IP}'  '${env.DOMAIN}'  '${env.ENABLE_ENRICHER}'"
 			}
 		}
 		stage('Loki Server - Logs collector') {
@@ -101,6 +101,8 @@ pipeline {
 		GRAFANA_VERSION = '8.0.2'
 		DELETE_ALL_DB_DATA = 'false'
 		EVENTS_EPS_IN_THOUSANDS = '1'
+		ONLINE_VM = '172.16.2.67'
+		ENABLE_ENRICHER = 'True'
     }
     post {
         always {
