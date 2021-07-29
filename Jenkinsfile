@@ -13,7 +13,7 @@ pipeline {
 		stage('VIP Deploy') {
 			steps {
 				echo 'VIP Deploy'
-				powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\Install_vip.ps1 '${env.DA_VERSION}'  '${env.ONLINE_VM}'  '${env.IDU_IP}'  '${env.DOMAIN}'  '${env.ENABLE_ENRICHER}'"
+				//powershell returnStatus: true, script: ".\\jenkinsPipelineScripts\\Install_vip.ps1 '${env.DA_VERSION}'  '${env.ONLINE_VM}'  '${env.IDU_IP}'  '${env.DOMAIN}'  '${env.ENABLE_ENRICHER}'"
 			}
 		}
 		stage('Loki Server - Logs collector') {
