@@ -29,60 +29,44 @@ TFS link - $/idu Client-Server/WebDA/v8.6/Common/Data Store Team Dashboard.json
 
 
 
-2. Prerequsites (Installing Java + Jenkins + Docker + Docker-compose + GIT ): 
-===========================================================================
-  - Having 2 Vm's: 
-		-  Online VM with Windows 10 OS that come with Docker desktop for getting new DataStore VIP pack every period.
-			(this VM can be the personal work computer)
-		-  Offline VM (8 cores + 16 GB RAM) also with Windows 10 that have folder access to folder share in Online VM.
-  - Online VM: in Windows VM (with internet connection), install Java + Jenkins + GIT + Docker desktop
-    Offline VM(no internet): 
-		- Download msi's from online VM, copy to offline VM and install all of them except GIT + 
-		- Load offline Docker images from Images folder in CMD by running command "docker load –i c:\images\<image tar file>"
-			(tar file where created in online VM with this command as example - "docker save -o c:\images\prometheus.tar prom/prometheus")
+2. Prerequsites (Installing Jenkins + Docker + Docker-compose + GIT): 
+====================================================================
+  - In Windows VM (with internet connection), install Java + Jenkins + GIT + Docker desktop
 	  
-  - Online VM: Open CMD and cd to C:\ and run command "git clone --depth=1 https://github.com/yaniver/Solr_Pipeline_V4.git"
-    Offline VM: Copy "Solr_Pipeline_V4" folder from online VM to offline VM.
+  - Open CMD and cd to C:\ and run command "git clone --depth=1 https://github.com/yaniver/Solr_Pipeline_V4.git"
   
   - cd  "Solr_Pipeline_V4" folder
   
-  - Only for Online VM: Run command "git init"
+  - Run command "git init"
   
-  - In Jenkinsfile that exist in "Solr_Pipeline_V4" folder, update params inside "environment" section.
+  - In Jenkinsfile created in "Solr_Pipeline_V4" folder, update params inside "environment" section.
 
 
 
-3. Jenkins - login + Plugins install + Create Jenkins pipeline project + VIP folder configuration
-=================================================================================================
-	Open browser (http://localhost:8080/) and Copy-Paste value from  file "..\jenkins\secrets\initialAdminPassword"
-	(file location - C:\Windows\SysWOW64\config\systemprofile\AppData\Local\Jenkins\.jenkins\secrets)
-	Add user name and pw (username:yaniver ;  pw=err) and change Jenkins URL to VM hostname
+3. Jenkins - login + Plugins install
+====================================
+Open browser (http://localhost:8080/) and Copy-Paste value from  file "..\jenkins\secrets\initialAdminPassword"
+(file location - C:\Windows\SysWOW64\config\systemprofile\AppData\Local\Jenkins\.jenkins\secrets)
+Add user name and pw (username:yaniver ;  pw=Eran2717) and change Jenkins URL to VM hostname
 
-	Only in Online VM: In case you have internet connection -
-		Select "Installed suggested Plugins"
-		Inside Jenkins Plugin Manager-->Available, install blue ocean plugin
-	Offline VM:
-		Extarct plugins.zip content inside C:\Users\yeran\AppData\Local\Jenkins\.jenkins\plugins and restart Jenkins service.
-		(or in C:\Windows\SysWOW64\config\systemprofile\AppData\Local\Jenkins\.jenkins\plugins)
-		
-	Only in Online VM: Enter Blue ocean UI, upload existing pipeline (from Jenkins file located in GitHub) by creating new pipeline (note: github token required for login).
-	Offline VM: 
-		In Jenkins UI, select "New Item" then choose "freestyle project" with name "Solr Pipeline".
-		Copy Pase JenkinsFile content inside "Pipeline-->Script" section.
-		Modify in the copied content the powershell scripts path to full path instead of relative path.
-
-	Only in Online VM: Enter new created jenkins pipeline and in Select "Configure" and in "Scan Repository Triggers" check checkbox "Priodically if not otherwise run" and set interval to 1 min.
+In case you have internet connection -
+	Select "Installed suggested Plugins"
+	Inside Jenkins Plugin Manager-->Available, install blue ocean plugin
+Otherwise -
+	Extarct plugins.zip content inside C:\Users\yeran\AppData\Local\Jenkins\.jenkins\plugins and restart Jenkins service.
+	(or in C:\Windows\SysWOW64\config\systemprofile\AppData\Local\Jenkins\.jenkins\plugins)
 	
-	In online vm: Copy "DownloadVIP" folder to desktop and give Read permission to Everyone for sub-folder "DataStoreVIP"
-	In offline vm: Open File Explorer window and enter "\\<online vm ip>" and then enter the credential (required for InstallVIP.ps1 script)
+Enter Blue ocean UI, upload existing pipeline (from Jenkins file located in GitHub) by creating new pipeline (note: github token required for login)
+
+Enter new created jenkins pipeline and in Select "Configure" and in "Scan Repository Triggers" check checkbox "Priodically if not otherwise run" and set interval to 1 min.
 
 
 
 4. Run Jenkins pipeline
 =======================
-	in CMD under C:\Solr_Pipeline_V4 folder run commit.bat that will commit any changes done in files to GitHub and trigger the pipeline
-	(more details about the content of the pipeline can be found below OR by looking at Jenkinsfile content
-	Note: Slack notification channel should already be configured in Grafana UI under "Notification channels" and if not then create a Slack channel (as described below).
+in CMD under C:\Solr_Pipeline_V4 folder run commit.bat that will commit any changes done in files to GitHub and trigger the pipeline
+(more details about the content of the pipeline can be found below OR by looking at Jenkinsfile content
+Note: Slack notification channel should already be configured in Grafana UI under "Notification channels" and if not then create a Slack channel (as described below).
 
 
 
